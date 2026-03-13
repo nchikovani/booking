@@ -93,7 +93,7 @@ repo
 - TypeScript
 - NestJS
 
-Архитектура backend:d
+Архитектура backend:
 
 Layered Architecture
 
