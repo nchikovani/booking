@@ -114,8 +114,9 @@
                       "fill": "#0F172A",
                       "content": "potoki.io",
                       "fontFamily": "Inter",
-                      "fontSize": 20,
-                      "fontWeight": "700"
+                      "fontSize": 22,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.3
                     }
                   ]
                 },
@@ -129,7 +130,7 @@
                   "textGrowth": "fixed-width",
                   "width": 350,
                   "content": "Платформа онлайн-записи на услуги в Telegram",
-                  "lineHeight": 1.4,
+                  "lineHeight": 1.5,
                   "fontFamily": "Inter",
                   "fontSize": 13,
                   "fontWeight": "normal"
@@ -575,17 +576,17 @@
                   "cornerRadius": 16,
                   "stroke": {
                     "thickness": 1,
-                    "fill": "#E2E8F0"
+                    "fill": "#F1F5F9"
                   },
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
-                    "color": "#0000000A",
+                    "color": "#00000012",
                     "offset": {
                       "x": 0,
-                      "y": 4
+                      "y": 6
                     },
-                    "blur": 12
+                    "blur": 20
                   },
                   "gap": 16,
                   "padding": 16,
@@ -608,7 +609,8 @@
                           "content": "Стрижка мужская",
                           "fontFamily": "Inter",
                           "fontSize": 16,
-                          "fontWeight": "600"
+                          "fontWeight": "600",
+                          "letterSpacing": -0.2
                         },
                         {
                           "type": "frame",
@@ -621,10 +623,10 @@
                               "type": "text",
                               "id": "Hyro9",
                               "name": "card1Price",
-                              "fill": "#6366F1",
+                              "fill": "#1671E9",
                               "content": "1 500 ₽",
                               "fontFamily": "Inter",
-                              "fontSize": 15,
+                              "fontSize": 16,
                               "fontWeight": "600"
                             },
                             {
@@ -675,17 +677,17 @@
                   "cornerRadius": 16,
                   "stroke": {
                     "thickness": 1,
-                    "fill": "#E2E8F0"
+                    "fill": "#F1F5F9"
                   },
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
-                    "color": "#0000000A",
+                    "color": "#00000012",
                     "offset": {
                       "x": 0,
-                      "y": 4
+                      "y": 6
                     },
-                    "blur": 12
+                    "blur": 20
                   },
                   "gap": 16,
                   "padding": 16,
@@ -708,7 +710,8 @@
                           "content": "Классический маникюр",
                           "fontFamily": "Inter",
                           "fontSize": 16,
-                          "fontWeight": "600"
+                          "fontWeight": "600",
+                          "letterSpacing": -0.2
                         },
                         {
                           "type": "frame",
@@ -721,10 +724,10 @@
                               "type": "text",
                               "id": "yvyPl",
                               "name": "card2Price",
-                              "fill": "#6366F1",
+                              "fill": "#1671E9",
                               "content": "800 ₽",
                               "fontFamily": "Inter",
-                              "fontSize": 15,
+                              "fontSize": 16,
                               "fontWeight": "600"
                             },
                             {
@@ -775,17 +778,17 @@
                   "cornerRadius": 16,
                   "stroke": {
                     "thickness": 1,
-                    "fill": "#E2E8F0"
+                    "fill": "#F1F5F9"
                   },
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
-                    "color": "#0000000A",
+                    "color": "#00000012",
                     "offset": {
                       "x": 0,
-                      "y": 4
+                      "y": 6
                     },
-                    "blur": 12
+                    "blur": 20
                   },
                   "gap": 16,
                   "padding": 16,
@@ -817,7 +820,8 @@
                           "content": "Расслабляющий массаж",
                           "fontFamily": "Inter",
                           "fontSize": 16,
-                          "fontWeight": "600"
+                          "fontWeight": "600",
+                          "letterSpacing": -0.2
                         },
                         {
                           "type": "frame",
@@ -830,10 +834,10 @@
                               "type": "text",
                               "id": "CkQpy",
                               "name": "card3Price",
-                              "fill": "#6366F1",
+                              "fill": "#1671E9",
                               "content": "2 500 ₽",
                               "fontFamily": "Inter",
-                              "fontSize": 15,
+                              "fontSize": 16,
                               "fontWeight": "600"
                             },
                             {
@@ -981,7 +985,7 @@
                       "id": "rYpkv",
                       "name": "tab2Label",
                       "fill": "#64748B",
-                      "content": "МОИ ЗАПИСИ",
+                      "content": "ЗАПИСИ",
                       "fontFamily": "Inter",
                       "fontSize": 10,
                       "fontWeight": "600",
