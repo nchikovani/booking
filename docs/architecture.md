@@ -70,6 +70,7 @@ repo
 - Tailwind CSS
 - Zustand (state management)
 - React Query
+- Material UI
 - Архитектура: Feature-Sliced Design (FSD)
 
 ### Telegram Mini App (Client App)
@@ -80,6 +81,7 @@ repo
 - Tailwind CSS
 - Zustand (state management)
 - React Query
+- Material UI
 - Telegram Mini Apps SDK — `@tma.js/sdk-react`
 - Архитектура: Feature-Sliced Design (FSD)
 
@@ -91,7 +93,7 @@ repo
 - TypeScript
 - NestJS
 
-Архитектура backend:
+Архитектура backend:d
 
 Layered Architecture
 
