@@ -2516,24 +2516,12 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "https://images.unsplash.com/photo-1716237443030-b1ddf1e2176c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzM0MDM1MjV8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "url": "https://images.unsplash.com/photo-1745434123180-1875064e45cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzM0MDIwNjR8&ixlib=rb-4.1.0&q=80&w=1080",
                     "mode": "fill"
                   },
                   "cornerRadius": 24,
                   "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "0gUVV",
-                      "name": "cfSpecInitial",
-                      "fill": "#FFFFFF",
-                      "content": "А",
-                      "fontFamily": "Inter",
-                      "fontSize": 18,
-                      "fontWeight": "600"
-                    }
-                  ]
+                  "alignItems": "center"
                 },
                 {
                   "type": "frame",
