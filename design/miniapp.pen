@@ -642,29 +642,6 @@
                           ]
                         }
                       ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "t0xKI",
-                      "name": "card1Btn",
-                      "width": 40,
-                      "height": 40,
-                      "fill": "#6366F1",
-                      "cornerRadius": 10,
-                      "padding": 8,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "7ipzt",
-                          "width": 20,
-                          "height": 20,
-                          "iconFontName": "calendar-plus",
-                          "iconFontFamily": "lucide",
-                          "fill": "#FFFFFF"
-                        }
-                      ]
                     }
                   ]
                 },
@@ -741,29 +718,6 @@
                               "fontWeight": "normal"
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "1xyNT",
-                      "name": "card2Btn",
-                      "width": 40,
-                      "height": 40,
-                      "fill": "#6366F1",
-                      "cornerRadius": 10,
-                      "padding": 8,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "SmVU8",
-                          "width": 20,
-                          "height": 20,
-                          "iconFontName": "calendar-plus",
-                          "iconFontFamily": "lucide",
-                          "fill": "#FFFFFF"
                         }
                       ]
                     }
@@ -851,29 +805,6 @@
                               "fontWeight": "normal"
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Mr3tr",
-                      "name": "card3Btn",
-                      "width": 40,
-                      "height": 40,
-                      "fill": "#6366F1",
-                      "cornerRadius": 10,
-                      "padding": 8,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon_font",
-                          "id": "PzmHJ",
-                          "width": 20,
-                          "height": 20,
-                          "iconFontName": "calendar-plus",
-                          "iconFontFamily": "lucide",
-                          "fill": "#FFFFFF"
                         }
                       ]
                     }
