@@ -565,15 +565,16 @@
               "name": "servicesList",
               "width": "fill_container",
               "layout": "vertical",
-              "gap": 8,
+              "gap": 12,
               "children": [
                 {
                   "type": "frame",
-                  "id": "nmzs0",
+                  "id": "cNqFz",
                   "name": "card1",
+                  "clip": true,
                   "width": "fill_container",
                   "fill": "#FFFFFF",
-                  "cornerRadius": 16,
+                  "cornerRadius": 20,
                   "stroke": {
                     "thickness": 1,
                     "fill": "#F1F5F9"
@@ -581,47 +582,47 @@
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
-                    "color": "#00000012",
+                    "color": "#00000014",
                     "offset": {
                       "x": 0,
-                      "y": 6
+                      "y": 8
                     },
-                    "blur": 20
+                    "blur": 24
                   },
-                  "gap": 16,
-                  "padding": 16,
+                  "layout": "vertical",
                   "children": [
                     {
                       "type": "frame",
-                      "id": "rRB39",
+                      "id": "Bzg9s",
                       "name": "card1Content",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 8,
+                      "gap": 12,
+                      "padding": 20,
                       "children": [
                         {
                           "type": "text",
-                          "id": "3deHV",
+                          "id": "UUgdl",
                           "name": "card1Title",
                           "fill": "#0F172A",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Стрижка мужская",
                           "fontFamily": "Inter",
-                          "fontSize": 16,
-                          "fontWeight": "600",
-                          "letterSpacing": -0.2
+                          "fontSize": 17,
+                          "fontWeight": "600"
                         },
                         {
                           "type": "frame",
-                          "id": "6281d",
+                          "id": "nJAaS",
                           "name": "card1Meta",
                           "width": "fill_container",
                           "gap": 12,
+                          "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
-                              "id": "bKj74",
+                              "id": "nwo0G",
                               "name": "card1Price",
                               "fill": "#1671E9",
                               "content": "1 500 ₽",
@@ -631,7 +632,7 @@
                             },
                             {
                               "type": "text",
-                              "id": "K8AWn",
+                              "id": "8xlse",
                               "name": "card1Duration",
                               "fill": "#64748B",
                               "content": "45 мин",
@@ -647,11 +648,12 @@
                 },
                 {
                   "type": "frame",
-                  "id": "LFgI8",
+                  "id": "7kDrt",
                   "name": "card2",
+                  "clip": true,
                   "width": "fill_container",
                   "fill": "#FFFFFF",
-                  "cornerRadius": 16,
+                  "cornerRadius": 20,
                   "stroke": {
                     "thickness": 1,
                     "fill": "#F1F5F9"
@@ -659,47 +661,70 @@
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
-                    "color": "#00000012",
+                    "color": "#00000014",
                     "offset": {
                       "x": 0,
-                      "y": 6
+                      "y": 8
                     },
-                    "blur": 20
+                    "blur": 24
                   },
+                  "layout": "vertical",
                   "gap": 16,
-                  "padding": 16,
                   "children": [
                     {
                       "type": "frame",
-                      "id": "pibzV",
+                      "id": "IqunT",
                       "name": "card2Content",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 8,
+                      "gap": 12,
+                      "padding": 20,
                       "children": [
                         {
-                          "type": "text",
-                          "id": "pxWDp",
-                          "name": "card2Title",
-                          "fill": "#0F172A",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Классический маникюр",
-                          "fontFamily": "Inter",
-                          "fontSize": 16,
-                          "fontWeight": "600",
-                          "letterSpacing": -0.2
-                        },
-                        {
                           "type": "frame",
-                          "id": "Bm7YX",
-                          "name": "card2Meta",
+                          "id": "qHPiW",
+                          "name": "titleDesc2",
                           "width": "fill_container",
-                          "gap": 12,
+                          "layout": "vertical",
+                          "gap": 4,
                           "children": [
                             {
                               "type": "text",
-                              "id": "AgvTe",
+                              "id": "qI362",
+                              "name": "card2Title",
+                              "fill": "#0F172A",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Классический маникюр",
+                              "fontFamily": "Inter",
+                              "fontSize": 17,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "2io76",
+                              "name": "card2Description",
+                              "fill": "#64748B",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Классический уход за ногтями с покрытием гель-лаком",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "plDEn",
+                          "name": "card2Meta",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "GuH9N",
                               "name": "card2Price",
                               "fill": "#1671E9",
                               "content": "800 ₽",
@@ -709,7 +734,7 @@
                             },
                             {
                               "type": "text",
-                              "id": "m2pHA",
+                              "id": "hBtmV",
                               "name": "card2Duration",
                               "fill": "#64748B",
                               "content": "60 мин",
@@ -725,11 +750,12 @@
                 },
                 {
                   "type": "frame",
-                  "id": "05kCu",
+                  "id": "ISuAb",
                   "name": "card3",
+                  "clip": true,
                   "width": "fill_container",
                   "fill": "#FFFFFF",
-                  "cornerRadius": 16,
+                  "cornerRadius": 20,
                   "stroke": {
                     "thickness": 1,
                     "fill": "#F1F5F9"
@@ -737,56 +763,94 @@
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
-                    "color": "#00000012",
+                    "color": "#00000014",
                     "offset": {
                       "x": 0,
-                      "y": 6
+                      "y": 8
                     },
-                    "blur": 20
+                    "blur": 24
                   },
-                  "gap": 16,
-                  "padding": 16,
+                  "layout": "vertical",
                   "children": [
                     {
                       "type": "frame",
-                      "id": "bSvsI",
+                      "id": "awIL5",
                       "name": "card3Img",
-                      "width": 80,
-                      "height": 80,
-                      "fill": "#F1F5F9",
-                      "cornerRadius": 12
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "relievemassage",
+                        "link": "https://unsplash.com/@relievemassage",
+                        "author": "yury kirillov"
+                      },
+                      "width": "fill_container",
+                      "height": 93,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/61d60b340ce280b22134.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        20,
+                        20,
+                        0,
+                        0
+                      ]
                     },
                     {
                       "type": "frame",
-                      "id": "nmOMR",
+                      "id": "FxRPd",
                       "name": "card3Content",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 8,
+                      "gap": 12,
+                      "padding": 20,
                       "children": [
                         {
-                          "type": "text",
-                          "id": "Ui0l7",
-                          "name": "card3Title",
-                          "fill": "#0F172A",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Расслабляющий массаж",
-                          "fontFamily": "Inter",
-                          "fontSize": 16,
-                          "fontWeight": "600",
-                          "letterSpacing": -0.2
-                        },
-                        {
                           "type": "frame",
-                          "id": "FFbho",
-                          "name": "card3Meta",
+                          "id": "L2n5f",
+                          "name": "titleDesc3",
                           "width": "fill_container",
-                          "gap": 12,
+                          "layout": "vertical",
+                          "gap": 4,
                           "children": [
                             {
                               "type": "text",
-                              "id": "8vH6E",
+                              "id": "lhZ2M",
+                              "name": "card3Title",
+                              "fill": "#0F172A",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Расслабляющий массаж",
+                              "fontFamily": "Inter",
+                              "fontSize": 17,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "HaUnM",
+                              "name": "card3Description",
+                              "fill": "#64748B",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Полное расслабление тела с ароматерапией",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "SCIPV",
+                          "name": "card3Meta",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "NX1tY",
                               "name": "card3Price",
                               "fill": "#1671E9",
                               "content": "2 500 ₽",
@@ -796,7 +860,7 @@
                             },
                             {
                               "type": "text",
-                              "id": "F30Vm",
+                              "id": "17U98",
                               "name": "card3Duration",
                               "fill": "#64748B",
                               "content": "90 мин",
