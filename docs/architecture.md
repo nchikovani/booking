@@ -46,6 +46,9 @@ repo
 │
 ├── packages
 │
+│ ├── database
+│ │ Prisma: схема, миграции, сгенерированный клиент
+│ │
 │ ├── types
 │ │ общие TypeScript типы
 │ │
