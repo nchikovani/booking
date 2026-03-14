@@ -16,6 +16,7 @@ Telegram Booking Platform — платформа онлайн-записи с We
    cp apps/api/.env.example apps/api/.env
    cp apps/admin/.env.example apps/admin/.env
    cp apps/miniapp/.env.example apps/miniapp/.env
+   cp packages/prisma/.env.example packages/prisma/.env
    ```
 
 3. **Запустить приложения**:
