@@ -46,20 +46,17 @@ repo
 │
 ├── packages
 │
-│ ├── database
+│ ├── prisma
 │ │ Prisma: схема, миграции, сгенерированный клиент
-│ │
-│ ├── types
-│ │ общие TypeScript типы
-│ │
-│ ├── validation
-│ │ схемы валидации
 │ │
 │ ├── ui
 │ │ общие UI компоненты
 │ │
-│ └── config
-│ общие конфигурации
+│ ├── eslint-config
+│ │ общие правила ESLint
+│ │
+│ └── typescript-config
+│ общие конфигурации TypeScript
 
 ---
 # 3. Технологический стек
@@ -150,8 +147,19 @@ ORM:
 - **k3s** — оркестрация контейнеров
 - **Traefik** — Ingress (встроен в k3s)
 - **Dockerfile** — в каждой app (api, admin, miniapp)
+- **.dockerignore** — исключение лишних файлов из контекста сборки
 
-Схема деплоя: образы → k8s Deployments → Services → Ingress
+Схема деплоя: образы → k8s Deployments → Services → Ingress (TLS)
+
+### Переменные окружения
+
+- **apps/api/.env**, **apps/admin/.env**, **apps/miniapp/.env** — локальная разработка
+- **packages/prisma/.env** — для миграций (DATABASE_URL)
+- **infra/k8s/** — ConfigMap (несекретные), Secret (секреты, не коммитятся)
+
+Структура инфраструктуры: `infra/k8s/` (namespace, ConfigMap, Secrets, Deployments, Services, Ingress).
+
+Подробные инструкции по деплою: [infra/README.md](../infra/README.md)
 
 ---
 

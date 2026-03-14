@@ -34,13 +34,14 @@
 | Задача | Описание |
 |--------|----------|
 | Monorepo | pnpm workspaces + Turborepo |
-| Shared packages | `types`, `validation`, `ui`, `config` |
-| Database | PostgreSQL + Prisma, схема и миграции |
-| Redis | Настройка кеша и очередей |
-| Docker | Конфигурация для локальной разработки |
-| Backend shell | NestJS, базовая структура API |
+| Shared packages | `prisma`, `ui`, `eslint-config`, `typescript-config` |
+| Database | PostgreSQL + Prisma, схема User, миграции |
+| Redis | Настройка кеша и очередей (ConfigModule, RedisModule) |
+| MinIO | Объектное хранилище (StorageModule) |
+| Docker | docker-compose (PostgreSQL, Redis, MinIO), Dockerfile в apps |
+| Backend shell | NestJS, ConfigModule, Redis, MinIO, health check |
 
-**Сущности для реализации:** User, Business, ServiceCategory, Service, Employee, Schedule, Booking, Client, TimeSlot
+**Сущности для реализации:** User (реализован), Business, ServiceCategory, Service, Employee, Schedule, Booking, Client, TimeSlot
 
 ---
 
@@ -80,7 +81,7 @@
 
 | Этап | Страница / раздел | Функции |
 |------|-------------------|---------|
-| 2.1 | Onboarding & Auth | Вход через Telegram |
+| 2.1 | Onboarding & Auth | Вход через email (в дальнейшем OAuth) |
 | 2.2 | Настройки компании | Название, логотип, описание, контакты, адрес |
 | 2.3 | Услуги | CRUD категорий, CRUD услуг, поиск и фильтры |
 | 2.4 | Сотрудники | Список, создание, редактирование |

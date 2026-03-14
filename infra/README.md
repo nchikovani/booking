@@ -18,10 +18,11 @@ pnpm infra:down  # остановка
 
 ### Переменные окружения
 
-Скопируйте `.env.example` → `.env` в каждой директории app:
+Скопируйте `.env.example` → `.env` в каждой директории:
 - `apps/api/.env`
 - `apps/admin/.env`
 - `apps/miniapp/.env`
+- `packages/prisma/.env` — для миграций (только DATABASE_URL)
 
 ## Сборка образов
 
@@ -33,38 +34,52 @@ docker build -f apps/admin/Dockerfile -t booking-admin:latest .
 docker build -f apps/miniapp/Dockerfile -t booking-miniapp:latest .
 ```
 
+Для admin и miniapp с production URL API:
+```sh
+docker build -f apps/admin/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://api.example.com -t booking-admin:latest .
+docker build -f apps/miniapp/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://api.example.com -t booking-miniapp:latest .
+```
+
 ## Деплой в k3s
+
+### Требования
+
+- k3s с Traefik
+- cert-manager (для TLS) — см. [документацию](https://cert-manager.io/docs/installation/)
+- ClusterIssuer `letsencrypt-prod` для автоматических сертификатов
 
 ### Подготовка
 
-1. Создать Secret из шаблона:
+1. Создать Secret из шаблона (файл `secrets.yaml` в .gitignore, не коммитится):
 
    ```sh
    cp infra/k8s/secrets.yaml.example infra/k8s/secrets.yaml
-   # Заполнить реальные значения в secrets.yaml
+   # Заменить CHANGE_ME на реальные значения
    kubectl apply -f infra/k8s/secrets.yaml
    ```
 
-2. Применить манифесты (порядок важен):
+2. Применить манифесты. Порядок важен: инфраструктура → приложения:
 
    ```sh
    kubectl apply -f infra/k8s/namespace.yaml
    kubectl apply -f infra/k8s/configmap.yaml
-   kubectl apply -f infra/k8s/postgres/
+   kubectl apply -f infra/k8s/postgres/   # БД
    kubectl apply -f infra/k8s/redis/
    kubectl apply -f infra/k8s/minio/
-   kubectl apply -f infra/k8s/api/
+   kubectl apply -f infra/k8s/api/        # после готовности postgres, redis, minio
    kubectl apply -f infra/k8s/admin/
    kubectl apply -f infra/k8s/miniapp/
    kubectl apply -f infra/k8s/ingress.yaml
    ```
 
+3. Выполнить миграции БД: `pnpm --filter @repo/prisma db:migrate:deploy` (с DATABASE_URL из secrets).
+
 ### Переменные окружения для прода
 
-Секреты задаются в `secrets.yaml`:
-- `DATABASE_URL` — строка подключения к PostgreSQL
-- `REDIS_URL` — строка подключения к Redis
-- `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY` — учётные данные MinIO
-- `TELEGRAM_BOT_TOKEN` — токен Telegram Bot
+Секреты в `secrets.yaml`:
+- `POSTGRES_PASSWORD`, `DATABASE_URL` — PostgreSQL
+- `REDIS_URL` — Redis
+- `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY` — MinIO
+- `TELEGRAM_BOT_TOKEN` — Telegram Bot
 
-**Важно:** `NEXT_PUBLIC_API_URL` для admin и miniapp задаётся на этапе сборки образов. Укажите production URL API при сборке (например, через build-arg).
+**Важно:** `NEXT_PUBLIC_API_URL` задаётся при сборке образов через `--build-arg`.
