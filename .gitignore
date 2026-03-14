@@ -8,6 +8,8 @@ node_modules
 # Local env files
 .env
 .env.local
+infra/k8s/secrets.yaml
+
 .env.development.local
 .env.test.local
 .env.production.local

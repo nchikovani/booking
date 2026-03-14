@@ -138,6 +138,21 @@ ORM:
 - REST API
 - Telegram Bot API (для уведомлений, напоминаний и deep link‑переходов в Mini App)
 
+### Локальная разработка
+
+- **docker-compose** — PostgreSQL, Redis, MinIO
+- **turbo** — приложения (api, admin, miniapp)
+
+Порядок запуска: `pnpm infra:up` → `pnpm dev`
+
+### Продакшен (k3s)
+
+- **k3s** — оркестрация контейнеров
+- **Traefik** — Ingress (встроен в k3s)
+- **Dockerfile** — в каждой app (api, admin, miniapp)
+
+Схема деплоя: образы → k8s Deployments → Services → Ingress
+
 ---
 
 ## File Storage (MinIO → CDN)

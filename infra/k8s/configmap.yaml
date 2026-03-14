@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: booking-config
+  namespace: booking
+data:
+  MINIO_ENDPOINT: "minio"
+  MINIO_PORT: "9000"
+  MINIO_USE_SSL: "false"
+  PORT: "3000"

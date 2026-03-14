@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: miniapp
+  namespace: booking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: miniapp
+  template:
+    metadata:
+      labels:
+        app: miniapp
+    spec:
+      containers:
+        - name: miniapp
+          image: booking-miniapp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
