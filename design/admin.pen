@@ -648,13 +648,15 @@
                           "type": "frame",
                           "id": "TgiQO",
                           "name": "chipAll",
+                          "height": 36,
                           "fill": "#6366F1",
-                          "cornerRadius": 20,
+                          "cornerRadius": 18,
                           "gap": 8,
                           "padding": [
-                            8,
-                            14
+                            0,
+                            16
                           ],
+                          "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
                             {
@@ -673,20 +675,26 @@
                           "type": "frame",
                           "id": "9NzQz",
                           "name": "chip1",
-                          "fill": "#E2E8F0",
-                          "cornerRadius": 20,
+                          "height": 36,
+                          "fill": "#FFFFFF",
+                          "cornerRadius": 18,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#E2E8F0"
+                          },
                           "gap": 8,
                           "padding": [
-                            8,
-                            14
+                            0,
+                            16
                           ],
+                          "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "BvMxh",
                               "name": "chip1Text",
-                              "fill": "#0F172A",
+                              "fill": "#64748B",
                               "content": "Стрижки",
                               "fontFamily": "Inter",
                               "fontSize": 13,
@@ -726,20 +734,26 @@
                           "type": "frame",
                           "id": "qc7EG",
                           "name": "chip2",
-                          "fill": "#E2E8F0",
-                          "cornerRadius": 20,
+                          "height": 36,
+                          "fill": "#FFFFFF",
+                          "cornerRadius": 18,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#E2E8F0"
+                          },
                           "gap": 8,
                           "padding": [
-                            8,
-                            14
+                            0,
+                            16
                           ],
+                          "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "Sj40D",
                               "name": "chip2Text",
-                              "fill": "#0F172A",
+                              "fill": "#64748B",
                               "content": "Маникюр",
                               "fontFamily": "Inter",
                               "fontSize": 13,
@@ -771,20 +785,26 @@
                           "type": "frame",
                           "id": "xAbnl",
                           "name": "chip3",
-                          "fill": "#E2E8F0",
-                          "cornerRadius": 20,
+                          "height": 36,
+                          "fill": "#FFFFFF",
+                          "cornerRadius": 18,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#E2E8F0"
+                          },
                           "gap": 8,
                           "padding": [
-                            8,
-                            14
+                            0,
+                            16
                           ],
+                          "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "J9yrp",
                               "name": "chip3Text",
-                              "fill": "#0F172A",
+                              "fill": "#64748B",
                               "content": "Массаж",
                               "fontFamily": "Inter",
                               "fontSize": 13,
@@ -3240,13 +3260,15 @@
                                   "type": "frame",
                                   "id": "xS0m7",
                                   "name": "chipAll",
+                                  "height": 36,
                                   "fill": "#6366F1",
-                                  "cornerRadius": 20,
+                                  "cornerRadius": 18,
                                   "gap": 8,
                                   "padding": [
-                                    8,
-                                    14
+                                    0,
+                                    16
                                   ],
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
@@ -3265,20 +3287,26 @@
                                   "type": "frame",
                                   "id": "8W3x0",
                                   "name": "chip1",
-                                  "fill": "#E2E8F0",
-                                  "cornerRadius": 20,
+                                  "height": 36,
+                                  "fill": "#FFFFFF",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "thickness": 1,
+                                    "fill": "#E2E8F0"
+                                  },
                                   "gap": 8,
                                   "padding": [
-                                    8,
-                                    14
+                                    0,
+                                    16
                                   ],
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "text",
                                       "id": "dyTI7",
                                       "name": "chip1Text",
-                                      "fill": "#0F172A",
+                                      "fill": "#64748B",
                                       "content": "Стрижки",
                                       "fontFamily": "Inter",
                                       "fontSize": 13,
@@ -3318,20 +3346,26 @@
                                   "type": "frame",
                                   "id": "8P66h",
                                   "name": "chip2",
-                                  "fill": "#E2E8F0",
-                                  "cornerRadius": 20,
+                                  "height": 36,
+                                  "fill": "#FFFFFF",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "thickness": 1,
+                                    "fill": "#E2E8F0"
+                                  },
                                   "gap": 8,
                                   "padding": [
-                                    8,
-                                    14
+                                    0,
+                                    16
                                   ],
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "text",
                                       "id": "9o6XM",
                                       "name": "chip2Text",
-                                      "fill": "#0F172A",
+                                      "fill": "#64748B",
                                       "content": "Маникюр",
                                       "fontFamily": "Inter",
                                       "fontSize": 13,
@@ -3363,20 +3397,26 @@
                                   "type": "frame",
                                   "id": "2rAc9",
                                   "name": "chip3",
-                                  "fill": "#E2E8F0",
-                                  "cornerRadius": 20,
+                                  "height": 36,
+                                  "fill": "#FFFFFF",
+                                  "cornerRadius": 18,
+                                  "stroke": {
+                                    "thickness": 1,
+                                    "fill": "#E2E8F0"
+                                  },
                                   "gap": 8,
                                   "padding": [
-                                    8,
-                                    14
+                                    0,
+                                    16
                                   ],
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "text",
                                       "id": "3uD7Z",
                                       "name": "chip3Text",
-                                      "fill": "#0F172A",
+                                      "fill": "#64748B",
                                       "content": "Массаж",
                                       "fontFamily": "Inter",
                                       "fontSize": 13,
