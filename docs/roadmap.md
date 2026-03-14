@@ -35,13 +35,13 @@
 |--------|----------|
 | Monorepo | pnpm workspaces + Turborepo |
 | Shared packages | `prisma`, `ui`, `eslint-config`, `typescript-config` |
-| Database | PostgreSQL + Prisma, схема User, миграции |
+| Database | PostgreSQL + Prisma, миграции |
 | Redis | Настройка кеша и очередей (ConfigModule, RedisModule) |
 | MinIO | Объектное хранилище (StorageModule) |
 | Docker | docker-compose (PostgreSQL, Redis, MinIO), Dockerfile в apps |
 | Backend shell | NestJS, ConfigModule, Redis, MinIO, health check |
 
-**Сущности для реализации:** User (реализован), Business, ServiceCategory, Service, Employee, Schedule, Booking, Client, TimeSlot
+**Сущности для реализации:** User, Business, ServiceCategory, Service, Employee, Schedule, Booking, Client, TimeSlot
 
 ---
 
