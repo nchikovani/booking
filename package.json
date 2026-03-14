@@ -1,5 +1,5 @@
 {
-  "name": "turbo",
+  "name": "booking-miniapp",
   "private": true,
   "scripts": {
     "build": "turbo run build",
