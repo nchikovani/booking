@@ -41,7 +41,7 @@
 | Docker | docker-compose (PostgreSQL, Redis, MinIO), Dockerfile в apps |
 | Backend shell | NestJS, ConfigModule, Redis, MinIO, health check |
 
-**Сущности для реализации:** User, Business, ServiceCategory, Service, Employee, Schedule, Booking, Client, TimeSlot
+**Сущности для реализации:** AdminUser, Business, ServiceCategory, Service, Employee, Schedule, Booking, Client, TimeSlot
 
 ---
 
@@ -53,7 +53,7 @@
 
 | Этап | Задачи |
 |------|--------|
-| 1.1 | Аутентификация, middleware |
+| 1.1 | Аутентификация, авторизация, регистрация, middleware |
 | 1.2 | Бизнес: CRUD, настройки компании |
 | 1.3 | Категории услуг, услуги (CRUD) |
 | 1.4 | Сотрудники (CRUD, связь с услугами) |
@@ -175,7 +175,15 @@
 
 ---
 
-# 4. Ссылки
+# 4. После MVP
+
+| Задача | Описание |
+|--------|----------|
+| Подтверждение email | Верификация email при регистрации (поле `emailVerifiedAt` уже есть в AdminUser). Flow: письмо со ссылкой → подтверждение → доступ к полному функционалу |
+
+---
+
+# 5. Ссылки
 
 - [PRD](prd.md) — требования и пользовательские сценарии  
 - [Architecture](architecture.md) — архитектура и технологический стек  
