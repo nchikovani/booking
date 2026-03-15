@@ -15327,6 +15327,7 @@
                   "name": "Nav Настройки",
                   "width": "fill_container",
                   "fill": "#6366F1",
+                  "cornerRadius": 10,
                   "gap": 12,
                   "padding": [
                     12,
