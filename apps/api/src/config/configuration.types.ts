@@ -34,6 +34,10 @@ export interface Configuration {
       limit: number;
     };
   };
+  fileStorage: {
+    url: string;
+    bucket: string;
+  };
 }
 
 /** Извлекает тип значения по пути (например, 'redis.url' -> string) */

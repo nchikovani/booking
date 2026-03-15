@@ -34,4 +34,8 @@ export default () => ({
       limit: 5,
     },
   },
+  fileStorage: {
+    url: process.env.FILE_STORAGE_URL ?? 'http://localhost:9000/uploads',
+    bucket: process.env.FILE_STORAGE_BUCKET ?? 'uploads',
+  },
 });

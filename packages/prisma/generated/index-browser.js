@@ -131,6 +131,33 @@ exports.Prisma.AdminUserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BusinessScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  logoPath: 'logoPath',
+  imagePath: 'imagePath',
+  phone: 'phone',
+  email: 'email',
+  website: 'website',
+  telegram: 'telegram',
+  vk: 'vk',
+  youtube: 'youtube',
+  address: 'address',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BusinessMemberScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  businessId: 'businessId',
+  role: 'role',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.AuthProviderScalarFieldEnum = {
   id: 'id',
   adminUserId: 'adminUserId',
@@ -188,12 +215,18 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.BusinessRole = exports.$Enums.BusinessRole = {
+  OWNER: 'OWNER'
+};
+
 exports.AuthProviderType = exports.$Enums.AuthProviderType = {
   EMAIL_PASSWORD: 'EMAIL_PASSWORD'
 };
 
 exports.Prisma.ModelName = {
   AdminUser: 'AdminUser',
+  Business: 'Business',
+  BusinessMember: 'BusinessMember',
   AuthProvider: 'AuthProvider',
   UserCredential: 'UserCredential',
   RefreshToken: 'RefreshToken',
