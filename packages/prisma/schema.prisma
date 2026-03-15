@@ -8,10 +8,92 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+enum AuthProviderType {
+  EMAIL_PASSWORD
+  // GOOGLE, MAGIC_LINK — в будущем
+}
+
+model AdminUser {
+  id             String    @id @default(uuid())
+  email          String?   @unique
+  firstName      String?
+  lastName       String?
+  emailVerifiedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  authProviders      AuthProvider[]
+  refreshTokens      RefreshToken[]
+  passwordResetTokens PasswordResetToken[]
+}
+
+model AuthProvider {
+  id          String          @id @default(uuid())
+  adminUserId String          @map("admin_user_id")
+  type        AuthProviderType
+  providerId  String?         @map("provider_id")
+  createdAt   DateTime        @default(now())
+
+  adminUser   AdminUser       @relation(fields: [adminUserId], references: [id], onDelete: Cascade)
+  credential  UserCredential?
+
+  @@unique([adminUserId, type])
+  @@map("auth_providers")
+}
+
+model UserCredential {
+  id             String   @id @default(uuid())
+  authProviderId String   @unique @map("auth_provider_id")
+  passwordHash   String   @map("password_hash")
+  updatedAt      DateTime @updatedAt
+
+  authProvider AuthProvider @relation(fields: [authProviderId], references: [id], onDelete: Cascade)
+
+  @@map("user_credentials")
+}
+
+model RefreshToken {
+  id          String    @id @default(uuid())
+  adminUserId String    @map("admin_user_id")
+  tokenHash   String    @unique @map("token_hash")
+  deviceInfo  String?   @map("device_info")
+  expiresAt   DateTime  @map("expires_at")
+  revokedAt   DateTime? @map("revoked_at")
+  replacedBy  String?   @map("replaced_by")
+  createdAt   DateTime  @default(now())
+
+  adminUser AdminUser @relation(fields: [adminUserId], references: [id], onDelete: Cascade)
+
+  @@index([adminUserId])
+  @@index([tokenHash])
+  @@index([expiresAt])
+  @@map("refresh_tokens")
+}
+
+model LoginAttempt {
   id        String   @id @default(uuid())
-  firstName String?
-  lastName  String?
+  email     String
+  ipAddress String?  @map("ip_address")
+  success   Boolean
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
+  @@index([email, createdAt])
+  @@index([ipAddress, createdAt])
+  @@map("login_attempts")
+}
+
+model PasswordResetToken {
+  id          String    @id @default(uuid())
+  adminUserId String    @map("admin_user_id")
+  tokenHash   String    @unique @map("token_hash")
+  expiresAt   DateTime  @map("expires_at")
+  usedAt      DateTime? @map("used_at")
+  createdAt   DateTime  @default(now())
+
+  adminUser AdminUser @relation(fields: [adminUserId], references: [id], onDelete: Cascade)
+
+  @@index([adminUserId])
+  @@index([tokenHash])
+  @@index([expiresAt])
+  @@map("password_reset_tokens")
 }

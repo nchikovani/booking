@@ -10,8 +10,8 @@ export default () => ({
     endPoint: process.env.MINIO_ENDPOINT ?? 'localhost',
     port: parseInt(process.env.MINIO_PORT ?? '9000', 10),
     useSSL: process.env.MINIO_USE_SSL === 'true',
-    accessKey: process.env.MINIO_ACCESS_KEY ?? 'minioadmin',
-    secretKey: process.env.MINIO_SECRET_KEY ?? 'minioadmin',
+    accessKey: process.env.MINIO_ACCESS_KEY,
+    secretKey: process.env.MINIO_SECRET_KEY,
   },
   cors: {
     origin: process.env.CORS_ORIGIN ?? '*',
@@ -19,5 +19,19 @@ export default () => ({
   rateLimit: {
     ttl: 60000,
     limit: 100,
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    accessExpires: process.env.JWT_ACCESS_EXPIRES ?? '15m',
+    refreshExpires: process.env.JWT_REFRESH_EXPIRES ?? '7d',
+  },
+  auth: {
+    frontendUrl: process.env.FRONTEND_URL ?? 'http://localhost:3001',
+    cookieDomain: process.env.COOKIE_DOMAIN ?? '',
+    cookieName: 'refreshToken',
+    rateLimit: {
+      ttl: 900000, // 15 min
+      limit: 5,
+    },
   },
 });

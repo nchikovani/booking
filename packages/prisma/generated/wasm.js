@@ -93,12 +93,57 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.AdminUserScalarFieldEnum = {
   id: 'id',
+  email: 'email',
   firstName: 'firstName',
   lastName: 'lastName',
+  emailVerifiedAt: 'emailVerifiedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AuthProviderScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  type: 'type',
+  providerId: 'providerId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UserCredentialScalarFieldEnum = {
+  id: 'id',
+  authProviderId: 'authProviderId',
+  passwordHash: 'passwordHash',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  tokenHash: 'tokenHash',
+  deviceInfo: 'deviceInfo',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  replacedBy: 'replacedBy',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LoginAttemptScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  ipAddress: 'ipAddress',
+  success: 'success',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PasswordResetTokenScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  usedAt: 'usedAt',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -115,10 +160,17 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.AuthProviderType = exports.$Enums.AuthProviderType = {
+  EMAIL_PASSWORD: 'EMAIL_PASSWORD'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  AdminUser: 'AdminUser',
+  AuthProvider: 'AuthProvider',
+  UserCredential: 'UserCredential',
+  RefreshToken: 'RefreshToken',
+  LoginAttempt: 'LoginAttempt',
+  PasswordResetToken: 'PasswordResetToken'
 };
 /**
  * Create the Client
@@ -168,13 +220,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  firstName String?\n  lastName  String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "fb55c0905f335888fd9b2dbc945bd34bc126d3e0b6277b33809d61161de8d6dc",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum AuthProviderType {\n  EMAIL_PASSWORD\n  // GOOGLE, MAGIC_LINK — в будущем\n}\n\nmodel AdminUser {\n  id              String    @id @default(uuid())\n  email           String?   @unique\n  firstName       String?\n  lastName        String?\n  emailVerifiedAt DateTime?\n  createdAt       DateTime  @default(now())\n  updatedAt       DateTime  @updatedAt\n\n  authProviders       AuthProvider[]\n  refreshTokens       RefreshToken[]\n  passwordResetTokens PasswordResetToken[]\n}\n\nmodel AuthProvider {\n  id          String           @id @default(uuid())\n  adminUserId String           @map(\"admin_user_id\")\n  type        AuthProviderType\n  providerId  String?          @map(\"provider_id\")\n  createdAt   DateTime         @default(now())\n\n  adminUser  AdminUser       @relation(fields: [adminUserId], references: [id], onDelete: Cascade)\n  credential UserCredential?\n\n  @@unique([adminUserId, type])\n  @@map(\"auth_providers\")\n}\n\nmodel UserCredential {\n  id             String   @id @default(uuid())\n  authProviderId String   @unique @map(\"auth_provider_id\")\n  passwordHash   String   @map(\"password_hash\")\n  updatedAt      DateTime @updatedAt\n\n  authProvider AuthProvider @relation(fields: [authProviderId], references: [id], onDelete: Cascade)\n\n  @@map(\"user_credentials\")\n}\n\nmodel RefreshToken {\n  id          String    @id @default(uuid())\n  adminUserId String    @map(\"admin_user_id\")\n  tokenHash   String    @unique @map(\"token_hash\")\n  deviceInfo  String?   @map(\"device_info\")\n  expiresAt   DateTime  @map(\"expires_at\")\n  revokedAt   DateTime? @map(\"revoked_at\")\n  replacedBy  String?   @map(\"replaced_by\")\n  createdAt   DateTime  @default(now())\n\n  adminUser AdminUser @relation(fields: [adminUserId], references: [id], onDelete: Cascade)\n\n  @@index([adminUserId])\n  @@index([tokenHash])\n  @@index([expiresAt])\n  @@map(\"refresh_tokens\")\n}\n\nmodel LoginAttempt {\n  id        String   @id @default(uuid())\n  email     String\n  ipAddress String?  @map(\"ip_address\")\n  success   Boolean\n  createdAt DateTime @default(now())\n\n  @@index([email, createdAt])\n  @@index([ipAddress, createdAt])\n  @@map(\"login_attempts\")\n}\n\nmodel PasswordResetToken {\n  id          String    @id @default(uuid())\n  adminUserId String    @map(\"admin_user_id\")\n  tokenHash   String    @unique @map(\"token_hash\")\n  expiresAt   DateTime  @map(\"expires_at\")\n  usedAt      DateTime? @map(\"used_at\")\n  createdAt   DateTime  @default(now())\n\n  adminUser AdminUser @relation(fields: [adminUserId], references: [id], onDelete: Cascade)\n\n  @@index([adminUserId])\n  @@index([tokenHash])\n  @@index([expiresAt])\n  @@map(\"password_reset_tokens\")\n}\n",
+  "inlineSchemaHash": "0da66d8e86cb69efac934d2849fffe310f27bcc79a8b12b04df27627d09d7c11",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"AdminUser\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emailVerifiedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"authProviders\",\"kind\":\"object\",\"type\":\"AuthProvider\",\"relationName\":\"AdminUserToAuthProvider\"},{\"name\":\"refreshTokens\",\"kind\":\"object\",\"type\":\"RefreshToken\",\"relationName\":\"AdminUserToRefreshToken\"},{\"name\":\"passwordResetTokens\",\"kind\":\"object\",\"type\":\"PasswordResetToken\",\"relationName\":\"AdminUserToPasswordResetToken\"}],\"dbName\":null},\"AuthProvider\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"adminUserId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"admin_user_id\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"AuthProviderType\"},{\"name\":\"providerId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"provider_id\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"adminUser\",\"kind\":\"object\",\"type\":\"AdminUser\",\"relationName\":\"AdminUserToAuthProvider\"},{\"name\":\"credential\",\"kind\":\"object\",\"type\":\"UserCredential\",\"relationName\":\"AuthProviderToUserCredential\"}],\"dbName\":\"auth_providers\"},\"UserCredential\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"authProviderId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"auth_provider_id\"},{\"name\":\"passwordHash\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"password_hash\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"authProvider\",\"kind\":\"object\",\"type\":\"AuthProvider\",\"relationName\":\"AuthProviderToUserCredential\"}],\"dbName\":\"user_credentials\"},\"RefreshToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"adminUserId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"admin_user_id\"},{\"name\":\"tokenHash\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"token_hash\"},{\"name\":\"deviceInfo\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"device_info\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"expires_at\"},{\"name\":\"revokedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"revoked_at\"},{\"name\":\"replacedBy\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"replaced_by\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"adminUser\",\"kind\":\"object\",\"type\":\"AdminUser\",\"relationName\":\"AdminUserToRefreshToken\"}],\"dbName\":\"refresh_tokens\"},\"LoginAttempt\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ipAddress\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"ip_address\"},{\"name\":\"success\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"login_attempts\"},\"PasswordResetToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"adminUserId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"admin_user_id\"},{\"name\":\"tokenHash\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"token_hash\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"expires_at\"},{\"name\":\"usedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"used_at\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"adminUser\",\"kind\":\"object\",\"type\":\"AdminUser\",\"relationName\":\"AdminUserToPasswordResetToken\"}],\"dbName\":\"password_reset_tokens\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

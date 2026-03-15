@@ -20,6 +20,20 @@ export interface Configuration {
     ttl: number;
     limit: number;
   };
+  jwt: {
+    secret: string;
+    accessExpires: string;
+    refreshExpires: string;
+  };
+  auth: {
+    frontendUrl: string;
+    cookieDomain: string;
+    cookieName: string;
+    rateLimit: {
+      ttl: number;
+      limit: number;
+    };
+  };
 }
 
 /** Извлекает тип значения по пути (например, 'redis.url' -> string) */

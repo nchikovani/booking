@@ -121,12 +121,57 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.AdminUserScalarFieldEnum = {
   id: 'id',
+  email: 'email',
   firstName: 'firstName',
   lastName: 'lastName',
+  emailVerifiedAt: 'emailVerifiedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AuthProviderScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  type: 'type',
+  providerId: 'providerId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UserCredentialScalarFieldEnum = {
+  id: 'id',
+  authProviderId: 'authProviderId',
+  passwordHash: 'passwordHash',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  tokenHash: 'tokenHash',
+  deviceInfo: 'deviceInfo',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  replacedBy: 'replacedBy',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LoginAttemptScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  ipAddress: 'ipAddress',
+  success: 'success',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PasswordResetTokenScalarFieldEnum = {
+  id: 'id',
+  adminUserId: 'adminUserId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  usedAt: 'usedAt',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -143,10 +188,17 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.AuthProviderType = exports.$Enums.AuthProviderType = {
+  EMAIL_PASSWORD: 'EMAIL_PASSWORD'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  AdminUser: 'AdminUser',
+  AuthProvider: 'AuthProvider',
+  UserCredential: 'UserCredential',
+  RefreshToken: 'RefreshToken',
+  LoginAttempt: 'LoginAttempt',
+  PasswordResetToken: 'PasswordResetToken'
 };
 
 /**

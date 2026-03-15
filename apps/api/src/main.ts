@@ -23,6 +23,7 @@ async function bootstrap() {
   const corsOrigin = config.get('cors.origin', '*');
   app.enableCors({
     origin: corsOrigin === '*' ? true : corsOrigin.split(',').map((o) => o.trim()),
+    credentials: true,
   });
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(
