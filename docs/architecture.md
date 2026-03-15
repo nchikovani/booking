@@ -183,7 +183,9 @@ ORM:
 Рекомендации при разработке:
 
 - в БД хранить **путь** (key) в полях `logoPath`, `imagePath`; публичный URL формировать как `{FILE_STORAGE_URL}/{path}` ([Feature 1.2](features/1.2-business.md))
-- env: `FILE_STORAGE_URL` — базовый URL (dev: MinIO, prod: MinIO или CDN)
+- env: `FILE_STORAGE_URL` — базовый URL (dev: `http://localhost:9000/uploads`, prod: MinIO или CDN)
+- env: `FILE_STORAGE_BUCKET` — имя bucket (по умолчанию `uploads`)
+- bucket создаётся при старте API (StorageService), если не существует
 - при подключении CDN: изменить только `FILE_STORAGE_URL`, код не меняется
 - настраивать CORS в MinIO с учётом будущего CDN
 
