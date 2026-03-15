@@ -13,4 +13,11 @@ export default () => ({
     accessKey: process.env.MINIO_ACCESS_KEY ?? 'minioadmin',
     secretKey: process.env.MINIO_SECRET_KEY ?? 'minioadmin',
   },
+  cors: {
+    origin: process.env.CORS_ORIGIN ?? '*',
+  },
+  rateLimit: {
+    ttl: 60000,
+    limit: 100,
+  },
 });

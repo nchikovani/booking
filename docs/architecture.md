@@ -284,6 +284,22 @@ Openapi доступен по адресу `/swagger-json`.
 
 ---
 
+## Инфраструктура API
+
+Общие компоненты, применяемые ко всем запросам:
+
+- **X-Request-ID** — middleware генерирует или принимает идентификатор запроса, добавляет в заголовки ответа и логи
+- **CORS** — настраивается через `CORS_ORIGIN` (env)
+- **Rate limiting** — ThrottlerGuard, лимит на IP (ttl и limit в конфигурации)
+- **ValidationPipe** — валидация DTO (whitelist, forbidNonWhitelisted, transform)
+- **TransformInterceptor** — оборачивает успешные ответы в `{ status, data }`
+- **HttpExceptionFilter** — единый формат ошибок `{ status, error: { code, message } }`, обработка HttpException, Prisma-ошибок
+- **Логирование** — nestjs-pino (JSON в production, pino-pretty в dev)
+
+Конфигурация: `configuration.ts` + `AppConfigService` (типизированный доступ). Обработка ошибок: `ErrorCode`, `ERROR_DEFINITIONS`, `AppException.create()`.
+
+---
+
 ## Формат запросов и ответов
 
 Все ответы API используют единый формат.
@@ -305,6 +321,14 @@ Openapi доступен по адресу `/swagger-json`.
   "data": []
 }
 ```
+
+## Идентификация запросов (X-Request-ID)
+
+Для трассировки и отладки каждый запрос имеет уникальный идентификатор.
+
+- Клиент может передать заголовок `X-Request-ID` в запросе; при отсутствии Backend генерирует новый (UUID).
+- Backend возвращает `X-Request-ID` в заголовках ответа.
+- Идентификатор добавляется в логи и используется при вызовах внешних сервисов для distributed tracing.
 
 ## Формат ошибок
 
@@ -330,7 +354,7 @@ Openapi доступен по адресу `/swagger-json`.
 - валидация входных данных
 - проверка прав доступа
 - защита от дублирования записей
-- rate limiting на создание записей
+- rate limiting (ThrottlerGuard, глобально по IP)
 
 ---
 

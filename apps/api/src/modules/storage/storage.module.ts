@@ -1,21 +1,20 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NestMinioModule } from 'nestjs-minio';
+import { AppConfigService } from '../../config/app-config.service';
 
 @Module({
   imports: [
     NestMinioModule.registerAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
+      inject: [AppConfigService],
+      useFactory: (config: AppConfigService) => ({
         isGlobal: true,
-        endPoint: configService.get<string>('MINIO_ENDPOINT', 'localhost'),
-        port: configService.get<number>('MINIO_PORT', 9000),
-        useSSL: configService.get<string>('MINIO_USE_SSL') === 'true',
-        accessKey: configService.get<string>('MINIO_ACCESS_KEY', 'minioadmin'),
-        secretKey: configService.get<string>('MINIO_SECRET_KEY', 'minioadmin'),
+        endPoint: config.get('minio.endPoint', 'localhost'),
+        port: config.get('minio.port', 9000),
+        useSSL: config.get('minio.useSSL', false),
+        accessKey: config.get('minio.accessKey', 'minioadmin'),
+        secretKey: config.get('minio.secretKey', 'minioadmin'),
       }),
     }),
   ],
 })
-export class StorageModule {}
+export class StorageModule { }
