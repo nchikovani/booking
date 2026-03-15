@@ -5,14 +5,17 @@ import { AdminAuthService } from './admin-auth.service';
 import { AdminAuthRepository } from './repositories/admin-auth.repository';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminRefreshGuard } from './guards/admin-refresh.guard';
+import { AuthTokenCleanupService } from './auth-token-cleanup.service';
 import { EmailPasswordStrategy } from './strategies/email-password.strategy';
 import { AppConfigModule } from '../../../config/app-config.module';
 import { AppConfigService } from '../../../config/app-config.service';
+import { LoggerModule } from '../../../common/logger/logger.module';
 import { parseExpiresToSeconds } from './utils/parse-expires';
 
 @Module({
   imports: [
     AppConfigModule,
+    LoggerModule,
     JwtModule.registerAsync({
       imports: [AppConfigModule],
       inject: [AppConfigService],
@@ -30,10 +33,11 @@ import { parseExpiresToSeconds } from './utils/parse-expires';
   providers: [
     AdminAuthRepository,
     AdminAuthService,
+    AuthTokenCleanupService,
     EmailPasswordStrategy,
     AdminAuthGuard,
     AdminRefreshGuard,
   ],
   exports: [AdminAuthService, AdminAuthGuard],
 })
-export class AdminAuthModule {}
+export class AdminAuthModule { }

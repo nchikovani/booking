@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
 import * as argon2 from 'argon2';
 import { createHash, randomUUID } from 'crypto';
 import { JwtService } from '@nestjs/jwt';
@@ -29,6 +30,7 @@ export class AdminAuthService {
     private readonly config: AppConfigService,
     private readonly emailPasswordStrategy: EmailPasswordStrategy,
     private readonly emailService: EmailService,
+    private readonly logger: Logger,
   ) {}
 
   async register(dto: RegisterDto, deviceInfo?: string): Promise<AuthResponse> {
@@ -107,6 +109,10 @@ export class AdminAuthService {
     });
 
     if (!result) {
+      this.logger.log(
+        { ip: ipAddress, userAgent: deviceInfo, email, success: false },
+        '[Auth] Login failed',
+      );
       await this.repository.createLoginAttempt({
         email,
         success: false,
@@ -138,9 +144,14 @@ export class AdminAuthService {
       expiresAt: refreshExpiresAt,
     });
 
+    this.logger.log(
+      { ip: ipAddress, userAgent: deviceInfo, email, success: true },
+      '[Auth] Login success',
+    );
     await this.repository.createLoginAttempt({
       email,
       success: true,
+      ipAddress: ipAddress ?? null,
     });
 
     return {

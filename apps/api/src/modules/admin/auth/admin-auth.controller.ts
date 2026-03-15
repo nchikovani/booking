@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
 import type * as express from 'express';
 import { Throttle } from '@nestjs/throttler';
 import {
@@ -33,6 +33,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('register')
+  @HttpCode(HttpStatus.CREATED)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Регистрация',
@@ -55,6 +56,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('login')
+  @HttpCode(HttpStatus.OK)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Вход',
@@ -76,8 +78,10 @@ export class AdminAuthController {
     return { user: result.user, accessToken: result.accessToken, expiresIn: result.expiresIn };
   }
 
+  @Public()
   @UseGuards(AdminRefreshGuard)
   @Post('refresh')
+  @HttpCode(HttpStatus.OK)
   @ApiCookieAuth('refreshToken')
   @ApiOperation({
     summary: 'Обновление токена',
@@ -92,8 +96,10 @@ export class AdminAuthController {
     return { user: result.user, accessToken: result.accessToken, expiresIn: result.expiresIn };
   }
 
+  @Public()
   @UseGuards(AdminRefreshGuard)
   @Post('logout')
+  @HttpCode(HttpStatus.OK)
   @ApiCookieAuth('refreshToken')
   @ApiOperation({
     summary: 'Выход',
@@ -123,6 +129,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('forgot-password')
+  @HttpCode(HttpStatus.OK)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Забытый пароль',
@@ -153,6 +160,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('reset-password')
+  @HttpCode(HttpStatus.OK)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Сброс пароля',

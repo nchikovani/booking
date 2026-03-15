@@ -25,11 +25,9 @@ export class AdminRefreshGuard implements CanActivate {
   ) { }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    console.log(123);
     const request = context.switchToHttp().getRequest<Request>();
     const cookieName = this.config.get('auth.cookieName', 'refreshToken');
     const token = request.cookies?.[cookieName];
-    console.log('token', token);
 
     if (!token) {
       throw AppException.create(ErrorCode.REFRESH_TOKEN_EXPIRED);

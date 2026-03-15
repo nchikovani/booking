@@ -248,4 +248,23 @@ export class AdminAuthRepository {
   ): Promise<T> {
     return this.prisma.$transaction(fn);
   }
+
+  /** Удаляет истёкшие и отозванные refresh-токены (для cron). */
+  async deleteExpiredRevokedRefreshTokens(): Promise<{ count: number }> {
+    const result = await this.prisma.refreshToken.deleteMany({
+      where: {
+        expiresAt: { lt: new Date() },
+        revokedAt: { not: null },
+      },
+    });
+    return { count: result.count };
+  }
+
+  /** Удаляет истёкшие токены сброса пароля (для cron). */
+  async deleteExpiredPasswordResetTokens(): Promise<{ count: number }> {
+    const result = await this.prisma.passwordResetToken.deleteMany({
+      where: { expiresAt: { lt: new Date() } },
+    });
+    return { count: result.count };
+  }
 }
