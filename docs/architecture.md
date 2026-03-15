@@ -114,9 +114,11 @@ Backend является единым для:
 
 - PostgreSQL
 
-ORM:
+**Prisma**
 
-- Prisma
+- Схема: `packages/prisma/schema.prisma`
+- Клиент: `@repo/prisma`, токен `PRISMA` для инъекции
+- Миграции: `pnpm run db:migrate` в `packages/prisma`
 
 ---
 
@@ -182,10 +184,11 @@ ORM:
 
 Рекомендации при разработке:
 
-- в БД хранить **путь** (key) в полях `logoPath`, `imagePath`; публичный URL формировать как `{FILE_STORAGE_URL}/{path}` ([Feature 1.2](features/1.2-business.md))
+- в БД хранить **путь** (key) в полях `logoPath`, `imagePath`, например `businesses/{id}/logo.webp`
+- публичный URL формировать через `StorageService.getPublicUrl(path)`  ([Feature 1.2](features/1.2-business.md))
 - env: `FILE_STORAGE_URL` — базовый URL (dev: `http://localhost:9000/uploads`, prod: MinIO или CDN)
 - env: `FILE_STORAGE_BUCKET` — имя bucket (по умолчанию `uploads`)
-- bucket создаётся при старте API (StorageService), если не существует
+- bucket создаётся при старте API (StorageInitService), если не существует
 - при подключении CDN: изменить только `FILE_STORAGE_URL`, код не меняется
 - настраивать CORS в MinIO с учётом будущего CDN
 
@@ -218,6 +221,19 @@ ORM:
 - доступ к базе только через repository
 - DTO используются для входных данных
 - валидация выполняется на уровне DTO
+
+### Структура модулей (apps/api/src/modules/)
+
+- **Shared-модули** (`business/`, `storage/`) — общая логика для Admin и Client API
+- **Admin-модули** (`admin/*/`) — эндпоинты Admin API, проверка прав
+- **App-модули** (`app/*/`) — публичные эндпоинты Client API
+- Структура: `modules/<domain>/` → `*.module.ts`, `*.service.ts`, `*.repository.ts`, `dto/`
+
+### Конвенции именования
+
+- **Файлы:** `*.module.ts`, `*.service.ts`, `*.repository.ts`, `*.controller.ts`, `*-response.dto.ts`, `update-*-.dto.ts`
+- **Классы:** `XxxService`, `XxxRepository`, `XxxController`, `UpdateXxxDto`, `XxxResponseDto`
+- **Пути API:** kebab-case (`/admin/businesses`)
 
 ---
 
@@ -301,7 +317,11 @@ Openapi доступен по адресу `/swagger-json`.
 - **HttpExceptionFilter** — единый формат ошибок `{ status, error: { code, message } }`, обработка HttpException, Prisma-ошибок
 - **Логирование** — nestjs-pino (JSON в production, pino-pretty в dev)
 
-Конфигурация: `configuration.ts` + `AppConfigService` (типизированный доступ). Обработка ошибок: `ErrorCode`, `ERROR_DEFINITIONS`, `AppException.create()`.
+**Конфигурация**
+
+- `configuration.ts` — загрузка из env
+- `AppConfigService.get(path, defaultValue)` — типизированный доступ
+- `configuration.types.ts` — типы конфигурации
 
 ---
 
@@ -327,6 +347,31 @@ Openapi доступен по адресу `/swagger-json`.
 }
 ```
 
+### Формат данных в API
+
+**Даты и время**
+
+- ISO 8601 в UTC: `YYYY-MM-DDTHH:mm:ss.sssZ`
+- Пример: `"2024-01-15T10:00:00.000Z"`
+- Применяется к полям `createdAt`, `updatedAt`, `expiresAt` и другим датам
+- Публичные эндпоинты (Client API) могут не возвращать служебные даты
+
+**Идентификаторы**
+
+- UUID v4 (строка)
+
+**Именование в JSON**
+
+- camelCase: `createdAt`, `logoUrl`, `imageUrl`
+
+**Null и опциональные поля**
+
+- Отсутствующее значение опционального поля: `null` (например, `imageUrl: null`)
+
+**Пустые строки в запросах**
+
+- Пустая строка `""` для опционального поля трактуется как очистка и сохраняется как `null`
+
 ## Идентификация запросов (X-Request-ID)
 
 Для трассировки и отладки каждый запрос имеет уникальный идентификатор.
@@ -349,6 +394,19 @@ Openapi доступен по адресу `/swagger-json`.
 }
 ```
 
+**Обработка ошибок**
+
+- `ErrorCode` — enum в `common/errors/error-codes.ts`
+- `AppException.create(code, message?)` — создание исключений
+- `ERROR_DEFINITIONS` — соответствие кода и HTTP-статуса
+- При отсутствии доступа к ресурсу возвращать 404 (не раскрывать существование ресурса)
+
+**Валидация**
+
+- class-validator + class-transformer в DTO
+- ValidationPipe: `whitelist`, `forbidNonWhitelisted`, `transform`
+- `@Transform()` — для `""` → `null` и приведения типов
+
 ---
 
 # 6. Безопасность
@@ -361,6 +419,16 @@ Openapi доступен по адресу `/swagger-json`.
 - проверка прав доступа
 - защита от дублирования записей
 - rate limiting (ThrottlerGuard, глобально по IP)
+
+**Проверка прав доступа**
+
+- AdminAuthGuard — извлечение `adminUserId` из JWT
+- Декоратор `@CurrentUser('adminUserId')` — доступ к текущему пользователю
+- Декоратор `@Public()` — отключение проверки аутентификации
+- Хелперы в `BusinessService`:
+  - `requireBusinessMember(adminUserId, businessId)` — проверяет членство, возвращает `{ business, role }` или выбрасывает 404
+  - `requireBusinessOwner(adminUserId, businessId)` — то же, но требует роль OWNER (для удаления бизнеса и т.п.)
+- Для маршрутов, где `businessId` не в пути (например `/employees/:id`): контроллер загружает ресурс, получает `businessId`, затем вызывает хелпер
 
 ---
 
@@ -384,10 +452,10 @@ Openapi доступен по адресу `/swagger-json`.
 
 Типы тестов:
 
-- Unit tests — тестирование сервисов и бизнес-логики
-- Integration tests — тестирование API и взаимодействия с базой данных
+- Unit tests — тестирование сервисов и бизнес-логики, моки через `Test.createTestingModule`
+- E2E tests — `test/*.e2e-spec.ts`, полный `AppModule`, `request.agent()` для cookie
 
-Тесты располагаются рядом с кодом и используют суффикс: *.spec.ts
+Тесты располагаются рядом с кодом и используют суффикс: `*.spec.ts`
 
 ---
 
@@ -410,3 +478,11 @@ Openapi доступен по адресу `/swagger-json`.
 - каждый сервис backend должен иметь unit тесты
 - критическая бизнес-логика должна быть покрыта тестами
 - тесты должны проверять основные сценарии и edge cases
+
+---
+
+# 9. Документация
+
+- **Feature-спеки:** `docs/features/*.md` — детали реализации фич
+- **Roadmap:** [docs/roadmap.md](roadmap.md) — фазы и этапы
+- **PRD:** [docs/prd.md](prd.md) — требования продукта

@@ -148,8 +148,26 @@ describe('Admin Auth (e2e)', () => {
         .set('Authorization', `Bearer ${accessToken}`)
         .expect(200)
         .expect((res) => {
+          expect(res.body.status).toBe('success');
           expect(res.body.data.email).toBe(testUser.email);
         });
+    });
+
+    it('should create business on first /me call; GET /admin/businesses returns one business', async () => {
+      await agent.get(`${baseUrl}/me`).set('Authorization', `Bearer ${accessToken}`);
+
+      const res = await agent
+        .get('/api/v1/admin/businesses')
+        .set('Authorization', `Bearer ${accessToken}`)
+        .expect(200);
+
+      expect(res.body.status).toBe('success');
+      expect(Array.isArray(res.body.data)).toBe(true);
+      expect(res.body.data.length).toBe(1);
+      expect(res.body.data[0]).toMatchObject({
+        id: expect.any(String),
+        role: 'OWNER',
+      });
     });
 
     it('should return 401 without token', () => {

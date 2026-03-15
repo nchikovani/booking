@@ -12,10 +12,12 @@ import { AppConfigModule } from '../../../config/app-config.module';
 import { AppConfigService } from '../../../config/app-config.service';
 import { LoggerModule } from '../../../common/logger/logger.module';
 import { RedisModule } from '../../../modules/redis/redis.module';
+import { BusinessModule } from '../../business/business.module';
 import { parseExpiresToSeconds } from './utils/parse-expires';
 
 @Module({
   imports: [
+    BusinessModule,
     AppConfigModule,
     LoggerModule,
     RedisModule,
@@ -42,6 +44,6 @@ import { parseExpiresToSeconds } from './utils/parse-expires';
     AdminRefreshGuard,
     AuthEmailThrottlerGuard,
   ],
-  exports: [AdminAuthService, AdminAuthGuard],
+  exports: [AdminAuthService, AdminAuthGuard, JwtModule],
 })
 export class AdminAuthModule { }

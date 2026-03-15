@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { JwtService } from '@nestjs/jwt';
 import { AdminAuthService } from './admin-auth.service';
 import { AdminAuthRepository } from './repositories/admin-auth.repository';
+import { BusinessService } from '../../business/business.service';
 import { EmailPasswordStrategy } from './strategies/email-password.strategy';
 import { EmailService } from '../../email/email.service';
 import { AppConfigService } from '../../../config/app-config.service';
@@ -16,6 +17,7 @@ describe('AdminAuthService', () => {
   let config: jest.Mocked<AppConfigService>;
   let strategy: jest.Mocked<EmailPasswordStrategy>;
   let emailService: jest.Mocked<EmailService>;
+  let businessService: jest.Mocked<BusinessService>;
 
   const mockAdminUser = {
     id: 'user-1',
@@ -69,6 +71,10 @@ describe('AdminAuthService', () => {
       sendPasswordResetEmail: jest.fn(),
     };
 
+    const mockBusinessService = {
+      ensureBusinessForUser: jest.fn().mockResolvedValue({ id: 'b1', role: 'OWNER' }),
+    };
+
     const mockLogger = {
       log: jest.fn(),
       error: jest.fn(),
@@ -82,6 +88,7 @@ describe('AdminAuthService', () => {
         { provide: AppConfigService, useValue: mockConfig },
         { provide: EmailPasswordStrategy, useValue: mockStrategy },
         { provide: EmailService, useValue: mockEmailService },
+        { provide: BusinessService, useValue: mockBusinessService },
         { provide: Logger, useValue: mockLogger },
       ],
     }).compile();
@@ -92,6 +99,7 @@ describe('AdminAuthService', () => {
     config = module.get(AppConfigService) as jest.Mocked<AppConfigService>;
     strategy = module.get(EmailPasswordStrategy) as jest.Mocked<EmailPasswordStrategy>;
     emailService = module.get(EmailService) as jest.Mocked<EmailService>;
+    businessService = module.get(BusinessService) as jest.Mocked<BusinessService>;
 
     jest.clearAllMocks();
   });
@@ -193,11 +201,12 @@ describe('AdminAuthService', () => {
   });
 
   describe('me', () => {
-    it('should return user by id', async () => {
+    it('should call ensureBusinessForUser and return user by id', async () => {
       repository.findAdminUserById.mockResolvedValue(mockAdminUser);
 
       const result = await service.me('user-1');
 
+      expect(businessService.ensureBusinessForUser).toHaveBeenCalledWith('user-1');
       expect(result).toEqual({
         id: mockAdminUser.id,
         email: mockAdminUser.email,

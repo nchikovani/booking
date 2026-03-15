@@ -12,6 +12,7 @@ import type { ForgotPasswordDto } from './dto/forgot-password.dto';
 import type { ResetPasswordDto } from './dto/reset-password.dto';
 import { EmailPasswordStrategy } from './strategies/email-password.strategy';
 import { AdminAuthRepository } from './repositories/admin-auth.repository';
+import { BusinessService } from '../../business/business.service';
 import { EmailService } from '../../email/email.service';
 import { parseExpiresToSeconds } from './utils/parse-expires';
 
@@ -30,6 +31,7 @@ export class AdminAuthService {
     private readonly config: AppConfigService,
     private readonly emailPasswordStrategy: EmailPasswordStrategy,
     private readonly emailService: EmailService,
+    private readonly businessService: BusinessService,
     private readonly logger: Logger,
   ) {}
 
@@ -168,6 +170,7 @@ export class AdminAuthService {
   }
 
   async me(adminUserId: string): Promise<AuthResponse['user']> {
+    await this.businessService.ensureBusinessForUser(adminUserId);
     const adminUser = await this.repository.findAdminUserById(adminUserId);
     return {
       id: adminUser.id,

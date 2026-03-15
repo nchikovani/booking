@@ -7,6 +7,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
+import type { MulterError } from 'multer';
 import { Prisma } from '@repo/prisma';
 import { ErrorCode } from '../errors/error-codes';
 import { AppException } from '../errors/app.exception';
