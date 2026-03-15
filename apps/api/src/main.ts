@@ -1,16 +1,19 @@
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { setupSwagger } from './swagger.config';
-import { ValidationPipe } from '@nestjs/common';
 import { Logger } from 'nestjs-pino';
 import { AppConfigService } from './config/app-config.service';
 import { randomUUID } from 'crypto';
 import { Request, Response, NextFunction } from 'express';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
   const config = app.get(AppConfigService);
   const logger = app.get(Logger);
+
+  app.use(cookieParser());
 
   app.use((req: Request, res: Response, next: NextFunction) => {
     const id = (req.headers['x-request-id'] as string) ?? randomUUID();

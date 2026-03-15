@@ -6,6 +6,8 @@ import { AppConfigModule } from './config/app-config.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { LoggerModule } from './common/logger/logger.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { EmailModule } from './modules/email/email.module';
 import { HealthModule } from './modules/health/health.module';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { RedisModule } from './modules/redis/redis.module';
@@ -32,6 +34,8 @@ import { AppConfigService } from './config/app-config.service';
       ],
     }),
     PrismaModule,
+    EmailModule,
+    AdminModule,
     RedisModule,
     StorageModule,
     HealthModule,

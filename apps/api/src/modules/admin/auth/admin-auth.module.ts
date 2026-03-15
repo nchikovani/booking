@@ -1,0 +1,39 @@
+import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { AdminAuthController } from './admin-auth.controller';
+import { AdminAuthService } from './admin-auth.service';
+import { AdminAuthRepository } from './repositories/admin-auth.repository';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
+import { AdminRefreshGuard } from './guards/admin-refresh.guard';
+import { EmailPasswordStrategy } from './strategies/email-password.strategy';
+import { AppConfigModule } from '../../../config/app-config.module';
+import { AppConfigService } from '../../../config/app-config.service';
+import { parseExpiresToSeconds } from './utils/parse-expires';
+
+@Module({
+  imports: [
+    AppConfigModule,
+    JwtModule.registerAsync({
+      imports: [AppConfigModule],
+      inject: [AppConfigService],
+      useFactory: (config: AppConfigService) => {
+        const accessExpires = config.get('jwt.accessExpires', '15m');
+        const expiresInSec = parseExpiresToSeconds(accessExpires);
+        return {
+          secret: config.get('jwt.secret'),
+          signOptions: { expiresIn: expiresInSec },
+        };
+      },
+    }),
+  ],
+  controllers: [AdminAuthController],
+  providers: [
+    AdminAuthRepository,
+    AdminAuthService,
+    EmailPasswordStrategy,
+    AdminAuthGuard,
+    AdminRefreshGuard,
+  ],
+  exports: [AdminAuthService, AdminAuthGuard],
+})
+export class AdminAuthModule {}
