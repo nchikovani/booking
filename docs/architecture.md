@@ -351,6 +351,7 @@ Openapi доступен по адресу `/swagger-json`.
 
 Основные правила безопасности:
 
+- аутентификация Admin API (email + пароль, JWT access/refresh, HttpOnly cookies) — [Feature 1.1](features/1.1-auth.md)
 - проверка подписи Telegram initData
 - валидация входных данных
 - проверка прав доступа

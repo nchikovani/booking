@@ -204,6 +204,15 @@ describe('Admin Auth (e2e)', () => {
   });
 
   describe('POST /forgot-password', () => {
+    const forgotPasswordUser = {
+      email: `forgot-${Date.now()}@example.com`,
+      password: 'SecurePass1',
+    };
+
+    beforeAll(async () => {
+      await agent.post(`${baseUrl}/register`).send(forgotPasswordUser);
+    });
+
     it('should always return 200 (no email disclosure)', () => {
       return agent
         .post(`${baseUrl}/forgot-password`)
@@ -217,7 +226,7 @@ describe('Admin Auth (e2e)', () => {
     it('should return 200 for existing user', () => {
       return agent
         .post(`${baseUrl}/forgot-password`)
-        .send({ email: testUser.email })
+        .send({ email: forgotPasswordUser.email })
         .expect(200);
     });
   });

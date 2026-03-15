@@ -49,6 +49,10 @@ export const ERROR_DEFINITIONS: Record<
     status: HttpStatus.BAD_REQUEST,
     message: 'Invalid or expired token',
   },
+  [ErrorCode.RATE_LIMIT_EXCEEDED]: {
+    status: HttpStatus.TOO_MANY_REQUESTS,
+    message: 'Too many requests',
+  },
   [ErrorCode.NOT_FOUND]: {
     status: HttpStatus.NOT_FOUND,
     message: 'Resource not found',

@@ -12,6 +12,7 @@ import {
 import { AdminAuthService } from './admin-auth.service';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminRefreshGuard } from './guards/admin-refresh.guard';
+import { AuthEmailThrottlerGuard } from './guards/auth-email-throttler.guard';
 import { Public } from './decorators/public.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { RegisterDto } from './dto/register.dto';
@@ -33,6 +34,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('register')
+  @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.CREATED)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
@@ -43,6 +45,7 @@ export class AdminAuthController {
   @ApiResponse({ status: 201, description: 'Успешная регистрация', type: AuthResponseDto })
   @ApiResponse({ status: 400, description: 'Ошибка валидации' })
   @ApiResponse({ status: 409, description: 'Email уже зарегистрирован' })
+  @ApiResponse({ status: 429, description: 'Превышен лимит попыток для email' })
   async register(
     @Body() dto: RegisterDto,
     @Req() req: express.Request,
@@ -56,6 +59,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('login')
+  @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.OK)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
@@ -66,6 +70,7 @@ export class AdminAuthController {
   @ApiResponse({ status: 200, description: 'Успешный вход', type: AuthResponseDto })
   @ApiResponse({ status: 400, description: 'Ошибка валидации' })
   @ApiResponse({ status: 401, description: 'Неверный email или пароль' })
+  @ApiResponse({ status: 429, description: 'Превышен лимит попыток для email' })
   async login(
     @Body() dto: LoginDto,
     @Req() req: express.Request,
@@ -129,6 +134,7 @@ export class AdminAuthController {
 
   @Public()
   @Post('forgot-password')
+  @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.OK)
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
@@ -137,6 +143,7 @@ export class AdminAuthController {
       'Запрос ссылки для сброса пароля. Ответ всегда 200 — не раскрывает наличие email в системе.',
   })
   @ApiBody({ type: ForgotPasswordDto })
+  @ApiResponse({ status: 429, description: 'Превышен лимит попыток для email' })
   @ApiResponse({
     status: 200,
     description: 'Запрос обработан',
