@@ -18,16 +18,19 @@ RUN pnpm --filter miniapp build
 # Production stage
 FROM node:20-alpine AS runner
 
+RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+
 WORKDIR /app
 
 ENV NODE_ENV=production
-
-COPY --from=builder /app/apps/miniapp/.next/standalone ./
-COPY --from=builder /app/apps/miniapp/.next/static ./apps/miniapp/.next/static
-COPY --from=builder /app/apps/miniapp/public ./apps/miniapp/public
-
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+
+COPY --from=builder /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml ./
+COPY --from=builder /app/packages ./packages
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/miniapp ./apps/miniapp
+
 EXPOSE 3000
 
-CMD ["node", "apps/miniapp/server.js"]
+CMD ["pnpm", "--filter", "miniapp", "start"]
