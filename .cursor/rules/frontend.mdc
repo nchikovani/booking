@@ -1,0 +1,25 @@
+---
+description: Соглашения Frontend (admin, miniapp)
+globs: apps/admin/**,apps/miniapp/**
+alwaysApply: false
+---
+
+# Соглашения Frontend
+
+Стек: Next.js App Router, React, TypeScript, Tailwind CSS, Material UI, Zustand, React Query.
+
+## Feature-Sliced Design (FSD)
+
+Импорты только вниз: `app → pages → widgets → features → entities → shared`.  
+Запрещено: импорты вверх, циклические зависимости, бизнес-логика в `shared`/`entities`.
+
+## Server vs Client Components
+
+- По умолчанию — Server Components
+- `'use client'` — только для хуков, событий, браузерных API, TMA SDK
+- Server Actions — для мутаций из форм без React Query
+
+## Данные и состояние
+
+- API-запросы — через хуки React Query (`useQuery`, `useMutation`) в `features/` или `entities/`; ключи кеша — в константах рядом с хуком
+- Zustand — только UI-состояние (sidebar, modal, темы); серверные данные — только React Query

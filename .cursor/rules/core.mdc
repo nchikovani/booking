@@ -1,0 +1,15 @@
+---
+description: Базовый контекст проекта
+alwaysApply: true
+---
+
+# Проект
+
+Telegram Booking Platform — monorepo (pnpm workspaces + Turborepo).  
+Стек: NestJS, Next.js, Prisma, PostgreSQL, Redis, MinIO.
+
+- `apps/api` — NestJS API
+- `apps/admin` — Next.js + React (панель администратора)
+- `apps/miniapp` — Next.js + TMA SDK (Telegram Mini App)
+- `packages/prisma` — Prisma Client (`@repo/prisma`)
+

@@ -1,0 +1,26 @@
+---
+description: Схема и миграции Prisma
+globs: packages/prisma/**
+alwaysApply: false
+---
+
+# packages/prisma
+
+Клиент: `@repo/prisma`, инъекция через токен `PRISMA`. `generated/` — не редактировать.
+
+## Миграции
+
+- Применить: `pnpm run db:migrate`; создать: `pnpm prisma migrate dev --name <name>`
+- Новые поля: `null` или значение по умолчанию (обратная совместимость)
+
+## Схема
+
+- Таблицы: `@@map("businesses")` (plural, snake_case); поля: `@map("logo_path")` (snake_case в БД)
+- Индексы на FK и поля в `WHERE` / `ORDER BY`; явный `onDelete` на всех связях
+
+## В репозиториях
+
+- Всегда указывать `select` / `include` явно
+- Мутации на нескольких таблицах — `prisma.$transaction([...])` или интерактивная транзакция
+- `PrismaClientKnownRequestError` не пробрасывать клиенту: `P2025` → 404, `P2002` → 409
+- В БД хранить путь к файлу (`businesses/{id}/logo.webp`); URL — через `StorageService.getPublicUrl(path)`

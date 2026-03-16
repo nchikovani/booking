@@ -1,0 +1,63 @@
+---
+description: Чеклист и инфраструктура NestJS API
+globs: apps/api/**
+alwaysApply: false
+---
+
+# apps/api
+
+## Архитектура
+
+- **Controller** — HTTP, DTO, guards; только делегирует в сервис
+- **Service** — бизнес-логика; не знает об HTTP
+- **Repository** — только Prisma; без бизнес-логики
+
+## Структура модулей
+
+`modules/<domain>/` → `*.module.ts`, `*.service.ts`, `*.repository.ts`, `*.controller.ts`, `dto/`
+
+- `business/`, `storage/` — общая логика Admin и Client API
+- `admin/*/` — Admin API; `app/*/` — Client API; `bot/*/` — webhook, уведомления
+
+## Именование
+
+- Классы: `XxxService`, `XxxRepository`, `XxxController`, `UpdateXxxDto`, `XxxResponseDto`
+- Пути API: kebab-case (`/admin/businesses`)
+
+## Права доступа (Admin API)
+
+- `AdminAuthGuard` + `@CurrentUser('adminUserId')`; `@Public()` — без аутентификации
+- `BusinessService.requireBusinessMember(adminUserId, businessId)` — проверяет членство
+- `BusinessService.requireBusinessOwner(adminUserId, businessId)` — требует роль OWNER
+
+## Чеклист нового эндпоинта
+
+1. DTO + `class-validator` (+ `@Transform()` при необходимости)
+2. Guard: `AdminAuthGuard`, `TelegramAuthGuard` или `@Public()`
+3. Swagger: `@ApiOperation`, `@ApiResponse`, `@ApiBearerAuth`
+4. Бизнес-логика — в сервисе; Prisma — только в репозитории
+5. Ошибки: `AppException.create(ErrorCode, message)` или `HttpException`
+
+## Глобальная инфраструктура
+
+`ValidationPipe` (whitelist, forbidNonWhitelisted, transform) · `TransformInterceptor` · `HttpExceptionFilter` · `ThrottlerGuard` · `nestjs-pino` · `X-Request-ID` middleware
+
+## Ошибки
+
+- Использовать `AppException` / `HttpException`; не глотать исключения
+- Не пробрасывать сырые ошибки БД в ответ клиенту
+- Нет доступа к ресурсу → 404 (не раскрывать существование)
+
+## Логирование и конфиг
+
+- Только `Logger` из `@nestjs/common`, никогда не `console.log`
+- Переменные окружения только через `AppConfigService`, никогда не `process.env` напрямую
+
+## Безопасность
+
+- Все входные данные — через `ValidationPipe` / DTO; не доверять сырому телу запроса
+- Секреты (JWT, API-ключи, пароли) — только из env; не хардкодить, не логировать, не возвращать клиенту
+- Только Prisma ORM — никаких raw SQL; ошибки Prisma перехватывать в `HttpExceptionFilter`
+- Загрузка файлов: валидировать MIME на сервере, ограничивать размер
+- Rate limiting на auth-эндпоинтах (`ThrottlerGuard`); CORS через `CORS_ORIGIN` (не `*` в prod)
+- В ответах с ошибками: без stack trace, без деталей схемы БД
