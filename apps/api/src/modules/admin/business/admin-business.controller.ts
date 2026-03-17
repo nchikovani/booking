@@ -83,7 +83,7 @@ export class AdminBusinessController {
 
   @Post(':id/logo')
   @HttpCode(HttpStatus.OK)
-  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 50 * 1024 * 1024 } }))
+  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 8 * 1024 * 1024 } }))
   @ApiConsumes('multipart/form-data')
   @ApiBody({
     schema: {
@@ -108,7 +108,7 @@ export class AdminBusinessController {
 
   @Post(':id/image')
   @HttpCode(HttpStatus.OK)
-  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 50 * 1024 * 1024 } }))
+  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 8 * 1024 * 1024 } }))
   @ApiConsumes('multipart/form-data')
   @ApiBody({
     schema: {

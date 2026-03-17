@@ -86,13 +86,13 @@ describe('StorageService', () => {
       expect(minio.putObject).toHaveBeenCalled();
     });
 
-    it('should throw VALIDATION_FAILED for buffer > 50 MB', async () => {
+    it('should throw VALIDATION_FAILED for buffer > 8 MB', async () => {
       const buffer = Buffer.alloc(51 * 1024 * 1024);
 
       await expect(service.upload(buffer, 'test.webp')).rejects.toThrow(AppException);
       await expect(service.upload(buffer, 'test.webp')).rejects.toMatchObject({
         code: ErrorCode.VALIDATION_FAILED,
-        message: 'File size exceeds 50 MB',
+        message: 'File size exceeds 8 MB',
       });
       expect(minio.putObject).not.toHaveBeenCalled();
     });

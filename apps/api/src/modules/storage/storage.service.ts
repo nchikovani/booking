@@ -9,7 +9,7 @@ import { ErrorCode } from '../../common/errors/error-codes';
 /** Max output size (stored in MinIO). */
 const MAX_OUTPUT_SIZE = 5 * 1024 * 1024; // 5 MB
 /** Max input size (prevents DoS from huge uploads). */
-const MAX_INPUT_SIZE = 50 * 1024 * 1024; // 50 MB
+const MAX_INPUT_SIZE = 8 * 1024 * 1024; // 8 MB
 const QUALITY_LEVELS = [85, 70, 50, 30] as const;
 
 export interface UploadOptions {
@@ -34,7 +34,7 @@ export class StorageService {
    */
   async upload(buffer: Buffer, key: string, options?: UploadOptions): Promise<string> {
     if (buffer.length > MAX_INPUT_SIZE) {
-      throw AppException.create(ErrorCode.VALIDATION_FAILED, 'File size exceeds 50 MB');
+      throw AppException.create(ErrorCode.VALIDATION_FAILED, 'File size exceeds 8 MB');
     }
 
     let processed: Buffer;

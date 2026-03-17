@@ -184,7 +184,7 @@ Backend является единым для:
 
 Рекомендации при разработке:
 
-- **Загрузка изображений:** допустимые форматы JPEG, PNG, WebP; проверка MIME на сервере; max 50 MB; отсутствие или пустой `file` — 400 VALIDATION_FAILED
+- **Загрузка изображений:** допустимые форматы JPEG, PNG, WebP; проверка MIME на сервере; max 8 MB; отсутствие или пустой `file` — 400 VALIDATION_FAILED
 - в БД хранить **путь** (key) в полях `logoPath`, `imagePath`, например `businesses/{id}/logo.webp`
 - публичный URL формировать через `StorageService.getPublicUrl(path)`  ([Feature 1.2](features/1.2-business.md))
 - env: `FILE_STORAGE_URL` — базовый URL (dev: `http://localhost:9000/uploads`, prod: MinIO или CDN)
