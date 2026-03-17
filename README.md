@@ -90,7 +90,7 @@ Base URL API: `/api/v1`
 │   ├── eslint-config
 │   └── typescript-config
 ├── infra/           — k8s манифесты, деплой
-└── docs/            — архитектура, roadmap, PRD
+└── docs/            — документация (см. [docs/README.md](docs/README.md))
 ```
 
 ## Деплой
@@ -99,6 +99,8 @@ Base URL API: `/api/v1`
 
 ## Документация
 
+- [docs/README.md](docs/README.md) — обзор документации
 - [Architecture](docs/architecture.md) — архитектура системы
 - [Roadmap](docs/roadmap.md) — дорожная карта разработки
 - [PRD](docs/prd.md) — спецификация продукта
+- [Project Overview](docs/project.md) — обзор продукта и ролей

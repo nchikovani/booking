@@ -11,10 +11,9 @@ description: Запускает pnpm test, pnpm lint, pnpm check-types. Испо
 
 ## Алгоритм
 
-1. **Запусти последовательно:**
-   - `pnpm test`
-   - `pnpm lint`
-   - `pnpm check-types`
+1. **Запусти проверки:**
+   - `pnpm test` — тесты (если есть в корне или workspace)
+   - `pnpm run lint-and-types` — lint и check-types **параллельно** (turbo запускает оба в одном проходе)
 
 2. **Верни пользователю** сводку:
    - Тесты: passed / failed (кратко о падениях)

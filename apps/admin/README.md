@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web Admin
 
-## Getting Started
+Веб-панель администратора бизнеса для платформы **Booking Mini App** — настройка компании, услуг, сотрудников, расписания и записей.
 
-First, run the development server:
+## Связанные документы
+
+- [Project Overview](../../docs/project.md) — описание продукта и ролей
+- [Architecture](../../docs/architecture.md) — техническая архитектура
+- [Roadmap](../../docs/roadmap.md) — фазы разработки
+
+---
+
+## Стек
+
+- **Next.js** (App Router)
+- **React**, **TypeScript**
+- **Tailwind CSS**, **Material UI**
+- **Zustand** — UI-состояние
+- **React Query** — серверные данные
+- **Feature-Sliced Design (FSD)**
+
+---
+
+## Запуск
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Из корня монорепозитория
 pnpm dev
-# or
-bun dev
+# Admin: http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Или из папки `apps/admin`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Переменные окружения
 
-To learn more about Next.js, take a look at the following resources:
+Скопируйте `.env.example` в `.env`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cp .env.example .env
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Переменная | Описание |
+|------------|----------|
+| `NEXT_PUBLIC_API_URL` | URL Backend API (например, http://localhost:3000) |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Структура (FSD)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/          — App Router
+pages/        — страницы
+widgets/      — виджеты
+features/     — фичи
+entities/     — сущности
+shared/       — общие компоненты
+
+Импорты только вниз: app → pages → widgets → features → entities → shared.
+```
