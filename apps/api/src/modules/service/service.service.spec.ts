@@ -3,6 +3,7 @@ import { Prisma } from '@repo/prisma';
 import { ServiceService } from './service.service';
 import { ServiceRepository } from './service.repository';
 import { ServiceCategoryService } from '../service-category/service-category.service';
+import { EmployeeService } from '../employee/employee.service';
 import { AppException } from '../../common/errors/app.exception';
 import { ErrorCode } from '../../common/errors/error-codes';
 import { encodeCursor } from '../../common/utils/cursor.util';
@@ -11,6 +12,7 @@ describe('ServiceService', () => {
   let service: ServiceService;
   let repository: jest.Mocked<ServiceRepository>;
   let serviceCategoryService: jest.Mocked<ServiceCategoryService>;
+  let employeeService: jest.Mocked<EmployeeService>;
 
   const mockService = {
     id: 'svc-1',
@@ -25,6 +27,7 @@ describe('ServiceService', () => {
     createdAt: new Date(),
     updatedAt: new Date(),
     category: { id: 'cat-1', name: 'Стрижка' },
+    employeeServices: [] as { employeeId: string }[],
   };
 
   beforeEach(async () => {
@@ -32,6 +35,7 @@ describe('ServiceService', () => {
       findByBusinessId: jest.fn(),
       findByIdAndBusiness: jest.fn(),
       create: jest.fn(),
+      createWithEmployeeLinks: jest.fn(),
       update: jest.fn(),
       delete: jest.fn(),
       getMaxPosition: jest.fn(),
@@ -44,11 +48,17 @@ describe('ServiceService', () => {
       ensureCategoryBelongsToBusiness: jest.fn(),
     };
 
+    const mockEmployeeService = {
+      validateEmployeeIdsBelongToBusiness: jest.fn().mockResolvedValue(undefined),
+      syncServiceEmployeeLinks: jest.fn().mockResolvedValue(undefined),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ServiceService,
         { provide: ServiceRepository, useValue: mockRepository },
         { provide: ServiceCategoryService, useValue: mockCategoryService },
+        { provide: EmployeeService, useValue: mockEmployeeService },
       ],
     }).compile();
 
@@ -57,6 +67,7 @@ describe('ServiceService', () => {
     serviceCategoryService = module.get(
       ServiceCategoryService,
     ) as jest.Mocked<ServiceCategoryService>;
+    employeeService = module.get(EmployeeService) as jest.Mocked<EmployeeService>;
     jest.clearAllMocks();
   });
 
@@ -136,6 +147,36 @@ describe('ServiceService', () => {
       expect(result.id).toBe('svc-1');
       expect(result.price).toBe('1500.00');
     });
+
+    it('должен создавать услугу с employeeIds атомарно через createWithEmployeeLinks', async () => {
+      serviceCategoryService.ensureCategoryBelongsToBusiness.mockResolvedValue(undefined);
+      const serviceWithEmployees = {
+        ...mockService,
+        employeeServices: [{ employeeId: 'emp-1' }, { employeeId: 'emp-2' }],
+      };
+      repository.createWithEmployeeLinks.mockResolvedValue(serviceWithEmployees);
+
+      const result = await service.create('business-1', {
+        name: 'Стрижка',
+        price: 1500,
+        durationMinutes: 30,
+        employeeIds: ['emp-1', 'emp-2'],
+      });
+
+      expect(repository.create).not.toHaveBeenCalled();
+      expect(repository.createWithEmployeeLinks).toHaveBeenCalledWith(
+        expect.objectContaining({
+          businessId: 'business-1',
+          name: 'Стрижка',
+          price: 1500,
+          durationMinutes: 30,
+        }),
+        ['emp-1', 'emp-2'],
+      );
+      expect(employeeService.validateEmployeeIdsBelongToBusiness).not.toHaveBeenCalled();
+      expect(employeeService.syncServiceEmployeeLinks).not.toHaveBeenCalled();
+      expect(result.employeeIds).toEqual(['emp-1', 'emp-2']);
+    });
   });
 
   describe('update', () => {
@@ -160,6 +201,22 @@ describe('ServiceService', () => {
 
       expect(repository.update).not.toHaveBeenCalled();
       expect(result.id).toBe('svc-1');
+    });
+
+    it('должен вызывать syncServiceEmployeeLinks при employeeIds в dto', async () => {
+      repository.findByIdAndBusiness.mockResolvedValue(mockService);
+
+      await service.update('svc-1', 'business-1', { employeeIds: ['emp-1'] });
+
+      expect(employeeService.validateEmployeeIdsBelongToBusiness).toHaveBeenCalledWith(
+        ['emp-1'],
+        'business-1',
+      );
+      expect(employeeService.syncServiceEmployeeLinks).toHaveBeenCalledWith(
+        'svc-1',
+        ['emp-1'],
+        'business-1',
+      );
     });
   });
 

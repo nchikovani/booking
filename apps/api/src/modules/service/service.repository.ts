@@ -1,10 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Prisma } from '@repo/prisma';
+import { AppException } from '../../common/errors/app.exception';
+import { ErrorCode } from '../../common/errors/error-codes';
 import { PRISMA } from '../prisma/prisma.module';
 import type { PrismaClient, Service } from '@repo/prisma';
 
 export interface ServiceWithCategory extends Service {
   category: { id: string; name: string } | null;
+  employeeServices?: { employeeId: string }[];
 }
 
 export interface ServiceListFilters {
@@ -93,6 +96,9 @@ export class ServiceRepository {
         category: {
           select: { id: true, name: true },
         },
+        employeeServices: {
+          select: { employeeId: true },
+        },
       },
     });
 
@@ -110,6 +116,7 @@ export class ServiceRepository {
       where: { id },
       include: {
         category: { select: { id: true, name: true } },
+        employeeServices: { select: { employeeId: true } },
       },
     });
     return service as ServiceWithCategory | null;
@@ -127,9 +134,69 @@ export class ServiceRepository {
       },
       include: {
         category: { select: { id: true, name: true } },
+        employeeServices: { select: { employeeId: true } },
       },
     });
     return service as ServiceWithCategory;
+  }
+
+  /**
+   * Создаёт услугу и связи с сотрудниками в одной транзакции.
+   * При невалидных employeeIds — throw AppException NOT_FOUND.
+   */
+  async createWithEmployeeLinks(
+    data: CreateServiceData,
+    employeeIds: string[],
+  ): Promise<ServiceWithCategory> {
+    return this.prisma.$transaction(async (tx) => {
+      if (employeeIds.length > 0) {
+        const employees = await tx.employee.findMany({
+          where: { id: { in: employeeIds }, businessId: data.businessId },
+          select: { id: true },
+        });
+        if (employees.length !== employeeIds.length) {
+          throw AppException.create(ErrorCode.NOT_FOUND);
+        }
+      }
+
+      const maxPosResult = await tx.service.aggregate({
+        where: { businessId: data.businessId },
+        _max: { position: true },
+      });
+      const position = (maxPosResult._max.position ?? 0) + 100;
+
+      const service = await tx.service.create({
+        data: {
+          ...data,
+          position,
+          breakAfterMinutes: data.breakAfterMinutes ?? 0,
+        },
+        include: {
+          category: { select: { id: true, name: true } },
+          employeeServices: { select: { employeeId: true } },
+        },
+      });
+
+      if (employeeIds.length > 0) {
+        await tx.employeeService.createMany({
+          data: employeeIds.map((employeeId) => ({
+            employeeId,
+            serviceId: service.id,
+          })),
+          skipDuplicates: true,
+        });
+        const updated = await tx.service.findUnique({
+          where: { id: service.id },
+          include: {
+            category: { select: { id: true, name: true } },
+            employeeServices: { select: { employeeId: true } },
+          },
+        });
+        return updated as ServiceWithCategory;
+      }
+
+      return service as ServiceWithCategory;
+    });
   }
 
   async update(id: string, data: UpdateServiceData): Promise<ServiceWithCategory> {
@@ -138,6 +205,7 @@ export class ServiceRepository {
       data,
       include: {
         category: { select: { id: true, name: true } },
+        employeeServices: { select: { employeeId: true } },
       },
     });
     return service as ServiceWithCategory;
@@ -194,6 +262,7 @@ export class ServiceRepository {
       where: { id, businessId },
       include: {
         category: { select: { id: true, name: true } },
+        employeeServices: { select: { employeeId: true } },
       },
     });
     return service as ServiceWithCategory | null;

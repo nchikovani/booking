@@ -6,6 +6,7 @@ import type { CreateServiceDto } from './dto/create-service.dto';
 import type { UpdateServiceDto } from './dto/update-service.dto';
 import type { ServiceListQueryDto } from './dto/service-list-query.dto';
 import { ServiceCategoryService } from '../service-category/service-category.service';
+import { EmployeeService } from '../employee/employee.service';
 import { ServiceRepository } from './service.repository';
 import type { ServiceWithCategory } from './service.repository';
 
@@ -19,6 +20,7 @@ export interface ServiceResponse {
   categoryId: string | null;
   categoryName: string | null;
   position: number;
+  employeeIds: string[];
   createdAt: string;
 }
 
@@ -27,6 +29,7 @@ export class ServiceService {
   constructor(
     private readonly repository: ServiceRepository,
     private readonly serviceCategoryService: ServiceCategoryService,
+    private readonly employeeService: EmployeeService,
   ) {}
 
   private toServiceResponse(service: ServiceWithCategory): ServiceResponse {
@@ -40,6 +43,7 @@ export class ServiceService {
       categoryId: service.categoryId,
       categoryName: service.category?.name ?? null,
       position: service.position,
+      employeeIds: (service.employeeServices ?? []).map((es) => es.employeeId),
       createdAt: service.createdAt.toISOString(),
     };
   }
@@ -98,15 +102,32 @@ export class ServiceService {
       );
     }
 
-    const service = await this.repository.create({
-      businessId,
-      categoryId: dto.categoryId ?? null,
-      name: dto.name,
-      description: dto.description ?? null,
-      price: dto.price,
-      durationMinutes: dto.durationMinutes,
-      breakAfterMinutes: dto.breakAfterMinutes ?? 0,
-    });
+    const employeeIds = dto.employeeIds ? [...new Set(dto.employeeIds)] : [];
+
+    const service =
+      employeeIds.length > 0
+        ? await this.repository.createWithEmployeeLinks(
+            {
+              businessId,
+              categoryId: dto.categoryId ?? null,
+              name: dto.name,
+              description: dto.description ?? null,
+              price: dto.price,
+              durationMinutes: dto.durationMinutes,
+              breakAfterMinutes: dto.breakAfterMinutes ?? 0,
+            },
+            employeeIds,
+          )
+        : await this.repository.create({
+            businessId,
+            categoryId: dto.categoryId ?? null,
+            name: dto.name,
+            description: dto.description ?? null,
+            price: dto.price,
+            durationMinutes: dto.durationMinutes,
+            breakAfterMinutes: dto.breakAfterMinutes ?? 0,
+          });
+
     return this.toServiceResponse(service);
   }
 
@@ -114,9 +135,21 @@ export class ServiceService {
     const existing = await this.repository.findByIdAndBusiness(id, businessId);
     if (!existing) throw AppException.create(ErrorCode.NOT_FOUND);
 
-    const hasUpdates = Object.keys(dto).length > 0;
+    const hasServiceIds = 'employeeIds' in dto && dto.employeeIds !== undefined;
+    if (hasServiceIds) {
+      const employeeIds = [...new Set(dto.employeeIds ?? [])];
+      if (employeeIds.length > 0) {
+        await this.employeeService.validateEmployeeIdsBelongToBusiness(employeeIds, businessId);
+      }
+      await this.employeeService.syncServiceEmployeeLinks(id, employeeIds, businessId);
+    }
+
+    const hasUpdates = Object.keys(dto).filter((k) => k !== 'employeeIds').length > 0;
     if (!hasUpdates) {
-      return this.toServiceResponse(existing);
+      const service = hasServiceIds
+        ? await this.repository.findByIdAndBusiness(id, businessId)
+        : existing;
+      return this.toServiceResponse(service!);
     }
 
     if (dto.categoryId !== undefined && dto.categoryId !== null && dto.categoryId !== '') {

@@ -28,6 +28,9 @@ export class ServiceResponseDto {
   @ApiProperty()
   position!: number;
 
+  @ApiProperty({ type: [String], description: 'ID сотрудников, оказывающих услугу' })
+  employeeIds!: string[];
+
   @ApiProperty()
   createdAt!: string;
 }

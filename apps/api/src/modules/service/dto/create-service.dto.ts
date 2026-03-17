@@ -1,5 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
+  ArrayMaxSize,
+  IsArray,
   IsNumber,
   IsOptional,
   IsString,
@@ -48,4 +50,11 @@ export class CreateServiceDto {
   @IsOptional()
   @IsUUID()
   categoryId?: string;
+
+  @ApiPropertyOptional({ type: [String], format: 'uuid', maxItems: 500 })
+  @IsOptional()
+  @IsArray()
+  @IsUUID('4', { each: true })
+  @ArrayMaxSize(500)
+  employeeIds?: string[];
 }
