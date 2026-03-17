@@ -46,4 +46,4 @@ import { parseExpiresToSeconds } from './utils/parse-expires';
   ],
   exports: [AdminAuthService, AdminAuthGuard, JwtModule],
 })
-export class AdminAuthModule { }
+export class AdminAuthModule {}

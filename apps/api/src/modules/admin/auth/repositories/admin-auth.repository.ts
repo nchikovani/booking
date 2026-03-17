@@ -56,9 +56,7 @@ export class AdminAuthRepository {
     });
   }
 
-  async findAdminUserByEmailWithCredential(
-    email: string,
-  ): Promise<AdminUserWithCredential | null> {
+  async findAdminUserByEmailWithCredential(email: string): Promise<AdminUserWithCredential | null> {
     return this.prisma.adminUser.findFirst({
       where: { email },
       include: {
@@ -122,9 +120,7 @@ export class AdminAuthRepository {
     });
   }
 
-  async findRefreshTokenByHash(
-    tokenHash: string,
-  ): Promise<RefreshTokenWithAdminUser | null> {
+  async findRefreshTokenByHash(tokenHash: string): Promise<RefreshTokenWithAdminUser | null> {
     return this.prisma.refreshToken.findUnique({
       where: { tokenHash },
       include: { adminUser: true },
@@ -173,9 +169,7 @@ export class AdminAuthRepository {
     });
   }
 
-  async findAdminUserWithEmailPasswordProvider(
-    email: string,
-  ): Promise<AdminUser | null> {
+  async findAdminUserWithEmailPasswordProvider(email: string): Promise<AdminUser | null> {
     const result = await this.prisma.adminUser.findFirst({
       where: { email },
       include: {
@@ -185,9 +179,7 @@ export class AdminAuthRepository {
     return result?.authProviders?.length ? result : null;
   }
 
-  async deleteUnusedPasswordResetTokensForUser(
-    adminUserId: string,
-  ): Promise<void> {
+  async deleteUnusedPasswordResetTokensForUser(adminUserId: string): Promise<void> {
     await this.prisma.passwordResetToken.deleteMany({
       where: { adminUserId, usedAt: null },
     });
@@ -243,9 +235,7 @@ export class AdminAuthRepository {
     });
   }
 
-  async runTransaction<T>(
-    fn: (tx: Prisma.TransactionClient) => Promise<T>,
-  ): Promise<T> {
+  async runTransaction<T>(fn: (tx: Prisma.TransactionClient) => Promise<T>): Promise<T> {
     return this.prisma.$transaction(fn);
   }
 

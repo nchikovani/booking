@@ -35,7 +35,7 @@ import { BusinessResponseDto } from '../../business/dto/business-response.dto';
 @UseGuards(AdminAuthGuard)
 @ApiBearerAuth()
 export class AdminBusinessController {
-  constructor(private readonly businessService: BusinessService) { }
+  constructor(private readonly businessService: BusinessService) {}
 
   @Get()
   @ApiOperation({ summary: 'Список бизнесов', description: 'Бизнесы текущего пользователя' })
@@ -49,10 +49,7 @@ export class AdminBusinessController {
   @ApiParam({ name: 'id' })
   @ApiResponse({ status: 200, description: 'Данные бизнеса', type: BusinessResponseDto })
   @ApiResponse({ status: 404, description: 'Не найден' })
-  async get(
-    @Param('id') id: string,
-    @CurrentUser('adminUserId') adminUserId: string,
-  ) {
+  async get(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     const member = await this.businessService.requireBusinessMember(adminUserId, id);
     return this.businessService.toBusinessResponse(member.business);
   }
@@ -78,10 +75,7 @@ export class AdminBusinessController {
   @ApiParam({ name: 'id' })
   @ApiResponse({ status: 200, description: 'Бизнес удалён' })
   @ApiResponse({ status: 404, description: 'Не найден' })
-  async delete(
-    @Param('id') id: string,
-    @CurrentUser('adminUserId') adminUserId: string,
-  ) {
+  async delete(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessOwner(adminUserId, id);
     await this.businessService.delete(id);
     return { message: 'Бизнес удалён' };
@@ -142,10 +136,7 @@ export class AdminBusinessController {
   @ApiParam({ name: 'id' })
   @ApiResponse({ status: 200, description: 'Логотип удалён' })
   @ApiResponse({ status: 404, description: 'Не найден' })
-  async deleteLogo(
-    @Param('id') id: string,
-    @CurrentUser('adminUserId') adminUserId: string,
-  ) {
+  async deleteLogo(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessMember(adminUserId, id);
     await this.businessService.deleteLogo(id);
     return {};
@@ -156,10 +147,7 @@ export class AdminBusinessController {
   @ApiParam({ name: 'id' })
   @ApiResponse({ status: 200, description: 'Изображение удалено' })
   @ApiResponse({ status: 404, description: 'Не найден' })
-  async deleteImage(
-    @Param('id') id: string,
-    @CurrentUser('adminUserId') adminUserId: string,
-  ) {
+  async deleteImage(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessMember(adminUserId, id);
     await this.businessService.deleteImage(id);
     return {};

@@ -16,7 +16,7 @@ export class BusinessService {
   constructor(
     private readonly repository: BusinessRepository,
     private readonly storageService: StorageService,
-  ) { }
+  ) {}
 
   private toPublicUrl(path: string | null): string | null {
     return path ? this.storageService.getPublicUrl(path) : null;
@@ -77,10 +77,7 @@ export class BusinessService {
    * Проверяет членство. Возвращает member или throws 404 (не раскрывать существование ресурса).
    * Использовать в контроллерах Admin API перед операциями с бизнесом или связанными сущностями.
    */
-  async requireBusinessMember(
-    adminUserId: string,
-    businessId: string,
-  ): Promise<BusinessMember> {
+  async requireBusinessMember(adminUserId: string, businessId: string): Promise<BusinessMember> {
     const member = await this.repository.checkMember(adminUserId, businessId);
     if (!member) throw AppException.create(ErrorCode.NOT_FOUND);
     return member;
@@ -89,10 +86,7 @@ export class BusinessService {
   /**
    * Проверяет, что пользователь — OWNER. Throws 404 при отсутствии доступа или неверной роли.
    */
-  async requireBusinessOwner(
-    adminUserId: string,
-    businessId: string,
-  ): Promise<BusinessMember> {
+  async requireBusinessOwner(adminUserId: string, businessId: string): Promise<BusinessMember> {
     const member = await this.requireBusinessMember(adminUserId, businessId);
     if (member.role !== BusinessRole.OWNER) throw AppException.create(ErrorCode.NOT_FOUND);
     return member;
@@ -101,13 +95,22 @@ export class BusinessService {
   async update(id: string, dto: UpdateBusinessDto) {
     const data: Record<string, unknown> = {};
     const fields = [
-      'name', 'description', 'phone', 'email', 'website',
-      'telegram', 'vk', 'youtube', 'address', 'latitude', 'longitude',
+      'name',
+      'description',
+      'phone',
+      'email',
+      'website',
+      'telegram',
+      'vk',
+      'youtube',
+      'address',
+      'latitude',
+      'longitude',
     ] as const;
     for (const field of fields) {
       if (field in dto) {
         const val = (dto as Record<string, unknown>)[field];
-        data[field] = val === '' ? null : val ?? null;
+        data[field] = val === '' ? null : (val ?? null);
       }
     }
     return this.repository.update(id, data as Parameters<typeof this.repository.update>[1]);

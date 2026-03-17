@@ -1,8 +1,4 @@
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { AppException } from '../../../../common/errors/app.exception';
@@ -22,7 +18,7 @@ export class AdminRefreshGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService,
     private readonly config: AppConfigService,
-  ) { }
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<Request>();

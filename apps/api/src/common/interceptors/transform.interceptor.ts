@@ -1,9 +1,4 @@
-import {
-  Injectable,
-  NestInterceptor,
-  ExecutionContext,
-  CallHandler,
-} from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Reflector } from '@nestjs/core';
@@ -36,11 +31,7 @@ export class TransformInterceptor implements NestInterceptor {
     const request = context.switchToHttp().getRequest();
     const path = request.url ?? request.path ?? '';
 
-    if (
-      path.includes('/health') ||
-      path.includes('/swagger') ||
-      path.includes('/swagger-json')
-    ) {
+    if (path.includes('/health') || path.includes('/swagger') || path.includes('/swagger-json')) {
       return next.handle();
     }
 

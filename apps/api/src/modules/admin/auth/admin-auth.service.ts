@@ -43,9 +43,7 @@ export class AdminAuthService {
     const passwordHash = await argon2.hash(dto.password);
     const accessExpires = this.config.get('jwt.accessExpires', '15m');
     const expiresInSec = parseExpiresToSeconds(accessExpires);
-    const refreshExpiresSec = parseExpiresToSeconds(
-      this.config.get('jwt.refreshExpires', '7d'),
-    );
+    const refreshExpiresSec = parseExpiresToSeconds(this.config.get('jwt.refreshExpires', '7d'));
 
     const result = await this.repository.runTransaction(async (tx) => {
       const adminUser = await this.repository.createAdminUserWithAuth(
@@ -125,9 +123,7 @@ export class AdminAuthService {
 
     const accessExpires = this.config.get('jwt.accessExpires', '15m');
     const expiresInSec = parseExpiresToSeconds(accessExpires);
-    const refreshExpiresSec = parseExpiresToSeconds(
-      this.config.get('jwt.refreshExpires', '7d'),
-    );
+    const refreshExpiresSec = parseExpiresToSeconds(this.config.get('jwt.refreshExpires', '7d'));
     const accessToken = this.jwtService.sign(
       { sub: result.adminUser.id, type: 'access' },
       { expiresIn: expiresInSec },
@@ -198,9 +194,7 @@ export class AdminAuthService {
     }
     if (stored.expiresAt < new Date()) throw AppException.create(ErrorCode.REFRESH_TOKEN_EXPIRED);
 
-    const refreshExpiresSec = parseExpiresToSeconds(
-      this.config.get('jwt.refreshExpires', '7d'),
-    );
+    const refreshExpiresSec = parseExpiresToSeconds(this.config.get('jwt.refreshExpires', '7d'));
     const newRefreshToken = this.jwtService.sign(
       { sub: adminUserId, type: 'refresh', jti: randomUUID() },
       { expiresIn: refreshExpiresSec },
@@ -294,5 +288,4 @@ export class AdminAuthService {
       adminUserId: resetToken.adminUserId,
     });
   }
-
 }

@@ -104,7 +104,9 @@ describe('Admin Business (e2e)', () => {
 
   describe('PATCH /:id', () => {
     it('should return 200 with updated business', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const res = await agent
@@ -121,7 +123,9 @@ describe('Admin Business (e2e)', () => {
 
   describe('GET /:id', () => {
     it('should return 200 with full business when member', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const res = await agent
@@ -138,7 +142,9 @@ describe('Admin Business (e2e)', () => {
     });
 
     it('should return 404 for non-member', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const otherUser = createUniqueUser();
@@ -169,7 +175,9 @@ describe('Admin Business (e2e)', () => {
 
   describe('PATCH /:id (continued)', () => {
     it('should save empty string as null', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const res = await agent
@@ -182,7 +190,9 @@ describe('Admin Business (e2e)', () => {
     });
 
     it('should return 400 for name > 100 chars', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       await agent
@@ -199,7 +209,9 @@ describe('Admin Business (e2e)', () => {
 
   describe('POST /:id/logo', () => {
     it('should return 200 with url when multipart file provided', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const buffer = await createTestImageBuffer();
@@ -216,7 +228,9 @@ describe('Admin Business (e2e)', () => {
     });
 
     it('should return 400 when no file', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       await agent
@@ -232,7 +246,9 @@ describe('Admin Business (e2e)', () => {
 
   describe('DELETE /:id/logo', () => {
     it('should return 200 when file exists', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const buffer = await createTestImageBuffer();
@@ -248,7 +264,9 @@ describe('Admin Business (e2e)', () => {
     });
 
     it('should return 200 when no file (idempotent)', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       await agent
@@ -260,7 +278,9 @@ describe('Admin Business (e2e)', () => {
 
   describe('DELETE /:id', () => {
     it('should return 200 when OWNER', async () => {
-      const listRes = await agent.get(businessUrl).set('Authorization', `Bearer ${getMainUserToken()}`);
+      const listRes = await agent
+        .get(businessUrl)
+        .set('Authorization', `Bearer ${getMainUserToken()}`);
       const businessId = listRes.body.data[0].id;
 
       const res = await agent

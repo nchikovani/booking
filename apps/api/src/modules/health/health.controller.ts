@@ -19,7 +19,7 @@ export class HealthController {
     @Inject(PRISMA) private readonly prisma: PrismaClient,
     private readonly redis: RedisService,
     @InjectMinio() private readonly minio: Client,
-  ) { }
+  ) {}
 
   @Get()
   async check(): Promise<HealthCheckResult> {
@@ -32,9 +32,18 @@ export class HealthController {
       this.checkMinio(),
     ]);
 
-    results['database'] = dbOk.status === 'fulfilled' ? { status: 'up' } : { status: 'down', message: dbOk.reason?.message };
-    results['redis'] = redisOk.status === 'fulfilled' ? { status: 'up' } : { status: 'down', message: redisOk.reason?.message };
-    results['minio'] = minioOk.status === 'fulfilled' ? { status: 'up' } : { status: 'down', message: minioOk.reason?.message };
+    results['database'] =
+      dbOk.status === 'fulfilled'
+        ? { status: 'up' }
+        : { status: 'down', message: dbOk.reason?.message };
+    results['redis'] =
+      redisOk.status === 'fulfilled'
+        ? { status: 'up' }
+        : { status: 'down', message: redisOk.reason?.message };
+    results['minio'] =
+      minioOk.status === 'fulfilled'
+        ? { status: 'up' }
+        : { status: 'down', message: minioOk.reason?.message };
 
     statuses.push(dbOk.status === 'fulfilled' ? 'up' : 'down');
     statuses.push(redisOk.status === 'fulfilled' ? 'up' : 'down');
@@ -45,13 +54,17 @@ export class HealthController {
     const response: HealthCheckResult = {
       status: overallStatus,
       info: Object.fromEntries(
-        Object.entries(results).filter(([, v]) => v.status === 'up').map(([k, v]) => [k, { status: v.status }]),
+        Object.entries(results)
+          .filter(([, v]) => v.status === 'up')
+          .map(([k, v]) => [k, { status: v.status }]),
       ),
     };
 
     if (overallStatus === 'error') {
       response.error = Object.fromEntries(
-        Object.entries(results).filter(([, v]) => v.status === 'down').map(([k, v]) => [k, { status: v.status, message: v.message }]),
+        Object.entries(results)
+          .filter(([, v]) => v.status === 'down')
+          .map(([k, v]) => [k, { status: v.status, message: v.message }]),
       );
     }
 

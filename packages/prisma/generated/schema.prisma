@@ -51,7 +51,9 @@ model Business {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  businessMembers BusinessMember[]
+  businessMembers   BusinessMember[]
+  serviceCategories ServiceCategory[]
+  services          Service[]
 
   @@map("businesses")
 }
@@ -69,6 +71,43 @@ model BusinessMember {
   @@unique([adminUserId, businessId])
   @@index([businessId])
   @@map("business_members")
+}
+
+model ServiceCategory {
+  id         String   @id @default(uuid())
+  businessId String   @map("business_id")
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  business Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  services Service[]
+
+  @@unique([businessId, name])
+  @@index([businessId])
+  @@map("service_categories")
+}
+
+model Service {
+  id                String   @id @default(uuid())
+  businessId        String   @map("business_id")
+  categoryId        String?  @map("category_id")
+  name              String
+  description       String?  @db.Text
+  price             Decimal  @db.Decimal(10, 2)
+  durationMinutes   Int      @map("duration_minutes")
+  breakAfterMinutes Int?     @default(0) @map("break_after_minutes")
+  position          Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  business Business         @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  category ServiceCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  @@index([businessId])
+  @@index([businessId, categoryId])
+  @@index([businessId, position])
+  @@map("services")
 }
 
 model AuthProvider {

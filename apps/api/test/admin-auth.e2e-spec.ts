@@ -171,9 +171,7 @@ describe('Admin Auth (e2e)', () => {
     });
 
     it('should return 401 without token', () => {
-      return request(app.getHttpServer())
-        .get(`${baseUrl}/me`)
-        .expect(401);
+      return request(app.getHttpServer()).get(`${baseUrl}/me`).expect(401);
     });
   });
 
@@ -195,9 +193,7 @@ describe('Admin Auth (e2e)', () => {
     });
 
     it('should return 401 without cookie', () => {
-      return request(app.getHttpServer())
-        .post(`${baseUrl}/refresh`)
-        .expect(401);
+      return request(app.getHttpServer()).post(`${baseUrl}/refresh`).expect(401);
     });
   });
 
@@ -209,15 +205,11 @@ describe('Admin Auth (e2e)', () => {
     });
 
     it('should logout with valid cookie', () => {
-      return agent
-        .post(`${baseUrl}/logout`)
-        .expect(200);
+      return agent.post(`${baseUrl}/logout`).expect(200);
     });
 
     it('should return 401 without cookie', () => {
-      return request(app.getHttpServer())
-        .post(`${baseUrl}/logout`)
-        .expect(401);
+      return request(app.getHttpServer()).post(`${baseUrl}/logout`).expect(401);
     });
   });
 

@@ -17,4 +17,4 @@ import { AppConfigService } from '../../config/app-config.service';
     ),
   ],
 })
-export class RedisModule { }
+export class RedisModule {}

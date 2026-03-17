@@ -7,10 +7,7 @@ import { AdminAuthRepository } from '../repositories/admin-auth.repository';
 export class EmailPasswordStrategy implements AuthStrategy {
   constructor(private readonly repository: AdminAuthRepository) {}
 
-  async authenticate(credentials: {
-    email: string;
-    password: string;
-  }): Promise<AuthResult | null> {
+  async authenticate(credentials: { email: string; password: string }): Promise<AuthResult | null> {
     const adminUser = await this.repository.findAdminUserByEmailWithCredential(
       credentials.email.trim().toLowerCase(),
     );

@@ -1,4 +1,14 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import type * as express from 'express';
 import { Throttle } from '@nestjs/throttler';
 import {
@@ -30,7 +40,7 @@ export class AdminAuthController {
   constructor(
     private readonly authService: AdminAuthService,
     private readonly config: AppConfigService,
-  ) { }
+  ) {}
 
   @Public()
   @Post('register')
@@ -39,7 +49,8 @@ export class AdminAuthController {
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Регистрация',
-    description: 'Создание учётной записи администратора. Refresh token устанавливается в HttpOnly cookie.',
+    description:
+      'Создание учётной записи администратора. Refresh token устанавливается в HttpOnly cookie.',
   })
   @ApiBody({ type: RegisterDto })
   @ApiResponse({ status: 201, description: 'Успешная регистрация', type: AuthResponseDto })
@@ -64,7 +75,8 @@ export class AdminAuthController {
   @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Вход',
-    description: 'Аутентификация по email и паролю. Refresh token устанавливается в HttpOnly cookie.',
+    description:
+      'Аутентификация по email и паролю. Refresh token устанавливается в HttpOnly cookie.',
   })
   @ApiBody({ type: LoginDto })
   @ApiResponse({ status: 200, description: 'Успешный вход', type: AuthResponseDto })
@@ -113,7 +125,8 @@ export class AdminAuthController {
   @ApiResponse({ status: 200, description: 'Успешный выход' })
   @ApiResponse({ status: 401, description: 'Refresh cookie отсутствует' })
   async logout(@Req() req: express.Request, @Res({ passthrough: true }) res: express.Response) {
-    const payload = (req as express.Request & { refreshPayload: { sub: string; jti?: string } }).refreshPayload;
+    const payload = (req as express.Request & { refreshPayload: { sub: string; jti?: string } })
+      .refreshPayload;
     await this.authService.logout(payload, req);
     this.clearRefreshCookie(res);
     return {};
@@ -160,8 +173,7 @@ export class AdminAuthController {
   async forgotPassword(@Body() dto: ForgotPasswordDto) {
     await this.authService.forgotPassword(dto);
     return {
-      message:
-        'Если аккаунт существует, на email отправлена ссылка для сброса пароля',
+      message: 'Если аккаунт существует, на email отправлена ссылка для сброса пароля',
     };
   }
 

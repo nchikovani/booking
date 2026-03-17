@@ -6,25 +6,21 @@ import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
     PinoLoggerModule.forRoot({
       pinoHttp: {
         autoLogging: false,
-        level:
-          process.env.LOG_LEVEL ??
-          (process.env.NODE_ENV === 'production' ? 'info' : 'debug'),
+        level: process.env.LOG_LEVEL ?? (process.env.NODE_ENV === 'production' ? 'info' : 'debug'),
         genReqId: (req) =>
-          (req as { id?: string }).id ??
-          (req.headers['x-request-id'] as string) ??
-          undefined,
+          (req as { id?: string }).id ?? (req.headers['x-request-id'] as string) ?? undefined,
         transport:
           process.env.NODE_ENV !== 'production'
             ? {
-              target: 'pino-pretty',
-              options: {
-                colorize: true,
-                translateTime: 'SYS:standard',
-              },
-            }
+                target: 'pino-pretty',
+                options: {
+                  colorize: true,
+                  translateTime: 'SYS:standard',
+                },
+              }
             : undefined,
       },
     }),
   ],
 })
-export class LoggerModule { }
+export class LoggerModule {}

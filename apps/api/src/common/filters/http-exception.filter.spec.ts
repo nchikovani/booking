@@ -71,34 +71,34 @@ describe('HttpExceptionFilter', () => {
   });
 
   it('should handle PrismaClientKnownRequestError P2025', () => {
-    const exception = new Prisma.PrismaClientKnownRequestError(
-      'Record not found',
-      { code: 'P2025', clientVersion: '1.0' },
-    );
+    const exception = new Prisma.PrismaClientKnownRequestError('Record not found', {
+      code: 'P2025',
+      clientVersion: '1.0',
+    });
     filter.catch(exception, mockHost);
 
     expect(mockResponse.status).toHaveBeenCalledWith(HttpStatus.NOT_FOUND);
     expect(mockResponse.json).toHaveBeenCalledWith({
       status: 'error',
       error: {
-        code: 'P2025',
+        code: ErrorCode.NOT_FOUND,
         message: 'Record not found',
       },
     });
   });
 
   it('should handle PrismaClientKnownRequestError P2002', () => {
-    const exception = new Prisma.PrismaClientKnownRequestError(
-      'Unique constraint failed',
-      { code: 'P2002', clientVersion: '1.0' },
-    );
+    const exception = new Prisma.PrismaClientKnownRequestError('Unique constraint failed', {
+      code: 'P2002',
+      clientVersion: '1.0',
+    });
     filter.catch(exception, mockHost);
 
     expect(mockResponse.status).toHaveBeenCalledWith(HttpStatus.CONFLICT);
     expect(mockResponse.json).toHaveBeenCalledWith({
       status: 'error',
       error: {
-        code: 'P2002',
+        code: ErrorCode.CONFLICT,
         message: 'A record with this value already exists',
       },
     });
@@ -111,9 +111,7 @@ describe('HttpExceptionFilter', () => {
     const exception = new Error('Unexpected error');
     filter.catch(exception, mockHost);
 
-    expect(mockResponse.status).toHaveBeenCalledWith(
-      HttpStatus.INTERNAL_SERVER_ERROR,
-    );
+    expect(mockResponse.status).toHaveBeenCalledWith(HttpStatus.INTERNAL_SERVER_ERROR);
     expect(mockResponse.json).toHaveBeenCalledWith({
       status: 'error',
       error: {

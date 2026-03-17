@@ -1,8 +1,4 @@
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Request } from 'express';
 import { RedisService } from '@nestjs-labs/nestjs-ioredis';
 import { AppException } from '../../../../common/errors/app.exception';

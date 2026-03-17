@@ -22,7 +22,7 @@ export class StorageService {
   constructor(
     @InjectMinio() private readonly minio: Client,
     private readonly config: AppConfigService,
-  ) { }
+  ) {}
 
   /**
    * Converts image to WebP and uploads to MinIO.
@@ -44,7 +44,10 @@ export class StorageService {
       const format = metadata.format;
 
       if (!format || !['jpeg', 'jpg', 'png', 'webp'].includes(format)) {
-        throw AppException.create(ErrorCode.VALIDATION_FAILED, 'Invalid image format. Use JPEG, PNG, or WebP');
+        throw AppException.create(
+          ErrorCode.VALIDATION_FAILED,
+          'Invalid image format. Use JPEG, PNG, or WebP',
+        );
       }
 
       if (options?.maxWidth) {
@@ -68,9 +71,7 @@ export class StorageService {
   /**
    * Compresses image to WebP, reducing quality iteratively if result exceeds MAX_OUTPUT_SIZE.
    */
-  private async compressToFit(
-    pipeline: sharp.Sharp,
-  ): Promise<Buffer> {
+  private async compressToFit(pipeline: sharp.Sharp): Promise<Buffer> {
     for (const quality of QUALITY_LEVELS) {
       const buffer = await pipeline.clone().webp({ quality }).toBuffer();
       if (buffer.length <= MAX_OUTPUT_SIZE) {

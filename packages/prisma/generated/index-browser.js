@@ -158,6 +158,28 @@ exports.Prisma.BusinessMemberScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ServiceCategoryScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ServiceScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  categoryId: 'categoryId',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  durationMinutes: 'durationMinutes',
+  breakAfterMinutes: 'breakAfterMinutes',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.AuthProviderScalarFieldEnum = {
   id: 'id',
   adminUserId: 'adminUserId',
@@ -227,6 +249,8 @@ exports.Prisma.ModelName = {
   AdminUser: 'AdminUser',
   Business: 'Business',
   BusinessMember: 'BusinessMember',
+  ServiceCategory: 'ServiceCategory',
+  Service: 'Service',
   AuthProvider: 'AuthProvider',
   UserCredential: 'UserCredential',
   RefreshToken: 'RefreshToken',

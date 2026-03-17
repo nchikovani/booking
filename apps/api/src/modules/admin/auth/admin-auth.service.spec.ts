@@ -146,9 +146,7 @@ describe('AdminAuthService', () => {
       repository.findAdminUserByEmail.mockResolvedValue(null);
       repository.createAdminUserWithAuth.mockResolvedValue(mockAdminUser);
 
-      await service.register(
-        { email: '  User@Example.COM  ', password: 'Password1' },
-      );
+      await service.register({ email: '  User@Example.COM  ', password: 'Password1' });
 
       expect(repository.findAdminUserByEmail).toHaveBeenCalledWith('user@example.com');
     });
@@ -169,7 +167,11 @@ describe('AdminAuthService', () => {
       expect(result.accessToken).toBe('jwt-token');
       expect(result.refreshToken).toBe('jwt-token');
       expect(repository.createLoginAttempt).toHaveBeenCalledWith(
-        expect.objectContaining({ email: 'user@example.com', success: true, ipAddress: '127.0.0.1' }),
+        expect.objectContaining({
+          email: 'user@example.com',
+          success: true,
+          ipAddress: '127.0.0.1',
+        }),
       );
     });
 
@@ -243,9 +245,7 @@ describe('AdminAuthService', () => {
     });
 
     it('should throw REFRESH_TOKEN_EXPIRED when no cookie', async () => {
-      await expect(service.refresh('user-1', { cookies: {} })).rejects.toThrow(
-        AppException,
-      );
+      await expect(service.refresh('user-1', { cookies: {} })).rejects.toThrow(AppException);
       try {
         await service.refresh('user-1', { cookies: {} });
       } catch (e) {
@@ -281,17 +281,20 @@ describe('AdminAuthService', () => {
 
   describe('logout', () => {
     it('should revoke token by hash', async () => {
-      await service.logout({ sub: 'user-1' }, {
-        cookies: { refreshToken: 'valid-jwt' },
-      });
+      await service.logout(
+        { sub: 'user-1' },
+        {
+          cookies: { refreshToken: 'valid-jwt' },
+        },
+      );
 
       expect(repository.revokeRefreshTokensByHash).toHaveBeenCalled();
     });
 
     it('should throw UNAUTHORIZED when no cookie', async () => {
-      await expect(
-        service.logout({ sub: 'user-1' }, { cookies: {} }),
-      ).rejects.toThrow(AppException);
+      await expect(service.logout({ sub: 'user-1' }, { cookies: {} })).rejects.toThrow(
+        AppException,
+      );
       try {
         await service.logout({ sub: 'user-1' }, { cookies: {} });
       } catch (e) {

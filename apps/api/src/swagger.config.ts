@@ -4,7 +4,6 @@ import { ApiSuccessResponseDto, ApiErrorResponseDto } from './common/dto/api-res
 import { AppConfigService } from './config/app-config.service';
 
 export function setupSwagger(app: INestApplication): void {
-
   const config = new DocumentBuilder()
     .setTitle('Booking API')
     .setDescription('API для платформы онлайн-записи')

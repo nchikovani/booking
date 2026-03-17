@@ -8,4 +8,4 @@ import { LoggerModule } from '../../common/logger/logger.module';
   providers: [EmailService],
   exports: [EmailService],
 })
-export class EmailModule { }
+export class EmailModule {}

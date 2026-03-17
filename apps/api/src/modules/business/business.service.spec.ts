@@ -122,7 +122,10 @@ describe('BusinessService', () => {
 
       await service.update('business-1', { name: '' });
 
-      expect(repository.update).toHaveBeenCalledWith('business-1', expect.objectContaining({ name: null }));
+      expect(repository.update).toHaveBeenCalledWith(
+        'business-1',
+        expect.objectContaining({ name: null }),
+      );
     });
 
     it('should update only passed fields', async () => {

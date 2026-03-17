@@ -12,10 +12,10 @@ import { Prisma } from '@repo/prisma';
 import { ErrorCode } from '../errors/error-codes';
 import { AppException } from '../errors/app.exception';
 
-const PRISMA_ERROR_MAP: Record<string, HttpStatus> = {
-  P2000: HttpStatus.BAD_REQUEST,
-  P2002: HttpStatus.CONFLICT,
-  P2025: HttpStatus.NOT_FOUND,
+const PRISMA_ERROR_MAP: Record<string, { status: HttpStatus; code: ErrorCode }> = {
+  P2000: { status: HttpStatus.BAD_REQUEST, code: ErrorCode.VALIDATION_FAILED },
+  P2002: { status: HttpStatus.CONFLICT, code: ErrorCode.CONFLICT },
+  P2025: { status: HttpStatus.NOT_FOUND, code: ErrorCode.NOT_FOUND },
 };
 
 @Catch()
@@ -74,18 +74,16 @@ export class HttpExceptionFilter implements ExceptionFilter {
     }
 
     if (exception instanceof Prisma.PrismaClientKnownRequestError) {
-      const status =
-        PRISMA_ERROR_MAP[exception.code] ?? HttpStatus.INTERNAL_SERVER_ERROR;
+      const mapped = PRISMA_ERROR_MAP[exception.code];
+      const status = mapped?.status ?? HttpStatus.INTERNAL_SERVER_ERROR;
+      const code = mapped?.code ?? ErrorCode.INTERNAL_ERROR;
       const message = this.getPrismaErrorMessage(exception);
 
       return {
         statusCode: status,
         body: {
           status: 'error',
-          error: {
-            code: exception.code,
-            message,
-          },
+          error: { code, message },
         },
       };
     }
@@ -107,9 +105,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     };
   }
 
-  private extractHttpExceptionMessage(
-    response: string | object,
-  ): string {
+  private extractHttpExceptionMessage(response: string | object): string {
     if (typeof response === 'string') return response;
     if (typeof response === 'object' && response !== null) {
       const obj = response as Record<string, unknown>;
@@ -133,9 +129,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     return map[status] ?? ErrorCode.INTERNAL_ERROR;
   }
 
-  private getPrismaErrorMessage(
-    error: Prisma.PrismaClientKnownRequestError,
-  ): string {
+  private getPrismaErrorMessage(error: Prisma.PrismaClientKnownRequestError): string {
     switch (error.code) {
       case 'P2000':
         return 'The provided value is too long for the column';

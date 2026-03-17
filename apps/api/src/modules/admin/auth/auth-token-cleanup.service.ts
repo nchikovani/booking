@@ -28,10 +28,7 @@ export class AuthTokenCleanupService {
         );
       }
     } catch (err) {
-      this.logger.error(
-        { err },
-        '[Auth] Expired tokens cleanup failed',
-      );
+      this.logger.error({ err }, '[Auth] Expired tokens cleanup failed');
     }
   }
 }

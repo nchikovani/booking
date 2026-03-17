@@ -1,10 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
 import { ErrorCode } from './error-codes';
 
-export const ERROR_DEFINITIONS: Record<
-  ErrorCode,
-  { status: HttpStatus; message: string }
-> = {
+export const ERROR_DEFINITIONS: Record<ErrorCode, { status: HttpStatus; message: string }> = {
   [ErrorCode.VALIDATION_FAILED]: {
     status: HttpStatus.BAD_REQUEST,
     message: 'Validation failed',
@@ -60,6 +57,14 @@ export const ERROR_DEFINITIONS: Record<
   [ErrorCode.CONFLICT]: {
     status: HttpStatus.CONFLICT,
     message: 'Conflict',
+  },
+  [ErrorCode.INVALID_CURSOR]: {
+    status: HttpStatus.BAD_REQUEST,
+    message: 'Invalid cursor',
+  },
+  [ErrorCode.INVALID_CATEGORY]: {
+    status: HttpStatus.BAD_REQUEST,
+    message: 'Invalid category',
   },
   [ErrorCode.SLOT_UNAVAILABLE]: {
     status: HttpStatus.BAD_REQUEST,
