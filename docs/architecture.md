@@ -484,5 +484,6 @@ Openapi доступен по адресу `/swagger-json`.
 # 9. Документация
 
 - **Feature-спеки:** `docs/features/*.md` — детали реализации фич
+- **Планы реализации:** `docs/plans/*.md` — пошаговые планы
 - **Roadmap:** [docs/roadmap.md](roadmap.md) — фазы и этапы
 - **PRD:** [docs/prd.md](prd.md) — требования продукта
