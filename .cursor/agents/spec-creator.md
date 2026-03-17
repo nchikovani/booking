@@ -1,6 +1,6 @@
 ---
 name: spec-creator
-model: gemini-3-flash
+model: inherit
 description: Создаёт спецификацию фичи по шаблону docs/features/_template.md. Использовать при создании новой фичи. Читает architecture, roadmap, PRD для контекста.
 readonly: true
 ---
