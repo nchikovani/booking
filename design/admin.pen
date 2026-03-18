@@ -17065,7 +17065,7 @@
                 "fill": "#E2E8F0"
               },
               "layout": "vertical",
-              "gap": 24,
+              "gap": 20,
               "padding": 32,
               "children": [
                 {
@@ -17079,82 +17079,102 @@
                   "fontWeight": "600"
                 },
                 {
-                  "type": "text",
-                  "id": "9r446",
-                  "name": "loginEmailLabel",
-                  "fill": "#0F172A",
-                  "content": "Почта",
-                  "fontFamily": "Inter",
-                  "fontSize": 13,
-                  "fontWeight": "500"
-                },
-                {
                   "type": "frame",
-                  "id": "F0vp2",
-                  "name": "loginEmailInput",
+                  "id": "cdTp8",
+                  "name": "loginEmailField",
                   "width": "fill_container",
-                  "height": 44,
-                  "fill": "#FFFFFF",
-                  "cornerRadius": 8,
-                  "stroke": {
-                    "thickness": 1,
-                    "fill": "#E2E8F0"
-                  },
-                  "padding": [
-                    0,
-                    12
-                  ],
-                  "alignItems": "center",
+                  "layout": "vertical",
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
-                      "id": "lkVfV",
-                      "name": "loginEmailPlaceholder",
-                      "fill": "#94A3B8",
-                      "content": "example@mail.com",
+                      "id": "9r446",
+                      "name": "loginEmailLabel",
+                      "fill": "#0F172A",
+                      "content": "Почта",
                       "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "F0vp2",
+                      "name": "loginEmailInput",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E2E8F0"
+                      },
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lkVfV",
+                          "name": "loginEmailPlaceholder",
+                          "fill": "#94A3B8",
+                          "content": "example@mail.com",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "type": "text",
-                  "id": "OTF8r",
-                  "name": "loginPassLabel",
-                  "fill": "#0F172A",
-                  "content": "Пароль",
-                  "fontFamily": "Inter",
-                  "fontSize": 13,
-                  "fontWeight": "500"
-                },
-                {
                   "type": "frame",
-                  "id": "PvALP",
-                  "name": "loginPassInput",
+                  "id": "rkNuz",
+                  "name": "loginPassField",
                   "width": "fill_container",
-                  "height": 44,
-                  "fill": "#FFFFFF",
-                  "cornerRadius": 8,
-                  "stroke": {
-                    "thickness": 1,
-                    "fill": "#E2E8F0"
-                  },
-                  "padding": [
-                    0,
-                    12
-                  ],
-                  "alignItems": "center",
+                  "layout": "vertical",
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
-                      "id": "0KC7r",
-                      "name": "loginPassPlaceholder",
-                      "fill": "#94A3B8",
-                      "content": "••••••••",
+                      "id": "OTF8r",
+                      "name": "loginPassLabel",
+                      "fill": "#0F172A",
+                      "content": "Пароль",
                       "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PvALP",
+                      "name": "loginPassInput",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E2E8F0"
+                      },
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "0KC7r",
+                          "name": "loginPassPlaceholder",
+                          "fill": "#94A3B8",
+                          "content": "••••••••",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -17354,7 +17374,7 @@
                 "fill": "#E2E8F0"
               },
               "layout": "vertical",
-              "gap": 24,
+              "gap": 20,
               "padding": 32,
               "children": [
                 {
@@ -17368,122 +17388,152 @@
                   "fontWeight": "600"
                 },
                 {
-                  "type": "text",
-                  "id": "xPrOh",
-                  "name": "regEmailLabel",
-                  "fill": "#0F172A",
-                  "content": "Почта",
-                  "fontFamily": "Inter",
-                  "fontSize": 13,
-                  "fontWeight": "500"
-                },
-                {
                   "type": "frame",
-                  "id": "kSX6o",
-                  "name": "regEmailInput",
+                  "id": "CJkDG",
+                  "name": "regEmailField",
                   "width": "fill_container",
-                  "height": 44,
-                  "fill": "#FFFFFF",
-                  "cornerRadius": 8,
-                  "stroke": {
-                    "thickness": 1,
-                    "fill": "#E2E8F0"
-                  },
-                  "padding": [
-                    0,
-                    12
-                  ],
-                  "alignItems": "center",
+                  "layout": "vertical",
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
-                      "id": "i9CPx",
-                      "name": "regEmailPh",
-                      "fill": "#94A3B8",
-                      "content": "example@mail.com",
+                      "id": "xPrOh",
+                      "name": "regEmailLabel",
+                      "fill": "#0F172A",
+                      "content": "Почта",
                       "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kSX6o",
+                      "name": "regEmailInput",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E2E8F0"
+                      },
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "i9CPx",
+                          "name": "regEmailPh",
+                          "fill": "#94A3B8",
+                          "content": "example@mail.com",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "type": "text",
-                  "id": "HejVC",
-                  "name": "regPassLabel",
-                  "fill": "#0F172A",
-                  "content": "Пароль",
-                  "fontFamily": "Inter",
-                  "fontSize": 13,
-                  "fontWeight": "500"
-                },
-                {
                   "type": "frame",
-                  "id": "wp2XX",
-                  "name": "regPassInput",
+                  "id": "Tu1Xn",
+                  "name": "regPassField",
                   "width": "fill_container",
-                  "height": 44,
-                  "fill": "#FFFFFF",
-                  "cornerRadius": 8,
-                  "stroke": {
-                    "thickness": 1,
-                    "fill": "#E2E8F0"
-                  },
-                  "padding": [
-                    0,
-                    12
-                  ],
-                  "alignItems": "center",
+                  "layout": "vertical",
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
-                      "id": "i3RnA",
-                      "name": "regPassPh",
-                      "fill": "#94A3B8",
-                      "content": "••••••••",
+                      "id": "HejVC",
+                      "name": "regPassLabel",
+                      "fill": "#0F172A",
+                      "content": "Пароль",
                       "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wp2XX",
+                      "name": "regPassInput",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E2E8F0"
+                      },
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "i3RnA",
+                          "name": "regPassPh",
+                          "fill": "#94A3B8",
+                          "content": "••••••••",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "type": "text",
-                  "id": "LMG9G",
-                  "name": "regPass2Label",
-                  "fill": "#0F172A",
-                  "content": "Повторите пароль",
-                  "fontFamily": "Inter",
-                  "fontSize": 13,
-                  "fontWeight": "500"
-                },
-                {
                   "type": "frame",
-                  "id": "foEX9",
-                  "name": "regPass2Input",
+                  "id": "Uq2Xe",
+                  "name": "regPass2Field",
                   "width": "fill_container",
-                  "height": 44,
-                  "fill": "#FFFFFF",
-                  "cornerRadius": 8,
-                  "stroke": {
-                    "thickness": 1,
-                    "fill": "#E2E8F0"
-                  },
-                  "padding": [
-                    0,
-                    12
-                  ],
-                  "alignItems": "center",
+                  "layout": "vertical",
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
-                      "id": "cE4Yd",
-                      "name": "regPass2Ph",
-                      "fill": "#94A3B8",
-                      "content": "••••••••",
+                      "id": "LMG9G",
+                      "name": "regPass2Label",
+                      "fill": "#0F172A",
+                      "content": "Повторите пароль",
                       "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "foEX9",
+                      "name": "regPass2Input",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E2E8F0"
+                      },
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "cE4Yd",
+                          "name": "regPass2Ph",
+                          "fill": "#94A3B8",
+                          "content": "••••••••",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
