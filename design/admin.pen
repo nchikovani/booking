@@ -9063,31 +9063,6 @@
                           ]
                         }
                       ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "bkuBf",
-                      "name": "applyAllBtn",
-                      "fill": "#F1F5F9",
-                      "cornerRadius": 8,
-                      "gap": 8,
-                      "padding": [
-                        8,
-                        12
-                      ],
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "eMd2F",
-                          "name": "applyAllText",
-                          "fill": "#0F172A",
-                          "content": "Применить ко всем дням",
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "500"
-                        }
-                      ]
                     }
                   ]
                 },
