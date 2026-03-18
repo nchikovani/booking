@@ -157,14 +157,14 @@ describe('Admin Employees (e2e)', () => {
   });
 
   describe('POST /employees', () => {
-    it('TC-4: POST /employees с serviceIds → 201, сотрудник создан', async () => {
+    it('TC-4: POST /employees с services → 201, сотрудник создан', async () => {
       const res = await agent
         .post(getEmployeesUrl())
         .set('Authorization', `Bearer ${getMainUserToken()}`)
         .send({
           name: 'Анна Иванова',
           specialization: 'Мастер маникюра',
-          serviceIds: [serviceId1, serviceId2],
+          services: [{ serviceId: serviceId1 }, { serviceId: serviceId2 }],
         })
         .expect(201);
 
@@ -172,10 +172,32 @@ describe('Admin Employees (e2e)', () => {
       expect(res.body.data).toMatchObject({
         name: 'Анна Иванова',
         specialization: 'Мастер маникюра',
-        serviceIds: expect.arrayContaining([serviceId1, serviceId2]),
       });
+      expect(res.body.data.services).toBeDefined();
+      expect(res.body.data.services.map((s: { serviceId: string }) => s.serviceId)).toEqual(
+        expect.arrayContaining([serviceId1, serviceId2]),
+      );
       expect(res.body.data.id).toBeDefined();
       employeeId1 = res.body.data.id;
+    });
+
+    it('TC-8b: POST /employees с services с priceOverride, durationMinutesOverride → 201, override в ответе', async () => {
+      const res = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Мастер с индивидуальной ценой',
+          services: [
+            { serviceId: serviceId1, priceOverride: 2000, durationMinutesOverride: 45 },
+          ],
+        })
+        .expect(201);
+
+      expect(res.body.status).toBe('success');
+      expect(res.body.data.services).toHaveLength(1);
+      expect(res.body.data.services[0].serviceId).toBe(serviceId1);
+      expect(['2000', '2000.00']).toContain(res.body.data.services[0].priceOverride);
+      expect(res.body.data.services[0].durationMinutesOverride).toBe(45);
     });
 
     it('TC-5: POST /employees с serviceId другого бизнеса → 404', async () => {
@@ -213,7 +235,7 @@ describe('Admin Employees (e2e)', () => {
         .set('Authorization', `Bearer ${getMainUserToken()}`)
         .send({
           name: 'Тест',
-          serviceIds: [otherServiceId],
+          services: [{ serviceId: otherServiceId }],
         })
         .expect(404)
         .expect((res) => {
@@ -234,8 +256,10 @@ describe('Admin Employees (e2e)', () => {
       expect(res.body.data).toMatchObject({
         id: employeeId1,
         name: 'Анна Иванова',
-        serviceIds: expect.arrayContaining([serviceId1, serviceId2]),
       });
+      expect(res.body.data.services.map((s: { serviceId: string }) => s.serviceId)).toEqual(
+        expect.arrayContaining([serviceId1, serviceId2]),
+      );
     });
 
     it('TC-7: GET /employees/:id — не член → 404', async () => {
@@ -255,23 +279,25 @@ describe('Admin Employees (e2e)', () => {
   });
 
   describe('PATCH /employees/:id', () => {
-    it('TC-8: PATCH /employees/:id с serviceIds → 200', async () => {
+    it('TC-8: PATCH /employees/:id с services → 200', async () => {
       const res = await agent
         .patch(`${getEmployeesUrl()}/${employeeId1}`)
         .set('Authorization', `Bearer ${getMainUserToken()}`)
-        .send({ serviceIds: [serviceId1] })
+        .send({ services: [{ serviceId: serviceId1 }] })
         .expect(200);
 
       expect(res.body.status).toBe('success');
-      expect(res.body.data.serviceIds).toEqual([serviceId1]);
+      expect(res.body.data.services.map((s: { serviceId: string }) => s.serviceId)).toEqual([
+        serviceId1,
+      ]);
     });
 
-    it('TC-8a: PATCH /employees/:id без serviceIds в body не меняет связи с услугами', async () => {
+    it('TC-8a: PATCH /employees/:id без services в body не меняет связи с услугами', async () => {
       // Сначала восстанавливаем связи [serviceId1]
       await agent
         .patch(`${getEmployeesUrl()}/${employeeId1}`)
         .set('Authorization', `Bearer ${getMainUserToken()}`)
-        .send({ serviceIds: [serviceId1] })
+        .send({ services: [{ serviceId: serviceId1 }] })
         .expect(200);
 
       const res = await agent
@@ -282,18 +308,20 @@ describe('Admin Employees (e2e)', () => {
 
       expect(res.body.status).toBe('success');
       expect(res.body.data.name).toBe('Анна Иванова (обновлено)');
-      expect(res.body.data.serviceIds).toEqual([serviceId1]);
+      expect(res.body.data.services.map((s: { serviceId: string }) => s.serviceId)).toEqual([
+        serviceId1,
+      ]);
     });
 
-    it('TC-9: PATCH /employees/:id с serviceIds: [] → 200, связи удалены', async () => {
+    it('TC-9: PATCH /employees/:id с services: [] → 200, связи удалены', async () => {
       const res = await agent
         .patch(`${getEmployeesUrl()}/${employeeId1}`)
         .set('Authorization', `Bearer ${getMainUserToken()}`)
-        .send({ serviceIds: [] })
+        .send({ services: [] })
         .expect(200);
 
       expect(res.body.status).toBe('success');
-      expect(res.body.data.serviceIds).toEqual([]);
+      expect(res.body.data.services).toEqual([]);
     });
 
     it('TC-10: PATCH /employees/:id с пустым body → 200 без изменений', async () => {
@@ -373,8 +401,8 @@ describe('Admin Employees (e2e)', () => {
     });
   });
 
-  describe('Service employeeIds', () => {
-    it('TC-16: POST /services с employeeIds → 201, employeeIds в ответе', async () => {
+  describe('Service employeeServices', () => {
+    it('TC-16: POST /services с employeeServices → 201, employeeServices в ответе', async () => {
       const empRes = await agent
         .post(getEmployeesUrl())
         .set('Authorization', `Bearer ${getMainUserToken()}`)
@@ -389,15 +417,47 @@ describe('Admin Employees (e2e)', () => {
           name: 'Услуга с мастером',
           price: 1000,
           durationMinutes: 30,
-          employeeIds: [empId],
+          employeeServices: [{ employeeId: empId }],
         })
         .expect(201);
 
       expect(res.body.status).toBe('success');
-      expect(res.body.data.employeeIds).toContain(empId);
+      expect(
+        res.body.data.employeeServices.some((s: { employeeId: string }) => s.employeeId === empId),
+      ).toBe(true);
     });
 
-    it('TC-17: PATCH /services/:id с employeeIds → 200, связи обновлены', async () => {
+    it('TC-16a: POST /services с employeeServices и priceOverride, durationMinutesOverride → 201, override в ответе', async () => {
+      const empRes = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({ name: 'Мастер с override' })
+        .expect(201);
+      const empId = empRes.body.data.id;
+
+      const res = await agent
+        .post(`${businessUrl}/${businessId}/services`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Услуга с индивидуальной ценой мастера',
+          price: 1000,
+          durationMinutes: 30,
+          employeeServices: [
+            { employeeId: empId, priceOverride: 2000, durationMinutesOverride: 45 },
+          ],
+        })
+        .expect(201);
+
+      expect(res.body.status).toBe('success');
+      const link = res.body.data.employeeServices.find(
+        (s: { employeeId: string }) => s.employeeId === empId,
+      );
+      expect(link).toBeDefined();
+      expect(['2000', '2000.00']).toContain(link.priceOverride);
+      expect(link.durationMinutesOverride).toBe(45);
+    });
+
+    it('TC-17: PATCH /services/:id с employeeServices → 200, связи обновлены', async () => {
       const listRes = await agent
         .get(`${businessUrl}/${businessId}/services`)
         .set('Authorization', `Bearer ${getMainUserToken()}`)
@@ -410,11 +470,46 @@ describe('Admin Employees (e2e)', () => {
       const res = await agent
         .patch(`${businessUrl}/${businessId}/services/${svc.id}`)
         .set('Authorization', `Bearer ${getMainUserToken()}`)
-        .send({ employeeIds: [employeeId1] })
+        .send({ employeeServices: [{ employeeId: employeeId1 }] })
         .expect(200);
 
       expect(res.body.status).toBe('success');
-      expect(res.body.data.employeeIds).toContain(employeeId1);
+      expect(
+        res.body.data.employeeServices.some(
+          (s: { employeeId: string }) => s.employeeId === employeeId1,
+        ),
+      ).toBe(true);
+    });
+
+    it('TC-17a: PATCH /services/:id с employeeServices и override → 200, override обновлены', async () => {
+      const listRes = await agent
+        .get(`${businessUrl}/${businessId}/services`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .expect(200);
+      const svc = listRes.body.data.items.find(
+        (s: { name: string }) => s.name === 'Услуга с индивидуальной ценой мастера',
+      );
+      if (!svc) {
+        throw new Error('Услуга "Услуга с индивидуальной ценой мастера" не найдена — выполните TC-16a');
+      }
+
+      const res = await agent
+        .patch(`${businessUrl}/${businessId}/services/${svc.id}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          employeeServices: [
+            { employeeId: employeeId1, priceOverride: 2500, durationMinutesOverride: 60 },
+          ],
+        })
+        .expect(200);
+
+      expect(res.body.status).toBe('success');
+      const link = res.body.data.employeeServices.find(
+        (s: { employeeId: string }) => s.employeeId === employeeId1,
+      );
+      expect(link).toBeDefined();
+      expect(['2500', '2500.00']).toContain(link.priceOverride);
+      expect(link.durationMinutesOverride).toBe(60);
     });
   });
 

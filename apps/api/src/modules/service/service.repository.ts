@@ -5,9 +5,15 @@ import { ErrorCode } from '../../common/errors/error-codes';
 import { PRISMA } from '../prisma/prisma.module';
 import type { PrismaClient, Service } from '@repo/prisma';
 
+export interface EmployeeServiceLinkRaw {
+  employeeId: string;
+  priceOverride?: unknown;
+  durationMinutesOverride?: number | null;
+}
+
 export interface ServiceWithCategory extends Service {
   category: { id: string; name: string } | null;
-  employeeServices?: { employeeId: string }[];
+  employeeServices?: EmployeeServiceLinkRaw[];
 }
 
 export interface ServiceListFilters {
@@ -97,7 +103,7 @@ export class ServiceRepository {
           select: { id: true, name: true },
         },
         employeeServices: {
-          select: { employeeId: true },
+          select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
         },
       },
     });
@@ -116,7 +122,9 @@ export class ServiceRepository {
       where: { id },
       include: {
         category: { select: { id: true, name: true } },
-        employeeServices: { select: { employeeId: true } },
+        employeeServices: {
+          select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
+        },
       },
     });
     return service as ServiceWithCategory | null;
@@ -134,7 +142,9 @@ export class ServiceRepository {
       },
       include: {
         category: { select: { id: true, name: true } },
-        employeeServices: { select: { employeeId: true } },
+        employeeServices: {
+          select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
+        },
       },
     });
     return service as ServiceWithCategory;
@@ -146,9 +156,10 @@ export class ServiceRepository {
    */
   async createWithEmployeeLinks(
     data: CreateServiceData,
-    employeeIds: string[],
+    items: { employeeId: string; priceOverride?: number; durationMinutesOverride?: number }[],
   ): Promise<ServiceWithCategory> {
     return this.prisma.$transaction(async (tx) => {
+      const employeeIds = items.map((i) => i.employeeId);
       if (employeeIds.length > 0) {
         const employees = await tx.employee.findMany({
           where: { id: { in: employeeIds }, businessId: data.businessId },
@@ -173,23 +184,31 @@ export class ServiceRepository {
         },
         include: {
           category: { select: { id: true, name: true } },
-          employeeServices: { select: { employeeId: true } },
+          employeeServices: {
+            select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
+          },
         },
       });
 
-      if (employeeIds.length > 0) {
-        await tx.employeeService.createMany({
-          data: employeeIds.map((employeeId) => ({
-            employeeId,
+      for (const item of items) {
+        await tx.employeeService.create({
+          data: {
+            employeeId: item.employeeId,
             serviceId: service.id,
-          })),
-          skipDuplicates: true,
+            priceOverride: item.priceOverride,
+            durationMinutesOverride: item.durationMinutesOverride,
+          },
         });
+      }
+
+      if (items.length > 0) {
         const updated = await tx.service.findUnique({
           where: { id: service.id },
           include: {
             category: { select: { id: true, name: true } },
-            employeeServices: { select: { employeeId: true } },
+            employeeServices: {
+              select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
+            },
           },
         });
         return updated as ServiceWithCategory;
@@ -205,7 +224,9 @@ export class ServiceRepository {
       data,
       include: {
         category: { select: { id: true, name: true } },
-        employeeServices: { select: { employeeId: true } },
+        employeeServices: {
+          select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
+        },
       },
     });
     return service as ServiceWithCategory;
@@ -262,7 +283,9 @@ export class ServiceRepository {
       where: { id, businessId },
       include: {
         category: { select: { id: true, name: true } },
-        employeeServices: { select: { employeeId: true } },
+        employeeServices: {
+          select: { employeeId: true, priceOverride: true, durationMinutesOverride: true },
+        },
       },
     });
     return service as ServiceWithCategory | null;

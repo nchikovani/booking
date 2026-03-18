@@ -9125,14 +9125,28 @@ export namespace Prisma {
 
   export type AggregateEmployeeService = {
     _count: EmployeeServiceCountAggregateOutputType | null
+    _avg: EmployeeServiceAvgAggregateOutputType | null
+    _sum: EmployeeServiceSumAggregateOutputType | null
     _min: EmployeeServiceMinAggregateOutputType | null
     _max: EmployeeServiceMaxAggregateOutputType | null
+  }
+
+  export type EmployeeServiceAvgAggregateOutputType = {
+    priceOverride: Decimal | null
+    durationMinutesOverride: number | null
+  }
+
+  export type EmployeeServiceSumAggregateOutputType = {
+    priceOverride: Decimal | null
+    durationMinutesOverride: number | null
   }
 
   export type EmployeeServiceMinAggregateOutputType = {
     id: string | null
     employeeId: string | null
     serviceId: string | null
+    priceOverride: Decimal | null
+    durationMinutesOverride: number | null
     createdAt: Date | null
   }
 
@@ -9140,6 +9154,8 @@ export namespace Prisma {
     id: string | null
     employeeId: string | null
     serviceId: string | null
+    priceOverride: Decimal | null
+    durationMinutesOverride: number | null
     createdAt: Date | null
   }
 
@@ -9147,15 +9163,29 @@ export namespace Prisma {
     id: number
     employeeId: number
     serviceId: number
+    priceOverride: number
+    durationMinutesOverride: number
     createdAt: number
     _all: number
   }
 
 
+  export type EmployeeServiceAvgAggregateInputType = {
+    priceOverride?: true
+    durationMinutesOverride?: true
+  }
+
+  export type EmployeeServiceSumAggregateInputType = {
+    priceOverride?: true
+    durationMinutesOverride?: true
+  }
+
   export type EmployeeServiceMinAggregateInputType = {
     id?: true
     employeeId?: true
     serviceId?: true
+    priceOverride?: true
+    durationMinutesOverride?: true
     createdAt?: true
   }
 
@@ -9163,6 +9193,8 @@ export namespace Prisma {
     id?: true
     employeeId?: true
     serviceId?: true
+    priceOverride?: true
+    durationMinutesOverride?: true
     createdAt?: true
   }
 
@@ -9170,6 +9202,8 @@ export namespace Prisma {
     id?: true
     employeeId?: true
     serviceId?: true
+    priceOverride?: true
+    durationMinutesOverride?: true
     createdAt?: true
     _all?: true
   }
@@ -9212,6 +9246,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: EmployeeServiceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EmployeeServiceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: EmployeeServiceMinAggregateInputType
@@ -9242,6 +9288,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: EmployeeServiceCountAggregateInputType | true
+    _avg?: EmployeeServiceAvgAggregateInputType
+    _sum?: EmployeeServiceSumAggregateInputType
     _min?: EmployeeServiceMinAggregateInputType
     _max?: EmployeeServiceMaxAggregateInputType
   }
@@ -9250,8 +9298,12 @@ export namespace Prisma {
     id: string
     employeeId: string
     serviceId: string
+    priceOverride: Decimal | null
+    durationMinutesOverride: number | null
     createdAt: Date
     _count: EmployeeServiceCountAggregateOutputType | null
+    _avg: EmployeeServiceAvgAggregateOutputType | null
+    _sum: EmployeeServiceSumAggregateOutputType | null
     _min: EmployeeServiceMinAggregateOutputType | null
     _max: EmployeeServiceMaxAggregateOutputType | null
   }
@@ -9274,6 +9326,8 @@ export namespace Prisma {
     id?: boolean
     employeeId?: boolean
     serviceId?: boolean
+    priceOverride?: boolean
+    durationMinutesOverride?: boolean
     createdAt?: boolean
     employee?: boolean | EmployeeDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
@@ -9283,6 +9337,8 @@ export namespace Prisma {
     id?: boolean
     employeeId?: boolean
     serviceId?: boolean
+    priceOverride?: boolean
+    durationMinutesOverride?: boolean
     createdAt?: boolean
     employee?: boolean | EmployeeDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
@@ -9292,6 +9348,8 @@ export namespace Prisma {
     id?: boolean
     employeeId?: boolean
     serviceId?: boolean
+    priceOverride?: boolean
+    durationMinutesOverride?: boolean
     createdAt?: boolean
     employee?: boolean | EmployeeDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
@@ -9301,10 +9359,12 @@ export namespace Prisma {
     id?: boolean
     employeeId?: boolean
     serviceId?: boolean
+    priceOverride?: boolean
+    durationMinutesOverride?: boolean
     createdAt?: boolean
   }
 
-  export type EmployeeServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "serviceId" | "createdAt", ExtArgs["result"]["employeeService"]>
+  export type EmployeeServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "serviceId" | "priceOverride" | "durationMinutesOverride" | "createdAt", ExtArgs["result"]["employeeService"]>
   export type EmployeeServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     employee?: boolean | EmployeeDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
@@ -9328,6 +9388,8 @@ export namespace Prisma {
       id: string
       employeeId: string
       serviceId: string
+      priceOverride: Prisma.Decimal | null
+      durationMinutesOverride: number | null
       createdAt: Date
     }, ExtArgs["result"]["employeeService"]>
     composites: {}
@@ -9757,6 +9819,8 @@ export namespace Prisma {
     readonly id: FieldRef<"EmployeeService", 'String'>
     readonly employeeId: FieldRef<"EmployeeService", 'String'>
     readonly serviceId: FieldRef<"EmployeeService", 'String'>
+    readonly priceOverride: FieldRef<"EmployeeService", 'Decimal'>
+    readonly durationMinutesOverride: FieldRef<"EmployeeService", 'Int'>
     readonly createdAt: FieldRef<"EmployeeService", 'DateTime'>
   }
     
@@ -15566,6 +15630,8 @@ export namespace Prisma {
     id: 'id',
     employeeId: 'employeeId',
     serviceId: 'serviceId',
+    priceOverride: 'priceOverride',
+    durationMinutesOverride: 'durationMinutesOverride',
     createdAt: 'createdAt'
   };
 
@@ -16248,6 +16314,8 @@ export namespace Prisma {
     id?: StringFilter<"EmployeeService"> | string
     employeeId?: StringFilter<"EmployeeService"> | string
     serviceId?: StringFilter<"EmployeeService"> | string
+    priceOverride?: DecimalNullableFilter<"EmployeeService"> | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: IntNullableFilter<"EmployeeService"> | number | null
     createdAt?: DateTimeFilter<"EmployeeService"> | Date | string
     employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
@@ -16257,6 +16325,8 @@ export namespace Prisma {
     id?: SortOrder
     employeeId?: SortOrder
     serviceId?: SortOrder
+    priceOverride?: SortOrderInput | SortOrder
+    durationMinutesOverride?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     employee?: EmployeeOrderByWithRelationInput
     service?: ServiceOrderByWithRelationInput
@@ -16270,6 +16340,8 @@ export namespace Prisma {
     NOT?: EmployeeServiceWhereInput | EmployeeServiceWhereInput[]
     employeeId?: StringFilter<"EmployeeService"> | string
     serviceId?: StringFilter<"EmployeeService"> | string
+    priceOverride?: DecimalNullableFilter<"EmployeeService"> | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: IntNullableFilter<"EmployeeService"> | number | null
     createdAt?: DateTimeFilter<"EmployeeService"> | Date | string
     employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
@@ -16279,10 +16351,14 @@ export namespace Prisma {
     id?: SortOrder
     employeeId?: SortOrder
     serviceId?: SortOrder
+    priceOverride?: SortOrderInput | SortOrder
+    durationMinutesOverride?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: EmployeeServiceCountOrderByAggregateInput
+    _avg?: EmployeeServiceAvgOrderByAggregateInput
     _max?: EmployeeServiceMaxOrderByAggregateInput
     _min?: EmployeeServiceMinOrderByAggregateInput
+    _sum?: EmployeeServiceSumOrderByAggregateInput
   }
 
   export type EmployeeServiceScalarWhereWithAggregatesInput = {
@@ -16292,6 +16368,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"EmployeeService"> | string
     employeeId?: StringWithAggregatesFilter<"EmployeeService"> | string
     serviceId?: StringWithAggregatesFilter<"EmployeeService"> | string
+    priceOverride?: DecimalNullableWithAggregatesFilter<"EmployeeService"> | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: IntNullableWithAggregatesFilter<"EmployeeService"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"EmployeeService"> | Date | string
   }
 
@@ -17109,6 +17187,8 @@ export namespace Prisma {
 
   export type EmployeeServiceCreateInput = {
     id?: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
     employee: EmployeeCreateNestedOneWithoutEmployeeServicesInput
     service: ServiceCreateNestedOneWithoutEmployeeServicesInput
@@ -17118,11 +17198,15 @@ export namespace Prisma {
     id?: string
     employeeId: string
     serviceId: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
   }
 
   export type EmployeeServiceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employee?: EmployeeUpdateOneRequiredWithoutEmployeeServicesNestedInput
     service?: ServiceUpdateOneRequiredWithoutEmployeeServicesNestedInput
@@ -17132,6 +17216,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     employeeId?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -17139,11 +17225,15 @@ export namespace Prisma {
     id?: string
     employeeId: string
     serviceId: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
   }
 
   export type EmployeeServiceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -17151,6 +17241,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     employeeId?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -18037,6 +18129,17 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
   export type EmployeeScalarRelationFilter = {
     is?: EmployeeWhereInput
     isNot?: EmployeeWhereInput
@@ -18056,13 +18159,22 @@ export namespace Prisma {
     id?: SortOrder
     employeeId?: SortOrder
     serviceId?: SortOrder
+    priceOverride?: SortOrder
+    durationMinutesOverride?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type EmployeeServiceAvgOrderByAggregateInput = {
+    priceOverride?: SortOrder
+    durationMinutesOverride?: SortOrder
   }
 
   export type EmployeeServiceMaxOrderByAggregateInput = {
     id?: SortOrder
     employeeId?: SortOrder
     serviceId?: SortOrder
+    priceOverride?: SortOrder
+    durationMinutesOverride?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -18070,7 +18182,30 @@ export namespace Prisma {
     id?: SortOrder
     employeeId?: SortOrder
     serviceId?: SortOrder
+    priceOverride?: SortOrder
+    durationMinutesOverride?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type EmployeeServiceSumOrderByAggregateInput = {
+    priceOverride?: SortOrder
+    durationMinutesOverride?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type EnumAuthProviderTypeFilter<$PrismaModel = never> = {
@@ -18859,6 +18994,14 @@ export namespace Prisma {
     connect?: ServiceWhereUniqueInput
   }
 
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type EmployeeUpdateOneRequiredWithoutEmployeeServicesNestedInput = {
     create?: XOR<EmployeeCreateWithoutEmployeeServicesInput, EmployeeUncheckedCreateWithoutEmployeeServicesInput>
     connectOrCreate?: EmployeeCreateOrConnectWithoutEmployeeServicesInput
@@ -19217,6 +19360,33 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumAuthProviderTypeFilter<$PrismaModel = never> = {
@@ -20092,6 +20262,8 @@ export namespace Prisma {
 
   export type EmployeeServiceCreateWithoutServiceInput = {
     id?: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
     employee: EmployeeCreateNestedOneWithoutEmployeeServicesInput
   }
@@ -20099,6 +20271,8 @@ export namespace Prisma {
   export type EmployeeServiceUncheckedCreateWithoutServiceInput = {
     id?: string
     employeeId: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
   }
 
@@ -20217,6 +20391,8 @@ export namespace Prisma {
     id?: StringFilter<"EmployeeService"> | string
     employeeId?: StringFilter<"EmployeeService"> | string
     serviceId?: StringFilter<"EmployeeService"> | string
+    priceOverride?: DecimalNullableFilter<"EmployeeService"> | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: IntNullableFilter<"EmployeeService"> | number | null
     createdAt?: DateTimeFilter<"EmployeeService"> | Date | string
   }
 
@@ -20271,6 +20447,8 @@ export namespace Prisma {
 
   export type EmployeeServiceCreateWithoutEmployeeInput = {
     id?: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
     service: ServiceCreateNestedOneWithoutEmployeeServicesInput
   }
@@ -20278,6 +20456,8 @@ export namespace Prisma {
   export type EmployeeServiceUncheckedCreateWithoutEmployeeInput = {
     id?: string
     serviceId: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
   }
 
@@ -21119,11 +21299,15 @@ export namespace Prisma {
   export type EmployeeServiceCreateManyServiceInput = {
     id?: string
     employeeId: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
   }
 
   export type EmployeeServiceUpdateWithoutServiceInput = {
     id?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employee?: EmployeeUpdateOneRequiredWithoutEmployeeServicesNestedInput
   }
@@ -21131,23 +21315,31 @@ export namespace Prisma {
   export type EmployeeServiceUncheckedUpdateWithoutServiceInput = {
     id?: StringFieldUpdateOperationsInput | string
     employeeId?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeServiceUncheckedUpdateManyWithoutServiceInput = {
     id?: StringFieldUpdateOperationsInput | string
     employeeId?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeServiceCreateManyEmployeeInput = {
     id?: string
     serviceId: string
+    priceOverride?: Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: number | null
     createdAt?: Date | string
   }
 
   export type EmployeeServiceUpdateWithoutEmployeeInput = {
     id?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     service?: ServiceUpdateOneRequiredWithoutEmployeeServicesNestedInput
   }
@@ -21155,12 +21347,16 @@ export namespace Prisma {
   export type EmployeeServiceUncheckedUpdateWithoutEmployeeInput = {
     id?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeServiceUncheckedUpdateManyWithoutEmployeeInput = {
     id?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
+    priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

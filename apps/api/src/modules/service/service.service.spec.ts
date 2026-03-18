@@ -148,11 +148,14 @@ describe('ServiceService', () => {
       expect(result.price).toBe('1500.00');
     });
 
-    it('должен создавать услугу с employeeIds атомарно через createWithEmployeeLinks', async () => {
+    it('должен создавать услугу с employeeServices атомарно через createWithEmployeeLinks', async () => {
       serviceCategoryService.ensureCategoryBelongsToBusiness.mockResolvedValue(undefined);
       const serviceWithEmployees = {
         ...mockService,
-        employeeServices: [{ employeeId: 'emp-1' }, { employeeId: 'emp-2' }],
+        employeeServices: [
+          { employeeId: 'emp-1', priceOverride: null, durationMinutesOverride: null },
+          { employeeId: 'emp-2', priceOverride: null, durationMinutesOverride: null },
+        ],
       };
       repository.createWithEmployeeLinks.mockResolvedValue(serviceWithEmployees);
 
@@ -160,7 +163,7 @@ describe('ServiceService', () => {
         name: 'Стрижка',
         price: 1500,
         durationMinutes: 30,
-        employeeIds: ['emp-1', 'emp-2'],
+        employeeServices: [{ employeeId: 'emp-1' }, { employeeId: 'emp-2' }],
       });
 
       expect(repository.create).not.toHaveBeenCalled();
@@ -171,11 +174,14 @@ describe('ServiceService', () => {
           price: 1500,
           durationMinutes: 30,
         }),
-        ['emp-1', 'emp-2'],
+        [
+          { employeeId: 'emp-1', priceOverride: undefined, durationMinutesOverride: undefined },
+          { employeeId: 'emp-2', priceOverride: undefined, durationMinutesOverride: undefined },
+        ],
       );
       expect(employeeService.validateEmployeeIdsBelongToBusiness).not.toHaveBeenCalled();
       expect(employeeService.syncServiceEmployeeLinks).not.toHaveBeenCalled();
-      expect(result.employeeIds).toEqual(['emp-1', 'emp-2']);
+      expect(result.employeeServices.map((s) => s.employeeId)).toEqual(['emp-1', 'emp-2']);
     });
   });
 
@@ -203,18 +209,16 @@ describe('ServiceService', () => {
       expect(result.id).toBe('svc-1');
     });
 
-    it('должен вызывать syncServiceEmployeeLinks при employeeIds в dto', async () => {
+    it('должен вызывать syncServiceEmployeeLinks при employeeServices в dto', async () => {
       repository.findByIdAndBusiness.mockResolvedValue(mockService);
 
-      await service.update('svc-1', 'business-1', { employeeIds: ['emp-1'] });
+      await service.update('svc-1', 'business-1', {
+        employeeServices: [{ employeeId: 'emp-1' }],
+      });
 
-      expect(employeeService.validateEmployeeIdsBelongToBusiness).toHaveBeenCalledWith(
-        ['emp-1'],
-        'business-1',
-      );
       expect(employeeService.syncServiceEmployeeLinks).toHaveBeenCalledWith(
         'svc-1',
-        ['emp-1'],
+        [{ employeeId: 'emp-1', priceOverride: undefined, durationMinutesOverride: undefined }],
         'business-1',
       );
     });

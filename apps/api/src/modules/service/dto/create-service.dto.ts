@@ -10,8 +10,11 @@ import {
   MaxLength,
   Min,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
+import { Type } from 'class-transformer';
 import { IsMultipleOfFive } from '../../../common/validators/is-multiple-of-five.validator';
+import { EmployeeServiceLinkDto } from './employee-service-link.dto';
 
 export class CreateServiceDto {
   @ApiProperty({ minLength: 1, maxLength: 200 })
@@ -51,10 +54,11 @@ export class CreateServiceDto {
   @IsUUID()
   categoryId?: string;
 
-  @ApiPropertyOptional({ type: [String], format: 'uuid', maxItems: 500 })
+  @ApiPropertyOptional({ type: [EmployeeServiceLinkDto], maxItems: 500 })
   @IsOptional()
   @IsArray()
-  @IsUUID('4', { each: true })
+  @ValidateNested({ each: true })
+  @Type(() => EmployeeServiceLinkDto)
   @ArrayMaxSize(500)
-  employeeIds?: string[];
+  employeeServices?: EmployeeServiceLinkDto[];
 }

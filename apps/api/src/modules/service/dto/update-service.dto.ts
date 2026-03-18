@@ -10,9 +10,11 @@ import {
   MaxLength,
   Min,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
-import { Transform, type TransformFnParams } from 'class-transformer';
+import { Transform, Type, type TransformFnParams } from 'class-transformer';
 import { IsMultipleOfFive } from '../../../common/validators/is-multiple-of-five.validator';
+import { EmployeeServiceLinkDto } from './employee-service-link.dto';
 
 function emptyStringToNull({ value }: TransformFnParams): string | null | undefined {
   if (value === '') return null;
@@ -61,10 +63,11 @@ export class UpdateServiceDto {
   @IsUUID()
   categoryId?: string | null;
 
-  @ApiPropertyOptional({ type: [String], format: 'uuid', maxItems: 500 })
+  @ApiPropertyOptional({ type: [EmployeeServiceLinkDto], maxItems: 500 })
   @IsOptional()
   @IsArray()
-  @IsUUID('4', { each: true })
+  @ValidateNested({ each: true })
+  @Type(() => EmployeeServiceLinkDto)
   @ArrayMaxSize(500)
-  employeeIds?: string[];
+  employeeServices?: EmployeeServiceLinkDto[];
 }

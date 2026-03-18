@@ -194,6 +194,8 @@ exports.Prisma.EmployeeServiceScalarFieldEnum = {
   id: 'id',
   employeeId: 'employeeId',
   serviceId: 'serviceId',
+  priceOverride: 'priceOverride',
+  durationMinutesOverride: 'durationMinutesOverride',
   createdAt: 'createdAt'
 };
 

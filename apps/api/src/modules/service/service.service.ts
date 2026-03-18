@@ -10,6 +10,12 @@ import { EmployeeService } from '../employee/employee.service';
 import { ServiceRepository } from './service.repository';
 import type { ServiceWithCategory } from './service.repository';
 
+export interface EmployeeServiceResponse {
+  employeeId: string;
+  priceOverride?: string | null;
+  durationMinutesOverride?: number | null;
+}
+
 export interface ServiceResponse {
   id: string;
   name: string;
@@ -20,7 +26,7 @@ export interface ServiceResponse {
   categoryId: string | null;
   categoryName: string | null;
   position: number;
-  employeeIds: string[];
+  employeeServices: EmployeeServiceResponse[];
   createdAt: string;
 }
 
@@ -43,7 +49,11 @@ export class ServiceService {
       categoryId: service.categoryId,
       categoryName: service.category?.name ?? null,
       position: service.position,
-      employeeIds: (service.employeeServices ?? []).map((es) => es.employeeId),
+      employeeServices: (service.employeeServices ?? []).map((es) => ({
+        employeeId: es.employeeId,
+        priceOverride: es.priceOverride != null ? String(es.priceOverride) : null,
+        durationMinutesOverride: es.durationMinutesOverride ?? null,
+      })),
       createdAt: service.createdAt.toISOString(),
     };
   }
@@ -102,10 +112,18 @@ export class ServiceService {
       );
     }
 
-    const employeeIds = dto.employeeIds ? [...new Set(dto.employeeIds)] : [];
+    const employeeServices = dto.employeeServices ?? [];
+    const deduped = employeeServices.filter(
+      (s, i, arr) => arr.findIndex((x) => x.employeeId === s.employeeId) === i,
+    );
+    const items = deduped.map((s) => ({
+      employeeId: s.employeeId,
+      priceOverride: s.priceOverride,
+      durationMinutesOverride: s.durationMinutesOverride,
+    }));
 
     const service =
-      employeeIds.length > 0
+      items.length > 0
         ? await this.repository.createWithEmployeeLinks(
             {
               businessId,
@@ -116,7 +134,7 @@ export class ServiceService {
               durationMinutes: dto.durationMinutes,
               breakAfterMinutes: dto.breakAfterMinutes ?? 0,
             },
-            employeeIds,
+            items,
           )
         : await this.repository.create({
             businessId,
@@ -135,29 +153,35 @@ export class ServiceService {
     const existing = await this.repository.findByIdAndBusiness(id, businessId);
     if (!existing) throw AppException.create(ErrorCode.NOT_FOUND);
 
-    const hasServiceIds = 'employeeIds' in dto && dto.employeeIds !== undefined;
-    if (hasServiceIds) {
-      const employeeIds = [...new Set(dto.employeeIds ?? [])];
-      if (employeeIds.length > 0) {
-        await this.employeeService.validateEmployeeIdsBelongToBusiness(employeeIds, businessId);
-      }
-      await this.employeeService.syncServiceEmployeeLinks(id, employeeIds, businessId);
-    }
-
-    const hasUpdates = Object.keys(dto).filter((k) => k !== 'employeeIds').length > 0;
-    if (!hasUpdates) {
-      const service = hasServiceIds
-        ? await this.repository.findByIdAndBusiness(id, businessId)
-        : existing;
-      return this.toServiceResponse(service!);
-    }
-
+    // Валидация categoryId до любых мутаций — атомарность при частичном обновлении
     if (dto.categoryId !== undefined && dto.categoryId !== null && dto.categoryId !== '') {
       await this.serviceCategoryService.ensureCategoryBelongsToBusiness(
         dto.categoryId,
         businessId,
         ErrorCode.NOT_FOUND,
       );
+    }
+
+    const hasEmployeeServices = 'employeeServices' in dto && dto.employeeServices !== undefined;
+    if (hasEmployeeServices) {
+      const employeeServices = dto.employeeServices ?? [];
+      const deduped = employeeServices.filter(
+        (s, i, arr) => arr.findIndex((x) => x.employeeId === s.employeeId) === i,
+      );
+      const items = deduped.map((s) => ({
+        employeeId: s.employeeId,
+        priceOverride: s.priceOverride,
+        durationMinutesOverride: s.durationMinutesOverride,
+      }));
+      await this.employeeService.syncServiceEmployeeLinks(id, items, businessId);
+    }
+
+    const hasUpdates = Object.keys(dto).filter((k) => k !== 'employeeServices').length > 0;
+    if (!hasUpdates) {
+      const service = hasEmployeeServices
+        ? await this.repository.findByIdAndBusiness(id, businessId)
+        : existing;
+      return this.toServiceResponse(service!);
     }
 
     const data: Parameters<typeof this.repository.update>[1] = {};

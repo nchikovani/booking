@@ -18,7 +18,11 @@ describe('EmployeeService', () => {
     imagePath: null as string | null,
     createdAt: new Date(),
     updatedAt: new Date(),
-    employeeServices: [] as { serviceId: string }[],
+    employeeServices: [] as {
+      serviceId: string;
+      priceOverride?: unknown;
+      durationMinutesOverride?: number | null;
+    }[],
   };
 
   beforeEach(async () => {
@@ -73,7 +77,7 @@ describe('EmployeeService', () => {
         id: 'emp-1',
         name: 'Анна Иванова',
         specialization: 'Мастер маникюра',
-        serviceIds: [],
+        services: [],
       });
     });
 
@@ -115,7 +119,7 @@ describe('EmployeeService', () => {
       expect(result).toMatchObject({
         id: 'emp-1',
         name: 'Анна Иванова',
-        serviceIds: [],
+        services: [],
       });
       expect(result).toHaveProperty('updatedAt');
     });
@@ -130,7 +134,7 @@ describe('EmployeeService', () => {
   });
 
   describe('create', () => {
-    it('должен создавать сотрудника без serviceIds', async () => {
+    it('должен создавать сотрудника без services', async () => {
       repository.createWithServiceLinks.mockResolvedValue(mockEmployee);
 
       const result = await service.create('business-1', {
@@ -150,17 +154,20 @@ describe('EmployeeService', () => {
       expect(result.id).toBe('emp-1');
     });
 
-    it('должен создавать сотрудника с serviceIds', async () => {
+    it('должен создавать сотрудника с services', async () => {
       const withServices = {
         ...mockEmployee,
-        employeeServices: [{ serviceId: 'svc-1' }, { serviceId: 'svc-2' }],
+        employeeServices: [
+          { serviceId: 'svc-1', priceOverride: null, durationMinutesOverride: null },
+          { serviceId: 'svc-2', priceOverride: null, durationMinutesOverride: null },
+        ],
       };
       repository.validateServiceIdsBelongToBusiness.mockResolvedValue(true);
       repository.createWithServiceLinks.mockResolvedValue(withServices);
 
       const result = await service.create('business-1', {
         name: 'Анна Иванова',
-        serviceIds: ['svc-1', 'svc-2'],
+        services: [{ serviceId: 'svc-1' }, { serviceId: 'svc-2' }],
       });
 
       expect(repository.validateServiceIdsBelongToBusiness).toHaveBeenCalledWith(
@@ -169,9 +176,13 @@ describe('EmployeeService', () => {
       );
       expect(repository.createWithServiceLinks).toHaveBeenCalledWith(
         expect.objectContaining({ businessId: 'business-1', name: 'Анна Иванова' }),
-        ['svc-1', 'svc-2'],
+        [
+          { serviceId: 'svc-1', priceOverride: undefined, durationMinutesOverride: undefined },
+          { serviceId: 'svc-2', priceOverride: undefined, durationMinutesOverride: undefined },
+        ],
       );
-      expect(result.serviceIds).toEqual(['svc-1', 'svc-2']);
+      expect(result.services).toHaveLength(2);
+      expect(result.services.map((s) => s.serviceId)).toEqual(['svc-1', 'svc-2']);
     });
 
     it('должен выбрасывать NOT_FOUND при невалидном serviceId', async () => {
@@ -180,23 +191,25 @@ describe('EmployeeService', () => {
       await expect(
         service.create('business-1', {
           name: 'Анна',
-          serviceIds: ['svc-other-business'],
+          services: [{ serviceId: 'svc-other-business' }],
         }),
       ).rejects.toMatchObject({ code: ErrorCode.NOT_FOUND });
 
       expect(repository.createWithServiceLinks).not.toHaveBeenCalled();
     });
 
-    it('должен дедуплицировать serviceIds', async () => {
+    it('должен дедуплицировать services', async () => {
       repository.validateServiceIdsBelongToBusiness.mockResolvedValue(true);
       repository.createWithServiceLinks.mockResolvedValue({
         ...mockEmployee,
-        employeeServices: [{ serviceId: 'svc-1' }],
+        employeeServices: [
+          { serviceId: 'svc-1', priceOverride: null, durationMinutesOverride: null },
+        ],
       });
 
       await service.create('business-1', {
         name: 'Анна',
-        serviceIds: ['svc-1', 'svc-1', 'svc-1'],
+        services: [{ serviceId: 'svc-1' }, { serviceId: 'svc-1' }, { serviceId: 'svc-1' }],
       });
 
       expect(repository.validateServiceIdsBelongToBusiness).toHaveBeenCalledWith(
@@ -223,26 +236,31 @@ describe('EmployeeService', () => {
       expect(result.name).toBe('Анна Обновлённая');
     });
 
-    it('должен синхронизировать serviceIds при передаче', async () => {
+    it('должен синхронизировать services при передаче', async () => {
       repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
       repository.validateServiceIdsBelongToBusiness.mockResolvedValue(true);
       repository.syncEmployeeServiceLinks.mockResolvedValue(undefined);
 
-      await service.update('emp-1', 'business-1', { serviceIds: ['svc-1', 'svc-2'] });
+      await service.update('emp-1', 'business-1', {
+        services: [{ serviceId: 'svc-1' }, { serviceId: 'svc-2' }],
+      });
 
-      expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith('emp-1', ['svc-1', 'svc-2']);
+      expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith('emp-1', [
+        { serviceId: 'svc-1', priceOverride: undefined, durationMinutesOverride: undefined },
+        { serviceId: 'svc-2', priceOverride: undefined, durationMinutesOverride: undefined },
+      ]);
     });
 
-    it('должен удалять все связи при serviceIds: []', async () => {
+    it('должен удалять все связи при services: []', async () => {
       repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
       repository.syncEmployeeServiceLinks.mockResolvedValue(undefined);
 
-      await service.update('emp-1', 'business-1', { serviceIds: [] });
+      await service.update('emp-1', 'business-1', { services: [] });
 
       expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith('emp-1', []);
     });
 
-    it('не вызывает syncEmployeeServiceLinks при PATCH без serviceIds (TC-8a)', async () => {
+    it('не вызывает syncEmployeeServiceLinks при PATCH без services (TC-8a)', async () => {
       repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
       repository.update.mockResolvedValue({
         ...mockEmployee,
@@ -399,20 +417,31 @@ describe('EmployeeService', () => {
       ]);
       repository.syncServiceEmployeeLinks.mockResolvedValue(undefined);
 
-      await service.syncServiceEmployeeLinks('svc-1', ['emp-1', 'emp-2'], 'business-1');
+      await service.syncServiceEmployeeLinks(
+        'svc-1',
+        [{ employeeId: 'emp-1' }, { employeeId: 'emp-2' }],
+        'business-1',
+      );
 
       expect(repository.findByIdsAndBusiness).toHaveBeenCalledWith(
         ['emp-1', 'emp-2'],
         'business-1',
       );
-      expect(repository.syncServiceEmployeeLinks).toHaveBeenCalledWith('svc-1', ['emp-1', 'emp-2']);
+      expect(repository.syncServiceEmployeeLinks).toHaveBeenCalledWith('svc-1', [
+        { employeeId: 'emp-1', priceOverride: undefined, durationMinutesOverride: undefined },
+        { employeeId: 'emp-2', priceOverride: undefined, durationMinutesOverride: undefined },
+      ]);
     });
 
     it('должен выбрасывать NOT_FOUND при невалидном employeeId', async () => {
       repository.findByIdsAndBusiness.mockResolvedValue([mockEmployee]);
 
       await expect(
-        service.syncServiceEmployeeLinks('svc-1', ['emp-1', 'emp-other'], 'business-1'),
+        service.syncServiceEmployeeLinks(
+          'svc-1',
+          [{ employeeId: 'emp-1' }, { employeeId: 'emp-other' }],
+          'business-1',
+        ),
       ).rejects.toMatchObject({ code: ErrorCode.NOT_FOUND });
 
       expect(repository.syncServiceEmployeeLinks).not.toHaveBeenCalled();

@@ -28,8 +28,23 @@ export class ServiceResponseDto {
   @ApiProperty()
   position!: number;
 
-  @ApiProperty({ type: [String], description: 'ID сотрудников, оказывающих услугу' })
-  employeeIds!: string[];
+  @ApiProperty({
+    type: 'array',
+    items: {
+      type: 'object',
+      properties: {
+        employeeId: { type: 'string' },
+        priceOverride: { type: 'string', nullable: true },
+        durationMinutesOverride: { type: 'number', nullable: true },
+      },
+    },
+    description: 'Связи с сотрудниками (с опциональной индивидуальной ценой и длительностью)',
+  })
+  employeeServices!: {
+    employeeId: string;
+    priceOverride?: string | null;
+    durationMinutesOverride?: number | null;
+  }[];
 
   @ApiProperty()
   createdAt!: string;

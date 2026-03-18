@@ -8,12 +8,18 @@ import { EmployeeRepository } from './employee.repository';
 import type { EmployeeWithServices } from './employee.repository';
 import { StorageService } from '../storage/storage.service';
 
+export interface ServiceLinkResponse {
+  serviceId: string;
+  priceOverride?: string | null;
+  durationMinutesOverride?: number | null;
+}
+
 export interface EmployeeResponse {
   id: string;
   name: string;
   specialization: string | null;
   imageUrl: string | null;
-  serviceIds: string[];
+  services: ServiceLinkResponse[];
   createdAt: string;
   updatedAt?: string;
 }
@@ -29,12 +35,17 @@ export class EmployeeService {
     employee: EmployeeWithServices,
     options?: { includeUpdatedAt?: boolean },
   ): EmployeeResponse {
+    const services = (employee.employeeServices ?? []).map((es) => ({
+      serviceId: es.serviceId,
+      priceOverride: es.priceOverride != null ? String(es.priceOverride) : null,
+      durationMinutesOverride: es.durationMinutesOverride ?? null,
+    }));
     const base = {
       id: employee.id,
       name: employee.name,
       specialization: employee.specialization ?? null,
       imageUrl: employee.imagePath ? this.storageService.getPublicUrl(employee.imagePath) : null,
-      serviceIds: (employee.employeeServices ?? []).map((es) => es.serviceId),
+      services,
       createdAt: employee.createdAt.toISOString(),
     };
     if (options?.includeUpdatedAt) {
@@ -62,9 +73,11 @@ export class EmployeeService {
   }
 
   async create(businessId: string, dto: CreateEmployeeDto): Promise<EmployeeResponse> {
-    const serviceIds = dto.serviceIds
-      ? [...new Set(dto.serviceIds)].filter((id) => id.trim() !== '')
-      : [];
+    const services = dto.services ?? [];
+    const deduped = services.filter(
+      (s, i, arr) => arr.findIndex((x) => x.serviceId === s.serviceId) === i,
+    );
+    const serviceIds = deduped.map((s) => s.serviceId);
 
     if (serviceIds.length > 0) {
       const valid = await this.repository.validateServiceIdsBelongToBusiness(
@@ -74,13 +87,19 @@ export class EmployeeService {
       if (!valid) throw AppException.create(ErrorCode.NOT_FOUND);
     }
 
+    const items = deduped.map((s) => ({
+      serviceId: s.serviceId,
+      priceOverride: s.priceOverride,
+      durationMinutesOverride: s.durationMinutesOverride,
+    }));
+
     const employee = await this.repository.createWithServiceLinks(
       {
         businessId,
         name: dto.name,
         specialization: dto.specialization ?? null,
       },
-      serviceIds,
+      items,
     );
     return this.toEmployeeResponse(employee, { includeUpdatedAt: true });
   }
@@ -89,10 +108,14 @@ export class EmployeeService {
     const existing = await this.repository.findByIdAndBusiness(id, businessId);
     if (!existing) throw AppException.create(ErrorCode.NOT_FOUND);
 
-    const hasServiceIds = 'serviceIds' in dto && dto.serviceIds !== undefined;
+    const hasServices = 'services' in dto && dto.services !== undefined;
 
-    if (hasServiceIds) {
-      const serviceIds = [...new Set(dto.serviceIds ?? [])];
+    if (hasServices) {
+      const services = dto.services ?? [];
+      const deduped = services.filter(
+        (s, i, arr) => arr.findIndex((x) => x.serviceId === s.serviceId) === i,
+      );
+      const serviceIds = deduped.map((s) => s.serviceId);
       if (serviceIds.length > 0) {
         const valid = await this.repository.validateServiceIdsBelongToBusiness(
           serviceIds,
@@ -100,7 +123,12 @@ export class EmployeeService {
         );
         if (!valid) throw AppException.create(ErrorCode.NOT_FOUND);
       }
-      await this.repository.syncEmployeeServiceLinks(id, serviceIds);
+      const items = deduped.map((s) => ({
+        serviceId: s.serviceId,
+        priceOverride: s.priceOverride,
+        durationMinutesOverride: s.durationMinutesOverride,
+      }));
+      await this.repository.syncEmployeeServiceLinks(id, items);
     }
 
     const data: Parameters<typeof this.repository.update>[1] = {};
@@ -111,7 +139,7 @@ export class EmployeeService {
     const hasDataUpdates = Object.keys(data).length > 0;
     const employee = hasDataUpdates
       ? await this.repository.update(id, data)
-      : hasServiceIds
+      : hasServices
         ? await this.repository.findByIdAndBusiness(id, businessId)
         : existing;
 
@@ -180,10 +208,10 @@ export class EmployeeService {
    */
   async syncServiceEmployeeLinks(
     serviceId: string,
-    employeeIds: string[],
+    items: { employeeId: string; priceOverride?: number; durationMinutesOverride?: number }[],
     businessId: string,
   ): Promise<void> {
-    const uniqueIds = [...new Set(employeeIds)];
+    const uniqueIds = [...new Set(items.map((i) => i.employeeId))];
 
     if (uniqueIds.length > 0) {
       const employees = await this.repository.findByIdsAndBusiness(uniqueIds, businessId);
@@ -192,6 +220,6 @@ export class EmployeeService {
       }
     }
 
-    await this.repository.syncServiceEmployeeLinks(serviceId, uniqueIds);
+    await this.repository.syncServiceEmployeeLinks(serviceId, items);
   }
 }

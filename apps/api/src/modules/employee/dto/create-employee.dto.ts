@@ -4,10 +4,12 @@ import {
   IsArray,
   IsOptional,
   IsString,
-  IsUUID,
   MaxLength,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
+import { Type } from 'class-transformer';
+import { ServiceLinkDto } from './service-link.dto';
 
 export class CreateEmployeeDto {
   @ApiProperty({ minLength: 1, maxLength: 200 })
@@ -22,10 +24,11 @@ export class CreateEmployeeDto {
   @MaxLength(200)
   specialization?: string;
 
-  @ApiPropertyOptional({ type: [String], format: 'uuid', maxItems: 500 })
+  @ApiPropertyOptional({ type: [ServiceLinkDto], maxItems: 500 })
   @IsOptional()
   @IsArray()
-  @IsUUID('4', { each: true })
+  @ValidateNested({ each: true })
+  @Type(() => ServiceLinkDto)
   @ArrayMaxSize(500)
-  serviceIds?: string[];
+  services?: ServiceLinkDto[];
 }

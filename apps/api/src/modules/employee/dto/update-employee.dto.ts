@@ -1,14 +1,15 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { Transform, type TransformFnParams } from 'class-transformer';
+import { Transform, Type, type TransformFnParams } from 'class-transformer';
 import {
   ArrayMaxSize,
   IsArray,
   IsOptional,
   IsString,
-  IsUUID,
   MaxLength,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
+import { ServiceLinkDto } from './service-link.dto';
 
 function emptyStringToNull({ value }: TransformFnParams): string | null | undefined {
   if (value === '') return null;
@@ -30,10 +31,11 @@ export class UpdateEmployeeDto {
   @MaxLength(200)
   specialization?: string | null;
 
-  @ApiPropertyOptional({ type: [String], format: 'uuid', maxItems: 500 })
+  @ApiPropertyOptional({ type: [ServiceLinkDto], maxItems: 500 })
   @IsOptional()
   @IsArray()
-  @IsUUID('4', { each: true })
+  @ValidateNested({ each: true })
+  @Type(() => ServiceLinkDto)
   @ArrayMaxSize(500)
-  serviceIds?: string[];
+  services?: ServiceLinkDto[];
 }
