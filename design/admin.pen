@@ -1,5 +1,5 @@
 {
-  "version": "2.8",
+  "version": "2.9",
   "children": [
     {
       "type": "frame",
@@ -12014,6 +12014,8 @@
                               "type": "text",
                               "id": "JfW76",
                               "fill": "#64748B",
+                              "textGrowth": "fixed-width",
+                              "width": 48,
                               "content": "Начало",
                               "fontFamily": "Inter",
                               "fontSize": 12,
@@ -12024,7 +12026,7 @@
                               "id": "PgGlY",
                               "fill": "#64748B",
                               "textGrowth": "fixed-width",
-                              "width": 48,
+                              "width": 47,
                               "content": "Конец",
                               "fontFamily": "Inter",
                               "fontSize": 12,
@@ -16972,6 +16974,637 @@
                   ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "RB02e",
+      "x": -3131,
+      "y": 994,
+      "name": "Admin - Вход",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "#F8FAFC",
+      "layout": "vertical",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "3rMJj",
+          "name": "loginHeader",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#E2E8F0"
+          },
+          "gap": 12,
+          "padding": 24,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ldmm4",
+              "name": "loginLogo",
+              "width": 40,
+              "height": 40,
+              "fill": "#6366F1",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "mJ28I",
+                  "name": "loginLogoIcon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "droplets",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "dECP5",
+              "name": "loginBrand",
+              "fill": "#0F172A",
+              "content": "potoki.io",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "7e5JJ",
+          "name": "loginMain",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "r9psI",
+              "name": "loginCard",
+              "width": 400,
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E2E8F0"
+              },
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UUNUh",
+                  "name": "loginTitle",
+                  "fill": "#0F172A",
+                  "content": "Вход",
+                  "fontFamily": "Inter",
+                  "fontSize": 28,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "9r446",
+                  "name": "loginEmailLabel",
+                  "fill": "#0F172A",
+                  "content": "Почта",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "F0vp2",
+                  "name": "loginEmailInput",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E2E8F0"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lkVfV",
+                      "name": "loginEmailPlaceholder",
+                      "fill": "#94A3B8",
+                      "content": "example@mail.com",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "OTF8r",
+                  "name": "loginPassLabel",
+                  "fill": "#0F172A",
+                  "content": "Пароль",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "PvALP",
+                  "name": "loginPassInput",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E2E8F0"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "0KC7r",
+                      "name": "loginPassPlaceholder",
+                      "fill": "#94A3B8",
+                      "content": "••••••••",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KPMiW",
+                  "name": "forgotRow",
+                  "width": "fill_container",
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6H2bL",
+                      "name": "forgotLink",
+                      "fill": "#6366F1",
+                      "content": "Не помню пароль",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NHU4D",
+                  "name": "loginBtn",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#6366F1",
+                  "cornerRadius": 10,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rzQff",
+                      "name": "loginBtnText",
+                      "fill": "#FFFFFF",
+                      "content": "Войти",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XNt8h",
+                  "name": "loginSwitch",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wAumt",
+                      "name": "loginSwitchText",
+                      "fill": "#64748B",
+                      "content": "Нет аккаунта? ",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MGa1x",
+                      "name": "loginSwitchLink",
+                      "fill": "#6366F1",
+                      "content": "Зарегистрироваться",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6dCqm",
+          "name": "loginFooter",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#E2E8F0"
+          },
+          "padding": 16,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "8hpEV",
+              "name": "loginFooterText",
+              "fill": "#94A3B8",
+              "content": "© 2025 potoki.io",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "diBqF",
+      "x": -3131,
+      "y": 0,
+      "name": "Admin - Регистрация",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "#F8FAFC",
+      "layout": "vertical",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "WshWR",
+          "name": "regHeader",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#E2E8F0"
+          },
+          "gap": 12,
+          "padding": 24,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "qVtKW",
+              "name": "regLogo",
+              "width": 40,
+              "height": 40,
+              "fill": "#6366F1",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "m7AaE",
+                  "name": "regLogoIcon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "droplets",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "r0AR1",
+              "name": "regBrand",
+              "fill": "#0F172A",
+              "content": "potoki.io",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "P0SP1",
+          "name": "regMain",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "bYVcs",
+              "name": "regCard",
+              "width": 400,
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E2E8F0"
+              },
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eKbwh",
+                  "name": "regTitle",
+                  "fill": "#0F172A",
+                  "content": "Регистрация",
+                  "fontFamily": "Inter",
+                  "fontSize": 28,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "xPrOh",
+                  "name": "regEmailLabel",
+                  "fill": "#0F172A",
+                  "content": "Почта",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "kSX6o",
+                  "name": "regEmailInput",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E2E8F0"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i9CPx",
+                      "name": "regEmailPh",
+                      "fill": "#94A3B8",
+                      "content": "example@mail.com",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "HejVC",
+                  "name": "regPassLabel",
+                  "fill": "#0F172A",
+                  "content": "Пароль",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "wp2XX",
+                  "name": "regPassInput",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E2E8F0"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i3RnA",
+                      "name": "regPassPh",
+                      "fill": "#94A3B8",
+                      "content": "••••••••",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "LMG9G",
+                  "name": "regPass2Label",
+                  "fill": "#0F172A",
+                  "content": "Повторите пароль",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "foEX9",
+                  "name": "regPass2Input",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E2E8F0"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cE4Yd",
+                      "name": "regPass2Ph",
+                      "fill": "#94A3B8",
+                      "content": "••••••••",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dp40J",
+                  "name": "regCheckRow",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VIO7c",
+                      "name": "regCheckbox",
+                      "width": 20,
+                      "height": 20,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E2E8F0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "LdpAG",
+                      "name": "regCheckText",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 320,
+                      "content": "Я соглашаюсь с условиями оферты и политики конфиденциальности",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OgELy",
+                  "name": "regBtn",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#6366F1",
+                  "cornerRadius": 10,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TP26d",
+                      "name": "regBtnText",
+                      "fill": "#FFFFFF",
+                      "content": "Зарегистрироваться",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PKXfm",
+                  "name": "regSwitch",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qrS0p",
+                      "name": "regSwitchText",
+                      "fill": "#64748B",
+                      "content": "Уже есть аккаунт? ",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "4HQqk",
+                      "name": "regSwitchLink",
+                      "fill": "#6366F1",
+                      "content": "Войти",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MzCi0",
+          "name": "regFooter",
+          "width": "fill_container",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#E2E8F0"
+          },
+          "padding": 16,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "72KZy",
+              "name": "regFooterText",
+              "fill": "#94A3B8",
+              "content": "© 2025 potoki.io",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         }
