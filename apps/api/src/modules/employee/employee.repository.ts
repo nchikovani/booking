@@ -3,14 +3,64 @@ import { Prisma } from '@repo/prisma';
 import { PRISMA } from '../prisma/prisma.module';
 import type { Employee, PrismaClient } from '@repo/prisma';
 
+type TransactionClient = Prisma.TransactionClient;
+
 export interface EmployeeServiceLink {
   serviceId: string;
   priceOverride?: unknown;
   durationMinutesOverride?: number | null;
 }
 
+const employeeScheduleInclude = {
+  days: {
+    include: { breaks: true },
+    orderBy: { dayOfWeek: 'asc' as const },
+  },
+  scheduleTemplate: {
+    include: {
+      days: {
+        include: { breaks: true },
+        orderBy: { dayOfWeek: 'asc' as const },
+      },
+    },
+  },
+} as const;
+
 export interface EmployeeWithServices extends Employee {
   employeeServices: EmployeeServiceLink[];
+  employeeSchedule?: {
+    id: string;
+    employeeId: string;
+    scheduleTemplateId: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    days: Array<{
+      id: string;
+      dayOfWeek: number;
+      startTimeMinutes: number;
+      endTimeMinutes: number;
+      breaks: Array<{
+        id: string;
+        startTimeMinutes: number;
+        endTimeMinutes: number;
+      }>;
+    }>;
+    scheduleTemplate: {
+      id: string;
+      name: string;
+      days: Array<{
+        id: string;
+        dayOfWeek: number;
+        startTimeMinutes: number;
+        endTimeMinutes: number;
+        breaks: Array<{
+          id: string;
+          startTimeMinutes: number;
+          endTimeMinutes: number;
+        }>;
+      }>;
+    } | null;
+  } | null;
 }
 
 export interface EmployeeListFilters {
@@ -73,6 +123,7 @@ export class EmployeeRepository {
         employeeServices: {
           select: { serviceId: true, priceOverride: true, durationMinutesOverride: true },
         },
+        employeeSchedule: { include: employeeScheduleInclude },
       },
     });
 
@@ -86,18 +137,25 @@ export class EmployeeRepository {
         employeeServices: {
           select: { serviceId: true, priceOverride: true, durationMinutesOverride: true },
         },
+        employeeSchedule: { include: employeeScheduleInclude },
       },
     });
     return employee as EmployeeWithServices | null;
   }
 
-  async findByIdAndBusiness(id: string, businessId: string): Promise<EmployeeWithServices | null> {
-    const employee = await this.prisma.employee.findFirst({
+  async findByIdAndBusiness(
+    id: string,
+    businessId: string,
+    tx?: TransactionClient,
+  ): Promise<EmployeeWithServices | null> {
+    const client = tx ?? this.prisma;
+    const employee = await client.employee.findFirst({
       where: { id, businessId },
       include: {
         employeeServices: {
           select: { serviceId: true, priceOverride: true, durationMinutesOverride: true },
         },
+        employeeSchedule: { include: employeeScheduleInclude },
       },
     });
     return employee as EmployeeWithServices | null;
@@ -130,24 +188,26 @@ export class EmployeeRepository {
   }
 
   /**
-   * Создаёт сотрудника и связи с услугами в одной транзакции.
+   * Создаёт сотрудника и связи с услугами. При tx — в рамках транзакции.
    */
   async createWithServiceLinks(
     data: CreateEmployeeData,
     items: { serviceId: string; priceOverride?: number; durationMinutesOverride?: number }[],
+    tx?: TransactionClient,
   ): Promise<EmployeeWithServices> {
-    return this.prisma.$transaction(async (tx) => {
-      const employee = await tx.employee.create({
+    const run = async (client: TransactionClient) => {
+      const employee = await client.employee.create({
         data,
         include: {
           employeeServices: {
             select: { serviceId: true, priceOverride: true, durationMinutesOverride: true },
           },
+          employeeSchedule: { include: employeeScheduleInclude },
         },
       });
       if (items.length > 0) {
         for (const item of items) {
-          await tx.employeeService.create({
+          await client.employeeService.create({
             data: {
               employeeId: employee.id,
               serviceId: item.serviceId,
@@ -156,28 +216,37 @@ export class EmployeeRepository {
             },
           });
         }
-        const withLinks = await tx.employee.findUnique({
+        const withLinks = await client.employee.findUnique({
           where: { id: employee.id },
           include: {
             employeeServices: {
               select: { serviceId: true, priceOverride: true, durationMinutesOverride: true },
             },
+            employeeSchedule: { include: employeeScheduleInclude },
           },
         });
         return withLinks as EmployeeWithServices;
       }
       return employee as EmployeeWithServices;
-    });
+    };
+    if (tx) return run(tx);
+    return this.prisma.$transaction(run);
   }
 
-  async update(id: string, data: UpdateEmployeeData): Promise<EmployeeWithServices> {
-    const employee = await this.prisma.employee.update({
+  async update(
+    id: string,
+    data: UpdateEmployeeData,
+    tx?: TransactionClient,
+  ): Promise<EmployeeWithServices> {
+    const client = tx ?? this.prisma;
+    const employee = await client.employee.update({
       where: { id },
       data,
       include: {
         employeeServices: {
           select: { serviceId: true, priceOverride: true, durationMinutesOverride: true },
         },
+        employeeSchedule: { include: employeeScheduleInclude },
       },
     });
     return employee as EmployeeWithServices;
@@ -191,18 +260,19 @@ export class EmployeeRepository {
 
   /**
    * Синхронизирует связи сотрудник ↔ услуги. Удаляет старые, создаёт новые.
-   * При пустом items — только удаление.
+   * При пустом items — только удаление. При tx — в рамках транзакции.
    */
   async syncEmployeeServiceLinks(
     employeeId: string,
     items: { serviceId: string; priceOverride?: number; durationMinutesOverride?: number }[],
+    tx?: TransactionClient,
   ): Promise<void> {
-    await this.prisma.$transaction(async (tx) => {
-      await tx.employeeService.deleteMany({
+    const run = async (client: TransactionClient) => {
+      await client.employeeService.deleteMany({
         where: { employeeId },
       });
       for (const item of items) {
-        await tx.employeeService.create({
+        await client.employeeService.create({
           data: {
             employeeId,
             serviceId: item.serviceId,
@@ -211,7 +281,9 @@ export class EmployeeRepository {
           },
         });
       }
-    });
+    };
+    if (tx) return run(tx);
+    return this.prisma.$transaction(run);
   }
 
   /**
@@ -240,14 +312,26 @@ export class EmployeeRepository {
   }
 
   /**
+   * Выполняет callback в транзакции. Используется сервисом для оркестрации нескольких операций.
+   */
+  async runInTransaction<T>(fn: (tx: TransactionClient) => Promise<T>): Promise<T> {
+    return this.prisma.$transaction(fn);
+  }
+
+  /**
    * Проверяет, что все serviceIds принадлежат бизнесу.
    * @returns true если все ids валидны
    */
-  async validateServiceIdsBelongToBusiness(ids: string[], businessId: string): Promise<boolean> {
+  async validateServiceIdsBelongToBusiness(
+    ids: string[],
+    businessId: string,
+    tx?: TransactionClient,
+  ): Promise<boolean> {
     if (ids.length === 0) return true;
 
+    const client = tx ?? this.prisma;
     const uniqueIds = [...new Set(ids)];
-    const found = await this.prisma.service.findMany({
+    const found = await client.service.findMany({
       where: { id: { in: uniqueIds }, businessId },
       select: { id: true },
     });

@@ -199,6 +199,58 @@ exports.Prisma.EmployeeServiceScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ScheduleTemplateScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ScheduleTemplateDayScalarFieldEnum = {
+  id: 'id',
+  scheduleTemplateId: 'scheduleTemplateId',
+  dayOfWeek: 'dayOfWeek',
+  startTimeMinutes: 'startTimeMinutes',
+  endTimeMinutes: 'endTimeMinutes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ScheduleTemplateDayBreakScalarFieldEnum = {
+  id: 'id',
+  scheduleTemplateDayId: 'scheduleTemplateDayId',
+  startTimeMinutes: 'startTimeMinutes',
+  endTimeMinutes: 'endTimeMinutes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.EmployeeScheduleScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  scheduleTemplateId: 'scheduleTemplateId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EmployeeScheduleDayScalarFieldEnum = {
+  id: 'id',
+  employeeScheduleId: 'employeeScheduleId',
+  dayOfWeek: 'dayOfWeek',
+  startTimeMinutes: 'startTimeMinutes',
+  endTimeMinutes: 'endTimeMinutes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EmployeeScheduleDayBreakScalarFieldEnum = {
+  id: 'id',
+  employeeScheduleDayId: 'employeeScheduleDayId',
+  startTimeMinutes: 'startTimeMinutes',
+  endTimeMinutes: 'endTimeMinutes',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.AuthProviderScalarFieldEnum = {
   id: 'id',
   adminUserId: 'adminUserId',
@@ -272,6 +324,12 @@ exports.Prisma.ModelName = {
   Service: 'Service',
   Employee: 'Employee',
   EmployeeService: 'EmployeeService',
+  ScheduleTemplate: 'ScheduleTemplate',
+  ScheduleTemplateDay: 'ScheduleTemplateDay',
+  ScheduleTemplateDayBreak: 'ScheduleTemplateDayBreak',
+  EmployeeSchedule: 'EmployeeSchedule',
+  EmployeeScheduleDay: 'EmployeeScheduleDay',
+  EmployeeScheduleDayBreak: 'EmployeeScheduleDayBreak',
   AuthProvider: 'AuthProvider',
   UserCredential: 'UserCredential',
   RefreshToken: 'RefreshToken',

@@ -518,4 +518,258 @@ describe('Admin Employees (e2e)', () => {
       await request(app.getHttpServer()).get(getEmployeesUrl()).expect(401);
     });
   });
+
+  describe('Employee schedule (Feature 1.5)', () => {
+    let scheduleTemplateId: string;
+    // UUID шаблона другого бизнеса (валидный v4, не существует) — для тестов 404
+    const otherBusinessTemplateId = '00000000-0000-4000-8000-000000000001';
+
+    beforeAll(async () => {
+      const tplRes = await agent
+        .post(`${businessUrl}/${businessId}/schedule-templates`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'График для сотрудников',
+          days: [{ dayOfWeek: 1, startTime: '09:00', endTime: '18:00', breaks: [] }],
+        })
+        .expect(201);
+      scheduleTemplateId = tplRes.body.data.id;
+    });
+
+    it('TC-14: POST /employees с schedule.scheduleTemplateId → 201, schedule в ответе', async () => {
+      const res = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Сотрудник с шаблоном',
+          schedule: { scheduleTemplateId },
+        })
+        .expect(201);
+
+      expect(res.body.status).toBe('success');
+      expect(res.body.data.schedule).toMatchObject({
+        type: 'template',
+        scheduleTemplateId,
+        scheduleTemplateName: 'График для сотрудников',
+        days: expect.any(Array),
+      });
+    });
+
+    it('TC-15: POST /employees с schedule.days → 201, type: custom', async () => {
+      const res = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Сотрудник с индивидуальным графиком',
+          schedule: {
+            days: [
+              {
+                dayOfWeek: 1,
+                startTime: '09:00',
+                endTime: '17:00',
+                breaks: [{ startTime: '13:00', endTime: '14:00' }],
+              },
+            ],
+          },
+        })
+        .expect(201);
+
+      expect(res.body.status).toBe('success');
+      expect(res.body.data.schedule).toMatchObject({
+        type: 'custom',
+        days: expect.any(Array),
+      });
+      expect(res.body.data.schedule.days).toHaveLength(1);
+    });
+
+    it('TC-19: POST /employees с schedule: { days: [] } → 201, сотрудник без рабочих дней', async () => {
+      const res = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Сотрудник без рабочих дней',
+          schedule: { days: [] },
+        })
+        .expect(201);
+
+      expect(res.body.status).toBe('success');
+      expect(res.body.data.schedule).toMatchObject({
+        type: 'custom',
+        days: [],
+      });
+    });
+
+    it('TC-16: PATCH /employees/:id с schedule: null → 200, график удалён', async () => {
+      const empRes = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'На удаление графика',
+          schedule: { scheduleTemplateId },
+        })
+        .expect(201);
+      const empId = empRes.body.data.id;
+
+      const res = await agent
+        .patch(`${getEmployeesUrl()}/${empId}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({ schedule: null })
+        .expect(200);
+
+      expect(res.body.status).toBe('success');
+      expect(res.body.data.schedule).toBeNull();
+    });
+
+    it('TC-17: PATCH /employees/:id с scheduleTemplateId другого бизнеса → 404', async () => {
+      const empRes = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({ name: 'Для теста 404' })
+        .expect(201);
+      const empId = empRes.body.data.id;
+
+      await agent
+        .patch(`${getEmployeesUrl()}/${empId}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({ schedule: { scheduleTemplateId: otherBusinessTemplateId } })
+        .expect(404)
+        .expect((res) => {
+          expect(res.body.status).toBe('error');
+          expect(res.body.error.code).toBe('NOT_FOUND');
+        });
+    });
+
+    it('TC-17a: POST /employees с scheduleTemplateId другого бизнеса → 404', async () => {
+      await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Тест',
+          schedule: { scheduleTemplateId: otherBusinessTemplateId },
+        })
+        .expect(404)
+        .expect((res) => {
+          expect(res.body.status).toBe('error');
+          expect(res.body.error.code).toBe('NOT_FOUND');
+        });
+    });
+
+    it('TC-13: schedule: {} (пустой) → 400', async () => {
+      await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Тест',
+          schedule: {},
+        })
+        .expect(400)
+        .expect((res) => {
+          expect(res.body.status).toBe('error');
+          expect(res.body.error.code).toBe('VALIDATION_FAILED');
+        });
+    });
+
+    it('schedule с обоими полями → 400', async () => {
+      await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Тест',
+          schedule: {
+            scheduleTemplateId,
+            days: [{ dayOfWeek: 1, startTime: '09:00', endTime: '18:00', breaks: [] }],
+          },
+        })
+        .expect(400)
+        .expect((res) => {
+          expect(res.body.status).toBe('error');
+          expect(res.body.error.code).toBe('VALIDATION_FAILED');
+        });
+    });
+
+    it('PATCH с schedule.days на сотруднике с шаблоном → тип меняется на custom', async () => {
+      const empRes = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Для смены типа',
+          schedule: { scheduleTemplateId },
+        })
+        .expect(201);
+      const empId = empRes.body.data.id;
+      expect(empRes.body.data.schedule.type).toBe('template');
+
+      const res = await agent
+        .patch(`${getEmployeesUrl()}/${empId}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          schedule: {
+            days: [{ dayOfWeek: 2, startTime: '10:00', endTime: '18:00', breaks: [] }],
+          },
+        })
+        .expect(200);
+
+      expect(res.body.data.schedule.type).toBe('custom');
+      expect(res.body.data.schedule.days).toHaveLength(1);
+      expect(res.body.data.schedule.days[0].dayOfWeek).toBe(2);
+    });
+
+    it('PATCH с schedule.scheduleTemplateId на сотруднике с custom-графиком → тип меняется на template', async () => {
+      const empRes = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Для смены на шаблон',
+          schedule: {
+            days: [{ dayOfWeek: 3, startTime: '09:00', endTime: '17:00', breaks: [] }],
+          },
+        })
+        .expect(201);
+      const empId = empRes.body.data.id;
+      expect(empRes.body.data.schedule.type).toBe('custom');
+
+      const res = await agent
+        .patch(`${getEmployeesUrl()}/${empId}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({ schedule: { scheduleTemplateId } })
+        .expect(200);
+
+      expect(res.body.data.schedule.type).toBe('template');
+      expect(res.body.data.schedule.scheduleTemplateId).toBe(scheduleTemplateId);
+    });
+
+    it('TC-6: DELETE шаблона → у сотрудников с этим шаблоном schedule: null', async () => {
+      const tplRes = await agent
+        .post(`${businessUrl}/${businessId}/schedule-templates`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'График на удаление',
+          days: [{ dayOfWeek: 1, startTime: '09:00', endTime: '18:00', breaks: [] }],
+        })
+        .expect(201);
+      const tplId = tplRes.body.data.id;
+
+      const empRes = await agent
+        .post(getEmployeesUrl())
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .send({
+          name: 'Сотрудник с удаляемым шаблоном',
+          schedule: { scheduleTemplateId: tplId },
+        })
+        .expect(201);
+      const empId = empRes.body.data.id;
+
+      await agent
+        .delete(`${businessUrl}/${businessId}/schedule-templates/${tplId}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .expect(200);
+
+      const getRes = await agent
+        .get(`${getEmployeesUrl()}/${empId}`)
+        .set('Authorization', `Bearer ${getMainUserToken()}`)
+        .expect(200);
+
+      expect(getRes.body.data.schedule).toBeNull();
+    });
+  });
 });

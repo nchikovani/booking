@@ -7,6 +7,11 @@ import type { EmployeeListQueryDto } from './dto/employee-list-query.dto';
 import { EmployeeRepository } from './employee.repository';
 import type { EmployeeWithServices } from './employee.repository';
 import { StorageService } from '../storage/storage.service';
+import {
+  EmployeeScheduleService,
+  type ScheduleResponse,
+} from '../employee-schedule/employee-schedule.service';
+import type { EmployeeScheduleWithDetails } from '../employee-schedule/employee-schedule.repository';
 
 export interface ServiceLinkResponse {
   serviceId: string;
@@ -20,6 +25,7 @@ export interface EmployeeResponse {
   specialization: string | null;
   imageUrl: string | null;
   services: ServiceLinkResponse[];
+  schedule: ScheduleResponse | null;
   createdAt: string;
   updatedAt?: string;
 }
@@ -29,6 +35,7 @@ export class EmployeeService {
   constructor(
     private readonly repository: EmployeeRepository,
     private readonly storageService: StorageService,
+    private readonly employeeScheduleService: EmployeeScheduleService,
   ) {}
 
   private toEmployeeResponse(
@@ -40,12 +47,16 @@ export class EmployeeService {
       priceOverride: es.priceOverride != null ? String(es.priceOverride) : null,
       durationMinutesOverride: es.durationMinutesOverride ?? null,
     }));
+    const schedule = this.employeeScheduleService.toScheduleResponse(
+      (employee.employeeSchedule ?? null) as EmployeeScheduleWithDetails | null,
+    );
     const base = {
       id: employee.id,
       name: employee.name,
       specialization: employee.specialization ?? null,
       imageUrl: employee.imagePath ? this.storageService.getPublicUrl(employee.imagePath) : null,
       services,
+      schedule,
       createdAt: employee.createdAt.toISOString(),
     };
     if (options?.includeUpdatedAt) {
@@ -78,30 +89,36 @@ export class EmployeeService {
       (s, i, arr) => arr.findIndex((x) => x.serviceId === s.serviceId) === i,
     );
     const serviceIds = deduped.map((s) => s.serviceId);
-
-    if (serviceIds.length > 0) {
-      const valid = await this.repository.validateServiceIdsBelongToBusiness(
-        serviceIds,
-        businessId,
-      );
-      if (!valid) throw AppException.create(ErrorCode.NOT_FOUND);
-    }
-
     const items = deduped.map((s) => ({
       serviceId: s.serviceId,
       priceOverride: s.priceOverride,
       durationMinutesOverride: s.durationMinutesOverride,
     }));
 
-    const employee = await this.repository.createWithServiceLinks(
-      {
-        businessId,
-        name: dto.name,
-        specialization: dto.specialization ?? null,
-      },
-      items,
-    );
-    return this.toEmployeeResponse(employee, { includeUpdatedAt: true });
+    const employee = await this.repository.runInTransaction(async (tx) => {
+      if (serviceIds.length > 0) {
+        const valid = await this.repository.validateServiceIdsBelongToBusiness(
+          serviceIds,
+          businessId,
+          tx,
+        );
+        if (!valid) throw AppException.create(ErrorCode.NOT_FOUND);
+      }
+      const emp = await this.repository.createWithServiceLinks(
+        {
+          businessId,
+          name: dto.name,
+          specialization: dto.specialization ?? null,
+        },
+        items,
+        tx,
+      );
+      if (dto.schedule !== undefined) {
+        await this.employeeScheduleService.syncSchedule(emp.id, businessId, dto.schedule, tx);
+      }
+      return this.repository.findByIdAndBusiness(emp.id, businessId, tx);
+    });
+    return this.toEmployeeResponse(employee!, { includeUpdatedAt: true });
   }
 
   async update(id: string, businessId: string, dto: UpdateEmployeeDto): Promise<EmployeeResponse> {
@@ -109,39 +126,49 @@ export class EmployeeService {
     if (!existing) throw AppException.create(ErrorCode.NOT_FOUND);
 
     const hasServices = 'services' in dto && dto.services !== undefined;
+    const hasSchedule = 'schedule' in dto;
 
-    if (hasServices) {
-      const services = dto.services ?? [];
-      const deduped = services.filter(
-        (s, i, arr) => arr.findIndex((x) => x.serviceId === s.serviceId) === i,
-      );
-      const serviceIds = deduped.map((s) => s.serviceId);
-      if (serviceIds.length > 0) {
-        const valid = await this.repository.validateServiceIdsBelongToBusiness(
-          serviceIds,
-          businessId,
+    const employee = await this.repository.runInTransaction(async (tx) => {
+      if (hasServices) {
+        const services = dto.services ?? [];
+        const deduped = services.filter(
+          (s, i, arr) => arr.findIndex((x) => x.serviceId === s.serviceId) === i,
         );
-        if (!valid) throw AppException.create(ErrorCode.NOT_FOUND);
+        const serviceIds = deduped.map((s) => s.serviceId);
+        if (serviceIds.length > 0) {
+          const valid = await this.repository.validateServiceIdsBelongToBusiness(
+            serviceIds,
+            businessId,
+            tx,
+          );
+          if (!valid) throw AppException.create(ErrorCode.NOT_FOUND);
+        }
+        const items = deduped.map((s) => ({
+          serviceId: s.serviceId,
+          priceOverride: s.priceOverride,
+          durationMinutesOverride: s.durationMinutesOverride,
+        }));
+        await this.repository.syncEmployeeServiceLinks(id, items, tx);
       }
-      const items = deduped.map((s) => ({
-        serviceId: s.serviceId,
-        priceOverride: s.priceOverride,
-        durationMinutesOverride: s.durationMinutesOverride,
-      }));
-      await this.repository.syncEmployeeServiceLinks(id, items);
-    }
 
-    const data: Parameters<typeof this.repository.update>[1] = {};
-    if (dto.name !== undefined) data.name = dto.name;
-    if (dto.specialization !== undefined)
-      data.specialization = dto.specialization === null ? null : dto.specialization;
+      const data: Parameters<typeof this.repository.update>[1] = {};
+      if (dto.name !== undefined) data.name = dto.name;
+      if (dto.specialization !== undefined)
+        data.specialization = dto.specialization === null ? null : dto.specialization;
 
-    const hasDataUpdates = Object.keys(data).length > 0;
-    const employee = hasDataUpdates
-      ? await this.repository.update(id, data)
-      : hasServices
-        ? await this.repository.findByIdAndBusiness(id, businessId)
-        : existing;
+      const hasDataUpdates = Object.keys(data).length > 0;
+      const updated = hasDataUpdates
+        ? await this.repository.update(id, data, tx)
+        : hasServices
+          ? await this.repository.findByIdAndBusiness(id, businessId)
+          : existing;
+
+      if (hasSchedule) {
+        await this.employeeScheduleService.syncSchedule(id, businessId, dto.schedule ?? null, tx);
+      }
+
+      return hasSchedule ? this.repository.findByIdAndBusiness(id, businessId, tx) : updated;
+    });
 
     return this.toEmployeeResponse(employee!, { includeUpdatedAt: true });
   }

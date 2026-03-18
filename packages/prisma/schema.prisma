@@ -51,10 +51,11 @@ model Business {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  businessMembers   BusinessMember[]
-  serviceCategories ServiceCategory[]
-  services          Service[]
-  employees         Employee[]
+  businessMembers    BusinessMember[]
+  serviceCategories  ServiceCategory[]
+  services           Service[]
+  employees          Employee[]
+  scheduleTemplates   ScheduleTemplate[]
 
   @@map("businesses")
 }
@@ -121,8 +122,9 @@ model Employee {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
-  business         Business         @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  employeeServices EmployeeService[]
+  business          Business          @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  employeeServices  EmployeeService[]
+  employeeSchedule  EmployeeSchedule?
 
   @@index([businessId])
   @@map("employees")
@@ -143,6 +145,97 @@ model EmployeeService {
   @@index([employeeId])
   @@index([serviceId])
   @@map("employee_services")
+}
+
+model ScheduleTemplate {
+  id         String   @id @default(uuid())
+  businessId String   @map("business_id")
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  business          Business           @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  days              ScheduleTemplateDay[]
+  employeeSchedules EmployeeSchedule[]
+
+  @@index([businessId])
+  @@map("schedule_templates")
+}
+
+model ScheduleTemplateDay {
+  id                 String   @id @default(uuid())
+  scheduleTemplateId String   @map("schedule_template_id")
+  dayOfWeek          Int      @map("day_of_week")
+  startTimeMinutes   Int      @map("start_time_minutes")
+  endTimeMinutes     Int      @map("end_time_minutes")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  scheduleTemplate ScheduleTemplate       @relation(fields: [scheduleTemplateId], references: [id], onDelete: Cascade)
+  breaks           ScheduleTemplateDayBreak[]
+
+  @@unique([scheduleTemplateId, dayOfWeek])
+  @@index([scheduleTemplateId])
+  @@map("schedule_template_days")
+}
+
+model ScheduleTemplateDayBreak {
+  id                    String   @id @default(uuid())
+  scheduleTemplateDayId  String   @map("schedule_template_day_id")
+  startTimeMinutes      Int      @map("start_time_minutes")
+  endTimeMinutes        Int      @map("end_time_minutes")
+  createdAt             DateTime @default(now())
+
+  scheduleTemplateDay ScheduleTemplateDay @relation(fields: [scheduleTemplateDayId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleTemplateDayId])
+  @@map("schedule_template_day_breaks")
+}
+
+model EmployeeSchedule {
+  id                 String    @id @default(uuid())
+  employeeId         String    @unique @map("employee_id")
+  scheduleTemplateId String?   @map("schedule_template_id")
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  employee         Employee          @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  scheduleTemplate ScheduleTemplate? @relation(fields: [scheduleTemplateId], references: [id], onDelete: SetNull)
+  days             EmployeeScheduleDay[]
+
+  @@index([employeeId])
+  @@index([scheduleTemplateId])
+  @@map("employee_schedules")
+}
+
+model EmployeeScheduleDay {
+  id                 String   @id @default(uuid())
+  employeeScheduleId String   @map("employee_schedule_id")
+  dayOfWeek          Int      @map("day_of_week")
+  startTimeMinutes   Int      @map("start_time_minutes")
+  endTimeMinutes     Int      @map("end_time_minutes")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  employeeSchedule EmployeeSchedule       @relation(fields: [employeeScheduleId], references: [id], onDelete: Cascade)
+  breaks           EmployeeScheduleDayBreak[]
+
+  @@unique([employeeScheduleId, dayOfWeek])
+  @@index([employeeScheduleId])
+  @@map("employee_schedule_days")
+}
+
+model EmployeeScheduleDayBreak {
+  id                    String   @id @default(uuid())
+  employeeScheduleDayId String   @map("employee_schedule_day_id")
+  startTimeMinutes      Int      @map("start_time_minutes")
+  endTimeMinutes        Int      @map("end_time_minutes")
+  createdAt             DateTime @default(now())
+
+  employeeScheduleDay EmployeeScheduleDay @relation(fields: [employeeScheduleDayId], references: [id], onDelete: Cascade)
+
+  @@index([employeeScheduleDayId])
+  @@map("employee_schedule_day_breaks")
 }
 
 model AuthProvider {

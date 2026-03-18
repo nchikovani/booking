@@ -10,6 +10,8 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { ServiceLinkDto } from './service-link.dto';
+import { ScheduleDto } from '../../employee-schedule/dto/schedule.dto';
+import { IsScheduleDtoValid } from '../../../common/validators/schedule-dto.validator';
 
 function emptyStringToNull({ value }: TransformFnParams): string | null | undefined {
   if (value === '') return null;
@@ -38,4 +40,11 @@ export class UpdateEmployeeDto {
   @Type(() => ServiceLinkDto)
   @ArrayMaxSize(500)
   services?: ServiceLinkDto[];
+
+  @ApiPropertyOptional({ type: ScheduleDto, nullable: true })
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => ScheduleDto)
+  @IsScheduleDtoValid()
+  schedule?: ScheduleDto | null;
 }

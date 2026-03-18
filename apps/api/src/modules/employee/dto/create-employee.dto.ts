@@ -10,6 +10,8 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ServiceLinkDto } from './service-link.dto';
+import { ScheduleDto } from '../../employee-schedule/dto/schedule.dto';
+import { IsScheduleDtoValid } from '../../../common/validators/schedule-dto.validator';
 
 export class CreateEmployeeDto {
   @ApiProperty({ minLength: 1, maxLength: 200 })
@@ -31,4 +33,11 @@ export class CreateEmployeeDto {
   @Type(() => ServiceLinkDto)
   @ArrayMaxSize(500)
   services?: ServiceLinkDto[];
+
+  @ApiPropertyOptional({ type: ScheduleDto, nullable: true })
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => ScheduleDto)
+  @IsScheduleDtoValid()
+  schedule?: ScheduleDto | null;
 }

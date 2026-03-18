@@ -49,6 +49,36 @@ export type Employee = $Result.DefaultSelection<Prisma.$EmployeePayload>
  */
 export type EmployeeService = $Result.DefaultSelection<Prisma.$EmployeeServicePayload>
 /**
+ * Model ScheduleTemplate
+ * 
+ */
+export type ScheduleTemplate = $Result.DefaultSelection<Prisma.$ScheduleTemplatePayload>
+/**
+ * Model ScheduleTemplateDay
+ * 
+ */
+export type ScheduleTemplateDay = $Result.DefaultSelection<Prisma.$ScheduleTemplateDayPayload>
+/**
+ * Model ScheduleTemplateDayBreak
+ * 
+ */
+export type ScheduleTemplateDayBreak = $Result.DefaultSelection<Prisma.$ScheduleTemplateDayBreakPayload>
+/**
+ * Model EmployeeSchedule
+ * 
+ */
+export type EmployeeSchedule = $Result.DefaultSelection<Prisma.$EmployeeSchedulePayload>
+/**
+ * Model EmployeeScheduleDay
+ * 
+ */
+export type EmployeeScheduleDay = $Result.DefaultSelection<Prisma.$EmployeeScheduleDayPayload>
+/**
+ * Model EmployeeScheduleDayBreak
+ * 
+ */
+export type EmployeeScheduleDayBreak = $Result.DefaultSelection<Prisma.$EmployeeScheduleDayBreakPayload>
+/**
  * Model AuthProvider
  * 
  */
@@ -288,6 +318,66 @@ export class PrismaClient<
     * ```
     */
   get employeeService(): Prisma.EmployeeServiceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.scheduleTemplate`: Exposes CRUD operations for the **ScheduleTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ScheduleTemplates
+    * const scheduleTemplates = await prisma.scheduleTemplate.findMany()
+    * ```
+    */
+  get scheduleTemplate(): Prisma.ScheduleTemplateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.scheduleTemplateDay`: Exposes CRUD operations for the **ScheduleTemplateDay** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ScheduleTemplateDays
+    * const scheduleTemplateDays = await prisma.scheduleTemplateDay.findMany()
+    * ```
+    */
+  get scheduleTemplateDay(): Prisma.ScheduleTemplateDayDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.scheduleTemplateDayBreak`: Exposes CRUD operations for the **ScheduleTemplateDayBreak** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ScheduleTemplateDayBreaks
+    * const scheduleTemplateDayBreaks = await prisma.scheduleTemplateDayBreak.findMany()
+    * ```
+    */
+  get scheduleTemplateDayBreak(): Prisma.ScheduleTemplateDayBreakDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.employeeSchedule`: Exposes CRUD operations for the **EmployeeSchedule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmployeeSchedules
+    * const employeeSchedules = await prisma.employeeSchedule.findMany()
+    * ```
+    */
+  get employeeSchedule(): Prisma.EmployeeScheduleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.employeeScheduleDay`: Exposes CRUD operations for the **EmployeeScheduleDay** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmployeeScheduleDays
+    * const employeeScheduleDays = await prisma.employeeScheduleDay.findMany()
+    * ```
+    */
+  get employeeScheduleDay(): Prisma.EmployeeScheduleDayDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.employeeScheduleDayBreak`: Exposes CRUD operations for the **EmployeeScheduleDayBreak** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmployeeScheduleDayBreaks
+    * const employeeScheduleDayBreaks = await prisma.employeeScheduleDayBreak.findMany()
+    * ```
+    */
+  get employeeScheduleDayBreak(): Prisma.EmployeeScheduleDayBreakDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.authProvider`: Exposes CRUD operations for the **AuthProvider** model.
@@ -786,6 +876,12 @@ export namespace Prisma {
     Service: 'Service',
     Employee: 'Employee',
     EmployeeService: 'EmployeeService',
+    ScheduleTemplate: 'ScheduleTemplate',
+    ScheduleTemplateDay: 'ScheduleTemplateDay',
+    ScheduleTemplateDayBreak: 'ScheduleTemplateDayBreak',
+    EmployeeSchedule: 'EmployeeSchedule',
+    EmployeeScheduleDay: 'EmployeeScheduleDay',
+    EmployeeScheduleDayBreak: 'EmployeeScheduleDayBreak',
     AuthProvider: 'AuthProvider',
     UserCredential: 'UserCredential',
     RefreshToken: 'RefreshToken',
@@ -809,7 +905,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "adminUser" | "business" | "businessMember" | "serviceCategory" | "service" | "employee" | "employeeService" | "authProvider" | "userCredential" | "refreshToken" | "loginAttempt" | "passwordResetToken"
+      modelProps: "adminUser" | "business" | "businessMember" | "serviceCategory" | "service" | "employee" | "employeeService" | "scheduleTemplate" | "scheduleTemplateDay" | "scheduleTemplateDayBreak" | "employeeSchedule" | "employeeScheduleDay" | "employeeScheduleDayBreak" | "authProvider" | "userCredential" | "refreshToken" | "loginAttempt" | "passwordResetToken"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1331,6 +1427,450 @@ export namespace Prisma {
           }
         }
       }
+      ScheduleTemplate: {
+        payload: Prisma.$ScheduleTemplatePayload<ExtArgs>
+        fields: Prisma.ScheduleTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ScheduleTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ScheduleTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.ScheduleTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ScheduleTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.ScheduleTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.ScheduleTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.ScheduleTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ScheduleTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.ScheduleTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>
+          }
+          update: {
+            args: Prisma.ScheduleTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.ScheduleTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ScheduleTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ScheduleTemplateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>[]
+          }
+          upsert: {
+            args: Prisma.ScheduleTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.ScheduleTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateScheduleTemplate>
+          }
+          groupBy: {
+            args: Prisma.ScheduleTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ScheduleTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      ScheduleTemplateDay: {
+        payload: Prisma.$ScheduleTemplateDayPayload<ExtArgs>
+        fields: Prisma.ScheduleTemplateDayFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ScheduleTemplateDayFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ScheduleTemplateDayFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>
+          }
+          findFirst: {
+            args: Prisma.ScheduleTemplateDayFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ScheduleTemplateDayFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>
+          }
+          findMany: {
+            args: Prisma.ScheduleTemplateDayFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>[]
+          }
+          create: {
+            args: Prisma.ScheduleTemplateDayCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>
+          }
+          createMany: {
+            args: Prisma.ScheduleTemplateDayCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ScheduleTemplateDayCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>[]
+          }
+          delete: {
+            args: Prisma.ScheduleTemplateDayDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>
+          }
+          update: {
+            args: Prisma.ScheduleTemplateDayUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>
+          }
+          deleteMany: {
+            args: Prisma.ScheduleTemplateDayDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ScheduleTemplateDayUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ScheduleTemplateDayUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>[]
+          }
+          upsert: {
+            args: Prisma.ScheduleTemplateDayUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayPayload>
+          }
+          aggregate: {
+            args: Prisma.ScheduleTemplateDayAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateScheduleTemplateDay>
+          }
+          groupBy: {
+            args: Prisma.ScheduleTemplateDayGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleTemplateDayGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ScheduleTemplateDayCountArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleTemplateDayCountAggregateOutputType> | number
+          }
+        }
+      }
+      ScheduleTemplateDayBreak: {
+        payload: Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>
+        fields: Prisma.ScheduleTemplateDayBreakFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ScheduleTemplateDayBreakFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ScheduleTemplateDayBreakFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>
+          }
+          findFirst: {
+            args: Prisma.ScheduleTemplateDayBreakFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ScheduleTemplateDayBreakFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>
+          }
+          findMany: {
+            args: Prisma.ScheduleTemplateDayBreakFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>[]
+          }
+          create: {
+            args: Prisma.ScheduleTemplateDayBreakCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>
+          }
+          createMany: {
+            args: Prisma.ScheduleTemplateDayBreakCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ScheduleTemplateDayBreakCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>[]
+          }
+          delete: {
+            args: Prisma.ScheduleTemplateDayBreakDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>
+          }
+          update: {
+            args: Prisma.ScheduleTemplateDayBreakUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>
+          }
+          deleteMany: {
+            args: Prisma.ScheduleTemplateDayBreakDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ScheduleTemplateDayBreakUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ScheduleTemplateDayBreakUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>[]
+          }
+          upsert: {
+            args: Prisma.ScheduleTemplateDayBreakUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleTemplateDayBreakPayload>
+          }
+          aggregate: {
+            args: Prisma.ScheduleTemplateDayBreakAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateScheduleTemplateDayBreak>
+          }
+          groupBy: {
+            args: Prisma.ScheduleTemplateDayBreakGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleTemplateDayBreakGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ScheduleTemplateDayBreakCountArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleTemplateDayBreakCountAggregateOutputType> | number
+          }
+        }
+      }
+      EmployeeSchedule: {
+        payload: Prisma.$EmployeeSchedulePayload<ExtArgs>
+        fields: Prisma.EmployeeScheduleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EmployeeScheduleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EmployeeScheduleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>
+          }
+          findFirst: {
+            args: Prisma.EmployeeScheduleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EmployeeScheduleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>
+          }
+          findMany: {
+            args: Prisma.EmployeeScheduleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>[]
+          }
+          create: {
+            args: Prisma.EmployeeScheduleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>
+          }
+          createMany: {
+            args: Prisma.EmployeeScheduleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EmployeeScheduleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>[]
+          }
+          delete: {
+            args: Prisma.EmployeeScheduleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>
+          }
+          update: {
+            args: Prisma.EmployeeScheduleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>
+          }
+          deleteMany: {
+            args: Prisma.EmployeeScheduleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EmployeeScheduleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EmployeeScheduleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>[]
+          }
+          upsert: {
+            args: Prisma.EmployeeScheduleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeSchedulePayload>
+          }
+          aggregate: {
+            args: Prisma.EmployeeScheduleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEmployeeSchedule>
+          }
+          groupBy: {
+            args: Prisma.EmployeeScheduleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EmployeeScheduleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EmployeeScheduleCountArgs<ExtArgs>
+            result: $Utils.Optional<EmployeeScheduleCountAggregateOutputType> | number
+          }
+        }
+      }
+      EmployeeScheduleDay: {
+        payload: Prisma.$EmployeeScheduleDayPayload<ExtArgs>
+        fields: Prisma.EmployeeScheduleDayFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EmployeeScheduleDayFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EmployeeScheduleDayFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>
+          }
+          findFirst: {
+            args: Prisma.EmployeeScheduleDayFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EmployeeScheduleDayFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>
+          }
+          findMany: {
+            args: Prisma.EmployeeScheduleDayFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>[]
+          }
+          create: {
+            args: Prisma.EmployeeScheduleDayCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>
+          }
+          createMany: {
+            args: Prisma.EmployeeScheduleDayCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EmployeeScheduleDayCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>[]
+          }
+          delete: {
+            args: Prisma.EmployeeScheduleDayDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>
+          }
+          update: {
+            args: Prisma.EmployeeScheduleDayUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>
+          }
+          deleteMany: {
+            args: Prisma.EmployeeScheduleDayDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EmployeeScheduleDayUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EmployeeScheduleDayUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>[]
+          }
+          upsert: {
+            args: Prisma.EmployeeScheduleDayUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayPayload>
+          }
+          aggregate: {
+            args: Prisma.EmployeeScheduleDayAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEmployeeScheduleDay>
+          }
+          groupBy: {
+            args: Prisma.EmployeeScheduleDayGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EmployeeScheduleDayGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EmployeeScheduleDayCountArgs<ExtArgs>
+            result: $Utils.Optional<EmployeeScheduleDayCountAggregateOutputType> | number
+          }
+        }
+      }
+      EmployeeScheduleDayBreak: {
+        payload: Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>
+        fields: Prisma.EmployeeScheduleDayBreakFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EmployeeScheduleDayBreakFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EmployeeScheduleDayBreakFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>
+          }
+          findFirst: {
+            args: Prisma.EmployeeScheduleDayBreakFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EmployeeScheduleDayBreakFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>
+          }
+          findMany: {
+            args: Prisma.EmployeeScheduleDayBreakFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>[]
+          }
+          create: {
+            args: Prisma.EmployeeScheduleDayBreakCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>
+          }
+          createMany: {
+            args: Prisma.EmployeeScheduleDayBreakCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EmployeeScheduleDayBreakCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>[]
+          }
+          delete: {
+            args: Prisma.EmployeeScheduleDayBreakDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>
+          }
+          update: {
+            args: Prisma.EmployeeScheduleDayBreakUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>
+          }
+          deleteMany: {
+            args: Prisma.EmployeeScheduleDayBreakDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EmployeeScheduleDayBreakUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EmployeeScheduleDayBreakUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>[]
+          }
+          upsert: {
+            args: Prisma.EmployeeScheduleDayBreakUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmployeeScheduleDayBreakPayload>
+          }
+          aggregate: {
+            args: Prisma.EmployeeScheduleDayBreakAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEmployeeScheduleDayBreak>
+          }
+          groupBy: {
+            args: Prisma.EmployeeScheduleDayBreakGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EmployeeScheduleDayBreakGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EmployeeScheduleDayBreakCountArgs<ExtArgs>
+            result: $Utils.Optional<EmployeeScheduleDayBreakCountAggregateOutputType> | number
+          }
+        }
+      }
       AuthProvider: {
         payload: Prisma.$AuthProviderPayload<ExtArgs>
         fields: Prisma.AuthProviderFieldRefs
@@ -1804,6 +2344,12 @@ export namespace Prisma {
     service?: ServiceOmit
     employee?: EmployeeOmit
     employeeService?: EmployeeServiceOmit
+    scheduleTemplate?: ScheduleTemplateOmit
+    scheduleTemplateDay?: ScheduleTemplateDayOmit
+    scheduleTemplateDayBreak?: ScheduleTemplateDayBreakOmit
+    employeeSchedule?: EmployeeScheduleOmit
+    employeeScheduleDay?: EmployeeScheduleDayOmit
+    employeeScheduleDayBreak?: EmployeeScheduleDayBreakOmit
     authProvider?: AuthProviderOmit
     userCredential?: UserCredentialOmit
     refreshToken?: RefreshTokenOmit
@@ -1951,6 +2497,7 @@ export namespace Prisma {
     serviceCategories: number
     services: number
     employees: number
+    scheduleTemplates: number
   }
 
   export type BusinessCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1958,6 +2505,7 @@ export namespace Prisma {
     serviceCategories?: boolean | BusinessCountOutputTypeCountServiceCategoriesArgs
     services?: boolean | BusinessCountOutputTypeCountServicesArgs
     employees?: boolean | BusinessCountOutputTypeCountEmployeesArgs
+    scheduleTemplates?: boolean | BusinessCountOutputTypeCountScheduleTemplatesArgs
   }
 
   // Custom InputTypes
@@ -1997,6 +2545,13 @@ export namespace Prisma {
    */
   export type BusinessCountOutputTypeCountEmployeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EmployeeWhereInput
+  }
+
+  /**
+   * BusinessCountOutputType without action
+   */
+  export type BusinessCountOutputTypeCountScheduleTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleTemplateWhereInput
   }
 
 
@@ -2090,6 +2645,139 @@ export namespace Prisma {
    */
   export type EmployeeCountOutputTypeCountEmployeeServicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EmployeeServiceWhereInput
+  }
+
+
+  /**
+   * Count Type ScheduleTemplateCountOutputType
+   */
+
+  export type ScheduleTemplateCountOutputType = {
+    days: number
+    employeeSchedules: number
+  }
+
+  export type ScheduleTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    days?: boolean | ScheduleTemplateCountOutputTypeCountDaysArgs
+    employeeSchedules?: boolean | ScheduleTemplateCountOutputTypeCountEmployeeSchedulesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ScheduleTemplateCountOutputType without action
+   */
+  export type ScheduleTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateCountOutputType
+     */
+    select?: ScheduleTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplateCountOutputType without action
+   */
+  export type ScheduleTemplateCountOutputTypeCountDaysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleTemplateDayWhereInput
+  }
+
+  /**
+   * ScheduleTemplateCountOutputType without action
+   */
+  export type ScheduleTemplateCountOutputTypeCountEmployeeSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmployeeScheduleWhereInput
+  }
+
+
+  /**
+   * Count Type ScheduleTemplateDayCountOutputType
+   */
+
+  export type ScheduleTemplateDayCountOutputType = {
+    breaks: number
+  }
+
+  export type ScheduleTemplateDayCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    breaks?: boolean | ScheduleTemplateDayCountOutputTypeCountBreaksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ScheduleTemplateDayCountOutputType without action
+   */
+  export type ScheduleTemplateDayCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayCountOutputType
+     */
+    select?: ScheduleTemplateDayCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplateDayCountOutputType without action
+   */
+  export type ScheduleTemplateDayCountOutputTypeCountBreaksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleTemplateDayBreakWhereInput
+  }
+
+
+  /**
+   * Count Type EmployeeScheduleCountOutputType
+   */
+
+  export type EmployeeScheduleCountOutputType = {
+    days: number
+  }
+
+  export type EmployeeScheduleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    days?: boolean | EmployeeScheduleCountOutputTypeCountDaysArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EmployeeScheduleCountOutputType without action
+   */
+  export type EmployeeScheduleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleCountOutputType
+     */
+    select?: EmployeeScheduleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeScheduleCountOutputType without action
+   */
+  export type EmployeeScheduleCountOutputTypeCountDaysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmployeeScheduleDayWhereInput
+  }
+
+
+  /**
+   * Count Type EmployeeScheduleDayCountOutputType
+   */
+
+  export type EmployeeScheduleDayCountOutputType = {
+    breaks: number
+  }
+
+  export type EmployeeScheduleDayCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    breaks?: boolean | EmployeeScheduleDayCountOutputTypeCountBreaksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EmployeeScheduleDayCountOutputType without action
+   */
+  export type EmployeeScheduleDayCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayCountOutputType
+     */
+    select?: EmployeeScheduleDayCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeScheduleDayCountOutputType without action
+   */
+  export type EmployeeScheduleDayCountOutputTypeCountBreaksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmployeeScheduleDayBreakWhereInput
   }
 
 
@@ -3571,6 +4259,7 @@ export namespace Prisma {
     serviceCategories?: boolean | Business$serviceCategoriesArgs<ExtArgs>
     services?: boolean | Business$servicesArgs<ExtArgs>
     employees?: boolean | Business$employeesArgs<ExtArgs>
+    scheduleTemplates?: boolean | Business$scheduleTemplatesArgs<ExtArgs>
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["business"]>
 
@@ -3637,6 +4326,7 @@ export namespace Prisma {
     serviceCategories?: boolean | Business$serviceCategoriesArgs<ExtArgs>
     services?: boolean | Business$servicesArgs<ExtArgs>
     employees?: boolean | Business$employeesArgs<ExtArgs>
+    scheduleTemplates?: boolean | Business$scheduleTemplatesArgs<ExtArgs>
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BusinessIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3649,6 +4339,7 @@ export namespace Prisma {
       serviceCategories: Prisma.$ServiceCategoryPayload<ExtArgs>[]
       services: Prisma.$ServicePayload<ExtArgs>[]
       employees: Prisma.$EmployeePayload<ExtArgs>[]
+      scheduleTemplates: Prisma.$ScheduleTemplatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4065,6 +4756,7 @@ export namespace Prisma {
     serviceCategories<T extends Business$serviceCategoriesArgs<ExtArgs> = {}>(args?: Subset<T, Business$serviceCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     services<T extends Business$servicesArgs<ExtArgs> = {}>(args?: Subset<T, Business$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     employees<T extends Business$employeesArgs<ExtArgs> = {}>(args?: Subset<T, Business$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    scheduleTemplates<T extends Business$scheduleTemplatesArgs<ExtArgs> = {}>(args?: Subset<T, Business$scheduleTemplatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4591,6 +5283,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EmployeeScalarFieldEnum | EmployeeScalarFieldEnum[]
+  }
+
+  /**
+   * Business.scheduleTemplates
+   */
+  export type Business$scheduleTemplatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    where?: ScheduleTemplateWhereInput
+    orderBy?: ScheduleTemplateOrderByWithRelationInput | ScheduleTemplateOrderByWithRelationInput[]
+    cursor?: ScheduleTemplateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ScheduleTemplateScalarFieldEnum | ScheduleTemplateScalarFieldEnum[]
   }
 
   /**
@@ -8187,6 +8903,7 @@ export namespace Prisma {
     updatedAt?: boolean
     business?: boolean | BusinessDefaultArgs<ExtArgs>
     employeeServices?: boolean | Employee$employeeServicesArgs<ExtArgs>
+    employeeSchedule?: boolean | Employee$employeeScheduleArgs<ExtArgs>
     _count?: boolean | EmployeeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["employee"]>
 
@@ -8226,6 +8943,7 @@ export namespace Prisma {
   export type EmployeeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
     employeeServices?: boolean | Employee$employeeServicesArgs<ExtArgs>
+    employeeSchedule?: boolean | Employee$employeeScheduleArgs<ExtArgs>
     _count?: boolean | EmployeeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EmployeeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8240,6 +8958,7 @@ export namespace Prisma {
     objects: {
       business: Prisma.$BusinessPayload<ExtArgs>
       employeeServices: Prisma.$EmployeeServicePayload<ExtArgs>[]
+      employeeSchedule: Prisma.$EmployeeSchedulePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8645,6 +9364,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     business<T extends BusinessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusinessDefaultArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     employeeServices<T extends Employee$employeeServicesArgs<ExtArgs> = {}>(args?: Subset<T, Employee$employeeServicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    employeeSchedule<T extends Employee$employeeScheduleArgs<ExtArgs> = {}>(args?: Subset<T, Employee$employeeScheduleArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9098,6 +9818,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EmployeeServiceScalarFieldEnum | EmployeeServiceScalarFieldEnum[]
+  }
+
+  /**
+   * Employee.employeeSchedule
+   */
+  export type Employee$employeeScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    where?: EmployeeScheduleWhereInput
   }
 
   /**
@@ -10233,6 +10972,6741 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: EmployeeServiceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ScheduleTemplate
+   */
+
+  export type AggregateScheduleTemplate = {
+    _count: ScheduleTemplateCountAggregateOutputType | null
+    _min: ScheduleTemplateMinAggregateOutputType | null
+    _max: ScheduleTemplateMaxAggregateOutputType | null
+  }
+
+  export type ScheduleTemplateMinAggregateOutputType = {
+    id: string | null
+    businessId: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ScheduleTemplateMaxAggregateOutputType = {
+    id: string | null
+    businessId: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ScheduleTemplateCountAggregateOutputType = {
+    id: number
+    businessId: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ScheduleTemplateMinAggregateInputType = {
+    id?: true
+    businessId?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ScheduleTemplateMaxAggregateInputType = {
+    id?: true
+    businessId?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ScheduleTemplateCountAggregateInputType = {
+    id?: true
+    businessId?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ScheduleTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleTemplate to aggregate.
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplates to fetch.
+     */
+    orderBy?: ScheduleTemplateOrderByWithRelationInput | ScheduleTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ScheduleTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ScheduleTemplates
+    **/
+    _count?: true | ScheduleTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ScheduleTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ScheduleTemplateMaxAggregateInputType
+  }
+
+  export type GetScheduleTemplateAggregateType<T extends ScheduleTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateScheduleTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateScheduleTemplate[P]>
+      : GetScalarType<T[P], AggregateScheduleTemplate[P]>
+  }
+
+
+
+
+  export type ScheduleTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleTemplateWhereInput
+    orderBy?: ScheduleTemplateOrderByWithAggregationInput | ScheduleTemplateOrderByWithAggregationInput[]
+    by: ScheduleTemplateScalarFieldEnum[] | ScheduleTemplateScalarFieldEnum
+    having?: ScheduleTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ScheduleTemplateCountAggregateInputType | true
+    _min?: ScheduleTemplateMinAggregateInputType
+    _max?: ScheduleTemplateMaxAggregateInputType
+  }
+
+  export type ScheduleTemplateGroupByOutputType = {
+    id: string
+    businessId: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ScheduleTemplateCountAggregateOutputType | null
+    _min: ScheduleTemplateMinAggregateOutputType | null
+    _max: ScheduleTemplateMaxAggregateOutputType | null
+  }
+
+  type GetScheduleTemplateGroupByPayload<T extends ScheduleTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ScheduleTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ScheduleTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ScheduleTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], ScheduleTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ScheduleTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessId?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+    days?: boolean | ScheduleTemplate$daysArgs<ExtArgs>
+    employeeSchedules?: boolean | ScheduleTemplate$employeeSchedulesArgs<ExtArgs>
+    _count?: boolean | ScheduleTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplate"]>
+
+  export type ScheduleTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessId?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplate"]>
+
+  export type ScheduleTemplateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessId?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplate"]>
+
+  export type ScheduleTemplateSelectScalar = {
+    id?: boolean
+    businessId?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ScheduleTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "businessId" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["scheduleTemplate"]>
+  export type ScheduleTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+    days?: boolean | ScheduleTemplate$daysArgs<ExtArgs>
+    employeeSchedules?: boolean | ScheduleTemplate$employeeSchedulesArgs<ExtArgs>
+    _count?: boolean | ScheduleTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ScheduleTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }
+  export type ScheduleTemplateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }
+
+  export type $ScheduleTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ScheduleTemplate"
+    objects: {
+      business: Prisma.$BusinessPayload<ExtArgs>
+      days: Prisma.$ScheduleTemplateDayPayload<ExtArgs>[]
+      employeeSchedules: Prisma.$EmployeeSchedulePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      businessId: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["scheduleTemplate"]>
+    composites: {}
+  }
+
+  type ScheduleTemplateGetPayload<S extends boolean | null | undefined | ScheduleTemplateDefaultArgs> = $Result.GetResult<Prisma.$ScheduleTemplatePayload, S>
+
+  type ScheduleTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ScheduleTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ScheduleTemplateCountAggregateInputType | true
+    }
+
+  export interface ScheduleTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ScheduleTemplate'], meta: { name: 'ScheduleTemplate' } }
+    /**
+     * Find zero or one ScheduleTemplate that matches the filter.
+     * @param {ScheduleTemplateFindUniqueArgs} args - Arguments to find a ScheduleTemplate
+     * @example
+     * // Get one ScheduleTemplate
+     * const scheduleTemplate = await prisma.scheduleTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ScheduleTemplateFindUniqueArgs>(args: SelectSubset<T, ScheduleTemplateFindUniqueArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ScheduleTemplate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ScheduleTemplateFindUniqueOrThrowArgs} args - Arguments to find a ScheduleTemplate
+     * @example
+     * // Get one ScheduleTemplate
+     * const scheduleTemplate = await prisma.scheduleTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ScheduleTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, ScheduleTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateFindFirstArgs} args - Arguments to find a ScheduleTemplate
+     * @example
+     * // Get one ScheduleTemplate
+     * const scheduleTemplate = await prisma.scheduleTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ScheduleTemplateFindFirstArgs>(args?: SelectSubset<T, ScheduleTemplateFindFirstArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateFindFirstOrThrowArgs} args - Arguments to find a ScheduleTemplate
+     * @example
+     * // Get one ScheduleTemplate
+     * const scheduleTemplate = await prisma.scheduleTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ScheduleTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, ScheduleTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ScheduleTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ScheduleTemplates
+     * const scheduleTemplates = await prisma.scheduleTemplate.findMany()
+     * 
+     * // Get first 10 ScheduleTemplates
+     * const scheduleTemplates = await prisma.scheduleTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const scheduleTemplateWithIdOnly = await prisma.scheduleTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ScheduleTemplateFindManyArgs>(args?: SelectSubset<T, ScheduleTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ScheduleTemplate.
+     * @param {ScheduleTemplateCreateArgs} args - Arguments to create a ScheduleTemplate.
+     * @example
+     * // Create one ScheduleTemplate
+     * const ScheduleTemplate = await prisma.scheduleTemplate.create({
+     *   data: {
+     *     // ... data to create a ScheduleTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends ScheduleTemplateCreateArgs>(args: SelectSubset<T, ScheduleTemplateCreateArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ScheduleTemplates.
+     * @param {ScheduleTemplateCreateManyArgs} args - Arguments to create many ScheduleTemplates.
+     * @example
+     * // Create many ScheduleTemplates
+     * const scheduleTemplate = await prisma.scheduleTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ScheduleTemplateCreateManyArgs>(args?: SelectSubset<T, ScheduleTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ScheduleTemplates and returns the data saved in the database.
+     * @param {ScheduleTemplateCreateManyAndReturnArgs} args - Arguments to create many ScheduleTemplates.
+     * @example
+     * // Create many ScheduleTemplates
+     * const scheduleTemplate = await prisma.scheduleTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ScheduleTemplates and only return the `id`
+     * const scheduleTemplateWithIdOnly = await prisma.scheduleTemplate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ScheduleTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, ScheduleTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ScheduleTemplate.
+     * @param {ScheduleTemplateDeleteArgs} args - Arguments to delete one ScheduleTemplate.
+     * @example
+     * // Delete one ScheduleTemplate
+     * const ScheduleTemplate = await prisma.scheduleTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one ScheduleTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ScheduleTemplateDeleteArgs>(args: SelectSubset<T, ScheduleTemplateDeleteArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ScheduleTemplate.
+     * @param {ScheduleTemplateUpdateArgs} args - Arguments to update one ScheduleTemplate.
+     * @example
+     * // Update one ScheduleTemplate
+     * const scheduleTemplate = await prisma.scheduleTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ScheduleTemplateUpdateArgs>(args: SelectSubset<T, ScheduleTemplateUpdateArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ScheduleTemplates.
+     * @param {ScheduleTemplateDeleteManyArgs} args - Arguments to filter ScheduleTemplates to delete.
+     * @example
+     * // Delete a few ScheduleTemplates
+     * const { count } = await prisma.scheduleTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ScheduleTemplateDeleteManyArgs>(args?: SelectSubset<T, ScheduleTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ScheduleTemplates
+     * const scheduleTemplate = await prisma.scheduleTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ScheduleTemplateUpdateManyArgs>(args: SelectSubset<T, ScheduleTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleTemplates and returns the data updated in the database.
+     * @param {ScheduleTemplateUpdateManyAndReturnArgs} args - Arguments to update many ScheduleTemplates.
+     * @example
+     * // Update many ScheduleTemplates
+     * const scheduleTemplate = await prisma.scheduleTemplate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ScheduleTemplates and only return the `id`
+     * const scheduleTemplateWithIdOnly = await prisma.scheduleTemplate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ScheduleTemplateUpdateManyAndReturnArgs>(args: SelectSubset<T, ScheduleTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ScheduleTemplate.
+     * @param {ScheduleTemplateUpsertArgs} args - Arguments to update or create a ScheduleTemplate.
+     * @example
+     * // Update or create a ScheduleTemplate
+     * const scheduleTemplate = await prisma.scheduleTemplate.upsert({
+     *   create: {
+     *     // ... data to create a ScheduleTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ScheduleTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ScheduleTemplateUpsertArgs>(args: SelectSubset<T, ScheduleTemplateUpsertArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ScheduleTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateCountArgs} args - Arguments to filter ScheduleTemplates to count.
+     * @example
+     * // Count the number of ScheduleTemplates
+     * const count = await prisma.scheduleTemplate.count({
+     *   where: {
+     *     // ... the filter for the ScheduleTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends ScheduleTemplateCountArgs>(
+      args?: Subset<T, ScheduleTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ScheduleTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ScheduleTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ScheduleTemplateAggregateArgs>(args: Subset<T, ScheduleTemplateAggregateArgs>): Prisma.PrismaPromise<GetScheduleTemplateAggregateType<T>>
+
+    /**
+     * Group by ScheduleTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ScheduleTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ScheduleTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: ScheduleTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ScheduleTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetScheduleTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ScheduleTemplate model
+   */
+  readonly fields: ScheduleTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ScheduleTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ScheduleTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    business<T extends BusinessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusinessDefaultArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    days<T extends ScheduleTemplate$daysArgs<ExtArgs> = {}>(args?: Subset<T, ScheduleTemplate$daysArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    employeeSchedules<T extends ScheduleTemplate$employeeSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, ScheduleTemplate$employeeSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ScheduleTemplate model
+   */
+  interface ScheduleTemplateFieldRefs {
+    readonly id: FieldRef<"ScheduleTemplate", 'String'>
+    readonly businessId: FieldRef<"ScheduleTemplate", 'String'>
+    readonly name: FieldRef<"ScheduleTemplate", 'String'>
+    readonly createdAt: FieldRef<"ScheduleTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"ScheduleTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ScheduleTemplate findUnique
+   */
+  export type ScheduleTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplate to fetch.
+     */
+    where: ScheduleTemplateWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplate findUniqueOrThrow
+   */
+  export type ScheduleTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplate to fetch.
+     */
+    where: ScheduleTemplateWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplate findFirst
+   */
+  export type ScheduleTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplate to fetch.
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplates to fetch.
+     */
+    orderBy?: ScheduleTemplateOrderByWithRelationInput | ScheduleTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleTemplates.
+     */
+    cursor?: ScheduleTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleTemplates.
+     */
+    distinct?: ScheduleTemplateScalarFieldEnum | ScheduleTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplate findFirstOrThrow
+   */
+  export type ScheduleTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplate to fetch.
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplates to fetch.
+     */
+    orderBy?: ScheduleTemplateOrderByWithRelationInput | ScheduleTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleTemplates.
+     */
+    cursor?: ScheduleTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleTemplates.
+     */
+    distinct?: ScheduleTemplateScalarFieldEnum | ScheduleTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplate findMany
+   */
+  export type ScheduleTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplates to fetch.
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplates to fetch.
+     */
+    orderBy?: ScheduleTemplateOrderByWithRelationInput | ScheduleTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ScheduleTemplates.
+     */
+    cursor?: ScheduleTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplates.
+     */
+    skip?: number
+    distinct?: ScheduleTemplateScalarFieldEnum | ScheduleTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplate create
+   */
+  export type ScheduleTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ScheduleTemplate.
+     */
+    data: XOR<ScheduleTemplateCreateInput, ScheduleTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * ScheduleTemplate createMany
+   */
+  export type ScheduleTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ScheduleTemplates.
+     */
+    data: ScheduleTemplateCreateManyInput | ScheduleTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ScheduleTemplate createManyAndReturn
+   */
+  export type ScheduleTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to create many ScheduleTemplates.
+     */
+    data: ScheduleTemplateCreateManyInput | ScheduleTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplate update
+   */
+  export type ScheduleTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ScheduleTemplate.
+     */
+    data: XOR<ScheduleTemplateUpdateInput, ScheduleTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which ScheduleTemplate to update.
+     */
+    where: ScheduleTemplateWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplate updateMany
+   */
+  export type ScheduleTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ScheduleTemplates.
+     */
+    data: XOR<ScheduleTemplateUpdateManyMutationInput, ScheduleTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleTemplates to update
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * Limit how many ScheduleTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleTemplate updateManyAndReturn
+   */
+  export type ScheduleTemplateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to update ScheduleTemplates.
+     */
+    data: XOR<ScheduleTemplateUpdateManyMutationInput, ScheduleTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleTemplates to update
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * Limit how many ScheduleTemplates to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplate upsert
+   */
+  export type ScheduleTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ScheduleTemplate to update in case it exists.
+     */
+    where: ScheduleTemplateWhereUniqueInput
+    /**
+     * In case the ScheduleTemplate found by the `where` argument doesn't exist, create a new ScheduleTemplate with this data.
+     */
+    create: XOR<ScheduleTemplateCreateInput, ScheduleTemplateUncheckedCreateInput>
+    /**
+     * In case the ScheduleTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ScheduleTemplateUpdateInput, ScheduleTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * ScheduleTemplate delete
+   */
+  export type ScheduleTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which ScheduleTemplate to delete.
+     */
+    where: ScheduleTemplateWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplate deleteMany
+   */
+  export type ScheduleTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleTemplates to delete
+     */
+    where?: ScheduleTemplateWhereInput
+    /**
+     * Limit how many ScheduleTemplates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleTemplate.days
+   */
+  export type ScheduleTemplate$daysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    where?: ScheduleTemplateDayWhereInput
+    orderBy?: ScheduleTemplateDayOrderByWithRelationInput | ScheduleTemplateDayOrderByWithRelationInput[]
+    cursor?: ScheduleTemplateDayWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ScheduleTemplateDayScalarFieldEnum | ScheduleTemplateDayScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplate.employeeSchedules
+   */
+  export type ScheduleTemplate$employeeSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    where?: EmployeeScheduleWhereInput
+    orderBy?: EmployeeScheduleOrderByWithRelationInput | EmployeeScheduleOrderByWithRelationInput[]
+    cursor?: EmployeeScheduleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EmployeeScheduleScalarFieldEnum | EmployeeScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplate without action
+   */
+  export type ScheduleTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ScheduleTemplateDay
+   */
+
+  export type AggregateScheduleTemplateDay = {
+    _count: ScheduleTemplateDayCountAggregateOutputType | null
+    _avg: ScheduleTemplateDayAvgAggregateOutputType | null
+    _sum: ScheduleTemplateDaySumAggregateOutputType | null
+    _min: ScheduleTemplateDayMinAggregateOutputType | null
+    _max: ScheduleTemplateDayMaxAggregateOutputType | null
+  }
+
+  export type ScheduleTemplateDayAvgAggregateOutputType = {
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type ScheduleTemplateDaySumAggregateOutputType = {
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type ScheduleTemplateDayMinAggregateOutputType = {
+    id: string | null
+    scheduleTemplateId: string | null
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ScheduleTemplateDayMaxAggregateOutputType = {
+    id: string | null
+    scheduleTemplateId: string | null
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ScheduleTemplateDayCountAggregateOutputType = {
+    id: number
+    scheduleTemplateId: number
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ScheduleTemplateDayAvgAggregateInputType = {
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type ScheduleTemplateDaySumAggregateInputType = {
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type ScheduleTemplateDayMinAggregateInputType = {
+    id?: true
+    scheduleTemplateId?: true
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ScheduleTemplateDayMaxAggregateInputType = {
+    id?: true
+    scheduleTemplateId?: true
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ScheduleTemplateDayCountAggregateInputType = {
+    id?: true
+    scheduleTemplateId?: true
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ScheduleTemplateDayAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleTemplateDay to aggregate.
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDays to fetch.
+     */
+    orderBy?: ScheduleTemplateDayOrderByWithRelationInput | ScheduleTemplateDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ScheduleTemplateDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ScheduleTemplateDays
+    **/
+    _count?: true | ScheduleTemplateDayCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ScheduleTemplateDayAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ScheduleTemplateDaySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ScheduleTemplateDayMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ScheduleTemplateDayMaxAggregateInputType
+  }
+
+  export type GetScheduleTemplateDayAggregateType<T extends ScheduleTemplateDayAggregateArgs> = {
+        [P in keyof T & keyof AggregateScheduleTemplateDay]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateScheduleTemplateDay[P]>
+      : GetScalarType<T[P], AggregateScheduleTemplateDay[P]>
+  }
+
+
+
+
+  export type ScheduleTemplateDayGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleTemplateDayWhereInput
+    orderBy?: ScheduleTemplateDayOrderByWithAggregationInput | ScheduleTemplateDayOrderByWithAggregationInput[]
+    by: ScheduleTemplateDayScalarFieldEnum[] | ScheduleTemplateDayScalarFieldEnum
+    having?: ScheduleTemplateDayScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ScheduleTemplateDayCountAggregateInputType | true
+    _avg?: ScheduleTemplateDayAvgAggregateInputType
+    _sum?: ScheduleTemplateDaySumAggregateInputType
+    _min?: ScheduleTemplateDayMinAggregateInputType
+    _max?: ScheduleTemplateDayMaxAggregateInputType
+  }
+
+  export type ScheduleTemplateDayGroupByOutputType = {
+    id: string
+    scheduleTemplateId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: Date
+    updatedAt: Date
+    _count: ScheduleTemplateDayCountAggregateOutputType | null
+    _avg: ScheduleTemplateDayAvgAggregateOutputType | null
+    _sum: ScheduleTemplateDaySumAggregateOutputType | null
+    _min: ScheduleTemplateDayMinAggregateOutputType | null
+    _max: ScheduleTemplateDayMaxAggregateOutputType | null
+  }
+
+  type GetScheduleTemplateDayGroupByPayload<T extends ScheduleTemplateDayGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ScheduleTemplateDayGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ScheduleTemplateDayGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ScheduleTemplateDayGroupByOutputType[P]>
+            : GetScalarType<T[P], ScheduleTemplateDayGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ScheduleTemplateDaySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    scheduleTemplateId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    scheduleTemplate?: boolean | ScheduleTemplateDefaultArgs<ExtArgs>
+    breaks?: boolean | ScheduleTemplateDay$breaksArgs<ExtArgs>
+    _count?: boolean | ScheduleTemplateDayCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplateDay"]>
+
+  export type ScheduleTemplateDaySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    scheduleTemplateId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    scheduleTemplate?: boolean | ScheduleTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplateDay"]>
+
+  export type ScheduleTemplateDaySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    scheduleTemplateId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    scheduleTemplate?: boolean | ScheduleTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplateDay"]>
+
+  export type ScheduleTemplateDaySelectScalar = {
+    id?: boolean
+    scheduleTemplateId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ScheduleTemplateDayOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "scheduleTemplateId" | "dayOfWeek" | "startTimeMinutes" | "endTimeMinutes" | "createdAt" | "updatedAt", ExtArgs["result"]["scheduleTemplateDay"]>
+  export type ScheduleTemplateDayInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleTemplate?: boolean | ScheduleTemplateDefaultArgs<ExtArgs>
+    breaks?: boolean | ScheduleTemplateDay$breaksArgs<ExtArgs>
+    _count?: boolean | ScheduleTemplateDayCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ScheduleTemplateDayIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleTemplate?: boolean | ScheduleTemplateDefaultArgs<ExtArgs>
+  }
+  export type ScheduleTemplateDayIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleTemplate?: boolean | ScheduleTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $ScheduleTemplateDayPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ScheduleTemplateDay"
+    objects: {
+      scheduleTemplate: Prisma.$ScheduleTemplatePayload<ExtArgs>
+      breaks: Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      scheduleTemplateId: string
+      dayOfWeek: number
+      startTimeMinutes: number
+      endTimeMinutes: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["scheduleTemplateDay"]>
+    composites: {}
+  }
+
+  type ScheduleTemplateDayGetPayload<S extends boolean | null | undefined | ScheduleTemplateDayDefaultArgs> = $Result.GetResult<Prisma.$ScheduleTemplateDayPayload, S>
+
+  type ScheduleTemplateDayCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ScheduleTemplateDayFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ScheduleTemplateDayCountAggregateInputType | true
+    }
+
+  export interface ScheduleTemplateDayDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ScheduleTemplateDay'], meta: { name: 'ScheduleTemplateDay' } }
+    /**
+     * Find zero or one ScheduleTemplateDay that matches the filter.
+     * @param {ScheduleTemplateDayFindUniqueArgs} args - Arguments to find a ScheduleTemplateDay
+     * @example
+     * // Get one ScheduleTemplateDay
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ScheduleTemplateDayFindUniqueArgs>(args: SelectSubset<T, ScheduleTemplateDayFindUniqueArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ScheduleTemplateDay that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ScheduleTemplateDayFindUniqueOrThrowArgs} args - Arguments to find a ScheduleTemplateDay
+     * @example
+     * // Get one ScheduleTemplateDay
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ScheduleTemplateDayFindUniqueOrThrowArgs>(args: SelectSubset<T, ScheduleTemplateDayFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleTemplateDay that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayFindFirstArgs} args - Arguments to find a ScheduleTemplateDay
+     * @example
+     * // Get one ScheduleTemplateDay
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ScheduleTemplateDayFindFirstArgs>(args?: SelectSubset<T, ScheduleTemplateDayFindFirstArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleTemplateDay that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayFindFirstOrThrowArgs} args - Arguments to find a ScheduleTemplateDay
+     * @example
+     * // Get one ScheduleTemplateDay
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ScheduleTemplateDayFindFirstOrThrowArgs>(args?: SelectSubset<T, ScheduleTemplateDayFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ScheduleTemplateDays that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ScheduleTemplateDays
+     * const scheduleTemplateDays = await prisma.scheduleTemplateDay.findMany()
+     * 
+     * // Get first 10 ScheduleTemplateDays
+     * const scheduleTemplateDays = await prisma.scheduleTemplateDay.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const scheduleTemplateDayWithIdOnly = await prisma.scheduleTemplateDay.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ScheduleTemplateDayFindManyArgs>(args?: SelectSubset<T, ScheduleTemplateDayFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ScheduleTemplateDay.
+     * @param {ScheduleTemplateDayCreateArgs} args - Arguments to create a ScheduleTemplateDay.
+     * @example
+     * // Create one ScheduleTemplateDay
+     * const ScheduleTemplateDay = await prisma.scheduleTemplateDay.create({
+     *   data: {
+     *     // ... data to create a ScheduleTemplateDay
+     *   }
+     * })
+     * 
+     */
+    create<T extends ScheduleTemplateDayCreateArgs>(args: SelectSubset<T, ScheduleTemplateDayCreateArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ScheduleTemplateDays.
+     * @param {ScheduleTemplateDayCreateManyArgs} args - Arguments to create many ScheduleTemplateDays.
+     * @example
+     * // Create many ScheduleTemplateDays
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ScheduleTemplateDayCreateManyArgs>(args?: SelectSubset<T, ScheduleTemplateDayCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ScheduleTemplateDays and returns the data saved in the database.
+     * @param {ScheduleTemplateDayCreateManyAndReturnArgs} args - Arguments to create many ScheduleTemplateDays.
+     * @example
+     * // Create many ScheduleTemplateDays
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ScheduleTemplateDays and only return the `id`
+     * const scheduleTemplateDayWithIdOnly = await prisma.scheduleTemplateDay.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ScheduleTemplateDayCreateManyAndReturnArgs>(args?: SelectSubset<T, ScheduleTemplateDayCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ScheduleTemplateDay.
+     * @param {ScheduleTemplateDayDeleteArgs} args - Arguments to delete one ScheduleTemplateDay.
+     * @example
+     * // Delete one ScheduleTemplateDay
+     * const ScheduleTemplateDay = await prisma.scheduleTemplateDay.delete({
+     *   where: {
+     *     // ... filter to delete one ScheduleTemplateDay
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ScheduleTemplateDayDeleteArgs>(args: SelectSubset<T, ScheduleTemplateDayDeleteArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ScheduleTemplateDay.
+     * @param {ScheduleTemplateDayUpdateArgs} args - Arguments to update one ScheduleTemplateDay.
+     * @example
+     * // Update one ScheduleTemplateDay
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ScheduleTemplateDayUpdateArgs>(args: SelectSubset<T, ScheduleTemplateDayUpdateArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ScheduleTemplateDays.
+     * @param {ScheduleTemplateDayDeleteManyArgs} args - Arguments to filter ScheduleTemplateDays to delete.
+     * @example
+     * // Delete a few ScheduleTemplateDays
+     * const { count } = await prisma.scheduleTemplateDay.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ScheduleTemplateDayDeleteManyArgs>(args?: SelectSubset<T, ScheduleTemplateDayDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleTemplateDays.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ScheduleTemplateDays
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ScheduleTemplateDayUpdateManyArgs>(args: SelectSubset<T, ScheduleTemplateDayUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleTemplateDays and returns the data updated in the database.
+     * @param {ScheduleTemplateDayUpdateManyAndReturnArgs} args - Arguments to update many ScheduleTemplateDays.
+     * @example
+     * // Update many ScheduleTemplateDays
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ScheduleTemplateDays and only return the `id`
+     * const scheduleTemplateDayWithIdOnly = await prisma.scheduleTemplateDay.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ScheduleTemplateDayUpdateManyAndReturnArgs>(args: SelectSubset<T, ScheduleTemplateDayUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ScheduleTemplateDay.
+     * @param {ScheduleTemplateDayUpsertArgs} args - Arguments to update or create a ScheduleTemplateDay.
+     * @example
+     * // Update or create a ScheduleTemplateDay
+     * const scheduleTemplateDay = await prisma.scheduleTemplateDay.upsert({
+     *   create: {
+     *     // ... data to create a ScheduleTemplateDay
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ScheduleTemplateDay we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ScheduleTemplateDayUpsertArgs>(args: SelectSubset<T, ScheduleTemplateDayUpsertArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ScheduleTemplateDays.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayCountArgs} args - Arguments to filter ScheduleTemplateDays to count.
+     * @example
+     * // Count the number of ScheduleTemplateDays
+     * const count = await prisma.scheduleTemplateDay.count({
+     *   where: {
+     *     // ... the filter for the ScheduleTemplateDays we want to count
+     *   }
+     * })
+    **/
+    count<T extends ScheduleTemplateDayCountArgs>(
+      args?: Subset<T, ScheduleTemplateDayCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ScheduleTemplateDayCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ScheduleTemplateDay.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ScheduleTemplateDayAggregateArgs>(args: Subset<T, ScheduleTemplateDayAggregateArgs>): Prisma.PrismaPromise<GetScheduleTemplateDayAggregateType<T>>
+
+    /**
+     * Group by ScheduleTemplateDay.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ScheduleTemplateDayGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ScheduleTemplateDayGroupByArgs['orderBy'] }
+        : { orderBy?: ScheduleTemplateDayGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ScheduleTemplateDayGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetScheduleTemplateDayGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ScheduleTemplateDay model
+   */
+  readonly fields: ScheduleTemplateDayFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ScheduleTemplateDay.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ScheduleTemplateDayClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    scheduleTemplate<T extends ScheduleTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ScheduleTemplateDefaultArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    breaks<T extends ScheduleTemplateDay$breaksArgs<ExtArgs> = {}>(args?: Subset<T, ScheduleTemplateDay$breaksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ScheduleTemplateDay model
+   */
+  interface ScheduleTemplateDayFieldRefs {
+    readonly id: FieldRef<"ScheduleTemplateDay", 'String'>
+    readonly scheduleTemplateId: FieldRef<"ScheduleTemplateDay", 'String'>
+    readonly dayOfWeek: FieldRef<"ScheduleTemplateDay", 'Int'>
+    readonly startTimeMinutes: FieldRef<"ScheduleTemplateDay", 'Int'>
+    readonly endTimeMinutes: FieldRef<"ScheduleTemplateDay", 'Int'>
+    readonly createdAt: FieldRef<"ScheduleTemplateDay", 'DateTime'>
+    readonly updatedAt: FieldRef<"ScheduleTemplateDay", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ScheduleTemplateDay findUnique
+   */
+  export type ScheduleTemplateDayFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDay to fetch.
+     */
+    where: ScheduleTemplateDayWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDay findUniqueOrThrow
+   */
+  export type ScheduleTemplateDayFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDay to fetch.
+     */
+    where: ScheduleTemplateDayWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDay findFirst
+   */
+  export type ScheduleTemplateDayFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDay to fetch.
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDays to fetch.
+     */
+    orderBy?: ScheduleTemplateDayOrderByWithRelationInput | ScheduleTemplateDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleTemplateDays.
+     */
+    cursor?: ScheduleTemplateDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleTemplateDays.
+     */
+    distinct?: ScheduleTemplateDayScalarFieldEnum | ScheduleTemplateDayScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDay findFirstOrThrow
+   */
+  export type ScheduleTemplateDayFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDay to fetch.
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDays to fetch.
+     */
+    orderBy?: ScheduleTemplateDayOrderByWithRelationInput | ScheduleTemplateDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleTemplateDays.
+     */
+    cursor?: ScheduleTemplateDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleTemplateDays.
+     */
+    distinct?: ScheduleTemplateDayScalarFieldEnum | ScheduleTemplateDayScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDay findMany
+   */
+  export type ScheduleTemplateDayFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDays to fetch.
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDays to fetch.
+     */
+    orderBy?: ScheduleTemplateDayOrderByWithRelationInput | ScheduleTemplateDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ScheduleTemplateDays.
+     */
+    cursor?: ScheduleTemplateDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDays.
+     */
+    skip?: number
+    distinct?: ScheduleTemplateDayScalarFieldEnum | ScheduleTemplateDayScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDay create
+   */
+  export type ScheduleTemplateDayCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ScheduleTemplateDay.
+     */
+    data: XOR<ScheduleTemplateDayCreateInput, ScheduleTemplateDayUncheckedCreateInput>
+  }
+
+  /**
+   * ScheduleTemplateDay createMany
+   */
+  export type ScheduleTemplateDayCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ScheduleTemplateDays.
+     */
+    data: ScheduleTemplateDayCreateManyInput | ScheduleTemplateDayCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ScheduleTemplateDay createManyAndReturn
+   */
+  export type ScheduleTemplateDayCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * The data used to create many ScheduleTemplateDays.
+     */
+    data: ScheduleTemplateDayCreateManyInput | ScheduleTemplateDayCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplateDay update
+   */
+  export type ScheduleTemplateDayUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ScheduleTemplateDay.
+     */
+    data: XOR<ScheduleTemplateDayUpdateInput, ScheduleTemplateDayUncheckedUpdateInput>
+    /**
+     * Choose, which ScheduleTemplateDay to update.
+     */
+    where: ScheduleTemplateDayWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDay updateMany
+   */
+  export type ScheduleTemplateDayUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ScheduleTemplateDays.
+     */
+    data: XOR<ScheduleTemplateDayUpdateManyMutationInput, ScheduleTemplateDayUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleTemplateDays to update
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * Limit how many ScheduleTemplateDays to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleTemplateDay updateManyAndReturn
+   */
+  export type ScheduleTemplateDayUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * The data used to update ScheduleTemplateDays.
+     */
+    data: XOR<ScheduleTemplateDayUpdateManyMutationInput, ScheduleTemplateDayUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleTemplateDays to update
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * Limit how many ScheduleTemplateDays to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplateDay upsert
+   */
+  export type ScheduleTemplateDayUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ScheduleTemplateDay to update in case it exists.
+     */
+    where: ScheduleTemplateDayWhereUniqueInput
+    /**
+     * In case the ScheduleTemplateDay found by the `where` argument doesn't exist, create a new ScheduleTemplateDay with this data.
+     */
+    create: XOR<ScheduleTemplateDayCreateInput, ScheduleTemplateDayUncheckedCreateInput>
+    /**
+     * In case the ScheduleTemplateDay was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ScheduleTemplateDayUpdateInput, ScheduleTemplateDayUncheckedUpdateInput>
+  }
+
+  /**
+   * ScheduleTemplateDay delete
+   */
+  export type ScheduleTemplateDayDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+    /**
+     * Filter which ScheduleTemplateDay to delete.
+     */
+    where: ScheduleTemplateDayWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDay deleteMany
+   */
+  export type ScheduleTemplateDayDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleTemplateDays to delete
+     */
+    where?: ScheduleTemplateDayWhereInput
+    /**
+     * Limit how many ScheduleTemplateDays to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleTemplateDay.breaks
+   */
+  export type ScheduleTemplateDay$breaksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    where?: ScheduleTemplateDayBreakWhereInput
+    orderBy?: ScheduleTemplateDayBreakOrderByWithRelationInput | ScheduleTemplateDayBreakOrderByWithRelationInput[]
+    cursor?: ScheduleTemplateDayBreakWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ScheduleTemplateDayBreakScalarFieldEnum | ScheduleTemplateDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDay without action
+   */
+  export type ScheduleTemplateDayDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDay
+     */
+    select?: ScheduleTemplateDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDay
+     */
+    omit?: ScheduleTemplateDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ScheduleTemplateDayBreak
+   */
+
+  export type AggregateScheduleTemplateDayBreak = {
+    _count: ScheduleTemplateDayBreakCountAggregateOutputType | null
+    _avg: ScheduleTemplateDayBreakAvgAggregateOutputType | null
+    _sum: ScheduleTemplateDayBreakSumAggregateOutputType | null
+    _min: ScheduleTemplateDayBreakMinAggregateOutputType | null
+    _max: ScheduleTemplateDayBreakMaxAggregateOutputType | null
+  }
+
+  export type ScheduleTemplateDayBreakAvgAggregateOutputType = {
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type ScheduleTemplateDayBreakSumAggregateOutputType = {
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type ScheduleTemplateDayBreakMinAggregateOutputType = {
+    id: string | null
+    scheduleTemplateDayId: string | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+  }
+
+  export type ScheduleTemplateDayBreakMaxAggregateOutputType = {
+    id: string | null
+    scheduleTemplateDayId: string | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+  }
+
+  export type ScheduleTemplateDayBreakCountAggregateOutputType = {
+    id: number
+    scheduleTemplateDayId: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ScheduleTemplateDayBreakAvgAggregateInputType = {
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type ScheduleTemplateDayBreakSumAggregateInputType = {
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type ScheduleTemplateDayBreakMinAggregateInputType = {
+    id?: true
+    scheduleTemplateDayId?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+  }
+
+  export type ScheduleTemplateDayBreakMaxAggregateInputType = {
+    id?: true
+    scheduleTemplateDayId?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+  }
+
+  export type ScheduleTemplateDayBreakCountAggregateInputType = {
+    id?: true
+    scheduleTemplateDayId?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ScheduleTemplateDayBreakAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleTemplateDayBreak to aggregate.
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDayBreaks to fetch.
+     */
+    orderBy?: ScheduleTemplateDayBreakOrderByWithRelationInput | ScheduleTemplateDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ScheduleTemplateDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDayBreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ScheduleTemplateDayBreaks
+    **/
+    _count?: true | ScheduleTemplateDayBreakCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ScheduleTemplateDayBreakAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ScheduleTemplateDayBreakSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ScheduleTemplateDayBreakMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ScheduleTemplateDayBreakMaxAggregateInputType
+  }
+
+  export type GetScheduleTemplateDayBreakAggregateType<T extends ScheduleTemplateDayBreakAggregateArgs> = {
+        [P in keyof T & keyof AggregateScheduleTemplateDayBreak]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateScheduleTemplateDayBreak[P]>
+      : GetScalarType<T[P], AggregateScheduleTemplateDayBreak[P]>
+  }
+
+
+
+
+  export type ScheduleTemplateDayBreakGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleTemplateDayBreakWhereInput
+    orderBy?: ScheduleTemplateDayBreakOrderByWithAggregationInput | ScheduleTemplateDayBreakOrderByWithAggregationInput[]
+    by: ScheduleTemplateDayBreakScalarFieldEnum[] | ScheduleTemplateDayBreakScalarFieldEnum
+    having?: ScheduleTemplateDayBreakScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ScheduleTemplateDayBreakCountAggregateInputType | true
+    _avg?: ScheduleTemplateDayBreakAvgAggregateInputType
+    _sum?: ScheduleTemplateDayBreakSumAggregateInputType
+    _min?: ScheduleTemplateDayBreakMinAggregateInputType
+    _max?: ScheduleTemplateDayBreakMaxAggregateInputType
+  }
+
+  export type ScheduleTemplateDayBreakGroupByOutputType = {
+    id: string
+    scheduleTemplateDayId: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: Date
+    _count: ScheduleTemplateDayBreakCountAggregateOutputType | null
+    _avg: ScheduleTemplateDayBreakAvgAggregateOutputType | null
+    _sum: ScheduleTemplateDayBreakSumAggregateOutputType | null
+    _min: ScheduleTemplateDayBreakMinAggregateOutputType | null
+    _max: ScheduleTemplateDayBreakMaxAggregateOutputType | null
+  }
+
+  type GetScheduleTemplateDayBreakGroupByPayload<T extends ScheduleTemplateDayBreakGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ScheduleTemplateDayBreakGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ScheduleTemplateDayBreakGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ScheduleTemplateDayBreakGroupByOutputType[P]>
+            : GetScalarType<T[P], ScheduleTemplateDayBreakGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ScheduleTemplateDayBreakSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    scheduleTemplateDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    scheduleTemplateDay?: boolean | ScheduleTemplateDayDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplateDayBreak"]>
+
+  export type ScheduleTemplateDayBreakSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    scheduleTemplateDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    scheduleTemplateDay?: boolean | ScheduleTemplateDayDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplateDayBreak"]>
+
+  export type ScheduleTemplateDayBreakSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    scheduleTemplateDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    scheduleTemplateDay?: boolean | ScheduleTemplateDayDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleTemplateDayBreak"]>
+
+  export type ScheduleTemplateDayBreakSelectScalar = {
+    id?: boolean
+    scheduleTemplateDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+  }
+
+  export type ScheduleTemplateDayBreakOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "scheduleTemplateDayId" | "startTimeMinutes" | "endTimeMinutes" | "createdAt", ExtArgs["result"]["scheduleTemplateDayBreak"]>
+  export type ScheduleTemplateDayBreakInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleTemplateDay?: boolean | ScheduleTemplateDayDefaultArgs<ExtArgs>
+  }
+  export type ScheduleTemplateDayBreakIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleTemplateDay?: boolean | ScheduleTemplateDayDefaultArgs<ExtArgs>
+  }
+  export type ScheduleTemplateDayBreakIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleTemplateDay?: boolean | ScheduleTemplateDayDefaultArgs<ExtArgs>
+  }
+
+  export type $ScheduleTemplateDayBreakPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ScheduleTemplateDayBreak"
+    objects: {
+      scheduleTemplateDay: Prisma.$ScheduleTemplateDayPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      scheduleTemplateDayId: string
+      startTimeMinutes: number
+      endTimeMinutes: number
+      createdAt: Date
+    }, ExtArgs["result"]["scheduleTemplateDayBreak"]>
+    composites: {}
+  }
+
+  type ScheduleTemplateDayBreakGetPayload<S extends boolean | null | undefined | ScheduleTemplateDayBreakDefaultArgs> = $Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload, S>
+
+  type ScheduleTemplateDayBreakCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ScheduleTemplateDayBreakFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ScheduleTemplateDayBreakCountAggregateInputType | true
+    }
+
+  export interface ScheduleTemplateDayBreakDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ScheduleTemplateDayBreak'], meta: { name: 'ScheduleTemplateDayBreak' } }
+    /**
+     * Find zero or one ScheduleTemplateDayBreak that matches the filter.
+     * @param {ScheduleTemplateDayBreakFindUniqueArgs} args - Arguments to find a ScheduleTemplateDayBreak
+     * @example
+     * // Get one ScheduleTemplateDayBreak
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ScheduleTemplateDayBreakFindUniqueArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakFindUniqueArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ScheduleTemplateDayBreak that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ScheduleTemplateDayBreakFindUniqueOrThrowArgs} args - Arguments to find a ScheduleTemplateDayBreak
+     * @example
+     * // Get one ScheduleTemplateDayBreak
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ScheduleTemplateDayBreakFindUniqueOrThrowArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleTemplateDayBreak that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakFindFirstArgs} args - Arguments to find a ScheduleTemplateDayBreak
+     * @example
+     * // Get one ScheduleTemplateDayBreak
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ScheduleTemplateDayBreakFindFirstArgs>(args?: SelectSubset<T, ScheduleTemplateDayBreakFindFirstArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleTemplateDayBreak that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakFindFirstOrThrowArgs} args - Arguments to find a ScheduleTemplateDayBreak
+     * @example
+     * // Get one ScheduleTemplateDayBreak
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ScheduleTemplateDayBreakFindFirstOrThrowArgs>(args?: SelectSubset<T, ScheduleTemplateDayBreakFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ScheduleTemplateDayBreaks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ScheduleTemplateDayBreaks
+     * const scheduleTemplateDayBreaks = await prisma.scheduleTemplateDayBreak.findMany()
+     * 
+     * // Get first 10 ScheduleTemplateDayBreaks
+     * const scheduleTemplateDayBreaks = await prisma.scheduleTemplateDayBreak.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const scheduleTemplateDayBreakWithIdOnly = await prisma.scheduleTemplateDayBreak.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ScheduleTemplateDayBreakFindManyArgs>(args?: SelectSubset<T, ScheduleTemplateDayBreakFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ScheduleTemplateDayBreak.
+     * @param {ScheduleTemplateDayBreakCreateArgs} args - Arguments to create a ScheduleTemplateDayBreak.
+     * @example
+     * // Create one ScheduleTemplateDayBreak
+     * const ScheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.create({
+     *   data: {
+     *     // ... data to create a ScheduleTemplateDayBreak
+     *   }
+     * })
+     * 
+     */
+    create<T extends ScheduleTemplateDayBreakCreateArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakCreateArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ScheduleTemplateDayBreaks.
+     * @param {ScheduleTemplateDayBreakCreateManyArgs} args - Arguments to create many ScheduleTemplateDayBreaks.
+     * @example
+     * // Create many ScheduleTemplateDayBreaks
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ScheduleTemplateDayBreakCreateManyArgs>(args?: SelectSubset<T, ScheduleTemplateDayBreakCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ScheduleTemplateDayBreaks and returns the data saved in the database.
+     * @param {ScheduleTemplateDayBreakCreateManyAndReturnArgs} args - Arguments to create many ScheduleTemplateDayBreaks.
+     * @example
+     * // Create many ScheduleTemplateDayBreaks
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ScheduleTemplateDayBreaks and only return the `id`
+     * const scheduleTemplateDayBreakWithIdOnly = await prisma.scheduleTemplateDayBreak.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ScheduleTemplateDayBreakCreateManyAndReturnArgs>(args?: SelectSubset<T, ScheduleTemplateDayBreakCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ScheduleTemplateDayBreak.
+     * @param {ScheduleTemplateDayBreakDeleteArgs} args - Arguments to delete one ScheduleTemplateDayBreak.
+     * @example
+     * // Delete one ScheduleTemplateDayBreak
+     * const ScheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.delete({
+     *   where: {
+     *     // ... filter to delete one ScheduleTemplateDayBreak
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ScheduleTemplateDayBreakDeleteArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakDeleteArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ScheduleTemplateDayBreak.
+     * @param {ScheduleTemplateDayBreakUpdateArgs} args - Arguments to update one ScheduleTemplateDayBreak.
+     * @example
+     * // Update one ScheduleTemplateDayBreak
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ScheduleTemplateDayBreakUpdateArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakUpdateArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ScheduleTemplateDayBreaks.
+     * @param {ScheduleTemplateDayBreakDeleteManyArgs} args - Arguments to filter ScheduleTemplateDayBreaks to delete.
+     * @example
+     * // Delete a few ScheduleTemplateDayBreaks
+     * const { count } = await prisma.scheduleTemplateDayBreak.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ScheduleTemplateDayBreakDeleteManyArgs>(args?: SelectSubset<T, ScheduleTemplateDayBreakDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleTemplateDayBreaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ScheduleTemplateDayBreaks
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ScheduleTemplateDayBreakUpdateManyArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleTemplateDayBreaks and returns the data updated in the database.
+     * @param {ScheduleTemplateDayBreakUpdateManyAndReturnArgs} args - Arguments to update many ScheduleTemplateDayBreaks.
+     * @example
+     * // Update many ScheduleTemplateDayBreaks
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ScheduleTemplateDayBreaks and only return the `id`
+     * const scheduleTemplateDayBreakWithIdOnly = await prisma.scheduleTemplateDayBreak.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ScheduleTemplateDayBreakUpdateManyAndReturnArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ScheduleTemplateDayBreak.
+     * @param {ScheduleTemplateDayBreakUpsertArgs} args - Arguments to update or create a ScheduleTemplateDayBreak.
+     * @example
+     * // Update or create a ScheduleTemplateDayBreak
+     * const scheduleTemplateDayBreak = await prisma.scheduleTemplateDayBreak.upsert({
+     *   create: {
+     *     // ... data to create a ScheduleTemplateDayBreak
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ScheduleTemplateDayBreak we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ScheduleTemplateDayBreakUpsertArgs>(args: SelectSubset<T, ScheduleTemplateDayBreakUpsertArgs<ExtArgs>>): Prisma__ScheduleTemplateDayBreakClient<$Result.GetResult<Prisma.$ScheduleTemplateDayBreakPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ScheduleTemplateDayBreaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakCountArgs} args - Arguments to filter ScheduleTemplateDayBreaks to count.
+     * @example
+     * // Count the number of ScheduleTemplateDayBreaks
+     * const count = await prisma.scheduleTemplateDayBreak.count({
+     *   where: {
+     *     // ... the filter for the ScheduleTemplateDayBreaks we want to count
+     *   }
+     * })
+    **/
+    count<T extends ScheduleTemplateDayBreakCountArgs>(
+      args?: Subset<T, ScheduleTemplateDayBreakCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ScheduleTemplateDayBreakCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ScheduleTemplateDayBreak.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ScheduleTemplateDayBreakAggregateArgs>(args: Subset<T, ScheduleTemplateDayBreakAggregateArgs>): Prisma.PrismaPromise<GetScheduleTemplateDayBreakAggregateType<T>>
+
+    /**
+     * Group by ScheduleTemplateDayBreak.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleTemplateDayBreakGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ScheduleTemplateDayBreakGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ScheduleTemplateDayBreakGroupByArgs['orderBy'] }
+        : { orderBy?: ScheduleTemplateDayBreakGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ScheduleTemplateDayBreakGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetScheduleTemplateDayBreakGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ScheduleTemplateDayBreak model
+   */
+  readonly fields: ScheduleTemplateDayBreakFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ScheduleTemplateDayBreak.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ScheduleTemplateDayBreakClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    scheduleTemplateDay<T extends ScheduleTemplateDayDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ScheduleTemplateDayDefaultArgs<ExtArgs>>): Prisma__ScheduleTemplateDayClient<$Result.GetResult<Prisma.$ScheduleTemplateDayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ScheduleTemplateDayBreak model
+   */
+  interface ScheduleTemplateDayBreakFieldRefs {
+    readonly id: FieldRef<"ScheduleTemplateDayBreak", 'String'>
+    readonly scheduleTemplateDayId: FieldRef<"ScheduleTemplateDayBreak", 'String'>
+    readonly startTimeMinutes: FieldRef<"ScheduleTemplateDayBreak", 'Int'>
+    readonly endTimeMinutes: FieldRef<"ScheduleTemplateDayBreak", 'Int'>
+    readonly createdAt: FieldRef<"ScheduleTemplateDayBreak", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ScheduleTemplateDayBreak findUnique
+   */
+  export type ScheduleTemplateDayBreakFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDayBreak to fetch.
+     */
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDayBreak findUniqueOrThrow
+   */
+  export type ScheduleTemplateDayBreakFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDayBreak to fetch.
+     */
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDayBreak findFirst
+   */
+  export type ScheduleTemplateDayBreakFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDayBreak to fetch.
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDayBreaks to fetch.
+     */
+    orderBy?: ScheduleTemplateDayBreakOrderByWithRelationInput | ScheduleTemplateDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleTemplateDayBreaks.
+     */
+    cursor?: ScheduleTemplateDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDayBreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleTemplateDayBreaks.
+     */
+    distinct?: ScheduleTemplateDayBreakScalarFieldEnum | ScheduleTemplateDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDayBreak findFirstOrThrow
+   */
+  export type ScheduleTemplateDayBreakFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDayBreak to fetch.
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDayBreaks to fetch.
+     */
+    orderBy?: ScheduleTemplateDayBreakOrderByWithRelationInput | ScheduleTemplateDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleTemplateDayBreaks.
+     */
+    cursor?: ScheduleTemplateDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDayBreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleTemplateDayBreaks.
+     */
+    distinct?: ScheduleTemplateDayBreakScalarFieldEnum | ScheduleTemplateDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDayBreak findMany
+   */
+  export type ScheduleTemplateDayBreakFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleTemplateDayBreaks to fetch.
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleTemplateDayBreaks to fetch.
+     */
+    orderBy?: ScheduleTemplateDayBreakOrderByWithRelationInput | ScheduleTemplateDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ScheduleTemplateDayBreaks.
+     */
+    cursor?: ScheduleTemplateDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleTemplateDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleTemplateDayBreaks.
+     */
+    skip?: number
+    distinct?: ScheduleTemplateDayBreakScalarFieldEnum | ScheduleTemplateDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleTemplateDayBreak create
+   */
+  export type ScheduleTemplateDayBreakCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ScheduleTemplateDayBreak.
+     */
+    data: XOR<ScheduleTemplateDayBreakCreateInput, ScheduleTemplateDayBreakUncheckedCreateInput>
+  }
+
+  /**
+   * ScheduleTemplateDayBreak createMany
+   */
+  export type ScheduleTemplateDayBreakCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ScheduleTemplateDayBreaks.
+     */
+    data: ScheduleTemplateDayBreakCreateManyInput | ScheduleTemplateDayBreakCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ScheduleTemplateDayBreak createManyAndReturn
+   */
+  export type ScheduleTemplateDayBreakCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * The data used to create many ScheduleTemplateDayBreaks.
+     */
+    data: ScheduleTemplateDayBreakCreateManyInput | ScheduleTemplateDayBreakCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplateDayBreak update
+   */
+  export type ScheduleTemplateDayBreakUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ScheduleTemplateDayBreak.
+     */
+    data: XOR<ScheduleTemplateDayBreakUpdateInput, ScheduleTemplateDayBreakUncheckedUpdateInput>
+    /**
+     * Choose, which ScheduleTemplateDayBreak to update.
+     */
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDayBreak updateMany
+   */
+  export type ScheduleTemplateDayBreakUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ScheduleTemplateDayBreaks.
+     */
+    data: XOR<ScheduleTemplateDayBreakUpdateManyMutationInput, ScheduleTemplateDayBreakUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleTemplateDayBreaks to update
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * Limit how many ScheduleTemplateDayBreaks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleTemplateDayBreak updateManyAndReturn
+   */
+  export type ScheduleTemplateDayBreakUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * The data used to update ScheduleTemplateDayBreaks.
+     */
+    data: XOR<ScheduleTemplateDayBreakUpdateManyMutationInput, ScheduleTemplateDayBreakUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleTemplateDayBreaks to update
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * Limit how many ScheduleTemplateDayBreaks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ScheduleTemplateDayBreak upsert
+   */
+  export type ScheduleTemplateDayBreakUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ScheduleTemplateDayBreak to update in case it exists.
+     */
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+    /**
+     * In case the ScheduleTemplateDayBreak found by the `where` argument doesn't exist, create a new ScheduleTemplateDayBreak with this data.
+     */
+    create: XOR<ScheduleTemplateDayBreakCreateInput, ScheduleTemplateDayBreakUncheckedCreateInput>
+    /**
+     * In case the ScheduleTemplateDayBreak was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ScheduleTemplateDayBreakUpdateInput, ScheduleTemplateDayBreakUncheckedUpdateInput>
+  }
+
+  /**
+   * ScheduleTemplateDayBreak delete
+   */
+  export type ScheduleTemplateDayBreakDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter which ScheduleTemplateDayBreak to delete.
+     */
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+  }
+
+  /**
+   * ScheduleTemplateDayBreak deleteMany
+   */
+  export type ScheduleTemplateDayBreakDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleTemplateDayBreaks to delete
+     */
+    where?: ScheduleTemplateDayBreakWhereInput
+    /**
+     * Limit how many ScheduleTemplateDayBreaks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleTemplateDayBreak without action
+   */
+  export type ScheduleTemplateDayBreakDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplateDayBreak
+     */
+    select?: ScheduleTemplateDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplateDayBreak
+     */
+    omit?: ScheduleTemplateDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateDayBreakInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EmployeeSchedule
+   */
+
+  export type AggregateEmployeeSchedule = {
+    _count: EmployeeScheduleCountAggregateOutputType | null
+    _min: EmployeeScheduleMinAggregateOutputType | null
+    _max: EmployeeScheduleMaxAggregateOutputType | null
+  }
+
+  export type EmployeeScheduleMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    scheduleTemplateId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EmployeeScheduleMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    scheduleTemplateId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EmployeeScheduleCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    scheduleTemplateId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EmployeeScheduleMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    scheduleTemplateId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EmployeeScheduleMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    scheduleTemplateId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EmployeeScheduleCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    scheduleTemplateId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EmployeeScheduleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmployeeSchedule to aggregate.
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeSchedules to fetch.
+     */
+    orderBy?: EmployeeScheduleOrderByWithRelationInput | EmployeeScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EmployeeScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EmployeeSchedules
+    **/
+    _count?: true | EmployeeScheduleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmployeeScheduleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmployeeScheduleMaxAggregateInputType
+  }
+
+  export type GetEmployeeScheduleAggregateType<T extends EmployeeScheduleAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmployeeSchedule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmployeeSchedule[P]>
+      : GetScalarType<T[P], AggregateEmployeeSchedule[P]>
+  }
+
+
+
+
+  export type EmployeeScheduleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmployeeScheduleWhereInput
+    orderBy?: EmployeeScheduleOrderByWithAggregationInput | EmployeeScheduleOrderByWithAggregationInput[]
+    by: EmployeeScheduleScalarFieldEnum[] | EmployeeScheduleScalarFieldEnum
+    having?: EmployeeScheduleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmployeeScheduleCountAggregateInputType | true
+    _min?: EmployeeScheduleMinAggregateInputType
+    _max?: EmployeeScheduleMaxAggregateInputType
+  }
+
+  export type EmployeeScheduleGroupByOutputType = {
+    id: string
+    employeeId: string
+    scheduleTemplateId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: EmployeeScheduleCountAggregateOutputType | null
+    _min: EmployeeScheduleMinAggregateOutputType | null
+    _max: EmployeeScheduleMaxAggregateOutputType | null
+  }
+
+  type GetEmployeeScheduleGroupByPayload<T extends EmployeeScheduleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmployeeScheduleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmployeeScheduleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmployeeScheduleGroupByOutputType[P]>
+            : GetScalarType<T[P], EmployeeScheduleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EmployeeScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    scheduleTemplateId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    scheduleTemplate?: boolean | EmployeeSchedule$scheduleTemplateArgs<ExtArgs>
+    days?: boolean | EmployeeSchedule$daysArgs<ExtArgs>
+    _count?: boolean | EmployeeScheduleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeSchedule"]>
+
+  export type EmployeeScheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    scheduleTemplateId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    scheduleTemplate?: boolean | EmployeeSchedule$scheduleTemplateArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeSchedule"]>
+
+  export type EmployeeScheduleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    scheduleTemplateId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    scheduleTemplate?: boolean | EmployeeSchedule$scheduleTemplateArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeSchedule"]>
+
+  export type EmployeeScheduleSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    scheduleTemplateId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EmployeeScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "scheduleTemplateId" | "createdAt" | "updatedAt", ExtArgs["result"]["employeeSchedule"]>
+  export type EmployeeScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    scheduleTemplate?: boolean | EmployeeSchedule$scheduleTemplateArgs<ExtArgs>
+    days?: boolean | EmployeeSchedule$daysArgs<ExtArgs>
+    _count?: boolean | EmployeeScheduleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type EmployeeScheduleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    scheduleTemplate?: boolean | EmployeeSchedule$scheduleTemplateArgs<ExtArgs>
+  }
+  export type EmployeeScheduleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    scheduleTemplate?: boolean | EmployeeSchedule$scheduleTemplateArgs<ExtArgs>
+  }
+
+  export type $EmployeeSchedulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EmployeeSchedule"
+    objects: {
+      employee: Prisma.$EmployeePayload<ExtArgs>
+      scheduleTemplate: Prisma.$ScheduleTemplatePayload<ExtArgs> | null
+      days: Prisma.$EmployeeScheduleDayPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      scheduleTemplateId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["employeeSchedule"]>
+    composites: {}
+  }
+
+  type EmployeeScheduleGetPayload<S extends boolean | null | undefined | EmployeeScheduleDefaultArgs> = $Result.GetResult<Prisma.$EmployeeSchedulePayload, S>
+
+  type EmployeeScheduleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EmployeeScheduleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EmployeeScheduleCountAggregateInputType | true
+    }
+
+  export interface EmployeeScheduleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EmployeeSchedule'], meta: { name: 'EmployeeSchedule' } }
+    /**
+     * Find zero or one EmployeeSchedule that matches the filter.
+     * @param {EmployeeScheduleFindUniqueArgs} args - Arguments to find a EmployeeSchedule
+     * @example
+     * // Get one EmployeeSchedule
+     * const employeeSchedule = await prisma.employeeSchedule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EmployeeScheduleFindUniqueArgs>(args: SelectSubset<T, EmployeeScheduleFindUniqueArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EmployeeSchedule that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EmployeeScheduleFindUniqueOrThrowArgs} args - Arguments to find a EmployeeSchedule
+     * @example
+     * // Get one EmployeeSchedule
+     * const employeeSchedule = await prisma.employeeSchedule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EmployeeScheduleFindUniqueOrThrowArgs>(args: SelectSubset<T, EmployeeScheduleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmployeeSchedule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleFindFirstArgs} args - Arguments to find a EmployeeSchedule
+     * @example
+     * // Get one EmployeeSchedule
+     * const employeeSchedule = await prisma.employeeSchedule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EmployeeScheduleFindFirstArgs>(args?: SelectSubset<T, EmployeeScheduleFindFirstArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmployeeSchedule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleFindFirstOrThrowArgs} args - Arguments to find a EmployeeSchedule
+     * @example
+     * // Get one EmployeeSchedule
+     * const employeeSchedule = await prisma.employeeSchedule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EmployeeScheduleFindFirstOrThrowArgs>(args?: SelectSubset<T, EmployeeScheduleFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EmployeeSchedules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EmployeeSchedules
+     * const employeeSchedules = await prisma.employeeSchedule.findMany()
+     * 
+     * // Get first 10 EmployeeSchedules
+     * const employeeSchedules = await prisma.employeeSchedule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const employeeScheduleWithIdOnly = await prisma.employeeSchedule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EmployeeScheduleFindManyArgs>(args?: SelectSubset<T, EmployeeScheduleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EmployeeSchedule.
+     * @param {EmployeeScheduleCreateArgs} args - Arguments to create a EmployeeSchedule.
+     * @example
+     * // Create one EmployeeSchedule
+     * const EmployeeSchedule = await prisma.employeeSchedule.create({
+     *   data: {
+     *     // ... data to create a EmployeeSchedule
+     *   }
+     * })
+     * 
+     */
+    create<T extends EmployeeScheduleCreateArgs>(args: SelectSubset<T, EmployeeScheduleCreateArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EmployeeSchedules.
+     * @param {EmployeeScheduleCreateManyArgs} args - Arguments to create many EmployeeSchedules.
+     * @example
+     * // Create many EmployeeSchedules
+     * const employeeSchedule = await prisma.employeeSchedule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EmployeeScheduleCreateManyArgs>(args?: SelectSubset<T, EmployeeScheduleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EmployeeSchedules and returns the data saved in the database.
+     * @param {EmployeeScheduleCreateManyAndReturnArgs} args - Arguments to create many EmployeeSchedules.
+     * @example
+     * // Create many EmployeeSchedules
+     * const employeeSchedule = await prisma.employeeSchedule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EmployeeSchedules and only return the `id`
+     * const employeeScheduleWithIdOnly = await prisma.employeeSchedule.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EmployeeScheduleCreateManyAndReturnArgs>(args?: SelectSubset<T, EmployeeScheduleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EmployeeSchedule.
+     * @param {EmployeeScheduleDeleteArgs} args - Arguments to delete one EmployeeSchedule.
+     * @example
+     * // Delete one EmployeeSchedule
+     * const EmployeeSchedule = await prisma.employeeSchedule.delete({
+     *   where: {
+     *     // ... filter to delete one EmployeeSchedule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EmployeeScheduleDeleteArgs>(args: SelectSubset<T, EmployeeScheduleDeleteArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EmployeeSchedule.
+     * @param {EmployeeScheduleUpdateArgs} args - Arguments to update one EmployeeSchedule.
+     * @example
+     * // Update one EmployeeSchedule
+     * const employeeSchedule = await prisma.employeeSchedule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EmployeeScheduleUpdateArgs>(args: SelectSubset<T, EmployeeScheduleUpdateArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EmployeeSchedules.
+     * @param {EmployeeScheduleDeleteManyArgs} args - Arguments to filter EmployeeSchedules to delete.
+     * @example
+     * // Delete a few EmployeeSchedules
+     * const { count } = await prisma.employeeSchedule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EmployeeScheduleDeleteManyArgs>(args?: SelectSubset<T, EmployeeScheduleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmployeeSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EmployeeSchedules
+     * const employeeSchedule = await prisma.employeeSchedule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EmployeeScheduleUpdateManyArgs>(args: SelectSubset<T, EmployeeScheduleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmployeeSchedules and returns the data updated in the database.
+     * @param {EmployeeScheduleUpdateManyAndReturnArgs} args - Arguments to update many EmployeeSchedules.
+     * @example
+     * // Update many EmployeeSchedules
+     * const employeeSchedule = await prisma.employeeSchedule.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EmployeeSchedules and only return the `id`
+     * const employeeScheduleWithIdOnly = await prisma.employeeSchedule.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EmployeeScheduleUpdateManyAndReturnArgs>(args: SelectSubset<T, EmployeeScheduleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EmployeeSchedule.
+     * @param {EmployeeScheduleUpsertArgs} args - Arguments to update or create a EmployeeSchedule.
+     * @example
+     * // Update or create a EmployeeSchedule
+     * const employeeSchedule = await prisma.employeeSchedule.upsert({
+     *   create: {
+     *     // ... data to create a EmployeeSchedule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EmployeeSchedule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EmployeeScheduleUpsertArgs>(args: SelectSubset<T, EmployeeScheduleUpsertArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EmployeeSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleCountArgs} args - Arguments to filter EmployeeSchedules to count.
+     * @example
+     * // Count the number of EmployeeSchedules
+     * const count = await prisma.employeeSchedule.count({
+     *   where: {
+     *     // ... the filter for the EmployeeSchedules we want to count
+     *   }
+     * })
+    **/
+    count<T extends EmployeeScheduleCountArgs>(
+      args?: Subset<T, EmployeeScheduleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmployeeScheduleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EmployeeSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmployeeScheduleAggregateArgs>(args: Subset<T, EmployeeScheduleAggregateArgs>): Prisma.PrismaPromise<GetEmployeeScheduleAggregateType<T>>
+
+    /**
+     * Group by EmployeeSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EmployeeScheduleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EmployeeScheduleGroupByArgs['orderBy'] }
+        : { orderBy?: EmployeeScheduleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EmployeeScheduleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmployeeScheduleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EmployeeSchedule model
+   */
+  readonly fields: EmployeeScheduleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EmployeeSchedule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EmployeeScheduleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends EmployeeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeDefaultArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    scheduleTemplate<T extends EmployeeSchedule$scheduleTemplateArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeSchedule$scheduleTemplateArgs<ExtArgs>>): Prisma__ScheduleTemplateClient<$Result.GetResult<Prisma.$ScheduleTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    days<T extends EmployeeSchedule$daysArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeSchedule$daysArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EmployeeSchedule model
+   */
+  interface EmployeeScheduleFieldRefs {
+    readonly id: FieldRef<"EmployeeSchedule", 'String'>
+    readonly employeeId: FieldRef<"EmployeeSchedule", 'String'>
+    readonly scheduleTemplateId: FieldRef<"EmployeeSchedule", 'String'>
+    readonly createdAt: FieldRef<"EmployeeSchedule", 'DateTime'>
+    readonly updatedAt: FieldRef<"EmployeeSchedule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EmployeeSchedule findUnique
+   */
+  export type EmployeeScheduleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeSchedule to fetch.
+     */
+    where: EmployeeScheduleWhereUniqueInput
+  }
+
+  /**
+   * EmployeeSchedule findUniqueOrThrow
+   */
+  export type EmployeeScheduleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeSchedule to fetch.
+     */
+    where: EmployeeScheduleWhereUniqueInput
+  }
+
+  /**
+   * EmployeeSchedule findFirst
+   */
+  export type EmployeeScheduleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeSchedule to fetch.
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeSchedules to fetch.
+     */
+    orderBy?: EmployeeScheduleOrderByWithRelationInput | EmployeeScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmployeeSchedules.
+     */
+    cursor?: EmployeeScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmployeeSchedules.
+     */
+    distinct?: EmployeeScheduleScalarFieldEnum | EmployeeScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeSchedule findFirstOrThrow
+   */
+  export type EmployeeScheduleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeSchedule to fetch.
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeSchedules to fetch.
+     */
+    orderBy?: EmployeeScheduleOrderByWithRelationInput | EmployeeScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmployeeSchedules.
+     */
+    cursor?: EmployeeScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmployeeSchedules.
+     */
+    distinct?: EmployeeScheduleScalarFieldEnum | EmployeeScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeSchedule findMany
+   */
+  export type EmployeeScheduleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeSchedules to fetch.
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeSchedules to fetch.
+     */
+    orderBy?: EmployeeScheduleOrderByWithRelationInput | EmployeeScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EmployeeSchedules.
+     */
+    cursor?: EmployeeScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeSchedules.
+     */
+    skip?: number
+    distinct?: EmployeeScheduleScalarFieldEnum | EmployeeScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeSchedule create
+   */
+  export type EmployeeScheduleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EmployeeSchedule.
+     */
+    data: XOR<EmployeeScheduleCreateInput, EmployeeScheduleUncheckedCreateInput>
+  }
+
+  /**
+   * EmployeeSchedule createMany
+   */
+  export type EmployeeScheduleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EmployeeSchedules.
+     */
+    data: EmployeeScheduleCreateManyInput | EmployeeScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EmployeeSchedule createManyAndReturn
+   */
+  export type EmployeeScheduleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * The data used to create many EmployeeSchedules.
+     */
+    data: EmployeeScheduleCreateManyInput | EmployeeScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeSchedule update
+   */
+  export type EmployeeScheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EmployeeSchedule.
+     */
+    data: XOR<EmployeeScheduleUpdateInput, EmployeeScheduleUncheckedUpdateInput>
+    /**
+     * Choose, which EmployeeSchedule to update.
+     */
+    where: EmployeeScheduleWhereUniqueInput
+  }
+
+  /**
+   * EmployeeSchedule updateMany
+   */
+  export type EmployeeScheduleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EmployeeSchedules.
+     */
+    data: XOR<EmployeeScheduleUpdateManyMutationInput, EmployeeScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which EmployeeSchedules to update
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * Limit how many EmployeeSchedules to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmployeeSchedule updateManyAndReturn
+   */
+  export type EmployeeScheduleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * The data used to update EmployeeSchedules.
+     */
+    data: XOR<EmployeeScheduleUpdateManyMutationInput, EmployeeScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which EmployeeSchedules to update
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * Limit how many EmployeeSchedules to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeSchedule upsert
+   */
+  export type EmployeeScheduleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EmployeeSchedule to update in case it exists.
+     */
+    where: EmployeeScheduleWhereUniqueInput
+    /**
+     * In case the EmployeeSchedule found by the `where` argument doesn't exist, create a new EmployeeSchedule with this data.
+     */
+    create: XOR<EmployeeScheduleCreateInput, EmployeeScheduleUncheckedCreateInput>
+    /**
+     * In case the EmployeeSchedule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EmployeeScheduleUpdateInput, EmployeeScheduleUncheckedUpdateInput>
+  }
+
+  /**
+   * EmployeeSchedule delete
+   */
+  export type EmployeeScheduleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+    /**
+     * Filter which EmployeeSchedule to delete.
+     */
+    where: EmployeeScheduleWhereUniqueInput
+  }
+
+  /**
+   * EmployeeSchedule deleteMany
+   */
+  export type EmployeeScheduleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmployeeSchedules to delete
+     */
+    where?: EmployeeScheduleWhereInput
+    /**
+     * Limit how many EmployeeSchedules to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmployeeSchedule.scheduleTemplate
+   */
+  export type EmployeeSchedule$scheduleTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleTemplate
+     */
+    select?: ScheduleTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleTemplate
+     */
+    omit?: ScheduleTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleTemplateInclude<ExtArgs> | null
+    where?: ScheduleTemplateWhereInput
+  }
+
+  /**
+   * EmployeeSchedule.days
+   */
+  export type EmployeeSchedule$daysArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    where?: EmployeeScheduleDayWhereInput
+    orderBy?: EmployeeScheduleDayOrderByWithRelationInput | EmployeeScheduleDayOrderByWithRelationInput[]
+    cursor?: EmployeeScheduleDayWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EmployeeScheduleDayScalarFieldEnum | EmployeeScheduleDayScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeSchedule without action
+   */
+  export type EmployeeScheduleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeSchedule
+     */
+    select?: EmployeeScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeSchedule
+     */
+    omit?: EmployeeScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EmployeeScheduleDay
+   */
+
+  export type AggregateEmployeeScheduleDay = {
+    _count: EmployeeScheduleDayCountAggregateOutputType | null
+    _avg: EmployeeScheduleDayAvgAggregateOutputType | null
+    _sum: EmployeeScheduleDaySumAggregateOutputType | null
+    _min: EmployeeScheduleDayMinAggregateOutputType | null
+    _max: EmployeeScheduleDayMaxAggregateOutputType | null
+  }
+
+  export type EmployeeScheduleDayAvgAggregateOutputType = {
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type EmployeeScheduleDaySumAggregateOutputType = {
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type EmployeeScheduleDayMinAggregateOutputType = {
+    id: string | null
+    employeeScheduleId: string | null
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EmployeeScheduleDayMaxAggregateOutputType = {
+    id: string | null
+    employeeScheduleId: string | null
+    dayOfWeek: number | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EmployeeScheduleDayCountAggregateOutputType = {
+    id: number
+    employeeScheduleId: number
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EmployeeScheduleDayAvgAggregateInputType = {
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type EmployeeScheduleDaySumAggregateInputType = {
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type EmployeeScheduleDayMinAggregateInputType = {
+    id?: true
+    employeeScheduleId?: true
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EmployeeScheduleDayMaxAggregateInputType = {
+    id?: true
+    employeeScheduleId?: true
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EmployeeScheduleDayCountAggregateInputType = {
+    id?: true
+    employeeScheduleId?: true
+    dayOfWeek?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EmployeeScheduleDayAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmployeeScheduleDay to aggregate.
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDays to fetch.
+     */
+    orderBy?: EmployeeScheduleDayOrderByWithRelationInput | EmployeeScheduleDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EmployeeScheduleDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EmployeeScheduleDays
+    **/
+    _count?: true | EmployeeScheduleDayCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EmployeeScheduleDayAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EmployeeScheduleDaySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmployeeScheduleDayMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmployeeScheduleDayMaxAggregateInputType
+  }
+
+  export type GetEmployeeScheduleDayAggregateType<T extends EmployeeScheduleDayAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmployeeScheduleDay]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmployeeScheduleDay[P]>
+      : GetScalarType<T[P], AggregateEmployeeScheduleDay[P]>
+  }
+
+
+
+
+  export type EmployeeScheduleDayGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmployeeScheduleDayWhereInput
+    orderBy?: EmployeeScheduleDayOrderByWithAggregationInput | EmployeeScheduleDayOrderByWithAggregationInput[]
+    by: EmployeeScheduleDayScalarFieldEnum[] | EmployeeScheduleDayScalarFieldEnum
+    having?: EmployeeScheduleDayScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmployeeScheduleDayCountAggregateInputType | true
+    _avg?: EmployeeScheduleDayAvgAggregateInputType
+    _sum?: EmployeeScheduleDaySumAggregateInputType
+    _min?: EmployeeScheduleDayMinAggregateInputType
+    _max?: EmployeeScheduleDayMaxAggregateInputType
+  }
+
+  export type EmployeeScheduleDayGroupByOutputType = {
+    id: string
+    employeeScheduleId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: Date
+    updatedAt: Date
+    _count: EmployeeScheduleDayCountAggregateOutputType | null
+    _avg: EmployeeScheduleDayAvgAggregateOutputType | null
+    _sum: EmployeeScheduleDaySumAggregateOutputType | null
+    _min: EmployeeScheduleDayMinAggregateOutputType | null
+    _max: EmployeeScheduleDayMaxAggregateOutputType | null
+  }
+
+  type GetEmployeeScheduleDayGroupByPayload<T extends EmployeeScheduleDayGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmployeeScheduleDayGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmployeeScheduleDayGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmployeeScheduleDayGroupByOutputType[P]>
+            : GetScalarType<T[P], EmployeeScheduleDayGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EmployeeScheduleDaySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeScheduleId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employeeSchedule?: boolean | EmployeeScheduleDefaultArgs<ExtArgs>
+    breaks?: boolean | EmployeeScheduleDay$breaksArgs<ExtArgs>
+    _count?: boolean | EmployeeScheduleDayCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeScheduleDay"]>
+
+  export type EmployeeScheduleDaySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeScheduleId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employeeSchedule?: boolean | EmployeeScheduleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeScheduleDay"]>
+
+  export type EmployeeScheduleDaySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeScheduleId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employeeSchedule?: boolean | EmployeeScheduleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeScheduleDay"]>
+
+  export type EmployeeScheduleDaySelectScalar = {
+    id?: boolean
+    employeeScheduleId?: boolean
+    dayOfWeek?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EmployeeScheduleDayOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeScheduleId" | "dayOfWeek" | "startTimeMinutes" | "endTimeMinutes" | "createdAt" | "updatedAt", ExtArgs["result"]["employeeScheduleDay"]>
+  export type EmployeeScheduleDayInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employeeSchedule?: boolean | EmployeeScheduleDefaultArgs<ExtArgs>
+    breaks?: boolean | EmployeeScheduleDay$breaksArgs<ExtArgs>
+    _count?: boolean | EmployeeScheduleDayCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type EmployeeScheduleDayIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employeeSchedule?: boolean | EmployeeScheduleDefaultArgs<ExtArgs>
+  }
+  export type EmployeeScheduleDayIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employeeSchedule?: boolean | EmployeeScheduleDefaultArgs<ExtArgs>
+  }
+
+  export type $EmployeeScheduleDayPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EmployeeScheduleDay"
+    objects: {
+      employeeSchedule: Prisma.$EmployeeSchedulePayload<ExtArgs>
+      breaks: Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeScheduleId: string
+      dayOfWeek: number
+      startTimeMinutes: number
+      endTimeMinutes: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["employeeScheduleDay"]>
+    composites: {}
+  }
+
+  type EmployeeScheduleDayGetPayload<S extends boolean | null | undefined | EmployeeScheduleDayDefaultArgs> = $Result.GetResult<Prisma.$EmployeeScheduleDayPayload, S>
+
+  type EmployeeScheduleDayCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EmployeeScheduleDayFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EmployeeScheduleDayCountAggregateInputType | true
+    }
+
+  export interface EmployeeScheduleDayDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EmployeeScheduleDay'], meta: { name: 'EmployeeScheduleDay' } }
+    /**
+     * Find zero or one EmployeeScheduleDay that matches the filter.
+     * @param {EmployeeScheduleDayFindUniqueArgs} args - Arguments to find a EmployeeScheduleDay
+     * @example
+     * // Get one EmployeeScheduleDay
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EmployeeScheduleDayFindUniqueArgs>(args: SelectSubset<T, EmployeeScheduleDayFindUniqueArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EmployeeScheduleDay that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EmployeeScheduleDayFindUniqueOrThrowArgs} args - Arguments to find a EmployeeScheduleDay
+     * @example
+     * // Get one EmployeeScheduleDay
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EmployeeScheduleDayFindUniqueOrThrowArgs>(args: SelectSubset<T, EmployeeScheduleDayFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmployeeScheduleDay that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayFindFirstArgs} args - Arguments to find a EmployeeScheduleDay
+     * @example
+     * // Get one EmployeeScheduleDay
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EmployeeScheduleDayFindFirstArgs>(args?: SelectSubset<T, EmployeeScheduleDayFindFirstArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmployeeScheduleDay that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayFindFirstOrThrowArgs} args - Arguments to find a EmployeeScheduleDay
+     * @example
+     * // Get one EmployeeScheduleDay
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EmployeeScheduleDayFindFirstOrThrowArgs>(args?: SelectSubset<T, EmployeeScheduleDayFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EmployeeScheduleDays that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EmployeeScheduleDays
+     * const employeeScheduleDays = await prisma.employeeScheduleDay.findMany()
+     * 
+     * // Get first 10 EmployeeScheduleDays
+     * const employeeScheduleDays = await prisma.employeeScheduleDay.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const employeeScheduleDayWithIdOnly = await prisma.employeeScheduleDay.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EmployeeScheduleDayFindManyArgs>(args?: SelectSubset<T, EmployeeScheduleDayFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EmployeeScheduleDay.
+     * @param {EmployeeScheduleDayCreateArgs} args - Arguments to create a EmployeeScheduleDay.
+     * @example
+     * // Create one EmployeeScheduleDay
+     * const EmployeeScheduleDay = await prisma.employeeScheduleDay.create({
+     *   data: {
+     *     // ... data to create a EmployeeScheduleDay
+     *   }
+     * })
+     * 
+     */
+    create<T extends EmployeeScheduleDayCreateArgs>(args: SelectSubset<T, EmployeeScheduleDayCreateArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EmployeeScheduleDays.
+     * @param {EmployeeScheduleDayCreateManyArgs} args - Arguments to create many EmployeeScheduleDays.
+     * @example
+     * // Create many EmployeeScheduleDays
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EmployeeScheduleDayCreateManyArgs>(args?: SelectSubset<T, EmployeeScheduleDayCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EmployeeScheduleDays and returns the data saved in the database.
+     * @param {EmployeeScheduleDayCreateManyAndReturnArgs} args - Arguments to create many EmployeeScheduleDays.
+     * @example
+     * // Create many EmployeeScheduleDays
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EmployeeScheduleDays and only return the `id`
+     * const employeeScheduleDayWithIdOnly = await prisma.employeeScheduleDay.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EmployeeScheduleDayCreateManyAndReturnArgs>(args?: SelectSubset<T, EmployeeScheduleDayCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EmployeeScheduleDay.
+     * @param {EmployeeScheduleDayDeleteArgs} args - Arguments to delete one EmployeeScheduleDay.
+     * @example
+     * // Delete one EmployeeScheduleDay
+     * const EmployeeScheduleDay = await prisma.employeeScheduleDay.delete({
+     *   where: {
+     *     // ... filter to delete one EmployeeScheduleDay
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EmployeeScheduleDayDeleteArgs>(args: SelectSubset<T, EmployeeScheduleDayDeleteArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EmployeeScheduleDay.
+     * @param {EmployeeScheduleDayUpdateArgs} args - Arguments to update one EmployeeScheduleDay.
+     * @example
+     * // Update one EmployeeScheduleDay
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EmployeeScheduleDayUpdateArgs>(args: SelectSubset<T, EmployeeScheduleDayUpdateArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EmployeeScheduleDays.
+     * @param {EmployeeScheduleDayDeleteManyArgs} args - Arguments to filter EmployeeScheduleDays to delete.
+     * @example
+     * // Delete a few EmployeeScheduleDays
+     * const { count } = await prisma.employeeScheduleDay.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EmployeeScheduleDayDeleteManyArgs>(args?: SelectSubset<T, EmployeeScheduleDayDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmployeeScheduleDays.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EmployeeScheduleDays
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EmployeeScheduleDayUpdateManyArgs>(args: SelectSubset<T, EmployeeScheduleDayUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmployeeScheduleDays and returns the data updated in the database.
+     * @param {EmployeeScheduleDayUpdateManyAndReturnArgs} args - Arguments to update many EmployeeScheduleDays.
+     * @example
+     * // Update many EmployeeScheduleDays
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EmployeeScheduleDays and only return the `id`
+     * const employeeScheduleDayWithIdOnly = await prisma.employeeScheduleDay.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EmployeeScheduleDayUpdateManyAndReturnArgs>(args: SelectSubset<T, EmployeeScheduleDayUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EmployeeScheduleDay.
+     * @param {EmployeeScheduleDayUpsertArgs} args - Arguments to update or create a EmployeeScheduleDay.
+     * @example
+     * // Update or create a EmployeeScheduleDay
+     * const employeeScheduleDay = await prisma.employeeScheduleDay.upsert({
+     *   create: {
+     *     // ... data to create a EmployeeScheduleDay
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EmployeeScheduleDay we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EmployeeScheduleDayUpsertArgs>(args: SelectSubset<T, EmployeeScheduleDayUpsertArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EmployeeScheduleDays.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayCountArgs} args - Arguments to filter EmployeeScheduleDays to count.
+     * @example
+     * // Count the number of EmployeeScheduleDays
+     * const count = await prisma.employeeScheduleDay.count({
+     *   where: {
+     *     // ... the filter for the EmployeeScheduleDays we want to count
+     *   }
+     * })
+    **/
+    count<T extends EmployeeScheduleDayCountArgs>(
+      args?: Subset<T, EmployeeScheduleDayCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmployeeScheduleDayCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EmployeeScheduleDay.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmployeeScheduleDayAggregateArgs>(args: Subset<T, EmployeeScheduleDayAggregateArgs>): Prisma.PrismaPromise<GetEmployeeScheduleDayAggregateType<T>>
+
+    /**
+     * Group by EmployeeScheduleDay.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EmployeeScheduleDayGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EmployeeScheduleDayGroupByArgs['orderBy'] }
+        : { orderBy?: EmployeeScheduleDayGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EmployeeScheduleDayGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmployeeScheduleDayGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EmployeeScheduleDay model
+   */
+  readonly fields: EmployeeScheduleDayFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EmployeeScheduleDay.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EmployeeScheduleDayClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employeeSchedule<T extends EmployeeScheduleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeScheduleDefaultArgs<ExtArgs>>): Prisma__EmployeeScheduleClient<$Result.GetResult<Prisma.$EmployeeSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    breaks<T extends EmployeeScheduleDay$breaksArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeScheduleDay$breaksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EmployeeScheduleDay model
+   */
+  interface EmployeeScheduleDayFieldRefs {
+    readonly id: FieldRef<"EmployeeScheduleDay", 'String'>
+    readonly employeeScheduleId: FieldRef<"EmployeeScheduleDay", 'String'>
+    readonly dayOfWeek: FieldRef<"EmployeeScheduleDay", 'Int'>
+    readonly startTimeMinutes: FieldRef<"EmployeeScheduleDay", 'Int'>
+    readonly endTimeMinutes: FieldRef<"EmployeeScheduleDay", 'Int'>
+    readonly createdAt: FieldRef<"EmployeeScheduleDay", 'DateTime'>
+    readonly updatedAt: FieldRef<"EmployeeScheduleDay", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EmployeeScheduleDay findUnique
+   */
+  export type EmployeeScheduleDayFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDay to fetch.
+     */
+    where: EmployeeScheduleDayWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDay findUniqueOrThrow
+   */
+  export type EmployeeScheduleDayFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDay to fetch.
+     */
+    where: EmployeeScheduleDayWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDay findFirst
+   */
+  export type EmployeeScheduleDayFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDay to fetch.
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDays to fetch.
+     */
+    orderBy?: EmployeeScheduleDayOrderByWithRelationInput | EmployeeScheduleDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmployeeScheduleDays.
+     */
+    cursor?: EmployeeScheduleDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmployeeScheduleDays.
+     */
+    distinct?: EmployeeScheduleDayScalarFieldEnum | EmployeeScheduleDayScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDay findFirstOrThrow
+   */
+  export type EmployeeScheduleDayFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDay to fetch.
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDays to fetch.
+     */
+    orderBy?: EmployeeScheduleDayOrderByWithRelationInput | EmployeeScheduleDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmployeeScheduleDays.
+     */
+    cursor?: EmployeeScheduleDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmployeeScheduleDays.
+     */
+    distinct?: EmployeeScheduleDayScalarFieldEnum | EmployeeScheduleDayScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDay findMany
+   */
+  export type EmployeeScheduleDayFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDays to fetch.
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDays to fetch.
+     */
+    orderBy?: EmployeeScheduleDayOrderByWithRelationInput | EmployeeScheduleDayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EmployeeScheduleDays.
+     */
+    cursor?: EmployeeScheduleDayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDays.
+     */
+    skip?: number
+    distinct?: EmployeeScheduleDayScalarFieldEnum | EmployeeScheduleDayScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDay create
+   */
+  export type EmployeeScheduleDayCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EmployeeScheduleDay.
+     */
+    data: XOR<EmployeeScheduleDayCreateInput, EmployeeScheduleDayUncheckedCreateInput>
+  }
+
+  /**
+   * EmployeeScheduleDay createMany
+   */
+  export type EmployeeScheduleDayCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EmployeeScheduleDays.
+     */
+    data: EmployeeScheduleDayCreateManyInput | EmployeeScheduleDayCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EmployeeScheduleDay createManyAndReturn
+   */
+  export type EmployeeScheduleDayCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * The data used to create many EmployeeScheduleDays.
+     */
+    data: EmployeeScheduleDayCreateManyInput | EmployeeScheduleDayCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeScheduleDay update
+   */
+  export type EmployeeScheduleDayUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EmployeeScheduleDay.
+     */
+    data: XOR<EmployeeScheduleDayUpdateInput, EmployeeScheduleDayUncheckedUpdateInput>
+    /**
+     * Choose, which EmployeeScheduleDay to update.
+     */
+    where: EmployeeScheduleDayWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDay updateMany
+   */
+  export type EmployeeScheduleDayUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EmployeeScheduleDays.
+     */
+    data: XOR<EmployeeScheduleDayUpdateManyMutationInput, EmployeeScheduleDayUncheckedUpdateManyInput>
+    /**
+     * Filter which EmployeeScheduleDays to update
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * Limit how many EmployeeScheduleDays to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmployeeScheduleDay updateManyAndReturn
+   */
+  export type EmployeeScheduleDayUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * The data used to update EmployeeScheduleDays.
+     */
+    data: XOR<EmployeeScheduleDayUpdateManyMutationInput, EmployeeScheduleDayUncheckedUpdateManyInput>
+    /**
+     * Filter which EmployeeScheduleDays to update
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * Limit how many EmployeeScheduleDays to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeScheduleDay upsert
+   */
+  export type EmployeeScheduleDayUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EmployeeScheduleDay to update in case it exists.
+     */
+    where: EmployeeScheduleDayWhereUniqueInput
+    /**
+     * In case the EmployeeScheduleDay found by the `where` argument doesn't exist, create a new EmployeeScheduleDay with this data.
+     */
+    create: XOR<EmployeeScheduleDayCreateInput, EmployeeScheduleDayUncheckedCreateInput>
+    /**
+     * In case the EmployeeScheduleDay was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EmployeeScheduleDayUpdateInput, EmployeeScheduleDayUncheckedUpdateInput>
+  }
+
+  /**
+   * EmployeeScheduleDay delete
+   */
+  export type EmployeeScheduleDayDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+    /**
+     * Filter which EmployeeScheduleDay to delete.
+     */
+    where: EmployeeScheduleDayWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDay deleteMany
+   */
+  export type EmployeeScheduleDayDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmployeeScheduleDays to delete
+     */
+    where?: EmployeeScheduleDayWhereInput
+    /**
+     * Limit how many EmployeeScheduleDays to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmployeeScheduleDay.breaks
+   */
+  export type EmployeeScheduleDay$breaksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    where?: EmployeeScheduleDayBreakWhereInput
+    orderBy?: EmployeeScheduleDayBreakOrderByWithRelationInput | EmployeeScheduleDayBreakOrderByWithRelationInput[]
+    cursor?: EmployeeScheduleDayBreakWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EmployeeScheduleDayBreakScalarFieldEnum | EmployeeScheduleDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDay without action
+   */
+  export type EmployeeScheduleDayDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDay
+     */
+    select?: EmployeeScheduleDaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDay
+     */
+    omit?: EmployeeScheduleDayOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EmployeeScheduleDayBreak
+   */
+
+  export type AggregateEmployeeScheduleDayBreak = {
+    _count: EmployeeScheduleDayBreakCountAggregateOutputType | null
+    _avg: EmployeeScheduleDayBreakAvgAggregateOutputType | null
+    _sum: EmployeeScheduleDayBreakSumAggregateOutputType | null
+    _min: EmployeeScheduleDayBreakMinAggregateOutputType | null
+    _max: EmployeeScheduleDayBreakMaxAggregateOutputType | null
+  }
+
+  export type EmployeeScheduleDayBreakAvgAggregateOutputType = {
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type EmployeeScheduleDayBreakSumAggregateOutputType = {
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+  }
+
+  export type EmployeeScheduleDayBreakMinAggregateOutputType = {
+    id: string | null
+    employeeScheduleDayId: string | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+  }
+
+  export type EmployeeScheduleDayBreakMaxAggregateOutputType = {
+    id: string | null
+    employeeScheduleDayId: string | null
+    startTimeMinutes: number | null
+    endTimeMinutes: number | null
+    createdAt: Date | null
+  }
+
+  export type EmployeeScheduleDayBreakCountAggregateOutputType = {
+    id: number
+    employeeScheduleDayId: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type EmployeeScheduleDayBreakAvgAggregateInputType = {
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type EmployeeScheduleDayBreakSumAggregateInputType = {
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+  }
+
+  export type EmployeeScheduleDayBreakMinAggregateInputType = {
+    id?: true
+    employeeScheduleDayId?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+  }
+
+  export type EmployeeScheduleDayBreakMaxAggregateInputType = {
+    id?: true
+    employeeScheduleDayId?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+  }
+
+  export type EmployeeScheduleDayBreakCountAggregateInputType = {
+    id?: true
+    employeeScheduleDayId?: true
+    startTimeMinutes?: true
+    endTimeMinutes?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type EmployeeScheduleDayBreakAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmployeeScheduleDayBreak to aggregate.
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDayBreaks to fetch.
+     */
+    orderBy?: EmployeeScheduleDayBreakOrderByWithRelationInput | EmployeeScheduleDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EmployeeScheduleDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDayBreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EmployeeScheduleDayBreaks
+    **/
+    _count?: true | EmployeeScheduleDayBreakCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EmployeeScheduleDayBreakAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EmployeeScheduleDayBreakSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmployeeScheduleDayBreakMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmployeeScheduleDayBreakMaxAggregateInputType
+  }
+
+  export type GetEmployeeScheduleDayBreakAggregateType<T extends EmployeeScheduleDayBreakAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmployeeScheduleDayBreak]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmployeeScheduleDayBreak[P]>
+      : GetScalarType<T[P], AggregateEmployeeScheduleDayBreak[P]>
+  }
+
+
+
+
+  export type EmployeeScheduleDayBreakGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmployeeScheduleDayBreakWhereInput
+    orderBy?: EmployeeScheduleDayBreakOrderByWithAggregationInput | EmployeeScheduleDayBreakOrderByWithAggregationInput[]
+    by: EmployeeScheduleDayBreakScalarFieldEnum[] | EmployeeScheduleDayBreakScalarFieldEnum
+    having?: EmployeeScheduleDayBreakScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmployeeScheduleDayBreakCountAggregateInputType | true
+    _avg?: EmployeeScheduleDayBreakAvgAggregateInputType
+    _sum?: EmployeeScheduleDayBreakSumAggregateInputType
+    _min?: EmployeeScheduleDayBreakMinAggregateInputType
+    _max?: EmployeeScheduleDayBreakMaxAggregateInputType
+  }
+
+  export type EmployeeScheduleDayBreakGroupByOutputType = {
+    id: string
+    employeeScheduleDayId: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt: Date
+    _count: EmployeeScheduleDayBreakCountAggregateOutputType | null
+    _avg: EmployeeScheduleDayBreakAvgAggregateOutputType | null
+    _sum: EmployeeScheduleDayBreakSumAggregateOutputType | null
+    _min: EmployeeScheduleDayBreakMinAggregateOutputType | null
+    _max: EmployeeScheduleDayBreakMaxAggregateOutputType | null
+  }
+
+  type GetEmployeeScheduleDayBreakGroupByPayload<T extends EmployeeScheduleDayBreakGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmployeeScheduleDayBreakGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmployeeScheduleDayBreakGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmployeeScheduleDayBreakGroupByOutputType[P]>
+            : GetScalarType<T[P], EmployeeScheduleDayBreakGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EmployeeScheduleDayBreakSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeScheduleDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    employeeScheduleDay?: boolean | EmployeeScheduleDayDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeScheduleDayBreak"]>
+
+  export type EmployeeScheduleDayBreakSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeScheduleDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    employeeScheduleDay?: boolean | EmployeeScheduleDayDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeScheduleDayBreak"]>
+
+  export type EmployeeScheduleDayBreakSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeScheduleDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+    employeeScheduleDay?: boolean | EmployeeScheduleDayDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["employeeScheduleDayBreak"]>
+
+  export type EmployeeScheduleDayBreakSelectScalar = {
+    id?: boolean
+    employeeScheduleDayId?: boolean
+    startTimeMinutes?: boolean
+    endTimeMinutes?: boolean
+    createdAt?: boolean
+  }
+
+  export type EmployeeScheduleDayBreakOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeScheduleDayId" | "startTimeMinutes" | "endTimeMinutes" | "createdAt", ExtArgs["result"]["employeeScheduleDayBreak"]>
+  export type EmployeeScheduleDayBreakInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employeeScheduleDay?: boolean | EmployeeScheduleDayDefaultArgs<ExtArgs>
+  }
+  export type EmployeeScheduleDayBreakIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employeeScheduleDay?: boolean | EmployeeScheduleDayDefaultArgs<ExtArgs>
+  }
+  export type EmployeeScheduleDayBreakIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employeeScheduleDay?: boolean | EmployeeScheduleDayDefaultArgs<ExtArgs>
+  }
+
+  export type $EmployeeScheduleDayBreakPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EmployeeScheduleDayBreak"
+    objects: {
+      employeeScheduleDay: Prisma.$EmployeeScheduleDayPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeScheduleDayId: string
+      startTimeMinutes: number
+      endTimeMinutes: number
+      createdAt: Date
+    }, ExtArgs["result"]["employeeScheduleDayBreak"]>
+    composites: {}
+  }
+
+  type EmployeeScheduleDayBreakGetPayload<S extends boolean | null | undefined | EmployeeScheduleDayBreakDefaultArgs> = $Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload, S>
+
+  type EmployeeScheduleDayBreakCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EmployeeScheduleDayBreakFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EmployeeScheduleDayBreakCountAggregateInputType | true
+    }
+
+  export interface EmployeeScheduleDayBreakDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EmployeeScheduleDayBreak'], meta: { name: 'EmployeeScheduleDayBreak' } }
+    /**
+     * Find zero or one EmployeeScheduleDayBreak that matches the filter.
+     * @param {EmployeeScheduleDayBreakFindUniqueArgs} args - Arguments to find a EmployeeScheduleDayBreak
+     * @example
+     * // Get one EmployeeScheduleDayBreak
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EmployeeScheduleDayBreakFindUniqueArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakFindUniqueArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EmployeeScheduleDayBreak that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EmployeeScheduleDayBreakFindUniqueOrThrowArgs} args - Arguments to find a EmployeeScheduleDayBreak
+     * @example
+     * // Get one EmployeeScheduleDayBreak
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EmployeeScheduleDayBreakFindUniqueOrThrowArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmployeeScheduleDayBreak that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakFindFirstArgs} args - Arguments to find a EmployeeScheduleDayBreak
+     * @example
+     * // Get one EmployeeScheduleDayBreak
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EmployeeScheduleDayBreakFindFirstArgs>(args?: SelectSubset<T, EmployeeScheduleDayBreakFindFirstArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmployeeScheduleDayBreak that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakFindFirstOrThrowArgs} args - Arguments to find a EmployeeScheduleDayBreak
+     * @example
+     * // Get one EmployeeScheduleDayBreak
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EmployeeScheduleDayBreakFindFirstOrThrowArgs>(args?: SelectSubset<T, EmployeeScheduleDayBreakFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EmployeeScheduleDayBreaks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EmployeeScheduleDayBreaks
+     * const employeeScheduleDayBreaks = await prisma.employeeScheduleDayBreak.findMany()
+     * 
+     * // Get first 10 EmployeeScheduleDayBreaks
+     * const employeeScheduleDayBreaks = await prisma.employeeScheduleDayBreak.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const employeeScheduleDayBreakWithIdOnly = await prisma.employeeScheduleDayBreak.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EmployeeScheduleDayBreakFindManyArgs>(args?: SelectSubset<T, EmployeeScheduleDayBreakFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EmployeeScheduleDayBreak.
+     * @param {EmployeeScheduleDayBreakCreateArgs} args - Arguments to create a EmployeeScheduleDayBreak.
+     * @example
+     * // Create one EmployeeScheduleDayBreak
+     * const EmployeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.create({
+     *   data: {
+     *     // ... data to create a EmployeeScheduleDayBreak
+     *   }
+     * })
+     * 
+     */
+    create<T extends EmployeeScheduleDayBreakCreateArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakCreateArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EmployeeScheduleDayBreaks.
+     * @param {EmployeeScheduleDayBreakCreateManyArgs} args - Arguments to create many EmployeeScheduleDayBreaks.
+     * @example
+     * // Create many EmployeeScheduleDayBreaks
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EmployeeScheduleDayBreakCreateManyArgs>(args?: SelectSubset<T, EmployeeScheduleDayBreakCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EmployeeScheduleDayBreaks and returns the data saved in the database.
+     * @param {EmployeeScheduleDayBreakCreateManyAndReturnArgs} args - Arguments to create many EmployeeScheduleDayBreaks.
+     * @example
+     * // Create many EmployeeScheduleDayBreaks
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EmployeeScheduleDayBreaks and only return the `id`
+     * const employeeScheduleDayBreakWithIdOnly = await prisma.employeeScheduleDayBreak.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EmployeeScheduleDayBreakCreateManyAndReturnArgs>(args?: SelectSubset<T, EmployeeScheduleDayBreakCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EmployeeScheduleDayBreak.
+     * @param {EmployeeScheduleDayBreakDeleteArgs} args - Arguments to delete one EmployeeScheduleDayBreak.
+     * @example
+     * // Delete one EmployeeScheduleDayBreak
+     * const EmployeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.delete({
+     *   where: {
+     *     // ... filter to delete one EmployeeScheduleDayBreak
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EmployeeScheduleDayBreakDeleteArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakDeleteArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EmployeeScheduleDayBreak.
+     * @param {EmployeeScheduleDayBreakUpdateArgs} args - Arguments to update one EmployeeScheduleDayBreak.
+     * @example
+     * // Update one EmployeeScheduleDayBreak
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EmployeeScheduleDayBreakUpdateArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakUpdateArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EmployeeScheduleDayBreaks.
+     * @param {EmployeeScheduleDayBreakDeleteManyArgs} args - Arguments to filter EmployeeScheduleDayBreaks to delete.
+     * @example
+     * // Delete a few EmployeeScheduleDayBreaks
+     * const { count } = await prisma.employeeScheduleDayBreak.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EmployeeScheduleDayBreakDeleteManyArgs>(args?: SelectSubset<T, EmployeeScheduleDayBreakDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmployeeScheduleDayBreaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EmployeeScheduleDayBreaks
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EmployeeScheduleDayBreakUpdateManyArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmployeeScheduleDayBreaks and returns the data updated in the database.
+     * @param {EmployeeScheduleDayBreakUpdateManyAndReturnArgs} args - Arguments to update many EmployeeScheduleDayBreaks.
+     * @example
+     * // Update many EmployeeScheduleDayBreaks
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EmployeeScheduleDayBreaks and only return the `id`
+     * const employeeScheduleDayBreakWithIdOnly = await prisma.employeeScheduleDayBreak.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EmployeeScheduleDayBreakUpdateManyAndReturnArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EmployeeScheduleDayBreak.
+     * @param {EmployeeScheduleDayBreakUpsertArgs} args - Arguments to update or create a EmployeeScheduleDayBreak.
+     * @example
+     * // Update or create a EmployeeScheduleDayBreak
+     * const employeeScheduleDayBreak = await prisma.employeeScheduleDayBreak.upsert({
+     *   create: {
+     *     // ... data to create a EmployeeScheduleDayBreak
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EmployeeScheduleDayBreak we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EmployeeScheduleDayBreakUpsertArgs>(args: SelectSubset<T, EmployeeScheduleDayBreakUpsertArgs<ExtArgs>>): Prisma__EmployeeScheduleDayBreakClient<$Result.GetResult<Prisma.$EmployeeScheduleDayBreakPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EmployeeScheduleDayBreaks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakCountArgs} args - Arguments to filter EmployeeScheduleDayBreaks to count.
+     * @example
+     * // Count the number of EmployeeScheduleDayBreaks
+     * const count = await prisma.employeeScheduleDayBreak.count({
+     *   where: {
+     *     // ... the filter for the EmployeeScheduleDayBreaks we want to count
+     *   }
+     * })
+    **/
+    count<T extends EmployeeScheduleDayBreakCountArgs>(
+      args?: Subset<T, EmployeeScheduleDayBreakCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmployeeScheduleDayBreakCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EmployeeScheduleDayBreak.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmployeeScheduleDayBreakAggregateArgs>(args: Subset<T, EmployeeScheduleDayBreakAggregateArgs>): Prisma.PrismaPromise<GetEmployeeScheduleDayBreakAggregateType<T>>
+
+    /**
+     * Group by EmployeeScheduleDayBreak.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmployeeScheduleDayBreakGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EmployeeScheduleDayBreakGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EmployeeScheduleDayBreakGroupByArgs['orderBy'] }
+        : { orderBy?: EmployeeScheduleDayBreakGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EmployeeScheduleDayBreakGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmployeeScheduleDayBreakGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EmployeeScheduleDayBreak model
+   */
+  readonly fields: EmployeeScheduleDayBreakFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EmployeeScheduleDayBreak.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EmployeeScheduleDayBreakClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employeeScheduleDay<T extends EmployeeScheduleDayDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeScheduleDayDefaultArgs<ExtArgs>>): Prisma__EmployeeScheduleDayClient<$Result.GetResult<Prisma.$EmployeeScheduleDayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EmployeeScheduleDayBreak model
+   */
+  interface EmployeeScheduleDayBreakFieldRefs {
+    readonly id: FieldRef<"EmployeeScheduleDayBreak", 'String'>
+    readonly employeeScheduleDayId: FieldRef<"EmployeeScheduleDayBreak", 'String'>
+    readonly startTimeMinutes: FieldRef<"EmployeeScheduleDayBreak", 'Int'>
+    readonly endTimeMinutes: FieldRef<"EmployeeScheduleDayBreak", 'Int'>
+    readonly createdAt: FieldRef<"EmployeeScheduleDayBreak", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EmployeeScheduleDayBreak findUnique
+   */
+  export type EmployeeScheduleDayBreakFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDayBreak to fetch.
+     */
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDayBreak findUniqueOrThrow
+   */
+  export type EmployeeScheduleDayBreakFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDayBreak to fetch.
+     */
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDayBreak findFirst
+   */
+  export type EmployeeScheduleDayBreakFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDayBreak to fetch.
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDayBreaks to fetch.
+     */
+    orderBy?: EmployeeScheduleDayBreakOrderByWithRelationInput | EmployeeScheduleDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmployeeScheduleDayBreaks.
+     */
+    cursor?: EmployeeScheduleDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDayBreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmployeeScheduleDayBreaks.
+     */
+    distinct?: EmployeeScheduleDayBreakScalarFieldEnum | EmployeeScheduleDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDayBreak findFirstOrThrow
+   */
+  export type EmployeeScheduleDayBreakFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDayBreak to fetch.
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDayBreaks to fetch.
+     */
+    orderBy?: EmployeeScheduleDayBreakOrderByWithRelationInput | EmployeeScheduleDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmployeeScheduleDayBreaks.
+     */
+    cursor?: EmployeeScheduleDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDayBreaks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmployeeScheduleDayBreaks.
+     */
+    distinct?: EmployeeScheduleDayBreakScalarFieldEnum | EmployeeScheduleDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDayBreak findMany
+   */
+  export type EmployeeScheduleDayBreakFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter, which EmployeeScheduleDayBreaks to fetch.
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmployeeScheduleDayBreaks to fetch.
+     */
+    orderBy?: EmployeeScheduleDayBreakOrderByWithRelationInput | EmployeeScheduleDayBreakOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EmployeeScheduleDayBreaks.
+     */
+    cursor?: EmployeeScheduleDayBreakWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmployeeScheduleDayBreaks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmployeeScheduleDayBreaks.
+     */
+    skip?: number
+    distinct?: EmployeeScheduleDayBreakScalarFieldEnum | EmployeeScheduleDayBreakScalarFieldEnum[]
+  }
+
+  /**
+   * EmployeeScheduleDayBreak create
+   */
+  export type EmployeeScheduleDayBreakCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EmployeeScheduleDayBreak.
+     */
+    data: XOR<EmployeeScheduleDayBreakCreateInput, EmployeeScheduleDayBreakUncheckedCreateInput>
+  }
+
+  /**
+   * EmployeeScheduleDayBreak createMany
+   */
+  export type EmployeeScheduleDayBreakCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EmployeeScheduleDayBreaks.
+     */
+    data: EmployeeScheduleDayBreakCreateManyInput | EmployeeScheduleDayBreakCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EmployeeScheduleDayBreak createManyAndReturn
+   */
+  export type EmployeeScheduleDayBreakCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * The data used to create many EmployeeScheduleDayBreaks.
+     */
+    data: EmployeeScheduleDayBreakCreateManyInput | EmployeeScheduleDayBreakCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeScheduleDayBreak update
+   */
+  export type EmployeeScheduleDayBreakUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EmployeeScheduleDayBreak.
+     */
+    data: XOR<EmployeeScheduleDayBreakUpdateInput, EmployeeScheduleDayBreakUncheckedUpdateInput>
+    /**
+     * Choose, which EmployeeScheduleDayBreak to update.
+     */
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDayBreak updateMany
+   */
+  export type EmployeeScheduleDayBreakUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EmployeeScheduleDayBreaks.
+     */
+    data: XOR<EmployeeScheduleDayBreakUpdateManyMutationInput, EmployeeScheduleDayBreakUncheckedUpdateManyInput>
+    /**
+     * Filter which EmployeeScheduleDayBreaks to update
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * Limit how many EmployeeScheduleDayBreaks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmployeeScheduleDayBreak updateManyAndReturn
+   */
+  export type EmployeeScheduleDayBreakUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * The data used to update EmployeeScheduleDayBreaks.
+     */
+    data: XOR<EmployeeScheduleDayBreakUpdateManyMutationInput, EmployeeScheduleDayBreakUncheckedUpdateManyInput>
+    /**
+     * Filter which EmployeeScheduleDayBreaks to update
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * Limit how many EmployeeScheduleDayBreaks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeScheduleDayBreak upsert
+   */
+  export type EmployeeScheduleDayBreakUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EmployeeScheduleDayBreak to update in case it exists.
+     */
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+    /**
+     * In case the EmployeeScheduleDayBreak found by the `where` argument doesn't exist, create a new EmployeeScheduleDayBreak with this data.
+     */
+    create: XOR<EmployeeScheduleDayBreakCreateInput, EmployeeScheduleDayBreakUncheckedCreateInput>
+    /**
+     * In case the EmployeeScheduleDayBreak was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EmployeeScheduleDayBreakUpdateInput, EmployeeScheduleDayBreakUncheckedUpdateInput>
+  }
+
+  /**
+   * EmployeeScheduleDayBreak delete
+   */
+  export type EmployeeScheduleDayBreakDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
+    /**
+     * Filter which EmployeeScheduleDayBreak to delete.
+     */
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+  }
+
+  /**
+   * EmployeeScheduleDayBreak deleteMany
+   */
+  export type EmployeeScheduleDayBreakDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmployeeScheduleDayBreaks to delete
+     */
+    where?: EmployeeScheduleDayBreakWhereInput
+    /**
+     * Limit how many EmployeeScheduleDayBreaks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmployeeScheduleDayBreak without action
+   */
+  export type EmployeeScheduleDayBreakDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmployeeScheduleDayBreak
+     */
+    select?: EmployeeScheduleDayBreakSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmployeeScheduleDayBreak
+     */
+    omit?: EmployeeScheduleDayBreakOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeScheduleDayBreakInclude<ExtArgs> | null
   }
 
 
@@ -15638,6 +23112,76 @@ export namespace Prisma {
   export type EmployeeServiceScalarFieldEnum = (typeof EmployeeServiceScalarFieldEnum)[keyof typeof EmployeeServiceScalarFieldEnum]
 
 
+  export const ScheduleTemplateScalarFieldEnum: {
+    id: 'id',
+    businessId: 'businessId',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ScheduleTemplateScalarFieldEnum = (typeof ScheduleTemplateScalarFieldEnum)[keyof typeof ScheduleTemplateScalarFieldEnum]
+
+
+  export const ScheduleTemplateDayScalarFieldEnum: {
+    id: 'id',
+    scheduleTemplateId: 'scheduleTemplateId',
+    dayOfWeek: 'dayOfWeek',
+    startTimeMinutes: 'startTimeMinutes',
+    endTimeMinutes: 'endTimeMinutes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ScheduleTemplateDayScalarFieldEnum = (typeof ScheduleTemplateDayScalarFieldEnum)[keyof typeof ScheduleTemplateDayScalarFieldEnum]
+
+
+  export const ScheduleTemplateDayBreakScalarFieldEnum: {
+    id: 'id',
+    scheduleTemplateDayId: 'scheduleTemplateDayId',
+    startTimeMinutes: 'startTimeMinutes',
+    endTimeMinutes: 'endTimeMinutes',
+    createdAt: 'createdAt'
+  };
+
+  export type ScheduleTemplateDayBreakScalarFieldEnum = (typeof ScheduleTemplateDayBreakScalarFieldEnum)[keyof typeof ScheduleTemplateDayBreakScalarFieldEnum]
+
+
+  export const EmployeeScheduleScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    scheduleTemplateId: 'scheduleTemplateId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EmployeeScheduleScalarFieldEnum = (typeof EmployeeScheduleScalarFieldEnum)[keyof typeof EmployeeScheduleScalarFieldEnum]
+
+
+  export const EmployeeScheduleDayScalarFieldEnum: {
+    id: 'id',
+    employeeScheduleId: 'employeeScheduleId',
+    dayOfWeek: 'dayOfWeek',
+    startTimeMinutes: 'startTimeMinutes',
+    endTimeMinutes: 'endTimeMinutes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EmployeeScheduleDayScalarFieldEnum = (typeof EmployeeScheduleDayScalarFieldEnum)[keyof typeof EmployeeScheduleDayScalarFieldEnum]
+
+
+  export const EmployeeScheduleDayBreakScalarFieldEnum: {
+    id: 'id',
+    employeeScheduleDayId: 'employeeScheduleDayId',
+    startTimeMinutes: 'startTimeMinutes',
+    endTimeMinutes: 'endTimeMinutes',
+    createdAt: 'createdAt'
+  };
+
+  export type EmployeeScheduleDayBreakScalarFieldEnum = (typeof EmployeeScheduleDayBreakScalarFieldEnum)[keyof typeof EmployeeScheduleDayBreakScalarFieldEnum]
+
+
   export const AuthProviderScalarFieldEnum: {
     id: 'id',
     adminUserId: 'adminUserId',
@@ -15931,6 +23475,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryListRelationFilter
     services?: ServiceListRelationFilter
     employees?: EmployeeListRelationFilter
+    scheduleTemplates?: ScheduleTemplateListRelationFilter
   }
 
   export type BusinessOrderByWithRelationInput = {
@@ -15954,6 +23499,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryOrderByRelationAggregateInput
     services?: ServiceOrderByRelationAggregateInput
     employees?: EmployeeOrderByRelationAggregateInput
+    scheduleTemplates?: ScheduleTemplateOrderByRelationAggregateInput
   }
 
   export type BusinessWhereUniqueInput = Prisma.AtLeast<{
@@ -15980,6 +23526,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryListRelationFilter
     services?: ServiceListRelationFilter
     employees?: EmployeeListRelationFilter
+    scheduleTemplates?: ScheduleTemplateListRelationFilter
   }, "id">
 
   export type BusinessOrderByWithAggregationInput = {
@@ -16252,6 +23799,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Employee"> | Date | string
     business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
     employeeServices?: EmployeeServiceListRelationFilter
+    employeeSchedule?: XOR<EmployeeScheduleNullableScalarRelationFilter, EmployeeScheduleWhereInput> | null
   }
 
   export type EmployeeOrderByWithRelationInput = {
@@ -16264,6 +23812,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     business?: BusinessOrderByWithRelationInput
     employeeServices?: EmployeeServiceOrderByRelationAggregateInput
+    employeeSchedule?: EmployeeScheduleOrderByWithRelationInput
   }
 
   export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
@@ -16279,6 +23828,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Employee"> | Date | string
     business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
     employeeServices?: EmployeeServiceListRelationFilter
+    employeeSchedule?: XOR<EmployeeScheduleNullableScalarRelationFilter, EmployeeScheduleWhereInput> | null
   }, "id">
 
   export type EmployeeOrderByWithAggregationInput = {
@@ -16371,6 +23921,384 @@ export namespace Prisma {
     priceOverride?: DecimalNullableWithAggregatesFilter<"EmployeeService"> | Decimal | DecimalJsLike | number | string | null
     durationMinutesOverride?: IntNullableWithAggregatesFilter<"EmployeeService"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"EmployeeService"> | Date | string
+  }
+
+  export type ScheduleTemplateWhereInput = {
+    AND?: ScheduleTemplateWhereInput | ScheduleTemplateWhereInput[]
+    OR?: ScheduleTemplateWhereInput[]
+    NOT?: ScheduleTemplateWhereInput | ScheduleTemplateWhereInput[]
+    id?: StringFilter<"ScheduleTemplate"> | string
+    businessId?: StringFilter<"ScheduleTemplate"> | string
+    name?: StringFilter<"ScheduleTemplate"> | string
+    createdAt?: DateTimeFilter<"ScheduleTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleTemplate"> | Date | string
+    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
+    days?: ScheduleTemplateDayListRelationFilter
+    employeeSchedules?: EmployeeScheduleListRelationFilter
+  }
+
+  export type ScheduleTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    businessId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    business?: BusinessOrderByWithRelationInput
+    days?: ScheduleTemplateDayOrderByRelationAggregateInput
+    employeeSchedules?: EmployeeScheduleOrderByRelationAggregateInput
+  }
+
+  export type ScheduleTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ScheduleTemplateWhereInput | ScheduleTemplateWhereInput[]
+    OR?: ScheduleTemplateWhereInput[]
+    NOT?: ScheduleTemplateWhereInput | ScheduleTemplateWhereInput[]
+    businessId?: StringFilter<"ScheduleTemplate"> | string
+    name?: StringFilter<"ScheduleTemplate"> | string
+    createdAt?: DateTimeFilter<"ScheduleTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleTemplate"> | Date | string
+    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
+    days?: ScheduleTemplateDayListRelationFilter
+    employeeSchedules?: EmployeeScheduleListRelationFilter
+  }, "id">
+
+  export type ScheduleTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    businessId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ScheduleTemplateCountOrderByAggregateInput
+    _max?: ScheduleTemplateMaxOrderByAggregateInput
+    _min?: ScheduleTemplateMinOrderByAggregateInput
+  }
+
+  export type ScheduleTemplateScalarWhereWithAggregatesInput = {
+    AND?: ScheduleTemplateScalarWhereWithAggregatesInput | ScheduleTemplateScalarWhereWithAggregatesInput[]
+    OR?: ScheduleTemplateScalarWhereWithAggregatesInput[]
+    NOT?: ScheduleTemplateScalarWhereWithAggregatesInput | ScheduleTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ScheduleTemplate"> | string
+    businessId?: StringWithAggregatesFilter<"ScheduleTemplate"> | string
+    name?: StringWithAggregatesFilter<"ScheduleTemplate"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ScheduleTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ScheduleTemplate"> | Date | string
+  }
+
+  export type ScheduleTemplateDayWhereInput = {
+    AND?: ScheduleTemplateDayWhereInput | ScheduleTemplateDayWhereInput[]
+    OR?: ScheduleTemplateDayWhereInput[]
+    NOT?: ScheduleTemplateDayWhereInput | ScheduleTemplateDayWhereInput[]
+    id?: StringFilter<"ScheduleTemplateDay"> | string
+    scheduleTemplateId?: StringFilter<"ScheduleTemplateDay"> | string
+    dayOfWeek?: IntFilter<"ScheduleTemplateDay"> | number
+    startTimeMinutes?: IntFilter<"ScheduleTemplateDay"> | number
+    endTimeMinutes?: IntFilter<"ScheduleTemplateDay"> | number
+    createdAt?: DateTimeFilter<"ScheduleTemplateDay"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleTemplateDay"> | Date | string
+    scheduleTemplate?: XOR<ScheduleTemplateScalarRelationFilter, ScheduleTemplateWhereInput>
+    breaks?: ScheduleTemplateDayBreakListRelationFilter
+  }
+
+  export type ScheduleTemplateDayOrderByWithRelationInput = {
+    id?: SortOrder
+    scheduleTemplateId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    scheduleTemplate?: ScheduleTemplateOrderByWithRelationInput
+    breaks?: ScheduleTemplateDayBreakOrderByRelationAggregateInput
+  }
+
+  export type ScheduleTemplateDayWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    scheduleTemplateId_dayOfWeek?: ScheduleTemplateDayScheduleTemplateIdDayOfWeekCompoundUniqueInput
+    AND?: ScheduleTemplateDayWhereInput | ScheduleTemplateDayWhereInput[]
+    OR?: ScheduleTemplateDayWhereInput[]
+    NOT?: ScheduleTemplateDayWhereInput | ScheduleTemplateDayWhereInput[]
+    scheduleTemplateId?: StringFilter<"ScheduleTemplateDay"> | string
+    dayOfWeek?: IntFilter<"ScheduleTemplateDay"> | number
+    startTimeMinutes?: IntFilter<"ScheduleTemplateDay"> | number
+    endTimeMinutes?: IntFilter<"ScheduleTemplateDay"> | number
+    createdAt?: DateTimeFilter<"ScheduleTemplateDay"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleTemplateDay"> | Date | string
+    scheduleTemplate?: XOR<ScheduleTemplateScalarRelationFilter, ScheduleTemplateWhereInput>
+    breaks?: ScheduleTemplateDayBreakListRelationFilter
+  }, "id" | "scheduleTemplateId_dayOfWeek">
+
+  export type ScheduleTemplateDayOrderByWithAggregationInput = {
+    id?: SortOrder
+    scheduleTemplateId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ScheduleTemplateDayCountOrderByAggregateInput
+    _avg?: ScheduleTemplateDayAvgOrderByAggregateInput
+    _max?: ScheduleTemplateDayMaxOrderByAggregateInput
+    _min?: ScheduleTemplateDayMinOrderByAggregateInput
+    _sum?: ScheduleTemplateDaySumOrderByAggregateInput
+  }
+
+  export type ScheduleTemplateDayScalarWhereWithAggregatesInput = {
+    AND?: ScheduleTemplateDayScalarWhereWithAggregatesInput | ScheduleTemplateDayScalarWhereWithAggregatesInput[]
+    OR?: ScheduleTemplateDayScalarWhereWithAggregatesInput[]
+    NOT?: ScheduleTemplateDayScalarWhereWithAggregatesInput | ScheduleTemplateDayScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ScheduleTemplateDay"> | string
+    scheduleTemplateId?: StringWithAggregatesFilter<"ScheduleTemplateDay"> | string
+    dayOfWeek?: IntWithAggregatesFilter<"ScheduleTemplateDay"> | number
+    startTimeMinutes?: IntWithAggregatesFilter<"ScheduleTemplateDay"> | number
+    endTimeMinutes?: IntWithAggregatesFilter<"ScheduleTemplateDay"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ScheduleTemplateDay"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ScheduleTemplateDay"> | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakWhereInput = {
+    AND?: ScheduleTemplateDayBreakWhereInput | ScheduleTemplateDayBreakWhereInput[]
+    OR?: ScheduleTemplateDayBreakWhereInput[]
+    NOT?: ScheduleTemplateDayBreakWhereInput | ScheduleTemplateDayBreakWhereInput[]
+    id?: StringFilter<"ScheduleTemplateDayBreak"> | string
+    scheduleTemplateDayId?: StringFilter<"ScheduleTemplateDayBreak"> | string
+    startTimeMinutes?: IntFilter<"ScheduleTemplateDayBreak"> | number
+    endTimeMinutes?: IntFilter<"ScheduleTemplateDayBreak"> | number
+    createdAt?: DateTimeFilter<"ScheduleTemplateDayBreak"> | Date | string
+    scheduleTemplateDay?: XOR<ScheduleTemplateDayScalarRelationFilter, ScheduleTemplateDayWhereInput>
+  }
+
+  export type ScheduleTemplateDayBreakOrderByWithRelationInput = {
+    id?: SortOrder
+    scheduleTemplateDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    scheduleTemplateDay?: ScheduleTemplateDayOrderByWithRelationInput
+  }
+
+  export type ScheduleTemplateDayBreakWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ScheduleTemplateDayBreakWhereInput | ScheduleTemplateDayBreakWhereInput[]
+    OR?: ScheduleTemplateDayBreakWhereInput[]
+    NOT?: ScheduleTemplateDayBreakWhereInput | ScheduleTemplateDayBreakWhereInput[]
+    scheduleTemplateDayId?: StringFilter<"ScheduleTemplateDayBreak"> | string
+    startTimeMinutes?: IntFilter<"ScheduleTemplateDayBreak"> | number
+    endTimeMinutes?: IntFilter<"ScheduleTemplateDayBreak"> | number
+    createdAt?: DateTimeFilter<"ScheduleTemplateDayBreak"> | Date | string
+    scheduleTemplateDay?: XOR<ScheduleTemplateDayScalarRelationFilter, ScheduleTemplateDayWhereInput>
+  }, "id">
+
+  export type ScheduleTemplateDayBreakOrderByWithAggregationInput = {
+    id?: SortOrder
+    scheduleTemplateDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    _count?: ScheduleTemplateDayBreakCountOrderByAggregateInput
+    _avg?: ScheduleTemplateDayBreakAvgOrderByAggregateInput
+    _max?: ScheduleTemplateDayBreakMaxOrderByAggregateInput
+    _min?: ScheduleTemplateDayBreakMinOrderByAggregateInput
+    _sum?: ScheduleTemplateDayBreakSumOrderByAggregateInput
+  }
+
+  export type ScheduleTemplateDayBreakScalarWhereWithAggregatesInput = {
+    AND?: ScheduleTemplateDayBreakScalarWhereWithAggregatesInput | ScheduleTemplateDayBreakScalarWhereWithAggregatesInput[]
+    OR?: ScheduleTemplateDayBreakScalarWhereWithAggregatesInput[]
+    NOT?: ScheduleTemplateDayBreakScalarWhereWithAggregatesInput | ScheduleTemplateDayBreakScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ScheduleTemplateDayBreak"> | string
+    scheduleTemplateDayId?: StringWithAggregatesFilter<"ScheduleTemplateDayBreak"> | string
+    startTimeMinutes?: IntWithAggregatesFilter<"ScheduleTemplateDayBreak"> | number
+    endTimeMinutes?: IntWithAggregatesFilter<"ScheduleTemplateDayBreak"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ScheduleTemplateDayBreak"> | Date | string
+  }
+
+  export type EmployeeScheduleWhereInput = {
+    AND?: EmployeeScheduleWhereInput | EmployeeScheduleWhereInput[]
+    OR?: EmployeeScheduleWhereInput[]
+    NOT?: EmployeeScheduleWhereInput | EmployeeScheduleWhereInput[]
+    id?: StringFilter<"EmployeeSchedule"> | string
+    employeeId?: StringFilter<"EmployeeSchedule"> | string
+    scheduleTemplateId?: StringNullableFilter<"EmployeeSchedule"> | string | null
+    createdAt?: DateTimeFilter<"EmployeeSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"EmployeeSchedule"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+    scheduleTemplate?: XOR<ScheduleTemplateNullableScalarRelationFilter, ScheduleTemplateWhereInput> | null
+    days?: EmployeeScheduleDayListRelationFilter
+  }
+
+  export type EmployeeScheduleOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    scheduleTemplateId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    employee?: EmployeeOrderByWithRelationInput
+    scheduleTemplate?: ScheduleTemplateOrderByWithRelationInput
+    days?: EmployeeScheduleDayOrderByRelationAggregateInput
+  }
+
+  export type EmployeeScheduleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    employeeId?: string
+    AND?: EmployeeScheduleWhereInput | EmployeeScheduleWhereInput[]
+    OR?: EmployeeScheduleWhereInput[]
+    NOT?: EmployeeScheduleWhereInput | EmployeeScheduleWhereInput[]
+    scheduleTemplateId?: StringNullableFilter<"EmployeeSchedule"> | string | null
+    createdAt?: DateTimeFilter<"EmployeeSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"EmployeeSchedule"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+    scheduleTemplate?: XOR<ScheduleTemplateNullableScalarRelationFilter, ScheduleTemplateWhereInput> | null
+    days?: EmployeeScheduleDayListRelationFilter
+  }, "id" | "employeeId">
+
+  export type EmployeeScheduleOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    scheduleTemplateId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EmployeeScheduleCountOrderByAggregateInput
+    _max?: EmployeeScheduleMaxOrderByAggregateInput
+    _min?: EmployeeScheduleMinOrderByAggregateInput
+  }
+
+  export type EmployeeScheduleScalarWhereWithAggregatesInput = {
+    AND?: EmployeeScheduleScalarWhereWithAggregatesInput | EmployeeScheduleScalarWhereWithAggregatesInput[]
+    OR?: EmployeeScheduleScalarWhereWithAggregatesInput[]
+    NOT?: EmployeeScheduleScalarWhereWithAggregatesInput | EmployeeScheduleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EmployeeSchedule"> | string
+    employeeId?: StringWithAggregatesFilter<"EmployeeSchedule"> | string
+    scheduleTemplateId?: StringNullableWithAggregatesFilter<"EmployeeSchedule"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"EmployeeSchedule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"EmployeeSchedule"> | Date | string
+  }
+
+  export type EmployeeScheduleDayWhereInput = {
+    AND?: EmployeeScheduleDayWhereInput | EmployeeScheduleDayWhereInput[]
+    OR?: EmployeeScheduleDayWhereInput[]
+    NOT?: EmployeeScheduleDayWhereInput | EmployeeScheduleDayWhereInput[]
+    id?: StringFilter<"EmployeeScheduleDay"> | string
+    employeeScheduleId?: StringFilter<"EmployeeScheduleDay"> | string
+    dayOfWeek?: IntFilter<"EmployeeScheduleDay"> | number
+    startTimeMinutes?: IntFilter<"EmployeeScheduleDay"> | number
+    endTimeMinutes?: IntFilter<"EmployeeScheduleDay"> | number
+    createdAt?: DateTimeFilter<"EmployeeScheduleDay"> | Date | string
+    updatedAt?: DateTimeFilter<"EmployeeScheduleDay"> | Date | string
+    employeeSchedule?: XOR<EmployeeScheduleScalarRelationFilter, EmployeeScheduleWhereInput>
+    breaks?: EmployeeScheduleDayBreakListRelationFilter
+  }
+
+  export type EmployeeScheduleDayOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeScheduleId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    employeeSchedule?: EmployeeScheduleOrderByWithRelationInput
+    breaks?: EmployeeScheduleDayBreakOrderByRelationAggregateInput
+  }
+
+  export type EmployeeScheduleDayWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    employeeScheduleId_dayOfWeek?: EmployeeScheduleDayEmployeeScheduleIdDayOfWeekCompoundUniqueInput
+    AND?: EmployeeScheduleDayWhereInput | EmployeeScheduleDayWhereInput[]
+    OR?: EmployeeScheduleDayWhereInput[]
+    NOT?: EmployeeScheduleDayWhereInput | EmployeeScheduleDayWhereInput[]
+    employeeScheduleId?: StringFilter<"EmployeeScheduleDay"> | string
+    dayOfWeek?: IntFilter<"EmployeeScheduleDay"> | number
+    startTimeMinutes?: IntFilter<"EmployeeScheduleDay"> | number
+    endTimeMinutes?: IntFilter<"EmployeeScheduleDay"> | number
+    createdAt?: DateTimeFilter<"EmployeeScheduleDay"> | Date | string
+    updatedAt?: DateTimeFilter<"EmployeeScheduleDay"> | Date | string
+    employeeSchedule?: XOR<EmployeeScheduleScalarRelationFilter, EmployeeScheduleWhereInput>
+    breaks?: EmployeeScheduleDayBreakListRelationFilter
+  }, "id" | "employeeScheduleId_dayOfWeek">
+
+  export type EmployeeScheduleDayOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeScheduleId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EmployeeScheduleDayCountOrderByAggregateInput
+    _avg?: EmployeeScheduleDayAvgOrderByAggregateInput
+    _max?: EmployeeScheduleDayMaxOrderByAggregateInput
+    _min?: EmployeeScheduleDayMinOrderByAggregateInput
+    _sum?: EmployeeScheduleDaySumOrderByAggregateInput
+  }
+
+  export type EmployeeScheduleDayScalarWhereWithAggregatesInput = {
+    AND?: EmployeeScheduleDayScalarWhereWithAggregatesInput | EmployeeScheduleDayScalarWhereWithAggregatesInput[]
+    OR?: EmployeeScheduleDayScalarWhereWithAggregatesInput[]
+    NOT?: EmployeeScheduleDayScalarWhereWithAggregatesInput | EmployeeScheduleDayScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EmployeeScheduleDay"> | string
+    employeeScheduleId?: StringWithAggregatesFilter<"EmployeeScheduleDay"> | string
+    dayOfWeek?: IntWithAggregatesFilter<"EmployeeScheduleDay"> | number
+    startTimeMinutes?: IntWithAggregatesFilter<"EmployeeScheduleDay"> | number
+    endTimeMinutes?: IntWithAggregatesFilter<"EmployeeScheduleDay"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"EmployeeScheduleDay"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"EmployeeScheduleDay"> | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakWhereInput = {
+    AND?: EmployeeScheduleDayBreakWhereInput | EmployeeScheduleDayBreakWhereInput[]
+    OR?: EmployeeScheduleDayBreakWhereInput[]
+    NOT?: EmployeeScheduleDayBreakWhereInput | EmployeeScheduleDayBreakWhereInput[]
+    id?: StringFilter<"EmployeeScheduleDayBreak"> | string
+    employeeScheduleDayId?: StringFilter<"EmployeeScheduleDayBreak"> | string
+    startTimeMinutes?: IntFilter<"EmployeeScheduleDayBreak"> | number
+    endTimeMinutes?: IntFilter<"EmployeeScheduleDayBreak"> | number
+    createdAt?: DateTimeFilter<"EmployeeScheduleDayBreak"> | Date | string
+    employeeScheduleDay?: XOR<EmployeeScheduleDayScalarRelationFilter, EmployeeScheduleDayWhereInput>
+  }
+
+  export type EmployeeScheduleDayBreakOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeScheduleDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    employeeScheduleDay?: EmployeeScheduleDayOrderByWithRelationInput
+  }
+
+  export type EmployeeScheduleDayBreakWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EmployeeScheduleDayBreakWhereInput | EmployeeScheduleDayBreakWhereInput[]
+    OR?: EmployeeScheduleDayBreakWhereInput[]
+    NOT?: EmployeeScheduleDayBreakWhereInput | EmployeeScheduleDayBreakWhereInput[]
+    employeeScheduleDayId?: StringFilter<"EmployeeScheduleDayBreak"> | string
+    startTimeMinutes?: IntFilter<"EmployeeScheduleDayBreak"> | number
+    endTimeMinutes?: IntFilter<"EmployeeScheduleDayBreak"> | number
+    createdAt?: DateTimeFilter<"EmployeeScheduleDayBreak"> | Date | string
+    employeeScheduleDay?: XOR<EmployeeScheduleDayScalarRelationFilter, EmployeeScheduleDayWhereInput>
+  }, "id">
+
+  export type EmployeeScheduleDayBreakOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeScheduleDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    _count?: EmployeeScheduleDayBreakCountOrderByAggregateInput
+    _avg?: EmployeeScheduleDayBreakAvgOrderByAggregateInput
+    _max?: EmployeeScheduleDayBreakMaxOrderByAggregateInput
+    _min?: EmployeeScheduleDayBreakMinOrderByAggregateInput
+    _sum?: EmployeeScheduleDayBreakSumOrderByAggregateInput
+  }
+
+  export type EmployeeScheduleDayBreakScalarWhereWithAggregatesInput = {
+    AND?: EmployeeScheduleDayBreakScalarWhereWithAggregatesInput | EmployeeScheduleDayBreakScalarWhereWithAggregatesInput[]
+    OR?: EmployeeScheduleDayBreakScalarWhereWithAggregatesInput[]
+    NOT?: EmployeeScheduleDayBreakScalarWhereWithAggregatesInput | EmployeeScheduleDayBreakScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EmployeeScheduleDayBreak"> | string
+    employeeScheduleDayId?: StringWithAggregatesFilter<"EmployeeScheduleDayBreak"> | string
+    startTimeMinutes?: IntWithAggregatesFilter<"EmployeeScheduleDayBreak"> | number
+    endTimeMinutes?: IntWithAggregatesFilter<"EmployeeScheduleDayBreak"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"EmployeeScheduleDayBreak"> | Date | string
   }
 
   export type AuthProviderWhereInput = {
@@ -16771,6 +24699,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryCreateNestedManyWithoutBusinessInput
     services?: ServiceCreateNestedManyWithoutBusinessInput
     employees?: EmployeeCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessUncheckedCreateInput = {
@@ -16794,6 +24723,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryUncheckedCreateNestedManyWithoutBusinessInput
     services?: ServiceUncheckedCreateNestedManyWithoutBusinessInput
     employees?: EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateUncheckedCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessUpdateInput = {
@@ -16817,6 +24747,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryUpdateManyWithoutBusinessNestedInput
     services?: ServiceUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessUncheckedUpdateInput = {
@@ -16840,6 +24771,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryUncheckedUpdateManyWithoutBusinessNestedInput
     services?: ServiceUncheckedUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUncheckedUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessCreateManyInput = {
@@ -17121,6 +25053,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     business: BusinessCreateNestedOneWithoutEmployeesInput
     employeeServices?: EmployeeServiceCreateNestedManyWithoutEmployeeInput
+    employeeSchedule?: EmployeeScheduleCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateInput = {
@@ -17132,6 +25065,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     employeeServices?: EmployeeServiceUncheckedCreateNestedManyWithoutEmployeeInput
+    employeeSchedule?: EmployeeScheduleUncheckedCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeUpdateInput = {
@@ -17143,6 +25077,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     business?: BusinessUpdateOneRequiredWithoutEmployeesNestedInput
     employeeServices?: EmployeeServiceUpdateManyWithoutEmployeeNestedInput
+    employeeSchedule?: EmployeeScheduleUpdateOneWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateInput = {
@@ -17154,6 +25089,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employeeServices?: EmployeeServiceUncheckedUpdateManyWithoutEmployeeNestedInput
+    employeeSchedule?: EmployeeScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
   }
 
   export type EmployeeCreateManyInput = {
@@ -17243,6 +25179,383 @@ export namespace Prisma {
     serviceId?: StringFieldUpdateOperationsInput | string
     priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    business: BusinessCreateNestedOneWithoutScheduleTemplatesInput
+    days?: ScheduleTemplateDayCreateNestedManyWithoutScheduleTemplateInput
+    employeeSchedules?: EmployeeScheduleCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateUncheckedCreateInput = {
+    id?: string
+    businessId: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: ScheduleTemplateDayUncheckedCreateNestedManyWithoutScheduleTemplateInput
+    employeeSchedules?: EmployeeScheduleUncheckedCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    business?: BusinessUpdateOneRequiredWithoutScheduleTemplatesNestedInput
+    days?: ScheduleTemplateDayUpdateManyWithoutScheduleTemplateNestedInput
+    employeeSchedules?: EmployeeScheduleUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: ScheduleTemplateDayUncheckedUpdateManyWithoutScheduleTemplateNestedInput
+    employeeSchedules?: EmployeeScheduleUncheckedUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateCreateManyInput = {
+    id?: string
+    businessId: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayCreateInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    scheduleTemplate: ScheduleTemplateCreateNestedOneWithoutDaysInput
+    breaks?: ScheduleTemplateDayBreakCreateNestedManyWithoutScheduleTemplateDayInput
+  }
+
+  export type ScheduleTemplateDayUncheckedCreateInput = {
+    id?: string
+    scheduleTemplateId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    breaks?: ScheduleTemplateDayBreakUncheckedCreateNestedManyWithoutScheduleTemplateDayInput
+  }
+
+  export type ScheduleTemplateDayUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduleTemplate?: ScheduleTemplateUpdateOneRequiredWithoutDaysNestedInput
+    breaks?: ScheduleTemplateDayBreakUpdateManyWithoutScheduleTemplateDayNestedInput
+  }
+
+  export type ScheduleTemplateDayUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: ScheduleTemplateDayBreakUncheckedUpdateManyWithoutScheduleTemplateDayNestedInput
+  }
+
+  export type ScheduleTemplateDayCreateManyInput = {
+    id?: string
+    scheduleTemplateId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakCreateInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    scheduleTemplateDay: ScheduleTemplateDayCreateNestedOneWithoutBreaksInput
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedCreateInput = {
+    id?: string
+    scheduleTemplateDayId: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduleTemplateDay?: ScheduleTemplateDayUpdateOneRequiredWithoutBreaksNestedInput
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateDayId?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakCreateManyInput = {
+    id?: string
+    scheduleTemplateDayId: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateDayId?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutEmployeeScheduleInput
+    scheduleTemplate?: ScheduleTemplateCreateNestedOneWithoutEmployeeSchedulesInput
+    days?: EmployeeScheduleDayCreateNestedManyWithoutEmployeeScheduleInput
+  }
+
+  export type EmployeeScheduleUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    scheduleTemplateId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: EmployeeScheduleDayUncheckedCreateNestedManyWithoutEmployeeScheduleInput
+  }
+
+  export type EmployeeScheduleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutEmployeeScheduleNestedInput
+    scheduleTemplate?: ScheduleTemplateUpdateOneWithoutEmployeeSchedulesNestedInput
+    days?: EmployeeScheduleDayUpdateManyWithoutEmployeeScheduleNestedInput
+  }
+
+  export type EmployeeScheduleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: EmployeeScheduleDayUncheckedUpdateManyWithoutEmployeeScheduleNestedInput
+  }
+
+  export type EmployeeScheduleCreateManyInput = {
+    id?: string
+    employeeId: string
+    scheduleTemplateId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmployeeScheduleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayCreateInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employeeSchedule: EmployeeScheduleCreateNestedOneWithoutDaysInput
+    breaks?: EmployeeScheduleDayBreakCreateNestedManyWithoutEmployeeScheduleDayInput
+  }
+
+  export type EmployeeScheduleDayUncheckedCreateInput = {
+    id?: string
+    employeeScheduleId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    breaks?: EmployeeScheduleDayBreakUncheckedCreateNestedManyWithoutEmployeeScheduleDayInput
+  }
+
+  export type EmployeeScheduleDayUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employeeSchedule?: EmployeeScheduleUpdateOneRequiredWithoutDaysNestedInput
+    breaks?: EmployeeScheduleDayBreakUpdateManyWithoutEmployeeScheduleDayNestedInput
+  }
+
+  export type EmployeeScheduleDayUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeScheduleId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: EmployeeScheduleDayBreakUncheckedUpdateManyWithoutEmployeeScheduleDayNestedInput
+  }
+
+  export type EmployeeScheduleDayCreateManyInput = {
+    id?: string
+    employeeScheduleId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeScheduleId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakCreateInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    employeeScheduleDay: EmployeeScheduleDayCreateNestedOneWithoutBreaksInput
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedCreateInput = {
+    id?: string
+    employeeScheduleDayId: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employeeScheduleDay?: EmployeeScheduleDayUpdateOneRequiredWithoutBreaksNestedInput
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeScheduleDayId?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakCreateManyInput = {
+    id?: string
+    employeeScheduleDayId: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeScheduleDayId?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -17767,6 +26080,12 @@ export namespace Prisma {
     none?: EmployeeWhereInput
   }
 
+  export type ScheduleTemplateListRelationFilter = {
+    every?: ScheduleTemplateWhereInput
+    some?: ScheduleTemplateWhereInput
+    none?: ScheduleTemplateWhereInput
+  }
+
   export type ServiceCategoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -17776,6 +26095,10 @@ export namespace Prisma {
   }
 
   export type EmployeeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ScheduleTemplateOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18099,6 +26422,11 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type EmployeeScheduleNullableScalarRelationFilter = {
+    is?: EmployeeScheduleWhereInput | null
+    isNot?: EmployeeScheduleWhereInput | null
+  }
+
   export type EmployeeCountOrderByAggregateInput = {
     id?: SortOrder
     businessId?: SortOrder
@@ -18206,6 +26534,291 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type ScheduleTemplateDayListRelationFilter = {
+    every?: ScheduleTemplateDayWhereInput
+    some?: ScheduleTemplateDayWhereInput
+    none?: ScheduleTemplateDayWhereInput
+  }
+
+  export type EmployeeScheduleListRelationFilter = {
+    every?: EmployeeScheduleWhereInput
+    some?: EmployeeScheduleWhereInput
+    none?: EmployeeScheduleWhereInput
+  }
+
+  export type ScheduleTemplateDayOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EmployeeScheduleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ScheduleTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    businessId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    businessId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    businessId?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleTemplateScalarRelationFilter = {
+    is?: ScheduleTemplateWhereInput
+    isNot?: ScheduleTemplateWhereInput
+  }
+
+  export type ScheduleTemplateDayBreakListRelationFilter = {
+    every?: ScheduleTemplateDayBreakWhereInput
+    some?: ScheduleTemplateDayBreakWhereInput
+    none?: ScheduleTemplateDayBreakWhereInput
+  }
+
+  export type ScheduleTemplateDayBreakOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ScheduleTemplateDayScheduleTemplateIdDayOfWeekCompoundUniqueInput = {
+    scheduleTemplateId: string
+    dayOfWeek: number
+  }
+
+  export type ScheduleTemplateDayCountOrderByAggregateInput = {
+    id?: SortOrder
+    scheduleTemplateId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleTemplateDayAvgOrderByAggregateInput = {
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type ScheduleTemplateDayMaxOrderByAggregateInput = {
+    id?: SortOrder
+    scheduleTemplateId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleTemplateDayMinOrderByAggregateInput = {
+    id?: SortOrder
+    scheduleTemplateId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleTemplateDaySumOrderByAggregateInput = {
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type ScheduleTemplateDayScalarRelationFilter = {
+    is?: ScheduleTemplateDayWhereInput
+    isNot?: ScheduleTemplateDayWhereInput
+  }
+
+  export type ScheduleTemplateDayBreakCountOrderByAggregateInput = {
+    id?: SortOrder
+    scheduleTemplateDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ScheduleTemplateDayBreakAvgOrderByAggregateInput = {
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type ScheduleTemplateDayBreakMaxOrderByAggregateInput = {
+    id?: SortOrder
+    scheduleTemplateDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ScheduleTemplateDayBreakMinOrderByAggregateInput = {
+    id?: SortOrder
+    scheduleTemplateDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ScheduleTemplateDayBreakSumOrderByAggregateInput = {
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type ScheduleTemplateNullableScalarRelationFilter = {
+    is?: ScheduleTemplateWhereInput | null
+    isNot?: ScheduleTemplateWhereInput | null
+  }
+
+  export type EmployeeScheduleDayListRelationFilter = {
+    every?: EmployeeScheduleDayWhereInput
+    some?: EmployeeScheduleDayWhereInput
+    none?: EmployeeScheduleDayWhereInput
+  }
+
+  export type EmployeeScheduleDayOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EmployeeScheduleCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    scheduleTemplateId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmployeeScheduleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    scheduleTemplateId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmployeeScheduleMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    scheduleTemplateId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmployeeScheduleScalarRelationFilter = {
+    is?: EmployeeScheduleWhereInput
+    isNot?: EmployeeScheduleWhereInput
+  }
+
+  export type EmployeeScheduleDayBreakListRelationFilter = {
+    every?: EmployeeScheduleDayBreakWhereInput
+    some?: EmployeeScheduleDayBreakWhereInput
+    none?: EmployeeScheduleDayBreakWhereInput
+  }
+
+  export type EmployeeScheduleDayBreakOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EmployeeScheduleDayEmployeeScheduleIdDayOfWeekCompoundUniqueInput = {
+    employeeScheduleId: string
+    dayOfWeek: number
+  }
+
+  export type EmployeeScheduleDayCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeScheduleId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmployeeScheduleDayAvgOrderByAggregateInput = {
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type EmployeeScheduleDayMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeScheduleId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmployeeScheduleDayMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeScheduleId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmployeeScheduleDaySumOrderByAggregateInput = {
+    dayOfWeek?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type EmployeeScheduleDayScalarRelationFilter = {
+    is?: EmployeeScheduleDayWhereInput
+    isNot?: EmployeeScheduleDayWhereInput
+  }
+
+  export type EmployeeScheduleDayBreakCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeScheduleDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EmployeeScheduleDayBreakAvgOrderByAggregateInput = {
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+  }
+
+  export type EmployeeScheduleDayBreakMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeScheduleDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EmployeeScheduleDayBreakMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeScheduleDayId?: SortOrder
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EmployeeScheduleDayBreakSumOrderByAggregateInput = {
+    startTimeMinutes?: SortOrder
+    endTimeMinutes?: SortOrder
   }
 
   export type EnumAuthProviderTypeFilter<$PrismaModel = never> = {
@@ -18594,6 +27207,13 @@ export namespace Prisma {
     connect?: EmployeeWhereUniqueInput | EmployeeWhereUniqueInput[]
   }
 
+  export type ScheduleTemplateCreateNestedManyWithoutBusinessInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutBusinessInput, ScheduleTemplateUncheckedCreateWithoutBusinessInput> | ScheduleTemplateCreateWithoutBusinessInput[] | ScheduleTemplateUncheckedCreateWithoutBusinessInput[]
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutBusinessInput | ScheduleTemplateCreateOrConnectWithoutBusinessInput[]
+    createMany?: ScheduleTemplateCreateManyBusinessInputEnvelope
+    connect?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+  }
+
   export type BusinessMemberUncheckedCreateNestedManyWithoutBusinessInput = {
     create?: XOR<BusinessMemberCreateWithoutBusinessInput, BusinessMemberUncheckedCreateWithoutBusinessInput> | BusinessMemberCreateWithoutBusinessInput[] | BusinessMemberUncheckedCreateWithoutBusinessInput[]
     connectOrCreate?: BusinessMemberCreateOrConnectWithoutBusinessInput | BusinessMemberCreateOrConnectWithoutBusinessInput[]
@@ -18620,6 +27240,13 @@ export namespace Prisma {
     connectOrCreate?: EmployeeCreateOrConnectWithoutBusinessInput | EmployeeCreateOrConnectWithoutBusinessInput[]
     createMany?: EmployeeCreateManyBusinessInputEnvelope
     connect?: EmployeeWhereUniqueInput | EmployeeWhereUniqueInput[]
+  }
+
+  export type ScheduleTemplateUncheckedCreateNestedManyWithoutBusinessInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutBusinessInput, ScheduleTemplateUncheckedCreateWithoutBusinessInput> | ScheduleTemplateCreateWithoutBusinessInput[] | ScheduleTemplateUncheckedCreateWithoutBusinessInput[]
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutBusinessInput | ScheduleTemplateCreateOrConnectWithoutBusinessInput[]
+    createMany?: ScheduleTemplateCreateManyBusinessInputEnvelope
+    connect?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -18686,6 +27313,20 @@ export namespace Prisma {
     deleteMany?: EmployeeScalarWhereInput | EmployeeScalarWhereInput[]
   }
 
+  export type ScheduleTemplateUpdateManyWithoutBusinessNestedInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutBusinessInput, ScheduleTemplateUncheckedCreateWithoutBusinessInput> | ScheduleTemplateCreateWithoutBusinessInput[] | ScheduleTemplateUncheckedCreateWithoutBusinessInput[]
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutBusinessInput | ScheduleTemplateCreateOrConnectWithoutBusinessInput[]
+    upsert?: ScheduleTemplateUpsertWithWhereUniqueWithoutBusinessInput | ScheduleTemplateUpsertWithWhereUniqueWithoutBusinessInput[]
+    createMany?: ScheduleTemplateCreateManyBusinessInputEnvelope
+    set?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    disconnect?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    delete?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    connect?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    update?: ScheduleTemplateUpdateWithWhereUniqueWithoutBusinessInput | ScheduleTemplateUpdateWithWhereUniqueWithoutBusinessInput[]
+    updateMany?: ScheduleTemplateUpdateManyWithWhereWithoutBusinessInput | ScheduleTemplateUpdateManyWithWhereWithoutBusinessInput[]
+    deleteMany?: ScheduleTemplateScalarWhereInput | ScheduleTemplateScalarWhereInput[]
+  }
+
   export type BusinessMemberUncheckedUpdateManyWithoutBusinessNestedInput = {
     create?: XOR<BusinessMemberCreateWithoutBusinessInput, BusinessMemberUncheckedCreateWithoutBusinessInput> | BusinessMemberCreateWithoutBusinessInput[] | BusinessMemberUncheckedCreateWithoutBusinessInput[]
     connectOrCreate?: BusinessMemberCreateOrConnectWithoutBusinessInput | BusinessMemberCreateOrConnectWithoutBusinessInput[]
@@ -18740,6 +27381,20 @@ export namespace Prisma {
     update?: EmployeeUpdateWithWhereUniqueWithoutBusinessInput | EmployeeUpdateWithWhereUniqueWithoutBusinessInput[]
     updateMany?: EmployeeUpdateManyWithWhereWithoutBusinessInput | EmployeeUpdateManyWithWhereWithoutBusinessInput[]
     deleteMany?: EmployeeScalarWhereInput | EmployeeScalarWhereInput[]
+  }
+
+  export type ScheduleTemplateUncheckedUpdateManyWithoutBusinessNestedInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutBusinessInput, ScheduleTemplateUncheckedCreateWithoutBusinessInput> | ScheduleTemplateCreateWithoutBusinessInput[] | ScheduleTemplateUncheckedCreateWithoutBusinessInput[]
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutBusinessInput | ScheduleTemplateCreateOrConnectWithoutBusinessInput[]
+    upsert?: ScheduleTemplateUpsertWithWhereUniqueWithoutBusinessInput | ScheduleTemplateUpsertWithWhereUniqueWithoutBusinessInput[]
+    createMany?: ScheduleTemplateCreateManyBusinessInputEnvelope
+    set?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    disconnect?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    delete?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    connect?: ScheduleTemplateWhereUniqueInput | ScheduleTemplateWhereUniqueInput[]
+    update?: ScheduleTemplateUpdateWithWhereUniqueWithoutBusinessInput | ScheduleTemplateUpdateWithWhereUniqueWithoutBusinessInput[]
+    updateMany?: ScheduleTemplateUpdateManyWithWhereWithoutBusinessInput | ScheduleTemplateUpdateManyWithWhereWithoutBusinessInput[]
+    deleteMany?: ScheduleTemplateScalarWhereInput | ScheduleTemplateScalarWhereInput[]
   }
 
   export type AdminUserCreateNestedOneWithoutBusinessMembersInput = {
@@ -18939,11 +27594,23 @@ export namespace Prisma {
     connect?: EmployeeServiceWhereUniqueInput | EmployeeServiceWhereUniqueInput[]
   }
 
+  export type EmployeeScheduleCreateNestedOneWithoutEmployeeInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutEmployeeInput, EmployeeScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutEmployeeInput
+    connect?: EmployeeScheduleWhereUniqueInput
+  }
+
   export type EmployeeServiceUncheckedCreateNestedManyWithoutEmployeeInput = {
     create?: XOR<EmployeeServiceCreateWithoutEmployeeInput, EmployeeServiceUncheckedCreateWithoutEmployeeInput> | EmployeeServiceCreateWithoutEmployeeInput[] | EmployeeServiceUncheckedCreateWithoutEmployeeInput[]
     connectOrCreate?: EmployeeServiceCreateOrConnectWithoutEmployeeInput | EmployeeServiceCreateOrConnectWithoutEmployeeInput[]
     createMany?: EmployeeServiceCreateManyEmployeeInputEnvelope
     connect?: EmployeeServiceWhereUniqueInput | EmployeeServiceWhereUniqueInput[]
+  }
+
+  export type EmployeeScheduleUncheckedCreateNestedOneWithoutEmployeeInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutEmployeeInput, EmployeeScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutEmployeeInput
+    connect?: EmployeeScheduleWhereUniqueInput
   }
 
   export type BusinessUpdateOneRequiredWithoutEmployeesNestedInput = {
@@ -18968,6 +27635,16 @@ export namespace Prisma {
     deleteMany?: EmployeeServiceScalarWhereInput | EmployeeServiceScalarWhereInput[]
   }
 
+  export type EmployeeScheduleUpdateOneWithoutEmployeeNestedInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutEmployeeInput, EmployeeScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutEmployeeInput
+    upsert?: EmployeeScheduleUpsertWithoutEmployeeInput
+    disconnect?: EmployeeScheduleWhereInput | boolean
+    delete?: EmployeeScheduleWhereInput | boolean
+    connect?: EmployeeScheduleWhereUniqueInput
+    update?: XOR<XOR<EmployeeScheduleUpdateToOneWithWhereWithoutEmployeeInput, EmployeeScheduleUpdateWithoutEmployeeInput>, EmployeeScheduleUncheckedUpdateWithoutEmployeeInput>
+  }
+
   export type EmployeeServiceUncheckedUpdateManyWithoutEmployeeNestedInput = {
     create?: XOR<EmployeeServiceCreateWithoutEmployeeInput, EmployeeServiceUncheckedCreateWithoutEmployeeInput> | EmployeeServiceCreateWithoutEmployeeInput[] | EmployeeServiceUncheckedCreateWithoutEmployeeInput[]
     connectOrCreate?: EmployeeServiceCreateOrConnectWithoutEmployeeInput | EmployeeServiceCreateOrConnectWithoutEmployeeInput[]
@@ -18980,6 +27657,16 @@ export namespace Prisma {
     update?: EmployeeServiceUpdateWithWhereUniqueWithoutEmployeeInput | EmployeeServiceUpdateWithWhereUniqueWithoutEmployeeInput[]
     updateMany?: EmployeeServiceUpdateManyWithWhereWithoutEmployeeInput | EmployeeServiceUpdateManyWithWhereWithoutEmployeeInput[]
     deleteMany?: EmployeeServiceScalarWhereInput | EmployeeServiceScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleUncheckedUpdateOneWithoutEmployeeNestedInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutEmployeeInput, EmployeeScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutEmployeeInput
+    upsert?: EmployeeScheduleUpsertWithoutEmployeeInput
+    disconnect?: EmployeeScheduleWhereInput | boolean
+    delete?: EmployeeScheduleWhereInput | boolean
+    connect?: EmployeeScheduleWhereUniqueInput
+    update?: XOR<XOR<EmployeeScheduleUpdateToOneWithWhereWithoutEmployeeInput, EmployeeScheduleUpdateWithoutEmployeeInput>, EmployeeScheduleUncheckedUpdateWithoutEmployeeInput>
   }
 
   export type EmployeeCreateNestedOneWithoutEmployeeServicesInput = {
@@ -19016,6 +27703,316 @@ export namespace Prisma {
     upsert?: ServiceUpsertWithoutEmployeeServicesInput
     connect?: ServiceWhereUniqueInput
     update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutEmployeeServicesInput, ServiceUpdateWithoutEmployeeServicesInput>, ServiceUncheckedUpdateWithoutEmployeeServicesInput>
+  }
+
+  export type BusinessCreateNestedOneWithoutScheduleTemplatesInput = {
+    create?: XOR<BusinessCreateWithoutScheduleTemplatesInput, BusinessUncheckedCreateWithoutScheduleTemplatesInput>
+    connectOrCreate?: BusinessCreateOrConnectWithoutScheduleTemplatesInput
+    connect?: BusinessWhereUniqueInput
+  }
+
+  export type ScheduleTemplateDayCreateNestedManyWithoutScheduleTemplateInput = {
+    create?: XOR<ScheduleTemplateDayCreateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput> | ScheduleTemplateDayCreateWithoutScheduleTemplateInput[] | ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput | ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput[]
+    createMany?: ScheduleTemplateDayCreateManyScheduleTemplateInputEnvelope
+    connect?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+  }
+
+  export type EmployeeScheduleCreateNestedManyWithoutScheduleTemplateInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput> | EmployeeScheduleCreateWithoutScheduleTemplateInput[] | EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput | EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput[]
+    createMany?: EmployeeScheduleCreateManyScheduleTemplateInputEnvelope
+    connect?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+  }
+
+  export type ScheduleTemplateDayUncheckedCreateNestedManyWithoutScheduleTemplateInput = {
+    create?: XOR<ScheduleTemplateDayCreateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput> | ScheduleTemplateDayCreateWithoutScheduleTemplateInput[] | ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput | ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput[]
+    createMany?: ScheduleTemplateDayCreateManyScheduleTemplateInputEnvelope
+    connect?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+  }
+
+  export type EmployeeScheduleUncheckedCreateNestedManyWithoutScheduleTemplateInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput> | EmployeeScheduleCreateWithoutScheduleTemplateInput[] | EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput | EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput[]
+    createMany?: EmployeeScheduleCreateManyScheduleTemplateInputEnvelope
+    connect?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+  }
+
+  export type BusinessUpdateOneRequiredWithoutScheduleTemplatesNestedInput = {
+    create?: XOR<BusinessCreateWithoutScheduleTemplatesInput, BusinessUncheckedCreateWithoutScheduleTemplatesInput>
+    connectOrCreate?: BusinessCreateOrConnectWithoutScheduleTemplatesInput
+    upsert?: BusinessUpsertWithoutScheduleTemplatesInput
+    connect?: BusinessWhereUniqueInput
+    update?: XOR<XOR<BusinessUpdateToOneWithWhereWithoutScheduleTemplatesInput, BusinessUpdateWithoutScheduleTemplatesInput>, BusinessUncheckedUpdateWithoutScheduleTemplatesInput>
+  }
+
+  export type ScheduleTemplateDayUpdateManyWithoutScheduleTemplateNestedInput = {
+    create?: XOR<ScheduleTemplateDayCreateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput> | ScheduleTemplateDayCreateWithoutScheduleTemplateInput[] | ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput | ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput[]
+    upsert?: ScheduleTemplateDayUpsertWithWhereUniqueWithoutScheduleTemplateInput | ScheduleTemplateDayUpsertWithWhereUniqueWithoutScheduleTemplateInput[]
+    createMany?: ScheduleTemplateDayCreateManyScheduleTemplateInputEnvelope
+    set?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    disconnect?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    delete?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    connect?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    update?: ScheduleTemplateDayUpdateWithWhereUniqueWithoutScheduleTemplateInput | ScheduleTemplateDayUpdateWithWhereUniqueWithoutScheduleTemplateInput[]
+    updateMany?: ScheduleTemplateDayUpdateManyWithWhereWithoutScheduleTemplateInput | ScheduleTemplateDayUpdateManyWithWhereWithoutScheduleTemplateInput[]
+    deleteMany?: ScheduleTemplateDayScalarWhereInput | ScheduleTemplateDayScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleUpdateManyWithoutScheduleTemplateNestedInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput> | EmployeeScheduleCreateWithoutScheduleTemplateInput[] | EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput | EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput[]
+    upsert?: EmployeeScheduleUpsertWithWhereUniqueWithoutScheduleTemplateInput | EmployeeScheduleUpsertWithWhereUniqueWithoutScheduleTemplateInput[]
+    createMany?: EmployeeScheduleCreateManyScheduleTemplateInputEnvelope
+    set?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    disconnect?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    delete?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    connect?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    update?: EmployeeScheduleUpdateWithWhereUniqueWithoutScheduleTemplateInput | EmployeeScheduleUpdateWithWhereUniqueWithoutScheduleTemplateInput[]
+    updateMany?: EmployeeScheduleUpdateManyWithWhereWithoutScheduleTemplateInput | EmployeeScheduleUpdateManyWithWhereWithoutScheduleTemplateInput[]
+    deleteMany?: EmployeeScheduleScalarWhereInput | EmployeeScheduleScalarWhereInput[]
+  }
+
+  export type ScheduleTemplateDayUncheckedUpdateManyWithoutScheduleTemplateNestedInput = {
+    create?: XOR<ScheduleTemplateDayCreateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput> | ScheduleTemplateDayCreateWithoutScheduleTemplateInput[] | ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput | ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput[]
+    upsert?: ScheduleTemplateDayUpsertWithWhereUniqueWithoutScheduleTemplateInput | ScheduleTemplateDayUpsertWithWhereUniqueWithoutScheduleTemplateInput[]
+    createMany?: ScheduleTemplateDayCreateManyScheduleTemplateInputEnvelope
+    set?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    disconnect?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    delete?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    connect?: ScheduleTemplateDayWhereUniqueInput | ScheduleTemplateDayWhereUniqueInput[]
+    update?: ScheduleTemplateDayUpdateWithWhereUniqueWithoutScheduleTemplateInput | ScheduleTemplateDayUpdateWithWhereUniqueWithoutScheduleTemplateInput[]
+    updateMany?: ScheduleTemplateDayUpdateManyWithWhereWithoutScheduleTemplateInput | ScheduleTemplateDayUpdateManyWithWhereWithoutScheduleTemplateInput[]
+    deleteMany?: ScheduleTemplateDayScalarWhereInput | ScheduleTemplateDayScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleUncheckedUpdateManyWithoutScheduleTemplateNestedInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput> | EmployeeScheduleCreateWithoutScheduleTemplateInput[] | EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput[]
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput | EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput[]
+    upsert?: EmployeeScheduleUpsertWithWhereUniqueWithoutScheduleTemplateInput | EmployeeScheduleUpsertWithWhereUniqueWithoutScheduleTemplateInput[]
+    createMany?: EmployeeScheduleCreateManyScheduleTemplateInputEnvelope
+    set?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    disconnect?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    delete?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    connect?: EmployeeScheduleWhereUniqueInput | EmployeeScheduleWhereUniqueInput[]
+    update?: EmployeeScheduleUpdateWithWhereUniqueWithoutScheduleTemplateInput | EmployeeScheduleUpdateWithWhereUniqueWithoutScheduleTemplateInput[]
+    updateMany?: EmployeeScheduleUpdateManyWithWhereWithoutScheduleTemplateInput | EmployeeScheduleUpdateManyWithWhereWithoutScheduleTemplateInput[]
+    deleteMany?: EmployeeScheduleScalarWhereInput | EmployeeScheduleScalarWhereInput[]
+  }
+
+  export type ScheduleTemplateCreateNestedOneWithoutDaysInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutDaysInput, ScheduleTemplateUncheckedCreateWithoutDaysInput>
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutDaysInput
+    connect?: ScheduleTemplateWhereUniqueInput
+  }
+
+  export type ScheduleTemplateDayBreakCreateNestedManyWithoutScheduleTemplateDayInput = {
+    create?: XOR<ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput> | ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput[] | ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput[]
+    connectOrCreate?: ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput[]
+    createMany?: ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInputEnvelope
+    connect?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedCreateNestedManyWithoutScheduleTemplateDayInput = {
+    create?: XOR<ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput> | ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput[] | ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput[]
+    connectOrCreate?: ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput[]
+    createMany?: ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInputEnvelope
+    connect?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+  }
+
+  export type ScheduleTemplateUpdateOneRequiredWithoutDaysNestedInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutDaysInput, ScheduleTemplateUncheckedCreateWithoutDaysInput>
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutDaysInput
+    upsert?: ScheduleTemplateUpsertWithoutDaysInput
+    connect?: ScheduleTemplateWhereUniqueInput
+    update?: XOR<XOR<ScheduleTemplateUpdateToOneWithWhereWithoutDaysInput, ScheduleTemplateUpdateWithoutDaysInput>, ScheduleTemplateUncheckedUpdateWithoutDaysInput>
+  }
+
+  export type ScheduleTemplateDayBreakUpdateManyWithoutScheduleTemplateDayNestedInput = {
+    create?: XOR<ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput> | ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput[] | ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput[]
+    connectOrCreate?: ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput[]
+    upsert?: ScheduleTemplateDayBreakUpsertWithWhereUniqueWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakUpsertWithWhereUniqueWithoutScheduleTemplateDayInput[]
+    createMany?: ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInputEnvelope
+    set?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    disconnect?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    delete?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    connect?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    update?: ScheduleTemplateDayBreakUpdateWithWhereUniqueWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakUpdateWithWhereUniqueWithoutScheduleTemplateDayInput[]
+    updateMany?: ScheduleTemplateDayBreakUpdateManyWithWhereWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakUpdateManyWithWhereWithoutScheduleTemplateDayInput[]
+    deleteMany?: ScheduleTemplateDayBreakScalarWhereInput | ScheduleTemplateDayBreakScalarWhereInput[]
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedUpdateManyWithoutScheduleTemplateDayNestedInput = {
+    create?: XOR<ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput> | ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput[] | ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput[]
+    connectOrCreate?: ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput[]
+    upsert?: ScheduleTemplateDayBreakUpsertWithWhereUniqueWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakUpsertWithWhereUniqueWithoutScheduleTemplateDayInput[]
+    createMany?: ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInputEnvelope
+    set?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    disconnect?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    delete?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    connect?: ScheduleTemplateDayBreakWhereUniqueInput | ScheduleTemplateDayBreakWhereUniqueInput[]
+    update?: ScheduleTemplateDayBreakUpdateWithWhereUniqueWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakUpdateWithWhereUniqueWithoutScheduleTemplateDayInput[]
+    updateMany?: ScheduleTemplateDayBreakUpdateManyWithWhereWithoutScheduleTemplateDayInput | ScheduleTemplateDayBreakUpdateManyWithWhereWithoutScheduleTemplateDayInput[]
+    deleteMany?: ScheduleTemplateDayBreakScalarWhereInput | ScheduleTemplateDayBreakScalarWhereInput[]
+  }
+
+  export type ScheduleTemplateDayCreateNestedOneWithoutBreaksInput = {
+    create?: XOR<ScheduleTemplateDayCreateWithoutBreaksInput, ScheduleTemplateDayUncheckedCreateWithoutBreaksInput>
+    connectOrCreate?: ScheduleTemplateDayCreateOrConnectWithoutBreaksInput
+    connect?: ScheduleTemplateDayWhereUniqueInput
+  }
+
+  export type ScheduleTemplateDayUpdateOneRequiredWithoutBreaksNestedInput = {
+    create?: XOR<ScheduleTemplateDayCreateWithoutBreaksInput, ScheduleTemplateDayUncheckedCreateWithoutBreaksInput>
+    connectOrCreate?: ScheduleTemplateDayCreateOrConnectWithoutBreaksInput
+    upsert?: ScheduleTemplateDayUpsertWithoutBreaksInput
+    connect?: ScheduleTemplateDayWhereUniqueInput
+    update?: XOR<XOR<ScheduleTemplateDayUpdateToOneWithWhereWithoutBreaksInput, ScheduleTemplateDayUpdateWithoutBreaksInput>, ScheduleTemplateDayUncheckedUpdateWithoutBreaksInput>
+  }
+
+  export type EmployeeCreateNestedOneWithoutEmployeeScheduleInput = {
+    create?: XOR<EmployeeCreateWithoutEmployeeScheduleInput, EmployeeUncheckedCreateWithoutEmployeeScheduleInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutEmployeeScheduleInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type ScheduleTemplateCreateNestedOneWithoutEmployeeSchedulesInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutEmployeeSchedulesInput, ScheduleTemplateUncheckedCreateWithoutEmployeeSchedulesInput>
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutEmployeeSchedulesInput
+    connect?: ScheduleTemplateWhereUniqueInput
+  }
+
+  export type EmployeeScheduleDayCreateNestedManyWithoutEmployeeScheduleInput = {
+    create?: XOR<EmployeeScheduleDayCreateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput> | EmployeeScheduleDayCreateWithoutEmployeeScheduleInput[] | EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput[]
+    connectOrCreate?: EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput | EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput[]
+    createMany?: EmployeeScheduleDayCreateManyEmployeeScheduleInputEnvelope
+    connect?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+  }
+
+  export type EmployeeScheduleDayUncheckedCreateNestedManyWithoutEmployeeScheduleInput = {
+    create?: XOR<EmployeeScheduleDayCreateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput> | EmployeeScheduleDayCreateWithoutEmployeeScheduleInput[] | EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput[]
+    connectOrCreate?: EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput | EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput[]
+    createMany?: EmployeeScheduleDayCreateManyEmployeeScheduleInputEnvelope
+    connect?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+  }
+
+  export type EmployeeUpdateOneRequiredWithoutEmployeeScheduleNestedInput = {
+    create?: XOR<EmployeeCreateWithoutEmployeeScheduleInput, EmployeeUncheckedCreateWithoutEmployeeScheduleInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutEmployeeScheduleInput
+    upsert?: EmployeeUpsertWithoutEmployeeScheduleInput
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutEmployeeScheduleInput, EmployeeUpdateWithoutEmployeeScheduleInput>, EmployeeUncheckedUpdateWithoutEmployeeScheduleInput>
+  }
+
+  export type ScheduleTemplateUpdateOneWithoutEmployeeSchedulesNestedInput = {
+    create?: XOR<ScheduleTemplateCreateWithoutEmployeeSchedulesInput, ScheduleTemplateUncheckedCreateWithoutEmployeeSchedulesInput>
+    connectOrCreate?: ScheduleTemplateCreateOrConnectWithoutEmployeeSchedulesInput
+    upsert?: ScheduleTemplateUpsertWithoutEmployeeSchedulesInput
+    disconnect?: ScheduleTemplateWhereInput | boolean
+    delete?: ScheduleTemplateWhereInput | boolean
+    connect?: ScheduleTemplateWhereUniqueInput
+    update?: XOR<XOR<ScheduleTemplateUpdateToOneWithWhereWithoutEmployeeSchedulesInput, ScheduleTemplateUpdateWithoutEmployeeSchedulesInput>, ScheduleTemplateUncheckedUpdateWithoutEmployeeSchedulesInput>
+  }
+
+  export type EmployeeScheduleDayUpdateManyWithoutEmployeeScheduleNestedInput = {
+    create?: XOR<EmployeeScheduleDayCreateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput> | EmployeeScheduleDayCreateWithoutEmployeeScheduleInput[] | EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput[]
+    connectOrCreate?: EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput | EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput[]
+    upsert?: EmployeeScheduleDayUpsertWithWhereUniqueWithoutEmployeeScheduleInput | EmployeeScheduleDayUpsertWithWhereUniqueWithoutEmployeeScheduleInput[]
+    createMany?: EmployeeScheduleDayCreateManyEmployeeScheduleInputEnvelope
+    set?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    disconnect?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    delete?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    connect?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    update?: EmployeeScheduleDayUpdateWithWhereUniqueWithoutEmployeeScheduleInput | EmployeeScheduleDayUpdateWithWhereUniqueWithoutEmployeeScheduleInput[]
+    updateMany?: EmployeeScheduleDayUpdateManyWithWhereWithoutEmployeeScheduleInput | EmployeeScheduleDayUpdateManyWithWhereWithoutEmployeeScheduleInput[]
+    deleteMany?: EmployeeScheduleDayScalarWhereInput | EmployeeScheduleDayScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleDayUncheckedUpdateManyWithoutEmployeeScheduleNestedInput = {
+    create?: XOR<EmployeeScheduleDayCreateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput> | EmployeeScheduleDayCreateWithoutEmployeeScheduleInput[] | EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput[]
+    connectOrCreate?: EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput | EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput[]
+    upsert?: EmployeeScheduleDayUpsertWithWhereUniqueWithoutEmployeeScheduleInput | EmployeeScheduleDayUpsertWithWhereUniqueWithoutEmployeeScheduleInput[]
+    createMany?: EmployeeScheduleDayCreateManyEmployeeScheduleInputEnvelope
+    set?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    disconnect?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    delete?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    connect?: EmployeeScheduleDayWhereUniqueInput | EmployeeScheduleDayWhereUniqueInput[]
+    update?: EmployeeScheduleDayUpdateWithWhereUniqueWithoutEmployeeScheduleInput | EmployeeScheduleDayUpdateWithWhereUniqueWithoutEmployeeScheduleInput[]
+    updateMany?: EmployeeScheduleDayUpdateManyWithWhereWithoutEmployeeScheduleInput | EmployeeScheduleDayUpdateManyWithWhereWithoutEmployeeScheduleInput[]
+    deleteMany?: EmployeeScheduleDayScalarWhereInput | EmployeeScheduleDayScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleCreateNestedOneWithoutDaysInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutDaysInput, EmployeeScheduleUncheckedCreateWithoutDaysInput>
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutDaysInput
+    connect?: EmployeeScheduleWhereUniqueInput
+  }
+
+  export type EmployeeScheduleDayBreakCreateNestedManyWithoutEmployeeScheduleDayInput = {
+    create?: XOR<EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput> | EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput[] | EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput[]
+    connectOrCreate?: EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput[]
+    createMany?: EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInputEnvelope
+    connect?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedCreateNestedManyWithoutEmployeeScheduleDayInput = {
+    create?: XOR<EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput> | EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput[] | EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput[]
+    connectOrCreate?: EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput[]
+    createMany?: EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInputEnvelope
+    connect?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+  }
+
+  export type EmployeeScheduleUpdateOneRequiredWithoutDaysNestedInput = {
+    create?: XOR<EmployeeScheduleCreateWithoutDaysInput, EmployeeScheduleUncheckedCreateWithoutDaysInput>
+    connectOrCreate?: EmployeeScheduleCreateOrConnectWithoutDaysInput
+    upsert?: EmployeeScheduleUpsertWithoutDaysInput
+    connect?: EmployeeScheduleWhereUniqueInput
+    update?: XOR<XOR<EmployeeScheduleUpdateToOneWithWhereWithoutDaysInput, EmployeeScheduleUpdateWithoutDaysInput>, EmployeeScheduleUncheckedUpdateWithoutDaysInput>
+  }
+
+  export type EmployeeScheduleDayBreakUpdateManyWithoutEmployeeScheduleDayNestedInput = {
+    create?: XOR<EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput> | EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput[] | EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput[]
+    connectOrCreate?: EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput[]
+    upsert?: EmployeeScheduleDayBreakUpsertWithWhereUniqueWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakUpsertWithWhereUniqueWithoutEmployeeScheduleDayInput[]
+    createMany?: EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInputEnvelope
+    set?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    disconnect?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    delete?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    connect?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    update?: EmployeeScheduleDayBreakUpdateWithWhereUniqueWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakUpdateWithWhereUniqueWithoutEmployeeScheduleDayInput[]
+    updateMany?: EmployeeScheduleDayBreakUpdateManyWithWhereWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakUpdateManyWithWhereWithoutEmployeeScheduleDayInput[]
+    deleteMany?: EmployeeScheduleDayBreakScalarWhereInput | EmployeeScheduleDayBreakScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedUpdateManyWithoutEmployeeScheduleDayNestedInput = {
+    create?: XOR<EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput> | EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput[] | EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput[]
+    connectOrCreate?: EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput[]
+    upsert?: EmployeeScheduleDayBreakUpsertWithWhereUniqueWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakUpsertWithWhereUniqueWithoutEmployeeScheduleDayInput[]
+    createMany?: EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInputEnvelope
+    set?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    disconnect?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    delete?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    connect?: EmployeeScheduleDayBreakWhereUniqueInput | EmployeeScheduleDayBreakWhereUniqueInput[]
+    update?: EmployeeScheduleDayBreakUpdateWithWhereUniqueWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakUpdateWithWhereUniqueWithoutEmployeeScheduleDayInput[]
+    updateMany?: EmployeeScheduleDayBreakUpdateManyWithWhereWithoutEmployeeScheduleDayInput | EmployeeScheduleDayBreakUpdateManyWithWhereWithoutEmployeeScheduleDayInput[]
+    deleteMany?: EmployeeScheduleDayBreakScalarWhereInput | EmployeeScheduleDayBreakScalarWhereInput[]
+  }
+
+  export type EmployeeScheduleDayCreateNestedOneWithoutBreaksInput = {
+    create?: XOR<EmployeeScheduleDayCreateWithoutBreaksInput, EmployeeScheduleDayUncheckedCreateWithoutBreaksInput>
+    connectOrCreate?: EmployeeScheduleDayCreateOrConnectWithoutBreaksInput
+    connect?: EmployeeScheduleDayWhereUniqueInput
+  }
+
+  export type EmployeeScheduleDayUpdateOneRequiredWithoutBreaksNestedInput = {
+    create?: XOR<EmployeeScheduleDayCreateWithoutBreaksInput, EmployeeScheduleDayUncheckedCreateWithoutBreaksInput>
+    connectOrCreate?: EmployeeScheduleDayCreateOrConnectWithoutBreaksInput
+    upsert?: EmployeeScheduleDayUpsertWithoutBreaksInput
+    connect?: EmployeeScheduleDayWhereUniqueInput
+    update?: XOR<XOR<EmployeeScheduleDayUpdateToOneWithWhereWithoutBreaksInput, EmployeeScheduleDayUpdateWithoutBreaksInput>, EmployeeScheduleDayUncheckedUpdateWithoutBreaksInput>
   }
 
   export type AdminUserCreateNestedOneWithoutAuthProvidersInput = {
@@ -19733,6 +28730,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     employeeServices?: EmployeeServiceCreateNestedManyWithoutEmployeeInput
+    employeeSchedule?: EmployeeScheduleCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutBusinessInput = {
@@ -19743,6 +28741,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     employeeServices?: EmployeeServiceUncheckedCreateNestedManyWithoutEmployeeInput
+    employeeSchedule?: EmployeeScheduleUncheckedCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutBusinessInput = {
@@ -19752,6 +28751,34 @@ export namespace Prisma {
 
   export type EmployeeCreateManyBusinessInputEnvelope = {
     data: EmployeeCreateManyBusinessInput | EmployeeCreateManyBusinessInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ScheduleTemplateCreateWithoutBusinessInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: ScheduleTemplateDayCreateNestedManyWithoutScheduleTemplateInput
+    employeeSchedules?: EmployeeScheduleCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateUncheckedCreateWithoutBusinessInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: ScheduleTemplateDayUncheckedCreateNestedManyWithoutScheduleTemplateInput
+    employeeSchedules?: EmployeeScheduleUncheckedCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateCreateOrConnectWithoutBusinessInput = {
+    where: ScheduleTemplateWhereUniqueInput
+    create: XOR<ScheduleTemplateCreateWithoutBusinessInput, ScheduleTemplateUncheckedCreateWithoutBusinessInput>
+  }
+
+  export type ScheduleTemplateCreateManyBusinessInputEnvelope = {
+    data: ScheduleTemplateCreateManyBusinessInput | ScheduleTemplateCreateManyBusinessInput[]
     skipDuplicates?: boolean
   }
 
@@ -19860,6 +28887,33 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Employee"> | Date | string
   }
 
+  export type ScheduleTemplateUpsertWithWhereUniqueWithoutBusinessInput = {
+    where: ScheduleTemplateWhereUniqueInput
+    update: XOR<ScheduleTemplateUpdateWithoutBusinessInput, ScheduleTemplateUncheckedUpdateWithoutBusinessInput>
+    create: XOR<ScheduleTemplateCreateWithoutBusinessInput, ScheduleTemplateUncheckedCreateWithoutBusinessInput>
+  }
+
+  export type ScheduleTemplateUpdateWithWhereUniqueWithoutBusinessInput = {
+    where: ScheduleTemplateWhereUniqueInput
+    data: XOR<ScheduleTemplateUpdateWithoutBusinessInput, ScheduleTemplateUncheckedUpdateWithoutBusinessInput>
+  }
+
+  export type ScheduleTemplateUpdateManyWithWhereWithoutBusinessInput = {
+    where: ScheduleTemplateScalarWhereInput
+    data: XOR<ScheduleTemplateUpdateManyMutationInput, ScheduleTemplateUncheckedUpdateManyWithoutBusinessInput>
+  }
+
+  export type ScheduleTemplateScalarWhereInput = {
+    AND?: ScheduleTemplateScalarWhereInput | ScheduleTemplateScalarWhereInput[]
+    OR?: ScheduleTemplateScalarWhereInput[]
+    NOT?: ScheduleTemplateScalarWhereInput | ScheduleTemplateScalarWhereInput[]
+    id?: StringFilter<"ScheduleTemplate"> | string
+    businessId?: StringFilter<"ScheduleTemplate"> | string
+    name?: StringFilter<"ScheduleTemplate"> | string
+    createdAt?: DateTimeFilter<"ScheduleTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleTemplate"> | Date | string
+  }
+
   export type AdminUserCreateWithoutBusinessMembersInput = {
     id?: string
     email?: string | null
@@ -19911,6 +28965,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryCreateNestedManyWithoutBusinessInput
     services?: ServiceCreateNestedManyWithoutBusinessInput
     employees?: EmployeeCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessUncheckedCreateWithoutBusinessMembersInput = {
@@ -19933,6 +28988,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryUncheckedCreateNestedManyWithoutBusinessInput
     services?: ServiceUncheckedCreateNestedManyWithoutBusinessInput
     employees?: EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateUncheckedCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessCreateOrConnectWithoutBusinessMembersInput = {
@@ -20008,6 +29064,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryUpdateManyWithoutBusinessNestedInput
     services?: ServiceUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessUncheckedUpdateWithoutBusinessMembersInput = {
@@ -20030,6 +29087,7 @@ export namespace Prisma {
     serviceCategories?: ServiceCategoryUncheckedUpdateManyWithoutBusinessNestedInput
     services?: ServiceUncheckedUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUncheckedUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessCreateWithoutServiceCategoriesInput = {
@@ -20052,6 +29110,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberCreateNestedManyWithoutBusinessInput
     services?: ServiceCreateNestedManyWithoutBusinessInput
     employees?: EmployeeCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessUncheckedCreateWithoutServiceCategoriesInput = {
@@ -20074,6 +29133,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUncheckedCreateNestedManyWithoutBusinessInput
     services?: ServiceUncheckedCreateNestedManyWithoutBusinessInput
     employees?: EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateUncheckedCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessCreateOrConnectWithoutServiceCategoriesInput = {
@@ -20150,6 +29210,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUpdateManyWithoutBusinessNestedInput
     services?: ServiceUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessUncheckedUpdateWithoutServiceCategoriesInput = {
@@ -20172,6 +29233,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUncheckedUpdateManyWithoutBusinessNestedInput
     services?: ServiceUncheckedUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUncheckedUpdateManyWithoutBusinessNestedInput
   }
 
   export type ServiceUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -20210,6 +29272,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberCreateNestedManyWithoutBusinessInput
     serviceCategories?: ServiceCategoryCreateNestedManyWithoutBusinessInput
     employees?: EmployeeCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessUncheckedCreateWithoutServicesInput = {
@@ -20232,6 +29295,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUncheckedCreateNestedManyWithoutBusinessInput
     serviceCategories?: ServiceCategoryUncheckedCreateNestedManyWithoutBusinessInput
     employees?: EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateUncheckedCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessCreateOrConnectWithoutServicesInput = {
@@ -20317,6 +29381,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUpdateManyWithoutBusinessNestedInput
     serviceCategories?: ServiceCategoryUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessUncheckedUpdateWithoutServicesInput = {
@@ -20339,6 +29404,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUncheckedUpdateManyWithoutBusinessNestedInput
     serviceCategories?: ServiceCategoryUncheckedUpdateManyWithoutBusinessNestedInput
     employees?: EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUncheckedUpdateManyWithoutBusinessNestedInput
   }
 
   export type ServiceCategoryUpsertWithoutServicesInput = {
@@ -20416,6 +29482,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberCreateNestedManyWithoutBusinessInput
     serviceCategories?: ServiceCategoryCreateNestedManyWithoutBusinessInput
     services?: ServiceCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessUncheckedCreateWithoutEmployeesInput = {
@@ -20438,6 +29505,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUncheckedCreateNestedManyWithoutBusinessInput
     serviceCategories?: ServiceCategoryUncheckedCreateNestedManyWithoutBusinessInput
     services?: ServiceUncheckedCreateNestedManyWithoutBusinessInput
+    scheduleTemplates?: ScheduleTemplateUncheckedCreateNestedManyWithoutBusinessInput
   }
 
   export type BusinessCreateOrConnectWithoutEmployeesInput = {
@@ -20471,6 +29539,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type EmployeeScheduleCreateWithoutEmployeeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    scheduleTemplate?: ScheduleTemplateCreateNestedOneWithoutEmployeeSchedulesInput
+    days?: EmployeeScheduleDayCreateNestedManyWithoutEmployeeScheduleInput
+  }
+
+  export type EmployeeScheduleUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    scheduleTemplateId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: EmployeeScheduleDayUncheckedCreateNestedManyWithoutEmployeeScheduleInput
+  }
+
+  export type EmployeeScheduleCreateOrConnectWithoutEmployeeInput = {
+    where: EmployeeScheduleWhereUniqueInput
+    create: XOR<EmployeeScheduleCreateWithoutEmployeeInput, EmployeeScheduleUncheckedCreateWithoutEmployeeInput>
+  }
+
   export type BusinessUpsertWithoutEmployeesInput = {
     update: XOR<BusinessUpdateWithoutEmployeesInput, BusinessUncheckedUpdateWithoutEmployeesInput>
     create: XOR<BusinessCreateWithoutEmployeesInput, BusinessUncheckedCreateWithoutEmployeesInput>
@@ -20502,6 +29591,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUpdateManyWithoutBusinessNestedInput
     serviceCategories?: ServiceCategoryUpdateManyWithoutBusinessNestedInput
     services?: ServiceUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUpdateManyWithoutBusinessNestedInput
   }
 
   export type BusinessUncheckedUpdateWithoutEmployeesInput = {
@@ -20524,6 +29614,7 @@ export namespace Prisma {
     businessMembers?: BusinessMemberUncheckedUpdateManyWithoutBusinessNestedInput
     serviceCategories?: ServiceCategoryUncheckedUpdateManyWithoutBusinessNestedInput
     services?: ServiceUncheckedUpdateManyWithoutBusinessNestedInput
+    scheduleTemplates?: ScheduleTemplateUncheckedUpdateManyWithoutBusinessNestedInput
   }
 
   export type EmployeeServiceUpsertWithWhereUniqueWithoutEmployeeInput = {
@@ -20542,6 +29633,33 @@ export namespace Prisma {
     data: XOR<EmployeeServiceUpdateManyMutationInput, EmployeeServiceUncheckedUpdateManyWithoutEmployeeInput>
   }
 
+  export type EmployeeScheduleUpsertWithoutEmployeeInput = {
+    update: XOR<EmployeeScheduleUpdateWithoutEmployeeInput, EmployeeScheduleUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<EmployeeScheduleCreateWithoutEmployeeInput, EmployeeScheduleUncheckedCreateWithoutEmployeeInput>
+    where?: EmployeeScheduleWhereInput
+  }
+
+  export type EmployeeScheduleUpdateToOneWithWhereWithoutEmployeeInput = {
+    where?: EmployeeScheduleWhereInput
+    data: XOR<EmployeeScheduleUpdateWithoutEmployeeInput, EmployeeScheduleUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type EmployeeScheduleUpdateWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduleTemplate?: ScheduleTemplateUpdateOneWithoutEmployeeSchedulesNestedInput
+    days?: EmployeeScheduleDayUpdateManyWithoutEmployeeScheduleNestedInput
+  }
+
+  export type EmployeeScheduleUncheckedUpdateWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: EmployeeScheduleDayUncheckedUpdateManyWithoutEmployeeScheduleNestedInput
+  }
+
   export type EmployeeCreateWithoutEmployeeServicesInput = {
     id?: string
     name: string
@@ -20550,6 +29668,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     business: BusinessCreateNestedOneWithoutEmployeesInput
+    employeeSchedule?: EmployeeScheduleCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutEmployeeServicesInput = {
@@ -20560,6 +29679,7 @@ export namespace Prisma {
     imagePath?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    employeeSchedule?: EmployeeScheduleUncheckedCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutEmployeeServicesInput = {
@@ -20619,6 +29739,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     business?: BusinessUpdateOneRequiredWithoutEmployeesNestedInput
+    employeeSchedule?: EmployeeScheduleUpdateOneWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutEmployeeServicesInput = {
@@ -20629,6 +29750,7 @@ export namespace Prisma {
     imagePath?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employeeSchedule?: EmployeeScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
   }
 
   export type ServiceUpsertWithoutEmployeeServicesInput = {
@@ -20666,6 +29788,711 @@ export namespace Prisma {
     durationMinutes?: IntFieldUpdateOperationsInput | number
     breakAfterMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BusinessCreateWithoutScheduleTemplatesInput = {
+    id?: string
+    name?: string | null
+    description?: string | null
+    logoPath?: string | null
+    imagePath?: string | null
+    phone?: string | null
+    email?: string | null
+    website?: string | null
+    telegram?: string | null
+    vk?: string | null
+    youtube?: string | null
+    address?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    businessMembers?: BusinessMemberCreateNestedManyWithoutBusinessInput
+    serviceCategories?: ServiceCategoryCreateNestedManyWithoutBusinessInput
+    services?: ServiceCreateNestedManyWithoutBusinessInput
+    employees?: EmployeeCreateNestedManyWithoutBusinessInput
+  }
+
+  export type BusinessUncheckedCreateWithoutScheduleTemplatesInput = {
+    id?: string
+    name?: string | null
+    description?: string | null
+    logoPath?: string | null
+    imagePath?: string | null
+    phone?: string | null
+    email?: string | null
+    website?: string | null
+    telegram?: string | null
+    vk?: string | null
+    youtube?: string | null
+    address?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    businessMembers?: BusinessMemberUncheckedCreateNestedManyWithoutBusinessInput
+    serviceCategories?: ServiceCategoryUncheckedCreateNestedManyWithoutBusinessInput
+    services?: ServiceUncheckedCreateNestedManyWithoutBusinessInput
+    employees?: EmployeeUncheckedCreateNestedManyWithoutBusinessInput
+  }
+
+  export type BusinessCreateOrConnectWithoutScheduleTemplatesInput = {
+    where: BusinessWhereUniqueInput
+    create: XOR<BusinessCreateWithoutScheduleTemplatesInput, BusinessUncheckedCreateWithoutScheduleTemplatesInput>
+  }
+
+  export type ScheduleTemplateDayCreateWithoutScheduleTemplateInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    breaks?: ScheduleTemplateDayBreakCreateNestedManyWithoutScheduleTemplateDayInput
+  }
+
+  export type ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    breaks?: ScheduleTemplateDayBreakUncheckedCreateNestedManyWithoutScheduleTemplateDayInput
+  }
+
+  export type ScheduleTemplateDayCreateOrConnectWithoutScheduleTemplateInput = {
+    where: ScheduleTemplateDayWhereUniqueInput
+    create: XOR<ScheduleTemplateDayCreateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput>
+  }
+
+  export type ScheduleTemplateDayCreateManyScheduleTemplateInputEnvelope = {
+    data: ScheduleTemplateDayCreateManyScheduleTemplateInput | ScheduleTemplateDayCreateManyScheduleTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EmployeeScheduleCreateWithoutScheduleTemplateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutEmployeeScheduleInput
+    days?: EmployeeScheduleDayCreateNestedManyWithoutEmployeeScheduleInput
+  }
+
+  export type EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput = {
+    id?: string
+    employeeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: EmployeeScheduleDayUncheckedCreateNestedManyWithoutEmployeeScheduleInput
+  }
+
+  export type EmployeeScheduleCreateOrConnectWithoutScheduleTemplateInput = {
+    where: EmployeeScheduleWhereUniqueInput
+    create: XOR<EmployeeScheduleCreateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput>
+  }
+
+  export type EmployeeScheduleCreateManyScheduleTemplateInputEnvelope = {
+    data: EmployeeScheduleCreateManyScheduleTemplateInput | EmployeeScheduleCreateManyScheduleTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BusinessUpsertWithoutScheduleTemplatesInput = {
+    update: XOR<BusinessUpdateWithoutScheduleTemplatesInput, BusinessUncheckedUpdateWithoutScheduleTemplatesInput>
+    create: XOR<BusinessCreateWithoutScheduleTemplatesInput, BusinessUncheckedCreateWithoutScheduleTemplatesInput>
+    where?: BusinessWhereInput
+  }
+
+  export type BusinessUpdateToOneWithWhereWithoutScheduleTemplatesInput = {
+    where?: BusinessWhereInput
+    data: XOR<BusinessUpdateWithoutScheduleTemplatesInput, BusinessUncheckedUpdateWithoutScheduleTemplatesInput>
+  }
+
+  export type BusinessUpdateWithoutScheduleTemplatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoPath?: NullableStringFieldUpdateOperationsInput | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    vk?: NullableStringFieldUpdateOperationsInput | string | null
+    youtube?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    businessMembers?: BusinessMemberUpdateManyWithoutBusinessNestedInput
+    serviceCategories?: ServiceCategoryUpdateManyWithoutBusinessNestedInput
+    services?: ServiceUpdateManyWithoutBusinessNestedInput
+    employees?: EmployeeUpdateManyWithoutBusinessNestedInput
+  }
+
+  export type BusinessUncheckedUpdateWithoutScheduleTemplatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoPath?: NullableStringFieldUpdateOperationsInput | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    vk?: NullableStringFieldUpdateOperationsInput | string | null
+    youtube?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    businessMembers?: BusinessMemberUncheckedUpdateManyWithoutBusinessNestedInput
+    serviceCategories?: ServiceCategoryUncheckedUpdateManyWithoutBusinessNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutBusinessNestedInput
+    employees?: EmployeeUncheckedUpdateManyWithoutBusinessNestedInput
+  }
+
+  export type ScheduleTemplateDayUpsertWithWhereUniqueWithoutScheduleTemplateInput = {
+    where: ScheduleTemplateDayWhereUniqueInput
+    update: XOR<ScheduleTemplateDayUpdateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedUpdateWithoutScheduleTemplateInput>
+    create: XOR<ScheduleTemplateDayCreateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedCreateWithoutScheduleTemplateInput>
+  }
+
+  export type ScheduleTemplateDayUpdateWithWhereUniqueWithoutScheduleTemplateInput = {
+    where: ScheduleTemplateDayWhereUniqueInput
+    data: XOR<ScheduleTemplateDayUpdateWithoutScheduleTemplateInput, ScheduleTemplateDayUncheckedUpdateWithoutScheduleTemplateInput>
+  }
+
+  export type ScheduleTemplateDayUpdateManyWithWhereWithoutScheduleTemplateInput = {
+    where: ScheduleTemplateDayScalarWhereInput
+    data: XOR<ScheduleTemplateDayUpdateManyMutationInput, ScheduleTemplateDayUncheckedUpdateManyWithoutScheduleTemplateInput>
+  }
+
+  export type ScheduleTemplateDayScalarWhereInput = {
+    AND?: ScheduleTemplateDayScalarWhereInput | ScheduleTemplateDayScalarWhereInput[]
+    OR?: ScheduleTemplateDayScalarWhereInput[]
+    NOT?: ScheduleTemplateDayScalarWhereInput | ScheduleTemplateDayScalarWhereInput[]
+    id?: StringFilter<"ScheduleTemplateDay"> | string
+    scheduleTemplateId?: StringFilter<"ScheduleTemplateDay"> | string
+    dayOfWeek?: IntFilter<"ScheduleTemplateDay"> | number
+    startTimeMinutes?: IntFilter<"ScheduleTemplateDay"> | number
+    endTimeMinutes?: IntFilter<"ScheduleTemplateDay"> | number
+    createdAt?: DateTimeFilter<"ScheduleTemplateDay"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleTemplateDay"> | Date | string
+  }
+
+  export type EmployeeScheduleUpsertWithWhereUniqueWithoutScheduleTemplateInput = {
+    where: EmployeeScheduleWhereUniqueInput
+    update: XOR<EmployeeScheduleUpdateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedUpdateWithoutScheduleTemplateInput>
+    create: XOR<EmployeeScheduleCreateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedCreateWithoutScheduleTemplateInput>
+  }
+
+  export type EmployeeScheduleUpdateWithWhereUniqueWithoutScheduleTemplateInput = {
+    where: EmployeeScheduleWhereUniqueInput
+    data: XOR<EmployeeScheduleUpdateWithoutScheduleTemplateInput, EmployeeScheduleUncheckedUpdateWithoutScheduleTemplateInput>
+  }
+
+  export type EmployeeScheduleUpdateManyWithWhereWithoutScheduleTemplateInput = {
+    where: EmployeeScheduleScalarWhereInput
+    data: XOR<EmployeeScheduleUpdateManyMutationInput, EmployeeScheduleUncheckedUpdateManyWithoutScheduleTemplateInput>
+  }
+
+  export type EmployeeScheduleScalarWhereInput = {
+    AND?: EmployeeScheduleScalarWhereInput | EmployeeScheduleScalarWhereInput[]
+    OR?: EmployeeScheduleScalarWhereInput[]
+    NOT?: EmployeeScheduleScalarWhereInput | EmployeeScheduleScalarWhereInput[]
+    id?: StringFilter<"EmployeeSchedule"> | string
+    employeeId?: StringFilter<"EmployeeSchedule"> | string
+    scheduleTemplateId?: StringNullableFilter<"EmployeeSchedule"> | string | null
+    createdAt?: DateTimeFilter<"EmployeeSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"EmployeeSchedule"> | Date | string
+  }
+
+  export type ScheduleTemplateCreateWithoutDaysInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    business: BusinessCreateNestedOneWithoutScheduleTemplatesInput
+    employeeSchedules?: EmployeeScheduleCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateUncheckedCreateWithoutDaysInput = {
+    id?: string
+    businessId: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employeeSchedules?: EmployeeScheduleUncheckedCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateCreateOrConnectWithoutDaysInput = {
+    where: ScheduleTemplateWhereUniqueInput
+    create: XOR<ScheduleTemplateCreateWithoutDaysInput, ScheduleTemplateUncheckedCreateWithoutDaysInput>
+  }
+
+  export type ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayBreakCreateOrConnectWithoutScheduleTemplateDayInput = {
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+    create: XOR<ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput>
+  }
+
+  export type ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInputEnvelope = {
+    data: ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInput | ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ScheduleTemplateUpsertWithoutDaysInput = {
+    update: XOR<ScheduleTemplateUpdateWithoutDaysInput, ScheduleTemplateUncheckedUpdateWithoutDaysInput>
+    create: XOR<ScheduleTemplateCreateWithoutDaysInput, ScheduleTemplateUncheckedCreateWithoutDaysInput>
+    where?: ScheduleTemplateWhereInput
+  }
+
+  export type ScheduleTemplateUpdateToOneWithWhereWithoutDaysInput = {
+    where?: ScheduleTemplateWhereInput
+    data: XOR<ScheduleTemplateUpdateWithoutDaysInput, ScheduleTemplateUncheckedUpdateWithoutDaysInput>
+  }
+
+  export type ScheduleTemplateUpdateWithoutDaysInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    business?: BusinessUpdateOneRequiredWithoutScheduleTemplatesNestedInput
+    employeeSchedules?: EmployeeScheduleUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateUncheckedUpdateWithoutDaysInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employeeSchedules?: EmployeeScheduleUncheckedUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateDayBreakUpsertWithWhereUniqueWithoutScheduleTemplateDayInput = {
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+    update: XOR<ScheduleTemplateDayBreakUpdateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedUpdateWithoutScheduleTemplateDayInput>
+    create: XOR<ScheduleTemplateDayBreakCreateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedCreateWithoutScheduleTemplateDayInput>
+  }
+
+  export type ScheduleTemplateDayBreakUpdateWithWhereUniqueWithoutScheduleTemplateDayInput = {
+    where: ScheduleTemplateDayBreakWhereUniqueInput
+    data: XOR<ScheduleTemplateDayBreakUpdateWithoutScheduleTemplateDayInput, ScheduleTemplateDayBreakUncheckedUpdateWithoutScheduleTemplateDayInput>
+  }
+
+  export type ScheduleTemplateDayBreakUpdateManyWithWhereWithoutScheduleTemplateDayInput = {
+    where: ScheduleTemplateDayBreakScalarWhereInput
+    data: XOR<ScheduleTemplateDayBreakUpdateManyMutationInput, ScheduleTemplateDayBreakUncheckedUpdateManyWithoutScheduleTemplateDayInput>
+  }
+
+  export type ScheduleTemplateDayBreakScalarWhereInput = {
+    AND?: ScheduleTemplateDayBreakScalarWhereInput | ScheduleTemplateDayBreakScalarWhereInput[]
+    OR?: ScheduleTemplateDayBreakScalarWhereInput[]
+    NOT?: ScheduleTemplateDayBreakScalarWhereInput | ScheduleTemplateDayBreakScalarWhereInput[]
+    id?: StringFilter<"ScheduleTemplateDayBreak"> | string
+    scheduleTemplateDayId?: StringFilter<"ScheduleTemplateDayBreak"> | string
+    startTimeMinutes?: IntFilter<"ScheduleTemplateDayBreak"> | number
+    endTimeMinutes?: IntFilter<"ScheduleTemplateDayBreak"> | number
+    createdAt?: DateTimeFilter<"ScheduleTemplateDayBreak"> | Date | string
+  }
+
+  export type ScheduleTemplateDayCreateWithoutBreaksInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    scheduleTemplate: ScheduleTemplateCreateNestedOneWithoutDaysInput
+  }
+
+  export type ScheduleTemplateDayUncheckedCreateWithoutBreaksInput = {
+    id?: string
+    scheduleTemplateId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayCreateOrConnectWithoutBreaksInput = {
+    where: ScheduleTemplateDayWhereUniqueInput
+    create: XOR<ScheduleTemplateDayCreateWithoutBreaksInput, ScheduleTemplateDayUncheckedCreateWithoutBreaksInput>
+  }
+
+  export type ScheduleTemplateDayUpsertWithoutBreaksInput = {
+    update: XOR<ScheduleTemplateDayUpdateWithoutBreaksInput, ScheduleTemplateDayUncheckedUpdateWithoutBreaksInput>
+    create: XOR<ScheduleTemplateDayCreateWithoutBreaksInput, ScheduleTemplateDayUncheckedCreateWithoutBreaksInput>
+    where?: ScheduleTemplateDayWhereInput
+  }
+
+  export type ScheduleTemplateDayUpdateToOneWithWhereWithoutBreaksInput = {
+    where?: ScheduleTemplateDayWhereInput
+    data: XOR<ScheduleTemplateDayUpdateWithoutBreaksInput, ScheduleTemplateDayUncheckedUpdateWithoutBreaksInput>
+  }
+
+  export type ScheduleTemplateDayUpdateWithoutBreaksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduleTemplate?: ScheduleTemplateUpdateOneRequiredWithoutDaysNestedInput
+  }
+
+  export type ScheduleTemplateDayUncheckedUpdateWithoutBreaksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeCreateWithoutEmployeeScheduleInput = {
+    id?: string
+    name: string
+    specialization?: string | null
+    imagePath?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    business: BusinessCreateNestedOneWithoutEmployeesInput
+    employeeServices?: EmployeeServiceCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutEmployeeScheduleInput = {
+    id?: string
+    businessId: string
+    name: string
+    specialization?: string | null
+    imagePath?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employeeServices?: EmployeeServiceUncheckedCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutEmployeeScheduleInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutEmployeeScheduleInput, EmployeeUncheckedCreateWithoutEmployeeScheduleInput>
+  }
+
+  export type ScheduleTemplateCreateWithoutEmployeeSchedulesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    business: BusinessCreateNestedOneWithoutScheduleTemplatesInput
+    days?: ScheduleTemplateDayCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateUncheckedCreateWithoutEmployeeSchedulesInput = {
+    id?: string
+    businessId: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    days?: ScheduleTemplateDayUncheckedCreateNestedManyWithoutScheduleTemplateInput
+  }
+
+  export type ScheduleTemplateCreateOrConnectWithoutEmployeeSchedulesInput = {
+    where: ScheduleTemplateWhereUniqueInput
+    create: XOR<ScheduleTemplateCreateWithoutEmployeeSchedulesInput, ScheduleTemplateUncheckedCreateWithoutEmployeeSchedulesInput>
+  }
+
+  export type EmployeeScheduleDayCreateWithoutEmployeeScheduleInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    breaks?: EmployeeScheduleDayBreakCreateNestedManyWithoutEmployeeScheduleDayInput
+  }
+
+  export type EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    breaks?: EmployeeScheduleDayBreakUncheckedCreateNestedManyWithoutEmployeeScheduleDayInput
+  }
+
+  export type EmployeeScheduleDayCreateOrConnectWithoutEmployeeScheduleInput = {
+    where: EmployeeScheduleDayWhereUniqueInput
+    create: XOR<EmployeeScheduleDayCreateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput>
+  }
+
+  export type EmployeeScheduleDayCreateManyEmployeeScheduleInputEnvelope = {
+    data: EmployeeScheduleDayCreateManyEmployeeScheduleInput | EmployeeScheduleDayCreateManyEmployeeScheduleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EmployeeUpsertWithoutEmployeeScheduleInput = {
+    update: XOR<EmployeeUpdateWithoutEmployeeScheduleInput, EmployeeUncheckedUpdateWithoutEmployeeScheduleInput>
+    create: XOR<EmployeeCreateWithoutEmployeeScheduleInput, EmployeeUncheckedCreateWithoutEmployeeScheduleInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutEmployeeScheduleInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutEmployeeScheduleInput, EmployeeUncheckedUpdateWithoutEmployeeScheduleInput>
+  }
+
+  export type EmployeeUpdateWithoutEmployeeScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    business?: BusinessUpdateOneRequiredWithoutEmployeesNestedInput
+    employeeServices?: EmployeeServiceUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutEmployeeScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employeeServices?: EmployeeServiceUncheckedUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type ScheduleTemplateUpsertWithoutEmployeeSchedulesInput = {
+    update: XOR<ScheduleTemplateUpdateWithoutEmployeeSchedulesInput, ScheduleTemplateUncheckedUpdateWithoutEmployeeSchedulesInput>
+    create: XOR<ScheduleTemplateCreateWithoutEmployeeSchedulesInput, ScheduleTemplateUncheckedCreateWithoutEmployeeSchedulesInput>
+    where?: ScheduleTemplateWhereInput
+  }
+
+  export type ScheduleTemplateUpdateToOneWithWhereWithoutEmployeeSchedulesInput = {
+    where?: ScheduleTemplateWhereInput
+    data: XOR<ScheduleTemplateUpdateWithoutEmployeeSchedulesInput, ScheduleTemplateUncheckedUpdateWithoutEmployeeSchedulesInput>
+  }
+
+  export type ScheduleTemplateUpdateWithoutEmployeeSchedulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    business?: BusinessUpdateOneRequiredWithoutScheduleTemplatesNestedInput
+    days?: ScheduleTemplateDayUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateUncheckedUpdateWithoutEmployeeSchedulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: ScheduleTemplateDayUncheckedUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type EmployeeScheduleDayUpsertWithWhereUniqueWithoutEmployeeScheduleInput = {
+    where: EmployeeScheduleDayWhereUniqueInput
+    update: XOR<EmployeeScheduleDayUpdateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedUpdateWithoutEmployeeScheduleInput>
+    create: XOR<EmployeeScheduleDayCreateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedCreateWithoutEmployeeScheduleInput>
+  }
+
+  export type EmployeeScheduleDayUpdateWithWhereUniqueWithoutEmployeeScheduleInput = {
+    where: EmployeeScheduleDayWhereUniqueInput
+    data: XOR<EmployeeScheduleDayUpdateWithoutEmployeeScheduleInput, EmployeeScheduleDayUncheckedUpdateWithoutEmployeeScheduleInput>
+  }
+
+  export type EmployeeScheduleDayUpdateManyWithWhereWithoutEmployeeScheduleInput = {
+    where: EmployeeScheduleDayScalarWhereInput
+    data: XOR<EmployeeScheduleDayUpdateManyMutationInput, EmployeeScheduleDayUncheckedUpdateManyWithoutEmployeeScheduleInput>
+  }
+
+  export type EmployeeScheduleDayScalarWhereInput = {
+    AND?: EmployeeScheduleDayScalarWhereInput | EmployeeScheduleDayScalarWhereInput[]
+    OR?: EmployeeScheduleDayScalarWhereInput[]
+    NOT?: EmployeeScheduleDayScalarWhereInput | EmployeeScheduleDayScalarWhereInput[]
+    id?: StringFilter<"EmployeeScheduleDay"> | string
+    employeeScheduleId?: StringFilter<"EmployeeScheduleDay"> | string
+    dayOfWeek?: IntFilter<"EmployeeScheduleDay"> | number
+    startTimeMinutes?: IntFilter<"EmployeeScheduleDay"> | number
+    endTimeMinutes?: IntFilter<"EmployeeScheduleDay"> | number
+    createdAt?: DateTimeFilter<"EmployeeScheduleDay"> | Date | string
+    updatedAt?: DateTimeFilter<"EmployeeScheduleDay"> | Date | string
+  }
+
+  export type EmployeeScheduleCreateWithoutDaysInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutEmployeeScheduleInput
+    scheduleTemplate?: ScheduleTemplateCreateNestedOneWithoutEmployeeSchedulesInput
+  }
+
+  export type EmployeeScheduleUncheckedCreateWithoutDaysInput = {
+    id?: string
+    employeeId: string
+    scheduleTemplateId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmployeeScheduleCreateOrConnectWithoutDaysInput = {
+    where: EmployeeScheduleWhereUniqueInput
+    create: XOR<EmployeeScheduleCreateWithoutDaysInput, EmployeeScheduleUncheckedCreateWithoutDaysInput>
+  }
+
+  export type EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayBreakCreateOrConnectWithoutEmployeeScheduleDayInput = {
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+    create: XOR<EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput>
+  }
+
+  export type EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInputEnvelope = {
+    data: EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInput | EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EmployeeScheduleUpsertWithoutDaysInput = {
+    update: XOR<EmployeeScheduleUpdateWithoutDaysInput, EmployeeScheduleUncheckedUpdateWithoutDaysInput>
+    create: XOR<EmployeeScheduleCreateWithoutDaysInput, EmployeeScheduleUncheckedCreateWithoutDaysInput>
+    where?: EmployeeScheduleWhereInput
+  }
+
+  export type EmployeeScheduleUpdateToOneWithWhereWithoutDaysInput = {
+    where?: EmployeeScheduleWhereInput
+    data: XOR<EmployeeScheduleUpdateWithoutDaysInput, EmployeeScheduleUncheckedUpdateWithoutDaysInput>
+  }
+
+  export type EmployeeScheduleUpdateWithoutDaysInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutEmployeeScheduleNestedInput
+    scheduleTemplate?: ScheduleTemplateUpdateOneWithoutEmployeeSchedulesNestedInput
+  }
+
+  export type EmployeeScheduleUncheckedUpdateWithoutDaysInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    scheduleTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUpsertWithWhereUniqueWithoutEmployeeScheduleDayInput = {
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+    update: XOR<EmployeeScheduleDayBreakUpdateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedUpdateWithoutEmployeeScheduleDayInput>
+    create: XOR<EmployeeScheduleDayBreakCreateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedCreateWithoutEmployeeScheduleDayInput>
+  }
+
+  export type EmployeeScheduleDayBreakUpdateWithWhereUniqueWithoutEmployeeScheduleDayInput = {
+    where: EmployeeScheduleDayBreakWhereUniqueInput
+    data: XOR<EmployeeScheduleDayBreakUpdateWithoutEmployeeScheduleDayInput, EmployeeScheduleDayBreakUncheckedUpdateWithoutEmployeeScheduleDayInput>
+  }
+
+  export type EmployeeScheduleDayBreakUpdateManyWithWhereWithoutEmployeeScheduleDayInput = {
+    where: EmployeeScheduleDayBreakScalarWhereInput
+    data: XOR<EmployeeScheduleDayBreakUpdateManyMutationInput, EmployeeScheduleDayBreakUncheckedUpdateManyWithoutEmployeeScheduleDayInput>
+  }
+
+  export type EmployeeScheduleDayBreakScalarWhereInput = {
+    AND?: EmployeeScheduleDayBreakScalarWhereInput | EmployeeScheduleDayBreakScalarWhereInput[]
+    OR?: EmployeeScheduleDayBreakScalarWhereInput[]
+    NOT?: EmployeeScheduleDayBreakScalarWhereInput | EmployeeScheduleDayBreakScalarWhereInput[]
+    id?: StringFilter<"EmployeeScheduleDayBreak"> | string
+    employeeScheduleDayId?: StringFilter<"EmployeeScheduleDayBreak"> | string
+    startTimeMinutes?: IntFilter<"EmployeeScheduleDayBreak"> | number
+    endTimeMinutes?: IntFilter<"EmployeeScheduleDayBreak"> | number
+    createdAt?: DateTimeFilter<"EmployeeScheduleDayBreak"> | Date | string
+  }
+
+  export type EmployeeScheduleDayCreateWithoutBreaksInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employeeSchedule: EmployeeScheduleCreateNestedOneWithoutDaysInput
+  }
+
+  export type EmployeeScheduleDayUncheckedCreateWithoutBreaksInput = {
+    id?: string
+    employeeScheduleId: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayCreateOrConnectWithoutBreaksInput = {
+    where: EmployeeScheduleDayWhereUniqueInput
+    create: XOR<EmployeeScheduleDayCreateWithoutBreaksInput, EmployeeScheduleDayUncheckedCreateWithoutBreaksInput>
+  }
+
+  export type EmployeeScheduleDayUpsertWithoutBreaksInput = {
+    update: XOR<EmployeeScheduleDayUpdateWithoutBreaksInput, EmployeeScheduleDayUncheckedUpdateWithoutBreaksInput>
+    create: XOR<EmployeeScheduleDayCreateWithoutBreaksInput, EmployeeScheduleDayUncheckedCreateWithoutBreaksInput>
+    where?: EmployeeScheduleDayWhereInput
+  }
+
+  export type EmployeeScheduleDayUpdateToOneWithWhereWithoutBreaksInput = {
+    where?: EmployeeScheduleDayWhereInput
+    data: XOR<EmployeeScheduleDayUpdateWithoutBreaksInput, EmployeeScheduleDayUncheckedUpdateWithoutBreaksInput>
+  }
+
+  export type EmployeeScheduleDayUpdateWithoutBreaksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employeeSchedule?: EmployeeScheduleUpdateOneRequiredWithoutDaysNestedInput
+  }
+
+  export type EmployeeScheduleDayUncheckedUpdateWithoutBreaksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeScheduleId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21128,6 +30955,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ScheduleTemplateCreateManyBusinessInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type BusinessMemberUpdateWithoutBusinessInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: EnumBusinessRoleFieldUpdateOperationsInput | $Enums.BusinessRole
@@ -21221,6 +31055,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employeeServices?: EmployeeServiceUpdateManyWithoutEmployeeNestedInput
+    employeeSchedule?: EmployeeScheduleUpdateOneWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutBusinessInput = {
@@ -21231,6 +31066,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employeeServices?: EmployeeServiceUncheckedUpdateManyWithoutEmployeeNestedInput
+    employeeSchedule?: EmployeeScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateManyWithoutBusinessInput = {
@@ -21238,6 +31074,31 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     specialization?: NullableStringFieldUpdateOperationsInput | string | null
     imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateUpdateWithoutBusinessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: ScheduleTemplateDayUpdateManyWithoutScheduleTemplateNestedInput
+    employeeSchedules?: EmployeeScheduleUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateUncheckedUpdateWithoutBusinessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: ScheduleTemplateDayUncheckedUpdateManyWithoutScheduleTemplateNestedInput
+    employeeSchedules?: EmployeeScheduleUncheckedUpdateManyWithoutScheduleTemplateNestedInput
+  }
+
+  export type ScheduleTemplateUncheckedUpdateManyWithoutBusinessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21357,6 +31218,168 @@ export namespace Prisma {
     serviceId?: StringFieldUpdateOperationsInput | string
     priceOverride?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     durationMinutesOverride?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayCreateManyScheduleTemplateInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmployeeScheduleCreateManyScheduleTemplateInput = {
+    id?: string
+    employeeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayUpdateWithoutScheduleTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: ScheduleTemplateDayBreakUpdateManyWithoutScheduleTemplateDayNestedInput
+  }
+
+  export type ScheduleTemplateDayUncheckedUpdateWithoutScheduleTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: ScheduleTemplateDayBreakUncheckedUpdateManyWithoutScheduleTemplateDayNestedInput
+  }
+
+  export type ScheduleTemplateDayUncheckedUpdateManyWithoutScheduleTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleUpdateWithoutScheduleTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutEmployeeScheduleNestedInput
+    days?: EmployeeScheduleDayUpdateManyWithoutEmployeeScheduleNestedInput
+  }
+
+  export type EmployeeScheduleUncheckedUpdateWithoutScheduleTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    days?: EmployeeScheduleDayUncheckedUpdateManyWithoutEmployeeScheduleNestedInput
+  }
+
+  export type EmployeeScheduleUncheckedUpdateManyWithoutScheduleTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakCreateManyScheduleTemplateDayInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUpdateWithoutScheduleTemplateDayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedUpdateWithoutScheduleTemplateDayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleTemplateDayBreakUncheckedUpdateManyWithoutScheduleTemplateDayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayCreateManyEmployeeScheduleInput = {
+    id?: string
+    dayOfWeek: number
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayUpdateWithoutEmployeeScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: EmployeeScheduleDayBreakUpdateManyWithoutEmployeeScheduleDayNestedInput
+  }
+
+  export type EmployeeScheduleDayUncheckedUpdateWithoutEmployeeScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    breaks?: EmployeeScheduleDayBreakUncheckedUpdateManyWithoutEmployeeScheduleDayNestedInput
+  }
+
+  export type EmployeeScheduleDayUncheckedUpdateManyWithoutEmployeeScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakCreateManyEmployeeScheduleDayInput = {
+    id?: string
+    startTimeMinutes: number
+    endTimeMinutes: number
+    createdAt?: Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUpdateWithoutEmployeeScheduleDayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedUpdateWithoutEmployeeScheduleDayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeScheduleDayBreakUncheckedUpdateManyWithoutEmployeeScheduleDayInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTimeMinutes?: IntFieldUpdateOperationsInput | number
+    endTimeMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

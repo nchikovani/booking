@@ -4,11 +4,14 @@ import { ErrorCode } from '../../common/errors/error-codes';
 import { EmployeeService } from './employee.service';
 import { EmployeeRepository } from './employee.repository';
 import { StorageService } from '../storage/storage.service';
+import { EmployeeScheduleService } from '../employee-schedule/employee-schedule.service';
 
 describe('EmployeeService', () => {
   let service: EmployeeService;
   let repository: jest.Mocked<EmployeeRepository>;
   let storageService: jest.Mocked<StorageService>;
+  let employeeScheduleService: jest.Mocked<EmployeeScheduleService>;
+  let mockTx: object;
 
   const mockEmployee = {
     id: 'emp-1',
@@ -23,9 +26,11 @@ describe('EmployeeService', () => {
       priceOverride?: unknown;
       durationMinutesOverride?: number | null;
     }[],
+    employeeSchedule: null,
   };
 
   beforeEach(async () => {
+    mockTx = {};
     const mockRepository = {
       findByBusinessId: jest.fn(),
       findById: jest.fn(),
@@ -38,6 +43,7 @@ describe('EmployeeService', () => {
       syncEmployeeServiceLinks: jest.fn(),
       syncServiceEmployeeLinks: jest.fn(),
       validateServiceIdsBelongToBusiness: jest.fn(),
+      runInTransaction: jest.fn((cb: (tx: unknown) => Promise<unknown>) => cb(mockTx)),
     };
 
     const mockStorageService = {
@@ -46,17 +52,27 @@ describe('EmployeeService', () => {
       delete: jest.fn().mockResolvedValue(undefined),
     };
 
+    const mockEmployeeScheduleService = {
+      syncSchedule: jest.fn().mockResolvedValue(undefined),
+      validateScheduleTemplateId: jest.fn().mockResolvedValue(undefined),
+      toScheduleResponse: jest.fn().mockReturnValue(null),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         EmployeeService,
         { provide: EmployeeRepository, useValue: mockRepository },
         { provide: StorageService, useValue: mockStorageService },
+        { provide: EmployeeScheduleService, useValue: mockEmployeeScheduleService },
       ],
     }).compile();
 
     service = module.get(EmployeeService);
     repository = module.get(EmployeeRepository) as jest.Mocked<EmployeeRepository>;
     storageService = module.get(StorageService) as jest.Mocked<StorageService>;
+    employeeScheduleService = module.get(
+      EmployeeScheduleService,
+    ) as jest.Mocked<EmployeeScheduleService>;
 
     jest.clearAllMocks();
   });
@@ -78,6 +94,7 @@ describe('EmployeeService', () => {
         name: 'Анна Иванова',
         specialization: 'Мастер маникюра',
         services: [],
+        schedule: null,
       });
     });
 
@@ -136,6 +153,7 @@ describe('EmployeeService', () => {
   describe('create', () => {
     it('должен создавать сотрудника без services', async () => {
       repository.createWithServiceLinks.mockResolvedValue(mockEmployee);
+      repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
 
       const result = await service.create('business-1', {
         name: 'Анна Иванова',
@@ -150,6 +168,7 @@ describe('EmployeeService', () => {
           specialization: 'Мастер маникюра',
         },
         [],
+        mockTx,
       );
       expect(result.id).toBe('emp-1');
     });
@@ -164,6 +183,7 @@ describe('EmployeeService', () => {
       };
       repository.validateServiceIdsBelongToBusiness.mockResolvedValue(true);
       repository.createWithServiceLinks.mockResolvedValue(withServices);
+      repository.findByIdAndBusiness.mockResolvedValue(withServices);
 
       const result = await service.create('business-1', {
         name: 'Анна Иванова',
@@ -173,6 +193,7 @@ describe('EmployeeService', () => {
       expect(repository.validateServiceIdsBelongToBusiness).toHaveBeenCalledWith(
         ['svc-1', 'svc-2'],
         'business-1',
+        mockTx,
       );
       expect(repository.createWithServiceLinks).toHaveBeenCalledWith(
         expect.objectContaining({ businessId: 'business-1', name: 'Анна Иванова' }),
@@ -180,6 +201,7 @@ describe('EmployeeService', () => {
           { serviceId: 'svc-1', priceOverride: undefined, durationMinutesOverride: undefined },
           { serviceId: 'svc-2', priceOverride: undefined, durationMinutesOverride: undefined },
         ],
+        mockTx,
       );
       expect(result.services).toHaveLength(2);
       expect(result.services.map((s) => s.serviceId)).toEqual(['svc-1', 'svc-2']);
@@ -198,14 +220,35 @@ describe('EmployeeService', () => {
       expect(repository.createWithServiceLinks).not.toHaveBeenCalled();
     });
 
+    it('должен создавать сотрудника с schedule', async () => {
+      repository.createWithServiceLinks.mockResolvedValue(mockEmployee);
+      repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
+
+      await service.create('business-1', {
+        name: 'Анна',
+        schedule: {
+          days: [{ dayOfWeek: 1, startTime: '09:00', endTime: '18:00', breaks: [] }],
+        },
+      });
+
+      expect(employeeScheduleService.syncSchedule).toHaveBeenCalledWith(
+        'emp-1',
+        'business-1',
+        { days: [{ dayOfWeek: 1, startTime: '09:00', endTime: '18:00', breaks: [] }] },
+        mockTx,
+      );
+    });
+
     it('должен дедуплицировать services', async () => {
-      repository.validateServiceIdsBelongToBusiness.mockResolvedValue(true);
-      repository.createWithServiceLinks.mockResolvedValue({
+      const withServices = {
         ...mockEmployee,
         employeeServices: [
           { serviceId: 'svc-1', priceOverride: null, durationMinutesOverride: null },
         ],
-      });
+      };
+      repository.validateServiceIdsBelongToBusiness.mockResolvedValue(true);
+      repository.createWithServiceLinks.mockResolvedValue(withServices);
+      repository.findByIdAndBusiness.mockResolvedValue(withServices);
 
       await service.create('business-1', {
         name: 'Анна',
@@ -215,6 +258,7 @@ describe('EmployeeService', () => {
       expect(repository.validateServiceIdsBelongToBusiness).toHaveBeenCalledWith(
         ['svc-1'],
         'business-1',
+        mockTx,
       );
     });
   });
@@ -232,6 +276,7 @@ describe('EmployeeService', () => {
       expect(repository.update).toHaveBeenCalledWith(
         'emp-1',
         expect.objectContaining({ name: 'Анна Обновлённая' }),
+        mockTx,
       );
       expect(result.name).toBe('Анна Обновлённая');
     });
@@ -245,10 +290,14 @@ describe('EmployeeService', () => {
         services: [{ serviceId: 'svc-1' }, { serviceId: 'svc-2' }],
       });
 
-      expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith('emp-1', [
-        { serviceId: 'svc-1', priceOverride: undefined, durationMinutesOverride: undefined },
-        { serviceId: 'svc-2', priceOverride: undefined, durationMinutesOverride: undefined },
-      ]);
+      expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith(
+        'emp-1',
+        [
+          { serviceId: 'svc-1', priceOverride: undefined, durationMinutesOverride: undefined },
+          { serviceId: 'svc-2', priceOverride: undefined, durationMinutesOverride: undefined },
+        ],
+        mockTx,
+      );
     });
 
     it('должен удалять все связи при services: []', async () => {
@@ -257,7 +306,7 @@ describe('EmployeeService', () => {
 
       await service.update('emp-1', 'business-1', { services: [] });
 
-      expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith('emp-1', []);
+      expect(repository.syncEmployeeServiceLinks).toHaveBeenCalledWith('emp-1', [], mockTx);
     });
 
     it('не вызывает syncEmployeeServiceLinks при PATCH без services (TC-8a)', async () => {
@@ -273,7 +322,31 @@ describe('EmployeeService', () => {
       expect(repository.update).toHaveBeenCalledWith(
         'emp-1',
         expect.objectContaining({ name: 'Обновлённое имя' }),
+        mockTx,
       );
+    });
+
+    it('должен вызывать syncSchedule при schedule в dto', async () => {
+      repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
+
+      const result = await service.update('emp-1', 'business-1', { schedule: null });
+
+      expect(employeeScheduleService.syncSchedule).toHaveBeenCalledWith(
+        'emp-1',
+        'business-1',
+        null,
+        mockTx,
+      );
+      expect(result.id).toBe('emp-1');
+    });
+
+    it('не вызывает syncSchedule при отсутствии schedule в dto', async () => {
+      repository.findByIdAndBusiness.mockResolvedValue(mockEmployee);
+      repository.update.mockResolvedValue(mockEmployee);
+
+      await service.update('emp-1', 'business-1', { name: 'New' });
+
+      expect(employeeScheduleService.syncSchedule).not.toHaveBeenCalled();
     });
 
     it('должен выбрасывать NOT_FOUND при отсутствии', async () => {
