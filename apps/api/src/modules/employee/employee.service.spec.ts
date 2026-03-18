@@ -297,7 +297,7 @@ describe('EmployeeService', () => {
 
       expect(storageService.delete).toHaveBeenCalledWith('employees/emp-1/photo.webp');
       expect(repository.delete).toHaveBeenCalledWith('emp-1');
-      expect(result).toEqual({ message: 'Сотрудник удалён' });
+      expect(result).toBeNull();
     });
 
     it('должен удалять без вызова storage при отсутствии фото', async () => {

@@ -146,7 +146,7 @@ export class EmployeeService {
     return this.toEmployeeResponse(employee!, { includeUpdatedAt: true });
   }
 
-  async delete(id: string, businessId: string): Promise<{ message: string }> {
+  async delete(id: string, businessId: string) {
     const existing = await this.repository.findByIdAndBusiness(id, businessId);
     if (!existing) throw AppException.create(ErrorCode.NOT_FOUND);
 
@@ -155,7 +155,7 @@ export class EmployeeService {
     }
 
     await this.repository.delete(id);
-    return { message: 'Сотрудник удалён' };
+    return null;
   }
 
   async uploadPhoto(

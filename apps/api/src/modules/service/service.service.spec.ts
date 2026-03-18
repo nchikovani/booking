@@ -232,7 +232,7 @@ describe('ServiceService', () => {
       const result = await service.delete('svc-1', 'business-1');
 
       expect(repository.delete).toHaveBeenCalledWith('svc-1');
-      expect(result).toEqual({ message: 'Услуга удалена' });
+      expect(result).toBeNull();
     });
 
     it('должен выбрасывать NOT_FOUND при отсутствии услуги', async () => {

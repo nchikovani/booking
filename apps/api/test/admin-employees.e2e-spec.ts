@@ -187,9 +187,7 @@ describe('Admin Employees (e2e)', () => {
         .set('Authorization', `Bearer ${getMainUserToken()}`)
         .send({
           name: 'Мастер с индивидуальной ценой',
-          services: [
-            { serviceId: serviceId1, priceOverride: 2000, durationMinutesOverride: 45 },
-          ],
+          services: [{ serviceId: serviceId1, priceOverride: 2000, durationMinutesOverride: 45 }],
         })
         .expect(201);
 
@@ -397,7 +395,7 @@ describe('Admin Employees (e2e)', () => {
         .expect(200);
 
       expect(res.body.status).toBe('success');
-      expect(res.body.data.message).toContain('удалён');
+      expect(res.body.data).toBeNull();
     });
   });
 
@@ -490,7 +488,9 @@ describe('Admin Employees (e2e)', () => {
         (s: { name: string }) => s.name === 'Услуга с индивидуальной ценой мастера',
       );
       if (!svc) {
-        throw new Error('Услуга "Услуга с индивидуальной ценой мастера" не найдена — выполните TC-16a');
+        throw new Error(
+          'Услуга "Услуга с индивидуальной ценой мастера" не найдена — выполните TC-16a',
+        );
       }
 
       const res = await agent

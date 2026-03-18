@@ -122,7 +122,7 @@ describe('ServiceCategoryService', () => {
 
       expect(repository.findById).toHaveBeenCalledWith('cat-1');
       expect(repository.delete).toHaveBeenCalledWith('cat-1');
-      expect(result).toEqual({ message: 'Категория удалена' });
+      expect(result).toBeNull();
     });
 
     it('должен выбрасывать NOT_FOUND при чужом бизнесе', async () => {

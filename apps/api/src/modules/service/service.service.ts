@@ -197,11 +197,11 @@ export class ServiceService {
     return this.toServiceResponse(service);
   }
 
-  async delete(id: string, businessId: string): Promise<{ message: string }> {
+  async delete(id: string, businessId: string): Promise<null> {
     const existing = await this.repository.findByIdAndBusiness(id, businessId);
     if (!existing) throw AppException.create(ErrorCode.NOT_FOUND);
     await this.repository.delete(id);
-    return { message: 'Услуга удалена' };
+    return null;
   }
 
   async reorder(id: string, businessId: string, dto: { afterServiceId?: string | null }) {

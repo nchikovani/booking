@@ -289,7 +289,7 @@ describe('Admin Business (e2e)', () => {
         .expect(200);
 
       expect(res.body.status).toBe('success');
-      expect(res.body.data.message).toContain('удалён');
+      expect(res.body.data).toBeNull();
     });
   });
 

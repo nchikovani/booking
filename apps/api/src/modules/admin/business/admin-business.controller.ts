@@ -78,7 +78,7 @@ export class AdminBusinessController {
   async delete(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessOwner(adminUserId, id);
     await this.businessService.delete(id);
-    return { message: 'Бизнес удалён' };
+    return null;
   }
 
   @Post(':id/logo')

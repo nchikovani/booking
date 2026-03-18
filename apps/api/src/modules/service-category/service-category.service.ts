@@ -40,12 +40,12 @@ export class ServiceCategoryService {
     }
   }
 
-  async delete(id: string, businessId: string): Promise<{ message: string }> {
+  async delete(id: string, businessId: string): Promise<null> {
     const existing = await this.repository.findById(id);
     if (!existing || existing.businessId !== businessId) {
       throw AppException.create(ErrorCode.NOT_FOUND);
     }
     await this.repository.delete(id);
-    return { message: 'Категория удалена' };
+    return null;
   }
 }
