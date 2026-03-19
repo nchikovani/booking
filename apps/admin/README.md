@@ -5,8 +5,16 @@ Vite + React SPA для управления бизнесом, услугами,
 ## Стек
 
 - Vite, React, TypeScript
-- Tailwind CSS
-- @repo/eslint-config (react-internal)
+- Tailwind CSS v4, Material UI
+- Zustand, React Query, react-router-dom
+- i18next, notistack
+- Feature-Sliced Design (FSD)
+- @repo/ui — тема, tokens, design-system
+
+## Архитектура и соглашения
+
+- [architecture-frontend.md](../../docs/architecture-frontend.md) — Frontend архитектура и соглашения
+- [architecture-admin.md](../../docs/architecture-admin.md) — Web Admin
 
 ## Запуск
 

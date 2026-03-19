@@ -12,6 +12,7 @@ pnpm infra:down  # остановка
 ```
 
 Сервисы:
+
 - PostgreSQL: localhost:5432 (user: booking, db: booking)
 - Redis: localhost:6379
 - MinIO: localhost:9000 (API), localhost:9001 (Console)
@@ -19,6 +20,7 @@ pnpm infra:down  # остановка
 ### Переменные окружения
 
 Скопируйте `.env.example` → `.env` в каждой директории:
+
 - `apps/api/.env`
 - `apps/admin/.env`
 - `apps/miniapp/.env`
@@ -35,6 +37,7 @@ docker build -f apps/miniapp/Dockerfile -t booking-miniapp:latest .
 ```
 
 Для admin и miniapp с production URL API:
+
 ```sh
 docker build -f apps/admin/Dockerfile --build-arg VITE_API_URL=https://api.example.com -t booking-admin:latest .
 docker build -f apps/miniapp/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://api.example.com -t booking-miniapp:latest .
@@ -77,6 +80,7 @@ docker build -f apps/miniapp/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://
 ### Переменные окружения для прода
 
 Секреты в `secrets.yaml`:
+
 - `POSTGRES_PASSWORD`, `DATABASE_URL` — PostgreSQL
 - `REDIS_URL` — Redis
 - `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY` — MinIO

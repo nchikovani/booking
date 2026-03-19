@@ -16,12 +16,14 @@ description: Запускает ревью текущей спецификаци
    - Если открыт файл из `docs/features/*.md` — используй его
    - Иначе — возьми последний изменённый файл в `docs/features/` (кроме `_template.md`)
 
-2. **Перед запуском subagent** — убедись, что в контекст переданы:
-   - `docs/features/{X.Y}-{slug}.md` (спецификация)
-   - `docs/architecture.md` — обязательно для проверки архитектурных требований
+2. **Определи область** из spec (раздел «Область реализации») и **передай только релевантные architecture файлы:**
+   - Backend/БД → `docs/architecture-api.md`
+   - Admin → `docs/architecture-frontend.md`, `docs/architecture-admin.md`
+   - Miniapp → `docs/architecture-frontend.md`, `docs/architecture-miniapp.md`
+   - Смешанная → объединение релевантных
 
 3. **Запусти subagent** `spec-reviewer`:
-   - Передай путь к spec, architecture.md (или инструкцию прочитать оба файла)
+   - Передай spec + **только** architecture файлы по области (см. выше)
    - Subagent выполнит только review, без изменений
 
 4. **Верни пользователю** отчёт subagent'а с найденными проблемами, предложениями решений и списком вопросов для уточнения.

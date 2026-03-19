@@ -43,23 +43,23 @@ Telegram Booking Platform — платформа онлайн-записи с We
    pnpm dev
    ```
 
-| Приложение | URL |
-|------------|-----|
-| API | http://localhost:3000 |
-| Admin | http://localhost:3001 |
-| Miniapp | http://localhost:3002 |
+| Приложение | URL                   |
+| ---------- | --------------------- |
+| API        | http://localhost:3000 |
+| Admin      | http://localhost:3001 |
+| Miniapp    | http://localhost:3002 |
 
 ## Скрипты
 
-| Команда | Описание |
-|---------|----------|
-| `pnpm dev` | Запуск всех приложений в режиме разработки |
-| `pnpm build` | Сборка всех приложений |
-| `pnpm infra:up` | Запуск PostgreSQL, Redis, MinIO (docker compose) |
-| `pnpm infra:down` | Остановка инфраструктуры |
-| `pnpm lint` | Проверка кода (ESLint) |
-| `pnpm format` | Форматирование (Prettier) |
-| `pnpm check-types` | Проверка типов TypeScript |
+| Команда            | Описание                                         |
+| ------------------ | ------------------------------------------------ |
+| `pnpm dev`         | Запуск всех приложений в режиме разработки       |
+| `pnpm build`       | Сборка всех приложений                           |
+| `pnpm infra:up`    | Запуск PostgreSQL, Redis, MinIO (docker compose) |
+| `pnpm infra:down`  | Остановка инфраструктуры                         |
+| `pnpm lint`        | Проверка кода (ESLint)                           |
+| `pnpm format`      | Форматирование (Prettier)                        |
+| `pnpm check-types` | Проверка типов TypeScript                        |
 
 ## API и Swagger
 
@@ -70,12 +70,12 @@ Base URL API: `/api/v1`
 
 ## Инфраструктура (локально)
 
-| Сервис | Порт | Учётные данные |
-|--------|------|----------------|
-| PostgreSQL | 5432 | user: `booking`, db: `booking`, password: `booking` |
-| Redis | 6379 | — |
-| MinIO API | 9000 | `minioadmin` / `minioadmin` |
-| MinIO Console | 9001 | — |
+| Сервис        | Порт | Учётные данные                                      |
+| ------------- | ---- | --------------------------------------------------- |
+| PostgreSQL    | 5432 | user: `booking`, db: `booking`, password: `booking` |
+| Redis         | 6379 | —                                                   |
+| MinIO API     | 9000 | `minioadmin` / `minioadmin`                         |
+| MinIO Console | 9001 | —                                                   |
 
 ## Структура проекта
 
@@ -100,7 +100,7 @@ Base URL API: `/api/v1`
 ## Документация
 
 - [docs/README.md](docs/README.md) — обзор документации
-- [Architecture](docs/architecture.md) — архитектура системы
+- [Architecture](docs/architecture.md) — архитектура системы (обзор + ссылки на architecture-api, architecture-frontend, architecture-admin, architecture-miniapp)
 - [Roadmap](docs/roadmap.md) — дорожная карта разработки
 - [PRD](docs/prd.md) — спецификация продукта
 - [Project Overview](docs/project.md) — обзор продукта и ролей

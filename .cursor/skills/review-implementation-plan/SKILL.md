@@ -18,13 +18,14 @@ description: Ревью плана реализации через subagent plan
    - Иначе — найди в контексте последний вывод `plan-creator`
    - Если план не найден — попроси вызвать `/create-implementation-plan` (план сохранится в docs/plans/), затем `/review-implementation-plan`
 
-2. **Перед запуском subagent** — убедись, что в контекст переданы:
-   - `docs/plans/{X.Y}-{slug}.md` (план)
-   - `docs/architecture.md` — обязательно для проверки архитектуры
-   - `docs/features/{X.Y}-{slug}.md` (связанная спецификация) — при наличии
+2. **Определи область** из spec (раздел «Область реализации») или плана и **передай только релевантные architecture файлы:**
+   - Backend/БД → `docs/architecture-api.md`
+   - Admin → `docs/architecture-frontend.md`, `docs/architecture-admin.md`
+   - Miniapp → `docs/architecture-frontend.md`, `docs/architecture-miniapp.md`
+   - Смешанная → объединение релевантных
 
 3. **Запусти subagent** `plan-reviewer`:
-   - Передай путь к плану, architecture.md и spec (или инструкцию прочитать файлы)
+   - Передай план, spec + **только** architecture файлы по области (см. выше)
    - Subagent выполнит только review, без изменений
 
 4. **Верни пользователю** отчёт subagent'а.

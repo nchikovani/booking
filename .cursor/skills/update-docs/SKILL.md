@@ -16,13 +16,18 @@ description: Обновляет документацию после заверш
    - План: `docs/plans/{X.Y}-{slug}.md` (то же имя, что у spec)
    - Область изменений: `git diff` или список изменённых модулей/файлов
 
-2. **Запусти subagent** `docs-updater`:
-   - Передай путь к spec, план
-   - Передай в контекст: `docs/roadmap.md`, `docs/architecture.md`
-   - Передай область изменений (изменённые файлы кода)
-   - Subagent прочитает документы и код, обновит spec, план, roadmap, при необходимости architecture и README
+2. **Определи область** из spec или из изменённых файлов (apps/api → Backend; apps/admin → Admin; apps/miniapp → Miniapp) и **передай только релевантные architecture файлы:**
+   - Backend → `docs/architecture-api.md`
+   - Admin → `docs/architecture-frontend.md`, `docs/architecture-admin.md`
+   - Miniapp → `docs/architecture-frontend.md`, `docs/architecture-miniapp.md`
+   - Смешанная → объединение релевантных
 
-3. **Верни пользователю** сводку обновлённых файлов.
+3. **Запусти subagent** `docs-updater`:
+   - Передай spec, план, область изменений
+   - Передай в контекст: `docs/roadmap.md` + **только** architecture файлы по области (см. выше)
+   - Subagent прочитает документы и код, обновит spec, план, roadmap, при необходимости только релевантный architecture файл и README
+
+4. **Верни пользователю** сводку обновлённых файлов.
 
 ## Примеры вызова
 

@@ -8,6 +8,7 @@ description: Создаёт новую спецификацию фичи по ш
 ## Когда применять
 
 Применяй этот skill, когда пользователь:
+
 - Просит создать спецификацию/документ фичи
 - Описывает новую фичу и хочет получить файл по шаблону
 - Говорит «создай фичу X», «create feature spec for X», «новая фича: X»
@@ -19,16 +20,22 @@ description: Создаёт новую спецификацию фичи по ш
    - Номер фичи (X.Y) — по указанию пользователя или следующий свободный в `docs/features/`
    - Slug — латиница, дефисы (например `services`, `employee-management`)
 
-2. **Запусти subagent** `spec-creator`:
+2. **Определи область** из описания пользователя (Backend/Admin/Mini App) и **передай только релевантные architecture файлы:**
+   - Backend/БД → `docs/architecture-api.md`
+   - Admin → `docs/architecture-frontend.md`, `docs/architecture-admin.md`
+   - Miniapp → `docs/architecture-frontend.md`, `docs/architecture-miniapp.md`
+   - Смешанная → объединение релевантных
+
+3. **Запусти subagent** `spec-creator`:
    - Передай описание фичи, номер и slug (или инструкцию определить)
-   - Передай в контекст: `docs/features/_template.md`, `docs/architecture.md`, `docs/roadmap.md`
+   - Передай в контекст: `docs/features/_template.md`, `docs/roadmap.md` + **только** architecture файлы по области (см. выше)
    - Subagent сформирует полный текст спецификации
 
-3. **Сохрани результат** в `docs/features/{X.Y}-{slug}.md` (номер и slug из шага 1).
+4. **Сохрани результат** в `docs/features/{X.Y}-{slug}.md` (номер и slug из шага 1).
 
-4. **Обнови ссылки** — в «Связанные документы» укажи актуальные Feature X.X.
+5. **Обнови ссылки** — в «Связанные документы» укажи актуальные Feature X.X.
 
-5. **Верни пользователю** путь к файлу и краткое описание созданной спецификации.
+6. **Верни пользователю** путь к файлу и краткое описание созданной спецификации.
 
 ## Формат файла
 

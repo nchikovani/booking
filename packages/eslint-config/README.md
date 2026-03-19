@@ -4,12 +4,12 @@
 
 ## Экспорты
 
-| Конфиг | Использование |
-|--------|---------------|
-| `@repo/eslint-config/base` | Базовая конфигурация (TypeScript, общие правила) |
-| `@repo/eslint-config/next-js` | Next.js (miniapp) |
-| `@repo/eslint-config/react-internal` | Vite + React (admin), React-библиотеки (ui) |
-| `@repo/eslint-config/nestjs` | NestJS (api) |
+| Конфиг                               | Использование                                    |
+| ------------------------------------ | ------------------------------------------------ |
+| `@repo/eslint-config/base`           | Базовая конфигурация (TypeScript, общие правила) |
+| `@repo/eslint-config/next-js`        | Next.js (miniapp)                                |
+| `@repo/eslint-config/react-internal` | Vite + React (admin), React-библиотеки (ui)      |
+| `@repo/eslint-config/nestjs`         | NestJS (api)                                     |
 
 ## Использование
 

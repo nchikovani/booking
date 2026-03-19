@@ -2,11 +2,6 @@
   "singleQuote": true,
   "jsxSingleQuote": false,
   "arrowParens": "always",
-  "max-len": [
-    "error",
-    10,
-    2
-  ],
   "printWidth": 100,
   "tabWidth": 2,
   "useTabs": false

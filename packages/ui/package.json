@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.tsx"
+    ".": "./src/index.ts",
+    "./theme/variables.css": "./src/theme/variables.css",
+    "./*": "./src/*"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint . --max-warnings 0 --fix",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
@@ -19,7 +21,10 @@
     "eslint": "^9.39.1",
     "typescript": "5.9.2"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   }

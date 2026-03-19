@@ -1,11 +1,5 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import {
-  ArrayMaxSize,
-  IsArray,
-  IsOptional,
-  IsUUID,
-  ValidateNested,
-} from 'class-validator';
+import { ArrayMaxSize, IsArray, IsOptional, IsUUID, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ScheduleTemplateDayDto } from '../../schedule-template/dto/schedule-template-day.dto';
 

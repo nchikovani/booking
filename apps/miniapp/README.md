@@ -5,7 +5,7 @@
 ## Связанные документы
 
 - [Project Overview](../../docs/project.md) — описание продукта и ролей
-- [Architecture](../../docs/architecture.md) — техническая архитектура
+- [Architecture](../../docs/architecture.md) — обзор; [architecture-frontend.md](../../docs/architecture-frontend.md) — соглашения
 - [Roadmap](../../docs/roadmap.md) — фазы разработки
 
 ---
@@ -46,8 +46,8 @@ pnpm run dev
 cp .env.example .env
 ```
 
-| Переменная | Описание |
-|------------|----------|
+| Переменная            | Описание                                          |
+| --------------------- | ------------------------------------------------- |
 | `NEXT_PUBLIC_API_URL` | URL Backend API (например, http://localhost:3000) |
 
 ---
@@ -72,3 +72,7 @@ shared/       — общие компоненты
 
 Импорты только вниз: app → pages → widgets → features → entities → shared.
 ```
+
+## Соглашения
+
+См. [architecture-frontend.md](../../docs/architecture-frontend.md): архитектура и соглашения.

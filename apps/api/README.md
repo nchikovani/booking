@@ -11,7 +11,7 @@ API обслуживает три типа клиентов:
 ## Связанные документы
 
 - [Project Overview](../../docs/project.md) — описание продукта и ролей
-- [Architecture](../../docs/architecture.md) — техническая архитектура системы
+- [Architecture](../../docs/architecture.md) — обзор; [architecture-api.md](../../docs/architecture-api.md) — Backend, API, БД
 
 ---
 
@@ -31,11 +31,11 @@ API обслуживает три типа клиентов:
 
 Base URL: `/api/v1`
 
-| API | Base path | Назначение |
-|-----|-----------|------------|
-| **Admin API** | `/api/v1/admin` | Аутентификация, управление бизнесом, услугами, сотрудниками, расписанием, записями, клиентами |
-| **Client Mini App API** | `/api/v1/app` | Информация о компании, услуги, слоты, создание/перенос/отмена записей |
-| **Bot API** | `/api/v1/bot` | Webhook, уведомления, deep link, расписание мастера |
+| API                     | Base path       | Назначение                                                                                    |
+| ----------------------- | --------------- | --------------------------------------------------------------------------------------------- |
+| **Admin API**           | `/api/v1/admin` | Аутентификация, управление бизнесом, услугами, сотрудниками, расписанием, записями, клиентами |
+| **Client Mini App API** | `/api/v1/app`   | Информация о компании, услуги, слоты, создание/перенос/отмена записей                         |
+| **Bot API**             | `/api/v1/bot`   | Webhook, уведомления, deep link, расписание мастера                                           |
 
 ### Документация API
 
@@ -62,15 +62,15 @@ cp .env.example .env
 
 Основные переменные:
 
-| Переменная | Описание |
-|------------|----------|
-| `DATABASE_URL` | URL подключения к PostgreSQL |
-| `REDIS_URL` | URL подключения к Redis |
-| `MINIO_*` | Настройки MinIO (endpoint, порт, ключи) |
-| `CORS_ORIGIN` | Разрешённые origins для CORS |
-| `JWT_SECRET` | Секрет для JWT (обязательно сменить в production) |
-| `FRONTEND_URL` | URL Web Admin (для cookies) |
-| `TELEGRAM_BOT_TOKEN` | Токен Telegram Bot (для Bot API) |
+| Переменная           | Описание                                          |
+| -------------------- | ------------------------------------------------- |
+| `DATABASE_URL`       | URL подключения к PostgreSQL                      |
+| `REDIS_URL`          | URL подключения к Redis                           |
+| `MINIO_*`            | Настройки MinIO (endpoint, порт, ключи)           |
+| `CORS_ORIGIN`        | Разрешённые origins для CORS                      |
+| `JWT_SECRET`         | Секрет для JWT (обязательно сменить в production) |
+| `FRONTEND_URL`       | URL Web Admin (для cookies)                       |
+| `TELEGRAM_BOT_TOKEN` | Токен Telegram Bot (для Bot API)                  |
 
 Перед первым запуском поднимите инфраструктуру (PostgreSQL, Redis, MinIO) и выполните миграции:
 

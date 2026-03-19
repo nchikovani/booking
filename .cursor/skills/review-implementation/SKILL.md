@@ -16,14 +16,20 @@ description: Верификация реализации фичи через sub
    - План: `docs/plans/{X.Y}-{slug}.md` (то же имя, что у spec; для `docs/features/1.3-services.md` → `docs/plans/1.3-services.md`). Или из контекста чата, если файла нет
    - Область изменений: изменённые файлы (git diff), или указанный модуль/пакет
 
-2. **Опционально:** запусти `/run-verification-checks` и передай результаты subagent'у.
+2. **Определи область** из spec (раздел «Область реализации») и **передай только релевантные architecture файлы:**
+   - Backend/БД → `docs/architecture-api.md`
+   - Admin → `docs/architecture-frontend.md`, `docs/architecture-admin.md`
+   - Miniapp → `docs/architecture-frontend.md`, `docs/architecture-miniapp.md`
+   - Смешанная → объединение релевантных
 
-3. **Запусти subagent** `impl-verifier`:
-   - Передай путь к spec, план (если есть), список затронутых файлов/модулей
+3. **Опционально:** запусти `/run-verification-checks` и передай результаты subagent'у.
+
+4. **Запусти subagent** `impl-verifier`:
+   - Передай spec, план (если есть), список затронутых файлов/модулей
+   - Передай в контекст: **только** architecture файлы по области (см. выше)
    - Передай результаты test/lint/check-types (если есть)
-   - Subagent прочитает код, сверяется со spec, сформирует отчёт
 
-4. **Верни пользователю** отчёт с таблицей AC, результатами проверок и списком проблем.
+5. **Верни пользователю** отчёт с таблицей AC, результатами проверок и списком проблем.
 
 ## Примеры вызова
 

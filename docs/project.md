@@ -95,5 +95,5 @@ Booking Mini App — система онлайн-записи на услуги 
 
 ## Связанные документы
 
-- [PRD](prd.md) — требования продукта  
-- [Architecture](architecture.md) — техническая архитектура
+- [PRD](prd.md) — требования продукта
+- [Architecture](architecture.md) — архитектура системы

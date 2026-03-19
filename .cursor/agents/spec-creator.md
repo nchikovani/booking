@@ -12,6 +12,7 @@ readonly: true
 ## Входные данные
 
 Родительский агент передаёт:
+
 - Описание фичи от пользователя (что реализовать, контекст)
 - Номер фичи (X.Y) или инструкцию определить по docs/features/
 - Slug для имени файла (латиница, дефисы) или инструкцию сформировать
@@ -19,8 +20,14 @@ readonly: true
 ## Обязательный контекст
 
 **Прочитай перед созданием spec:**
+
 1. `docs/features/_template.md` — шаблон структуры
-2. `docs/architecture.md` — архитектура проекта, паттерны, стек
+2. Architecture — **только релевантные файлы по области**:
+   - Backend/БД → `docs/architecture-api.md`
+   - Admin → `docs/architecture-frontend.md`, `docs/architecture-admin.md`
+   - Miniapp → `docs/architecture-frontend.md`, `docs/architecture-miniapp.md`
+   - Смешанная область → объединение релевантных
+   - **Fallback:** если родитель не передал architecture-файлы — прочитай по области из описания фичи
 3. `docs/roadmap.md` — фазы, зависимости, смежные фичи
 4. `docs/prd.md` — при необходимости, для понимания требований продукта
 
