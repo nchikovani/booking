@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix",
     "check-types": "tsc -p tsconfig.app.json --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api:generate": "npx openapi-typescript http://localhost:3000/swagger-json -o ./src/shared/api/openapi.generated.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -20,6 +21,7 @@
     "i18next": "^25.8.19",
     "i18next-browser-languagedetector": "^8.2.1",
     "notistack": "^3.0.2",
+    "openapi-fetch": "^0.17.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-error-boundary": "^6.1.1",
@@ -37,6 +39,7 @@
     "@vitejs/plugin-react": "^6.0.0",
     "eslint": "^9",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "openapi-typescript": "^7.13.0",
     "typescript": "~5.9.3",
     "vite": "^8.0.0"
   }

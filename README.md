@@ -68,6 +68,8 @@ Telegram Booking Platform — платформа онлайн-записи с We
 
 Base URL API: `/api/v1`
 
+Генерация OpenAPI-типов для admin: `pnpm --filter admin api:generate`
+
 ## Инфраструктура (локально)
 
 | Сервис        | Порт | Учётные данные                                      |

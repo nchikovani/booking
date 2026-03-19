@@ -7,7 +7,6 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />

@@ -62,7 +62,10 @@
 
 - **Серверные данные:** TanStack React Query
 - **UI-состояние:** Zustand
-- **Импорты:** алиасы `@app`, `@pages`, `@widgets`, `@features`, `@entities`, `@shared`
+- **Импорты:** алиасы `@app`, `@pages`, `@widgets`, `@features`, `@entities`, `@shared`, `@api`
+- **Контракт API в админке:** OpenAPI-типизация генерируется в `apps/admin/src/shared/api/openapi.generated.ts`
+- **Генерация типов API:** `pnpm --filter admin api:generate`
+- **Единая точка доступа к backend:** все запросы из админки выполняются только через `client` из `@api`
 
 ## 2.5. Обработка ошибок
 

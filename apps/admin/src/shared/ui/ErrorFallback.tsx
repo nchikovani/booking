@@ -3,7 +3,10 @@ import type { FallbackProps } from 'react-error-boundary';
 import { useRouteError } from 'react-router-dom';
 
 // Делаем пропсы необязательными, так как для роутера они не нужны
-export function ErrorFallback({ error: boundaryError, resetErrorBoundary }: Partial<FallbackProps>) {
+export function ErrorFallback({
+  error: boundaryError,
+  resetErrorBoundary,
+}: Partial<FallbackProps>) {
   const { t } = useTranslation();
 
   // Получаем ошибку из роутера, если она есть

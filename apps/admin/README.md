@@ -19,13 +19,14 @@ Vite + React SPA для управления бизнесом, услугами,
 ## Запуск
 
 ```sh
-pnpm dev      # http://localhost:3001
-pnpm build    # сборка в dist/
-pnpm preview  # предпросмотр production-сборки
+pnpm dev            # http://localhost:3001
+pnpm build          # сборка в dist/
+pnpm preview        # предпросмотр production-сборки
+pnpm api:generate   # генерация OpenAPI-типов
 ```
 
 ## Переменные окружения
 
 Скопировать `.env.example` → `.env`:
 
-- `VITE_API_URL` — URL Backend API (например `http://localhost:3000/api/v1`)
+- `VITE_API_URL` — origin Backend API (например `http://localhost:3000`)
