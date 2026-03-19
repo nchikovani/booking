@@ -16,7 +16,7 @@ alwaysApply: false
 **E2E** (`*.e2e-spec.ts`): полный `AppModule`, тестовая БД, сброс состояния в `beforeEach`/`afterEach`.  
 Покрытие: сервисы ≥ 80%, утилиты ≥ 90%.
 
-## Frontend (Jest + RTL)
+## Frontend (Vitest + RTL)
 
 - `@testing-library/user-event` для симуляции ввода; `fetch`/React Query мокать через `msw`
 - Снапшоты — только для критических UI-компонентов

@@ -102,7 +102,7 @@
 
 # 3. Тестирование (Frontend)
 
-- **Jest** + **React Testing Library**
+- **Vitest** + **React Testing Library**
 
 Типы тестов:
 

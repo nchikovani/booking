@@ -17341,7 +17341,7 @@
               "type": "frame",
               "id": "bYVcs",
               "name": "regCard",
-              "width": 400,
+              "width": 420,
               "fill": "#FFFFFF",
               "cornerRadius": 12,
               "stroke": {
@@ -17516,6 +17516,7 @@
                   "type": "frame",
                   "id": "dp40J",
                   "name": "regCheckRow",
+                  "width": "fill_container",
                   "gap": 12,
                   "children": [
                     {
@@ -17532,16 +17533,68 @@
                       }
                     },
                     {
-                      "type": "text",
-                      "id": "LdpAG",
-                      "name": "regCheckText",
-                      "fill": "#64748B",
-                      "textGrowth": "fixed-width",
-                      "width": 320,
-                      "content": "Я соглашаюсь с условиями оферты и политики конфиденциальности",
-                      "fontFamily": "Inter",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
+                      "type": "frame",
+                      "id": "1lfRO",
+                      "name": "regCheckLegal",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ZQfwy",
+                          "width": "fill_container",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Z4wYW",
+                              "fill": "#64748B",
+                              "content": "Я соглашаюсь с ",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "P5VoL",
+                              "fill": "#6366F1",
+                              "content": "условиями оферты",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "KgHlX",
+                          "width": "fill_container",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ZfeWN",
+                              "fill": "#64748B",
+                              "content": "и ",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ADxCC",
+                              "fill": "#6366F1",
+                              "textGrowth": "fixed-width",
+                              "width": 216,
+                              "content": "политикой конфиденциальности",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 },
