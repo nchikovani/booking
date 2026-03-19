@@ -65,8 +65,7 @@ repo
 
 ### Web Admin
 
-- Next.js
-- React
+- Vite + React (SPA)
 - TypeScript
 - Tailwind CSS
 - Zustand (state management)

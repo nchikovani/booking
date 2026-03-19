@@ -15,7 +15,7 @@
 | Область             | Применимо | Примечание                 |
 | ------------------- | --------- | -------------------------- |
 | Backend (API)       | ☐         | NestJS, эндпоинты, сервисы |
-| Frontend (Admin)    | ☐         | Web Admin — Next.js        |
+| Frontend (Admin)    | ☐         | Web Admin — Vite + React   |
 | Frontend (Mini App) | ☐         | Telegram Mini App          |
 | База данных         | ☐         | Prisma, миграции           |
 

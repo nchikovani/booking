@@ -36,7 +36,7 @@ docker build -f apps/miniapp/Dockerfile -t booking-miniapp:latest .
 
 Для admin и miniapp с production URL API:
 ```sh
-docker build -f apps/admin/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://api.example.com -t booking-admin:latest .
+docker build -f apps/admin/Dockerfile --build-arg VITE_API_URL=https://api.example.com -t booking-admin:latest .
 docker build -f apps/miniapp/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://api.example.com -t booking-miniapp:latest .
 ```
 
@@ -82,4 +82,4 @@ docker build -f apps/miniapp/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://
 - `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY` — MinIO
 - `TELEGRAM_BOT_TOKEN` — Telegram Bot
 
-**Важно:** `NEXT_PUBLIC_API_URL` задаётся при сборке образов через `--build-arg`.
+**Важно:** `VITE_API_URL` (admin) и `NEXT_PUBLIC_API_URL` (miniapp) задаются при сборке образов через `--build-arg`.

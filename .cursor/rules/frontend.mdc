@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Соглашения Frontend
 
-Стек: Next.js App Router, React, TypeScript, Tailwind CSS, Material UI, Zustand, React Query.
+Стек: Vite + React (admin) / Next.js App Router (miniapp), TypeScript, Tailwind CSS, Material UI, Zustand, React Query.
 
 ## Feature-Sliced Design (FSD)
 
@@ -15,9 +15,8 @@ alwaysApply: false
 
 ## Server vs Client Components
 
-- По умолчанию — Server Components
-- `'use client'` — только для хуков, событий, браузерных API, TMA SDK
-- Server Actions — для мутаций из форм без React Query
+- **admin (Vite SPA):** все компоненты клиентские
+- **miniapp (Next.js):** по умолчанию — Server Components; `'use client'` — только для хуков, событий, браузерных API, TMA SDK; Server Actions — для мутаций из форм без React Query
 
 ## Данные и состояние
 

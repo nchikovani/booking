@@ -1,3 +1,14 @@
-import { nextJsConfig } from "@repo/eslint-config/next-js";
+import { config as reactConfig } from "@repo/eslint-config/react-internal";
+import reactRefresh from "eslint-plugin-react-refresh";
 
-export default nextJsConfig;
+export default [
+  ...reactConfig,
+  {
+    plugins: {
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      ...reactRefresh.configs.recommended.rules,
+    },
+  },
+];

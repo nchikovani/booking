@@ -95,7 +95,7 @@
 | 3.7 | База клиентов | Список, профиль, история записей |
 | 3.8 | Панель управления | Дашборд, сводка |
 
-**Стек:** Next.js, React, TypeScript, Tailwind, Zustand, React Query, FSD
+**Стек:** Vite + React, TypeScript, Tailwind, Zustand, React Query, FSD
 
 ---
 

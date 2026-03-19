@@ -82,7 +82,7 @@ Base URL API: `/api/v1`
 ```
 ├── apps/
 │   ├── api          — NestJS Backend API
-│   ├── admin        — Next.js Web Admin
+│   ├── admin        — Vite + React Web Admin (SPA)
 │   └── miniapp      — Next.js Telegram Mini App
 ├── packages/
 │   ├── prisma       — Prisma schema, миграции, клиент

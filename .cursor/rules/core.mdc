@@ -6,10 +6,10 @@ alwaysApply: true
 # Проект
 
 Telegram Booking Platform — monorepo (pnpm workspaces + Turborepo).  
-Стек: NestJS, Next.js, Prisma, PostgreSQL, Redis, MinIO.
+Стек: NestJS, Vite + React, Next.js, Prisma, PostgreSQL, Redis, MinIO.
 
 - `apps/api` — NestJS API
-- `apps/admin` — Next.js + React (панель администратора)
+- `apps/admin` — Vite + React (панель администратора, SPA)
 - `apps/miniapp` — Next.js + TMA SDK (Telegram Mini App)
 - `packages/prisma` — Prisma Client (`@repo/prisma`)
 

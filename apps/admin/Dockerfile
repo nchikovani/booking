@@ -1,8 +1,8 @@
 # Build stage
 FROM node:20-alpine AS builder
 
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+ARG VITE_API_URL
+ENV VITE_API_URL=${VITE_API_URL}
 
 WORKDIR /app
 
@@ -15,22 +15,12 @@ COPY apps/admin ./apps/admin
 RUN pnpm install --frozen-lockfile
 RUN pnpm --filter admin build
 
-# Production stage
-FROM node:20-alpine AS runner
+# Production stage — nginx для статики (Vite SPA)
+FROM nginx:alpine AS runner
 
-RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+COPY --from=builder /app/apps/admin/dist /usr/share/nginx/html
+COPY apps/admin/nginx.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /app
+EXPOSE 80
 
-ENV NODE_ENV=production
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-COPY --from=builder /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml ./
-COPY --from=builder /app/packages ./packages
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/apps/admin ./apps/admin
-
-EXPOSE 3000
-
-CMD ["pnpm", "--filter", "admin", "start"]
+CMD ["nginx", "-g", "daemon off;"]
