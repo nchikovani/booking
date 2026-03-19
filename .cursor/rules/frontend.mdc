@@ -11,7 +11,7 @@ alwaysApply: false
 ## Feature-Sliced Design (FSD)
 
 Импорты только вниз: `app → pages → widgets → features → entities → shared`.  
-Запрещено: импорты вверх, циклические зависимости, бизнес-логика в `shared`/`entities`.
+Запрещено: импорты вверх, циклические зависимости, бизнес-логика в `shared`.
 
 ## Server vs Client Components
 
