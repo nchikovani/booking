@@ -1,8 +1,23 @@
 import { useTranslation } from 'react-i18next';
 import type { FallbackProps } from 'react-error-boundary';
+import { useRouteError } from 'react-router-dom';
 
-export function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+// Делаем пропсы необязательными, так как для роутера они не нужны
+export function ErrorFallback({ error: boundaryError, resetErrorBoundary }: Partial<FallbackProps>) {
   const { t } = useTranslation();
+
+  // Получаем ошибку из роутера, если она есть
+  const routeError = useRouteError();
+  const error = boundaryError || routeError;
+
+  const handleReset = () => {
+    if (resetErrorBoundary) {
+      resetErrorBoundary();
+    } else {
+      // Если это ошибка роутера, просто перезагружаем страницу или переходим на главную
+      window.location.href = '/';
+    }
+  };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-8">
@@ -12,7 +27,7 @@ export function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
       </pre>
       <button
         type="button"
-        onClick={resetErrorBoundary}
+        onClick={handleReset}
         className="rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
       >
         {t('common.retry')}
