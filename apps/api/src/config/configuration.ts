@@ -17,7 +17,7 @@ export default () => ({
     origin: process.env.CORS_ORIGIN ?? '*',
   },
   rateLimit: {
-    ttl: 60000,
+    ttl: 60_000,
     limit: 100,
   },
   jwt: {
@@ -30,7 +30,7 @@ export default () => ({
     cookieDomain: process.env.COOKIE_DOMAIN ?? '',
     cookieName: 'refreshToken',
     rateLimit: {
-      ttl: 900000, // 15 min
+      ttl: 600_000, // 10 min
       limit: 5,
     },
   },

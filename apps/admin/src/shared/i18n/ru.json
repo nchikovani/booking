@@ -8,6 +8,10 @@
     "goHome": "На главную"
   },
   "auth": {
+    "password": {
+      "show": "Показать пароль",
+      "hide": "Скрыть пароль"
+    },
     "layout": {
       "brand": "potoki.io",
       "footer": "© 2025 potoki.io"

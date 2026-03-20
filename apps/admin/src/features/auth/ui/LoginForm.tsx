@@ -2,9 +2,13 @@ import type { FormEvent } from 'react';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
 import MuiLink from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import { UiButton, UiInput } from '@repo/ui';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { UiButton, UiInput, tokens } from '@repo/ui';
 import { ROUTE_REGISTER } from '@shared/constants/routes';
 import { validateEmail } from '@shared/lib/validation/email';
 import { useLoginMutation } from '../model/useLoginMutation';
@@ -18,6 +22,7 @@ export function LoginForm() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [editedAfterSubmit, setEditedAfterSubmit] = useState({ email: false, password: false });
 
@@ -88,7 +93,7 @@ export function LoginForm() {
       <UiInput
         required
         name="password"
-        type="password"
+        type={showPassword ? 'text' : 'password'}
         label={t('auth.login.password')}
         placeholder={t('auth.login.passwordPlaceholder')}
         autoComplete="current-password"
@@ -103,6 +108,18 @@ export function LoginForm() {
         error={Boolean(passwordErrKey)}
         helperText={passwordHelper}
         disabled={loginMutation.isPending}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label={showPassword ? t('auth.password.hide') : t('auth.password.show')}
+              onClick={() => setShowPassword((prev) => !prev)}
+              edge="end"
+              tabIndex={-1}
+            >
+              {showPassword ? <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} /> : <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />}
+            </IconButton>
+          </InputAdornment>
+        }
         slotProps={{
           htmlInput: { ref: passwordRef, 'data-testid': 'auth-login-password' },
         }}
