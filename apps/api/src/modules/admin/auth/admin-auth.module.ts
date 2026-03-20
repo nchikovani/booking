@@ -5,7 +5,7 @@ import { AdminAuthService } from './admin-auth.service';
 import { AdminAuthRepository } from './repositories/admin-auth.repository';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminRefreshGuard } from './guards/admin-refresh.guard';
-import { AuthEmailThrottlerGuard } from './guards/auth-email-throttler.guard';
+import { AuthRateLimitInterceptor } from './interceptors/auth-rate-limit.interceptor';
 import { AuthTokenCleanupService } from './auth-token-cleanup.service';
 import { EmailPasswordStrategy } from './strategies/email-password.strategy';
 import { AppConfigModule } from '../../../config/app-config.module';
@@ -42,8 +42,8 @@ import { parseExpiresToSeconds } from './utils/parse-expires';
     EmailPasswordStrategy,
     AdminAuthGuard,
     AdminRefreshGuard,
-    AuthEmailThrottlerGuard,
+    AuthRateLimitInterceptor,
   ],
   exports: [AdminAuthService, AdminAuthGuard, JwtModule],
 })
-export class AdminAuthModule {}
+export class AdminAuthModule { }

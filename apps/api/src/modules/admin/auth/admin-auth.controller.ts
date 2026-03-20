@@ -10,7 +10,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import type * as express from 'express';
-import { Throttle } from '@nestjs/throttler';
 import {
   ApiTags,
   ApiOperation,
@@ -21,9 +20,9 @@ import {
 import { AdminAuthService } from './admin-auth.service';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminRefreshGuard } from './guards/admin-refresh.guard';
-import { AuthEmailThrottlerGuard } from './guards/auth-email-throttler.guard';
 import { Public } from './decorators/public.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';
+import { AuthRateLimit } from './decorators/auth-rate-limit.decorator';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
@@ -48,9 +47,8 @@ export class AdminAuthController {
 
   @Public()
   @Post('register')
-  @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Throttle({ default: { limit: 5, ttl: 900_000 } }) // 15 minutes
+  @AuthRateLimit()
   @ApiOperation({
     summary: 'Регистрация',
     description:
@@ -74,9 +72,8 @@ export class AdminAuthController {
 
   @Public()
   @Post('login')
-  @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.OK)
-  @Throttle({ default: { limit: 5, ttl: 900_000 } }) // 15 minutes
+  @AuthRateLimit()
   @ApiOperation({
     summary: 'Вход',
     description:
@@ -151,9 +148,8 @@ export class AdminAuthController {
 
   @Public()
   @Post('forgot-password')
-  @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.OK)
-  @Throttle({ default: { limit: 5, ttl: 900000 } })
+  @AuthRateLimit()
   @ApiOperation({
     summary: 'Забытый пароль',
     description:
@@ -172,7 +168,6 @@ export class AdminAuthController {
   @Public()
   @Post('reset-password')
   @HttpCode(HttpStatus.OK)
-  @Throttle({ default: { limit: 5, ttl: 900000 } })
   @ApiOperation({
     summary: 'Сброс пароля',
     description: 'Установка нового пароля по токену из ссылки. Отзывает все сессии пользователя.',
