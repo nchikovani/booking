@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { LoadingFallback } from './LoadingFallback';
+import { LoadingFallback } from '@shared/ui/LoadingFallback';
 
 const HomePage = lazy(() => import('@pages/home').then((m) => ({ default: m.HomePage })));
 

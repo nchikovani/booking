@@ -142,6 +142,15 @@ API логически разделено по типам клиентов:
 Документация API доступна по адресу `/swagger`.
 Openapi доступен по адресу `/swagger-json`.
 
+### Декораторы для документирования ответов
+
+Использовать декораторы из `common/decorators/ApiWrappedResponse.ts` — они отражают реальный формат ответов. Стандартный `@ApiResponse` не использовать.
+
+- `@ApiWrappedOkResponse(description, Model?, { isArray? })` — 200
+- `@ApiWrappedCreatedResponse(description, Model?)` — 201
+- `@ApiWrappedErrorResponse(status, description?)` — одна ошибка
+- `@ApiCommonErrorResponses(...statuses)` — набор ошибок; без аргументов: 400, 401, 403, 404, 429, 500
+
 ---
 
 # 7. Инфраструктура API

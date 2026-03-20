@@ -33,7 +33,6 @@
 Необязательные:
 - hooks
 - constants
-- ыещку
 
 Правила:
 
@@ -74,7 +73,16 @@
 - **MUI:** `@mui/material`, `@emotion/react`, `@emotion/styled` — в `peerDependencies`; устанавливать только в apps (admin, miniapp)
 - **MUI ThemeProvider:** использовать `theme` из `@repo/ui`
 
-## 2.4. Общие технологии
+## 2.4. UI-соглашения (admin + miniapp)
+
+- **MUI используется точечно:** только как библиотека компонент (например `Typography`, `Link`, `FormControl`, `OutlinedInput`, `Button`).
+- **Лейаут и позиционирование:** через обычные HTML-теги (`div`, `section`, `form`, `header`, `footer`) + Tailwind-классы.
+- **Текстовые узлы:** выводить через `Typography`; `variant` выбирать только из значений, объявленных в `packages/ui/src/theme/index.ts` (`h1`, `h2`, `h3`, `h4`, `body1`, `body2`, `caption`, `overline`).
+- **Цвет текста в Typography:** задавать через проп `color` (например `color={tokens.color.textPrimary}`), не через `sx.color`.
+- **Ссылки:** интерактивный текст, ведущий на другой URL/роут, оформляется как ссылка (`a`/`Link`), а не как `button`.
+- **Цвета:** для MUI-компонентов — через `tokens.color.*`/палитру темы; без хардкода цветов.
+
+## 2.5. Общие технологии
 
 - **Серверные данные:** TanStack React Query
 - **UI-состояние:** Zustand
@@ -83,18 +91,20 @@
 - **Генерация типов API:** `pnpm --filter admin api:generate`
 - **Единая точка доступа к backend:** все запросы из админки выполняются только через `client` из `@api`
 
-## 2.5. Обработка ошибок
+## 2.6. Обработка ошибок
 
 - **ErrorBoundary** — на уровне приложения
 - **React Query:** `onError` / глобальный обработчик для уведомлений
 - **Формат ошибок API:** `{ status: 'error', error: { code, message } }`
+- **Mutation-ошибки в UI:** показывать через `enqueueSnackbar`; не дублировать обработку сетевых/API-ошибок в JSX формы.
+- **Валидация форм:** ошибки полей показываются после попытки отправки (`onSubmit`), а не по `onBlur`, если для конкретной формы не оговорено иное.
 
-## 2.6. Переменные окружения
+## 2.7. Переменные окружения
 
 - **Префикс:** `VITE_` (Vite), `NEXT_PUBLIC_` (Next.js) — для доступа на клиенте
 - **Типы:** объявлять в `vite-env.d.ts` / `next-env.d.ts`
 
-## 2.7. Прочее
+## 2.8. Прочее
 
 - **Lazy-загрузка:** страницы через `React.lazy()` + `Suspense`
 

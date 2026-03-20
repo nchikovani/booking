@@ -5,7 +5,6 @@
 @theme {
   --color-primary: var(--color-primary);
   --color-primary-dark: var(--color-primary-dark);
-  --color-primary-light: var(--color-primary-light);
   --color-accent: var(--color-accent);
   --color-error: var(--color-error);
   --color-border-default: var(--color-border-default);

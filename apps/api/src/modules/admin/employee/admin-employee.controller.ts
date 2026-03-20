@@ -22,9 +22,13 @@ import {
   ApiOperation,
   ApiParam,
   ApiQuery,
-  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import {
+  ApiWrappedOkResponse,
+  ApiWrappedCreatedResponse,
+  ApiWrappedErrorResponse,
+} from '../../../common/decorators/ApiWrappedResponse';
 import { AppException } from '../../../common/errors/app.exception';
 import { ErrorCode } from '../../../common/errors/error-codes';
 import { AdminAuthGuard } from '../auth/guards/admin-auth.guard';
@@ -51,8 +55,8 @@ export class AdminEmployeeController {
   @ApiParam({ name: 'businessId' })
   @ApiQuery({ name: 'search', required: false })
   @ApiQuery({ name: 'sort', required: false, enum: ['name', '-name'] })
-  @ApiResponse({ status: 200, description: 'Список сотрудников', type: [EmployeeResponseDto] })
-  @ApiResponse({ status: 404, description: 'Нет доступа' })
+  @ApiWrappedOkResponse('Список сотрудников', EmployeeResponseDto, { isArray: true })
+  @ApiWrappedErrorResponse(404)
   async list(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Query() query: EmployeeListQueryDto,
@@ -67,8 +71,8 @@ export class AdminEmployeeController {
   @ApiOperation({ summary: 'Создание сотрудника' })
   @ApiParam({ name: 'businessId' })
   @ApiBody({ type: CreateEmployeeDto })
-  @ApiResponse({ status: 201, description: 'Сотрудник создан', type: EmployeeResponseDto })
-  @ApiResponse({ status: 404, description: 'Нет доступа или услуга не найдена' })
+  @ApiWrappedCreatedResponse('Сотрудник создан', EmployeeResponseDto)
+  @ApiWrappedErrorResponse(404, 'Нет доступа или услуга не найдена')
   async create(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Body() dto: CreateEmployeeDto,
@@ -82,8 +86,8 @@ export class AdminEmployeeController {
   @ApiOperation({ summary: 'Получение сотрудника' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Данные сотрудника', type: EmployeeResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Данные сотрудника', EmployeeResponseDto)
+  @ApiWrappedErrorResponse(404)
   async get(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,
@@ -98,8 +102,8 @@ export class AdminEmployeeController {
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
   @ApiBody({ type: UpdateEmployeeDto })
-  @ApiResponse({ status: 200, description: 'Сотрудник обновлён', type: EmployeeResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Сотрудник обновлён', EmployeeResponseDto)
+  @ApiWrappedErrorResponse(404)
   async update(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,
@@ -114,8 +118,8 @@ export class AdminEmployeeController {
   @ApiOperation({ summary: 'Удаление сотрудника' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Сотрудник удалён' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Сотрудник удалён')
+  @ApiWrappedErrorResponse(404)
   async delete(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,
@@ -139,8 +143,8 @@ export class AdminEmployeeController {
   @ApiOperation({ summary: 'Загрузка фото сотрудника' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'URL загруженного фото' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('URL загруженного фото')
+  @ApiWrappedErrorResponse(404)
   async uploadPhoto(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,
@@ -156,8 +160,8 @@ export class AdminEmployeeController {
   @ApiOperation({ summary: 'Удаление фото сотрудника' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Фото удалено' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Фото удалено')
+  @ApiWrappedErrorResponse(404)
   async deletePhoto(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,

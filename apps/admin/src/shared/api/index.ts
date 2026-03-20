@@ -1,3 +1,3 @@
-export { client } from './client';
+export { client, type AdminOpenApiClient } from './client';
 
 export * from './openapi.generated';

@@ -4,1987 +4,2896 @@
  */
 
 export interface paths {
-  '/api/v1/admin/auth/register': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Регистрация
+         * @description Создание учётной записи администратора. Refresh token устанавливается в HttpOnly cookie.
+         */
+        post: operations["AdminAuthController_register"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /**
-     * Регистрация
-     * @description Создание учётной записи администратора. Refresh token устанавливается в HttpOnly cookie.
-     */
-    post: operations['AdminAuthController_register'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/auth/login': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Вход
+         * @description Аутентификация по email и паролю. Refresh token устанавливается в HttpOnly cookie.
+         */
+        post: operations["AdminAuthController_login"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /**
-     * Вход
-     * @description Аутентификация по email и паролю. Refresh token устанавливается в HttpOnly cookie.
-     */
-    post: operations['AdminAuthController_login'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/auth/refresh': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/refresh": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Обновление токена
+         * @description Обновление access token по refresh token из cookie. Выдаётся новая пара токенов.
+         */
+        post: operations["AdminAuthController_refresh"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /**
-     * Обновление токена
-     * @description Обновление access token по refresh token из cookie. Выдаётся новая пара токенов.
-     */
-    post: operations['AdminAuthController_refresh'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/auth/logout': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/logout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Выход
+         * @description Инвалидация текущей сессии. Требуется refresh token в cookie.
+         */
+        post: operations["AdminAuthController_logout"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /**
-     * Выход
-     * @description Инвалидация текущей сессии. Требуется refresh token в cookie.
-     */
-    post: operations['AdminAuthController_logout'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/auth/me': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Текущий пользователь
+         * @description Получение данных текущего аутентифицированного пользователя.
+         */
+        get: operations["AdminAuthController_me"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /**
-     * Текущий пользователь
-     * @description Получение данных текущего аутентифицированного пользователя.
-     */
-    get: operations['AdminAuthController_me'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/auth/forgot-password': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/forgot-password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Забытый пароль
+         * @description Запрос ссылки для сброса пароля. Ответ всегда 200 — не раскрывает наличие email в системе.
+         */
+        post: operations["AdminAuthController_forgotPassword"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /**
-     * Забытый пароль
-     * @description Запрос ссылки для сброса пароля. Ответ всегда 200 — не раскрывает наличие email в системе.
-     */
-    post: operations['AdminAuthController_forgotPassword'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/auth/reset-password': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/auth/reset-password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Сброс пароля
+         * @description Установка нового пароля по токену из ссылки. Отзывает все сессии пользователя.
+         */
+        post: operations["AdminAuthController_resetPassword"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /**
-     * Сброс пароля
-     * @description Установка нового пароля по токену из ссылки. Отзывает все сессии пользователя.
-     */
-    post: operations['AdminAuthController_resetPassword'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Список бизнесов
+         * @description Бизнесы текущего пользователя
+         */
+        get: operations["AdminBusinessController_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /**
-     * Список бизнесов
-     * @description Бизнесы текущего пользователя
-     */
-    get: operations['AdminBusinessController_list'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{id}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Получение бизнеса */
+        get: operations["AdminBusinessController_get"];
+        put?: never;
+        post?: never;
+        /**
+         * Удаление бизнеса
+         * @description Только для роли OWNER
+         */
+        delete: operations["AdminBusinessController_delete"];
+        options?: never;
+        head?: never;
+        /** Обновление бизнеса */
+        patch: operations["AdminBusinessController_update"];
+        trace?: never;
     };
-    /** Получение бизнеса */
-    get: operations['AdminBusinessController_get'];
-    put?: never;
-    post?: never;
-    /**
-     * Удаление бизнеса
-     * @description Только для роли OWNER
-     */
-    delete: operations['AdminBusinessController_delete'];
-    options?: never;
-    head?: never;
-    /** Обновление бизнеса */
-    patch: operations['AdminBusinessController_update'];
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{id}/logo': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{id}/logo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Загрузка логотипа */
+        post: operations["AdminBusinessController_uploadLogo"];
+        /** Удаление логотипа */
+        delete: operations["AdminBusinessController_deleteLogo"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Загрузка логотипа */
-    post: operations['AdminBusinessController_uploadLogo'];
-    /** Удаление логотипа */
-    delete: operations['AdminBusinessController_deleteLogo'];
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{id}/image': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{id}/image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Загрузка изображения */
+        post: operations["AdminBusinessController_uploadImage"];
+        /** Удаление изображения */
+        delete: operations["AdminBusinessController_deleteImage"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Загрузка изображения */
-    post: operations['AdminBusinessController_uploadImage'];
-    /** Удаление изображения */
-    delete: operations['AdminBusinessController_deleteImage'];
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/employees': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/employees": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Список сотрудников */
+        get: operations["AdminEmployeeController_list"];
+        put?: never;
+        /** Создание сотрудника */
+        post: operations["AdminEmployeeController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /** Список сотрудников */
-    get: operations['AdminEmployeeController_list'];
-    put?: never;
-    /** Создание сотрудника */
-    post: operations['AdminEmployeeController_create'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/employees/{id}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/employees/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Получение сотрудника */
+        get: operations["AdminEmployeeController_get"];
+        put?: never;
+        post?: never;
+        /** Удаление сотрудника */
+        delete: operations["AdminEmployeeController_delete"];
+        options?: never;
+        head?: never;
+        /** Обновление сотрудника */
+        patch: operations["AdminEmployeeController_update"];
+        trace?: never;
     };
-    /** Получение сотрудника */
-    get: operations['AdminEmployeeController_get'];
-    put?: never;
-    post?: never;
-    /** Удаление сотрудника */
-    delete: operations['AdminEmployeeController_delete'];
-    options?: never;
-    head?: never;
-    /** Обновление сотрудника */
-    patch: operations['AdminEmployeeController_update'];
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/employees/{id}/photo': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/employees/{id}/photo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Загрузка фото сотрудника */
+        post: operations["AdminEmployeeController_uploadPhoto"];
+        /** Удаление фото сотрудника */
+        delete: operations["AdminEmployeeController_deletePhoto"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Загрузка фото сотрудника */
-    post: operations['AdminEmployeeController_uploadPhoto'];
-    /** Удаление фото сотрудника */
-    delete: operations['AdminEmployeeController_deletePhoto'];
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/schedule-templates': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/schedule-templates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Список шаблонов графика */
+        get: operations["AdminScheduleTemplateController_list"];
+        put?: never;
+        /** Создание шаблона графика */
+        post: operations["AdminScheduleTemplateController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /** Список шаблонов графика */
-    get: operations['AdminScheduleTemplateController_list'];
-    put?: never;
-    /** Создание шаблона графика */
-    post: operations['AdminScheduleTemplateController_create'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/schedule-templates/{id}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/schedule-templates/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Получение шаблона графика */
+        get: operations["AdminScheduleTemplateController_get"];
+        put?: never;
+        post?: never;
+        /** Удаление шаблона графика */
+        delete: operations["AdminScheduleTemplateController_delete"];
+        options?: never;
+        head?: never;
+        /** Обновление шаблона графика */
+        patch: operations["AdminScheduleTemplateController_update"];
+        trace?: never;
     };
-    /** Получение шаблона графика */
-    get: operations['AdminScheduleTemplateController_get'];
-    put?: never;
-    post?: never;
-    /** Удаление шаблона графика */
-    delete: operations['AdminScheduleTemplateController_delete'];
-    options?: never;
-    head?: never;
-    /** Обновление шаблона графика */
-    patch: operations['AdminScheduleTemplateController_update'];
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/categories': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/categories": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Список категорий услуг */
+        get: operations["AdminServiceCategoryController_list"];
+        put?: never;
+        /** Создание категории */
+        post: operations["AdminServiceCategoryController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /** Список категорий услуг */
-    get: operations['AdminServiceCategoryController_list'];
-    put?: never;
-    /** Создание категории */
-    post: operations['AdminServiceCategoryController_create'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/categories/{id}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/categories/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Удаление категории */
+        delete: operations["AdminServiceCategoryController_delete"];
+        options?: never;
+        head?: never;
+        /** Обновление категории */
+        patch: operations["AdminServiceCategoryController_update"];
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post?: never;
-    /** Удаление категории */
-    delete: operations['AdminServiceCategoryController_delete'];
-    options?: never;
-    head?: never;
-    /** Обновление категории */
-    patch: operations['AdminServiceCategoryController_update'];
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/services': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/services": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Список услуг с пагинацией */
+        get: operations["AdminServiceController_list"];
+        put?: never;
+        /** Создание услуги */
+        post: operations["AdminServiceController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /** Список услуг с пагинацией */
-    get: operations['AdminServiceController_list'];
-    put?: never;
-    /** Создание услуги */
-    post: operations['AdminServiceController_create'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/services/{id}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/services/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Получение услуги */
+        get: operations["AdminServiceController_get"];
+        put?: never;
+        post?: never;
+        /** Удаление услуги */
+        delete: operations["AdminServiceController_delete"];
+        options?: never;
+        head?: never;
+        /** Обновление услуги */
+        patch: operations["AdminServiceController_update"];
+        trace?: never;
     };
-    /** Получение услуги */
-    get: operations['AdminServiceController_get'];
-    put?: never;
-    post?: never;
-    /** Удаление услуги */
-    delete: operations['AdminServiceController_delete'];
-    options?: never;
-    head?: never;
-    /** Обновление услуги */
-    patch: operations['AdminServiceController_update'];
-    trace?: never;
-  };
-  '/api/v1/admin/businesses/{businessId}/services/{id}/reorder': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/admin/businesses/{businessId}/services/{id}/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Изменение позиции услуги */
+        patch: operations["AdminServiceController_reorder"];
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    /** Изменение позиции услуги */
-    patch: operations['AdminServiceController_reorder'];
-    trace?: never;
-  };
-  '/api/v1/health': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["HealthController_check"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get: operations['HealthController_check'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-  schemas: {
-    RegisterDto: {
-      /**
-       * @description Email адрес
-       * @example user@example.com
-       */
-      email: string;
-      /**
-       * @description Пароль: минимум 8 символов, буквы и цифры
-       * @example SecureP@ssw0rd
-       */
-      password: string;
-      /**
-       * @description Имя
-       * @example Иван
-       */
-      firstName?: string;
-      /**
-       * @description Фамилия
-       * @example Иванов
-       */
-      lastName?: string;
+    schemas: {
+        AuthUserDto: {
+            /**
+             * @description ID пользователя
+             * @example 550e8400-e29b-41d4-a716-446655440000
+             */
+            id: string;
+            /**
+             * @description Email
+             * @example user@example.com
+             */
+            email: Record<string, never> | null;
+            /**
+             * @description Имя
+             * @example Иван
+             */
+            firstName: Record<string, never> | null;
+            /**
+             * @description Фамилия
+             * @example Иванов
+             */
+            lastName: Record<string, never> | null;
+        };
+        AuthResponseDto: {
+            /** @description Данные пользователя */
+            user: components["schemas"]["AuthUserDto"];
+            /**
+             * @description JWT access token
+             * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+             */
+            accessToken: string;
+            /**
+             * @description Время жизни access token в секундах
+             * @example 900
+             */
+            expiresIn: number;
+        };
+        RegisterDto: {
+            /**
+             * @description Email адрес
+             * @example user@example.com
+             */
+            email: string;
+            /**
+             * @description Пароль: минимум 8 символов, буквы и цифры
+             * @example SecureP@ssw0rd
+             */
+            password: string;
+            /**
+             * @description Имя
+             * @example Иван
+             */
+            firstName?: string;
+            /**
+             * @description Фамилия
+             * @example Иванов
+             */
+            lastName?: string;
+        };
+        LoginDto: {
+            /**
+             * @description Email адрес
+             * @example user@example.com
+             */
+            email: string;
+            /**
+             * @description Пароль
+             * @example SecureP@ssw0rd
+             */
+            password: string;
+        };
+        MessageResponseDto: {
+            /**
+             * @description Сообщение о результате операции
+             * @example Пароль успешно изменён
+             */
+            message: string;
+        };
+        ForgotPasswordDto: {
+            /**
+             * @description Email адрес для отправки ссылки сброса пароля
+             * @example user@example.com
+             */
+            email: string;
+        };
+        ResetPasswordDto: {
+            /**
+             * @description Токен из ссылки для сброса пароля
+             * @example 550e8400-e29b-41d4-a716-446655440000
+             */
+            token: string;
+            /**
+             * @description Новый пароль: минимум 8 символов, буквы и цифры
+             * @example NewSecureP@ssw0rd
+             */
+            password: string;
+        };
+        BusinessResponseDto: {
+            /** @example 550e8400-e29b-41d4-a716-446655440000 */
+            id: string;
+            /** @example Салон красоты «Элегант» */
+            name?: Record<string, never>;
+            /** @example Салон красоты в центре города */
+            description?: Record<string, never>;
+            /** @example https://cdn.example.com/businesses/xxx/logo.webp */
+            logoUrl?: Record<string, never>;
+            /** @example https://cdn.example.com/businesses/xxx/image.webp */
+            imageUrl?: Record<string, never>;
+            /** @example +7 999 123-45-67 */
+            phone?: Record<string, never>;
+            /** @example info@elegant.ru */
+            email?: Record<string, never>;
+            /** @example https://elegant.ru */
+            website?: Record<string, never>;
+            /** @example @elegant_salon */
+            telegram?: Record<string, never>;
+            vk?: Record<string, never>;
+            /** @example https://youtube.com/@elegant_salon */
+            youtube?: Record<string, never>;
+            /** @example г. Москва, ул. Примерная, д. 1 */
+            address?: Record<string, never>;
+            /** @example 55.75 */
+            latitude?: Record<string, never>;
+            /** @example 37.62 */
+            longitude?: Record<string, never>;
+            /** @example 2024-01-15T10:00:00.000Z */
+            createdAt: string;
+            /** @example 2024-01-15T10:00:00.000Z */
+            updatedAt: string;
+        };
+        UpdateBusinessDto: {
+            name?: Record<string, never>;
+            description?: Record<string, never>;
+            phone?: Record<string, never>;
+            email?: Record<string, never>;
+            website?: Record<string, never>;
+            telegram?: Record<string, never>;
+            vk?: Record<string, never>;
+            youtube?: Record<string, never>;
+            address?: Record<string, never>;
+            latitude?: Record<string, never>;
+            longitude?: Record<string, never>;
+        };
+        ServiceLinkResponseDto: {
+            serviceId: string;
+            priceOverride?: Record<string, never>;
+            durationMinutesOverride?: Record<string, never>;
+        };
+        ScheduleBreakResponseDto: {
+            startTime: string;
+            endTime: string;
+        };
+        ScheduleDayResponseDto: {
+            dayOfWeek: number;
+            startTime: string;
+            endTime: string;
+            breaks: components["schemas"]["ScheduleBreakResponseDto"][];
+        };
+        ScheduleResponseDto: {
+            /** @enum {string} */
+            type: "template" | "custom";
+            scheduleTemplateId?: string;
+            scheduleTemplateName?: string;
+            days: components["schemas"]["ScheduleDayResponseDto"][];
+        };
+        EmployeeResponseDto: {
+            id: string;
+            name: string;
+            specialization?: Record<string, never>;
+            imageUrl?: Record<string, never>;
+            services: components["schemas"]["ServiceLinkResponseDto"][];
+            schedule?: components["schemas"]["ScheduleResponseDto"] | null;
+            createdAt: string;
+            updatedAt?: string;
+        };
+        ServiceLinkDto: {
+            /** Format: uuid */
+            serviceId: string;
+            priceOverride?: number;
+            durationMinutesOverride?: number;
+        };
+        ScheduleTemplateBreakDto: {
+            /**
+             * @description Начало перерыва HH:mm
+             * @example 13:00
+             */
+            startTime: string;
+            /**
+             * @description Конец перерыва HH:mm
+             * @example 14:00
+             */
+            endTime: string;
+        };
+        ScheduleTemplateDayDto: {
+            /** @description 0=вс, 1=пн, ..., 6=сб */
+            dayOfWeek: number;
+            /**
+             * @description Начало рабочего дня HH:mm
+             * @example 09:00
+             */
+            startTime: string;
+            /**
+             * @description Конец рабочего дня HH:mm
+             * @example 18:00
+             */
+            endTime: string;
+            /** @default [] */
+            breaks: components["schemas"]["ScheduleTemplateBreakDto"][];
+        };
+        ScheduleDto: {
+            /** Format: uuid */
+            scheduleTemplateId?: string;
+            days?: components["schemas"]["ScheduleTemplateDayDto"][];
+        };
+        CreateEmployeeDto: {
+            name: string;
+            specialization?: string;
+            services?: components["schemas"]["ServiceLinkDto"][];
+            schedule?: components["schemas"]["ScheduleDto"] | null;
+        };
+        UpdateEmployeeDto: {
+            name?: string;
+            specialization?: Record<string, never> | null;
+            services?: components["schemas"]["ServiceLinkDto"][];
+            schedule?: components["schemas"]["ScheduleDto"] | null;
+        };
+        ScheduleTemplateBreakResponseDto: {
+            /** @example 13:00 */
+            startTime: string;
+            /** @example 14:00 */
+            endTime: string;
+        };
+        ScheduleTemplateDayResponseDto: {
+            /** @example 1 */
+            dayOfWeek: number;
+            /** @example 09:00 */
+            startTime: string;
+            /** @example 18:00 */
+            endTime: string;
+            breaks: components["schemas"]["ScheduleTemplateBreakResponseDto"][];
+        };
+        ScheduleTemplateResponseDto: {
+            id: string;
+            name: string;
+            days: components["schemas"]["ScheduleTemplateDayResponseDto"][];
+            createdAt: string;
+        };
+        CreateScheduleTemplateDto: {
+            name: string;
+            days: components["schemas"]["ScheduleTemplateDayDto"][];
+        };
+        UpdateScheduleTemplateDto: {
+            name?: string;
+            days?: components["schemas"]["ScheduleTemplateDayDto"][];
+        };
+        ServiceCategoryResponseDto: {
+            id: string;
+            name: string;
+            createdAt: string;
+        };
+        CreateServiceCategoryDto: {
+            name: string;
+        };
+        UpdateServiceCategoryDto: {
+            name: string;
+        };
+        ServiceResponseDto: {
+            id: string;
+            name: string;
+            description?: Record<string, never>;
+            /** @example 1500.00 */
+            price: string;
+            durationMinutes: number;
+            breakAfterMinutes: number;
+            categoryId?: Record<string, never>;
+            categoryName?: Record<string, never>;
+            position: number;
+            /** @description Связи с сотрудниками (с опциональной индивидуальной ценой и длительностью) */
+            employeeServices: {
+                employeeId?: string;
+                priceOverride?: string | null;
+                durationMinutesOverride?: number | null;
+            }[];
+            createdAt: string;
+        };
+        EmployeeServiceLinkDto: {
+            /** Format: uuid */
+            employeeId: string;
+            priceOverride?: number;
+            durationMinutesOverride?: number;
+        };
+        CreateServiceDto: {
+            name: string;
+            description?: string;
+            price: number;
+            durationMinutes: number;
+            breakAfterMinutes?: number;
+            /** Format: uuid */
+            categoryId?: string;
+            employeeServices?: components["schemas"]["EmployeeServiceLinkDto"][];
+        };
+        ReorderServiceDto: {
+            /** Format: uuid */
+            afterServiceId?: Record<string, never>;
+        };
+        UpdateServiceDto: {
+            name?: string;
+            description?: string;
+            price?: number;
+            durationMinutes?: number;
+            breakAfterMinutes?: number;
+            /** Format: uuid */
+            categoryId?: Record<string, never> | null;
+            employeeServices?: components["schemas"]["EmployeeServiceLinkDto"][];
+        };
+        ApiSuccessResponseDto: {
+            /**
+             * @example success
+             * @enum {string}
+             */
+            status: "success";
+            /** @description Response data */
+            data: Record<string, never>;
+        };
+        ApiErrorDto: {
+            /**
+             * @description Error code
+             * @example NOT_FOUND
+             */
+            code: string;
+            /**
+             * @description Human readable message
+             * @example Resource not found
+             */
+            message: string;
+        };
+        ApiErrorResponseDto: {
+            /**
+             * @example error
+             * @enum {string}
+             */
+            status: "error";
+            error: components["schemas"]["ApiErrorDto"];
+        };
     };
-    AuthUserDto: {
-      /**
-       * @description ID пользователя
-       * @example 550e8400-e29b-41d4-a716-446655440000
-       */
-      id: string;
-      /**
-       * @description Email
-       * @example user@example.com
-       */
-      email: Record<string, never> | null;
-      /**
-       * @description Имя
-       * @example Иван
-       */
-      firstName: Record<string, never> | null;
-      /**
-       * @description Фамилия
-       * @example Иванов
-       */
-      lastName: Record<string, never> | null;
-    };
-    AuthResponseDto: {
-      /** @description Данные пользователя */
-      user: components['schemas']['AuthUserDto'];
-      /**
-       * @description JWT access token
-       * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-       */
-      accessToken: string;
-      /**
-       * @description Время жизни access token в секундах
-       * @example 900
-       */
-      expiresIn: number;
-    };
-    LoginDto: {
-      /**
-       * @description Email адрес
-       * @example user@example.com
-       */
-      email: string;
-      /**
-       * @description Пароль
-       * @example SecureP@ssw0rd
-       */
-      password: string;
-    };
-    ForgotPasswordDto: {
-      /**
-       * @description Email адрес для отправки ссылки сброса пароля
-       * @example user@example.com
-       */
-      email: string;
-    };
-    ResetPasswordDto: {
-      /**
-       * @description Токен из ссылки для сброса пароля
-       * @example 550e8400-e29b-41d4-a716-446655440000
-       */
-      token: string;
-      /**
-       * @description Новый пароль: минимум 8 символов, буквы и цифры
-       * @example NewSecureP@ssw0rd
-       */
-      password: string;
-    };
-    MessageResponseDto: {
-      /**
-       * @description Сообщение о результате операции
-       * @example Пароль успешно изменён
-       */
-      message: string;
-    };
-    BusinessResponseDto: {
-      /** @example 550e8400-e29b-41d4-a716-446655440000 */
-      id: string;
-      /** @example Салон красоты «Элегант» */
-      name?: Record<string, never>;
-      /** @example Салон красоты в центре города */
-      description?: Record<string, never>;
-      /** @example https://cdn.example.com/businesses/xxx/logo.webp */
-      logoUrl?: Record<string, never>;
-      /** @example https://cdn.example.com/businesses/xxx/image.webp */
-      imageUrl?: Record<string, never>;
-      /** @example +7 999 123-45-67 */
-      phone?: Record<string, never>;
-      /** @example info@elegant.ru */
-      email?: Record<string, never>;
-      /** @example https://elegant.ru */
-      website?: Record<string, never>;
-      /** @example @elegant_salon */
-      telegram?: Record<string, never>;
-      vk?: Record<string, never>;
-      /** @example https://youtube.com/@elegant_salon */
-      youtube?: Record<string, never>;
-      /** @example г. Москва, ул. Примерная, д. 1 */
-      address?: Record<string, never>;
-      /** @example 55.75 */
-      latitude?: Record<string, never>;
-      /** @example 37.62 */
-      longitude?: Record<string, never>;
-      /** @example 2024-01-15T10:00:00.000Z */
-      createdAt: string;
-      /** @example 2024-01-15T10:00:00.000Z */
-      updatedAt: string;
-    };
-    UpdateBusinessDto: {
-      name?: Record<string, never>;
-      description?: Record<string, never>;
-      phone?: Record<string, never>;
-      email?: Record<string, never>;
-      website?: Record<string, never>;
-      telegram?: Record<string, never>;
-      vk?: Record<string, never>;
-      youtube?: Record<string, never>;
-      address?: Record<string, never>;
-      latitude?: Record<string, never>;
-      longitude?: Record<string, never>;
-    };
-    ServiceLinkResponseDto: {
-      serviceId: string;
-      priceOverride?: Record<string, never>;
-      durationMinutesOverride?: Record<string, never>;
-    };
-    ScheduleBreakResponseDto: {
-      startTime: string;
-      endTime: string;
-    };
-    ScheduleDayResponseDto: {
-      dayOfWeek: number;
-      startTime: string;
-      endTime: string;
-      breaks: components['schemas']['ScheduleBreakResponseDto'][];
-    };
-    ScheduleResponseDto: {
-      /** @enum {string} */
-      type: 'template' | 'custom';
-      scheduleTemplateId?: string;
-      scheduleTemplateName?: string;
-      days: components['schemas']['ScheduleDayResponseDto'][];
-    };
-    EmployeeResponseDto: {
-      id: string;
-      name: string;
-      specialization?: Record<string, never>;
-      imageUrl?: Record<string, never>;
-      services: components['schemas']['ServiceLinkResponseDto'][];
-      schedule?: components['schemas']['ScheduleResponseDto'] | null;
-      createdAt: string;
-      updatedAt?: string;
-    };
-    ServiceLinkDto: {
-      /** Format: uuid */
-      serviceId: string;
-      priceOverride?: number;
-      durationMinutesOverride?: number;
-    };
-    ScheduleTemplateBreakDto: {
-      /**
-       * @description Начало перерыва HH:mm
-       * @example 13:00
-       */
-      startTime: string;
-      /**
-       * @description Конец перерыва HH:mm
-       * @example 14:00
-       */
-      endTime: string;
-    };
-    ScheduleTemplateDayDto: {
-      /** @description 0=вс, 1=пн, ..., 6=сб */
-      dayOfWeek: number;
-      /**
-       * @description Начало рабочего дня HH:mm
-       * @example 09:00
-       */
-      startTime: string;
-      /**
-       * @description Конец рабочего дня HH:mm
-       * @example 18:00
-       */
-      endTime: string;
-      /** @default [] */
-      breaks: components['schemas']['ScheduleTemplateBreakDto'][];
-    };
-    ScheduleDto: {
-      /** Format: uuid */
-      scheduleTemplateId?: string;
-      days?: components['schemas']['ScheduleTemplateDayDto'][];
-    };
-    CreateEmployeeDto: {
-      name: string;
-      specialization?: string;
-      services?: components['schemas']['ServiceLinkDto'][];
-      schedule?: components['schemas']['ScheduleDto'] | null;
-    };
-    UpdateEmployeeDto: {
-      name?: string;
-      specialization?: Record<string, never> | null;
-      services?: components['schemas']['ServiceLinkDto'][];
-      schedule?: components['schemas']['ScheduleDto'] | null;
-    };
-    ScheduleTemplateBreakResponseDto: {
-      /** @example 13:00 */
-      startTime: string;
-      /** @example 14:00 */
-      endTime: string;
-    };
-    ScheduleTemplateDayResponseDto: {
-      /** @example 1 */
-      dayOfWeek: number;
-      /** @example 09:00 */
-      startTime: string;
-      /** @example 18:00 */
-      endTime: string;
-      breaks: components['schemas']['ScheduleTemplateBreakResponseDto'][];
-    };
-    ScheduleTemplateResponseDto: {
-      id: string;
-      name: string;
-      days: components['schemas']['ScheduleTemplateDayResponseDto'][];
-      createdAt: string;
-    };
-    CreateScheduleTemplateDto: {
-      name: string;
-      days: components['schemas']['ScheduleTemplateDayDto'][];
-    };
-    UpdateScheduleTemplateDto: {
-      name?: string;
-      days?: components['schemas']['ScheduleTemplateDayDto'][];
-    };
-    ServiceCategoryResponseDto: {
-      id: string;
-      name: string;
-      createdAt: string;
-    };
-    CreateServiceCategoryDto: {
-      name: string;
-    };
-    UpdateServiceCategoryDto: {
-      name: string;
-    };
-    EmployeeServiceLinkDto: {
-      /** Format: uuid */
-      employeeId: string;
-      priceOverride?: number;
-      durationMinutesOverride?: number;
-    };
-    CreateServiceDto: {
-      name: string;
-      description?: string;
-      price: number;
-      durationMinutes: number;
-      breakAfterMinutes?: number;
-      /** Format: uuid */
-      categoryId?: string;
-      employeeServices?: components['schemas']['EmployeeServiceLinkDto'][];
-    };
-    ServiceResponseDto: {
-      id: string;
-      name: string;
-      description?: Record<string, never>;
-      /** @example 1500.00 */
-      price: string;
-      durationMinutes: number;
-      breakAfterMinutes: number;
-      categoryId?: Record<string, never>;
-      categoryName?: Record<string, never>;
-      position: number;
-      /** @description Связи с сотрудниками (с опциональной индивидуальной ценой и длительностью) */
-      employeeServices: {
-        employeeId?: string;
-        priceOverride?: string | null;
-        durationMinutesOverride?: number | null;
-      }[];
-      createdAt: string;
-    };
-    ReorderServiceDto: {
-      /** Format: uuid */
-      afterServiceId?: Record<string, never>;
-    };
-    UpdateServiceDto: {
-      name?: string;
-      description?: string;
-      price?: number;
-      durationMinutes?: number;
-      breakAfterMinutes?: number;
-      /** Format: uuid */
-      categoryId?: Record<string, never> | null;
-      employeeServices?: components['schemas']['EmployeeServiceLinkDto'][];
-    };
-    ApiSuccessResponseDto: {
-      /**
-       * @example success
-       * @enum {string}
-       */
-      status: 'success';
-      /** @description Response data */
-      data: Record<string, never>;
-    };
-    ApiErrorDto: {
-      /**
-       * @description Error code
-       * @example NOT_FOUND
-       */
-      code: string;
-      /**
-       * @description Human readable message
-       * @example Resource not found
-       */
-      message: string;
-    };
-    ApiErrorResponseDto: {
-      /**
-       * @example error
-       * @enum {string}
-       */
-      status: 'error';
-      error: components['schemas']['ApiErrorDto'];
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-  AdminAuthController_register: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['RegisterDto'];
-      };
-    };
-    responses: {
-      /** @description Успешная регистрация */
-      201: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['AuthResponseDto'];
-        };
-      };
-      /** @description Ошибка валидации */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Email уже зарегистрирован */
-      409: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Превышен лимит попыток для email */
-      429: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminAuthController_login: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['LoginDto'];
-      };
-    };
-    responses: {
-      /** @description Успешный вход */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['AuthResponseDto'];
-        };
-      };
-      /** @description Ошибка валидации */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Неверный email или пароль */
-      401: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Превышен лимит попыток для email */
-      429: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminAuthController_refresh: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Токены обновлены */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['AuthResponseDto'];
-        };
-      };
-      /** @description Refresh token отсутствует, истёк или отозван */
-      401: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminAuthController_logout: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Успешный выход */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Refresh cookie отсутствует */
-      401: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminAuthController_me: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Данные пользователя */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['AuthUserDto'];
-        };
-      };
-      /** @description Не авторизован */
-      401: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminAuthController_forgotPassword: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ForgotPasswordDto'];
-      };
-    };
-    responses: {
-      /** @description Запрос обработан */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': {
-            /** @example Если аккаунт существует, на email отправлена ссылка для сброса пароля */
-            message?: string;
-          };
-        };
-      };
-      /** @description Превышен лимит попыток для email */
-      429: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminAuthController_resetPassword: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ResetPasswordDto'];
-      };
-    };
-    responses: {
-      /** @description Пароль успешно изменён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['MessageResponseDto'];
-        };
-      };
-      /** @description Токен неверный, истёк или уже использован */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_list: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Список бизнесов */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Данные бизнеса */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['BusinessResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_delete: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Бизнес удалён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_update: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateBusinessDto'];
-      };
-    };
-    responses: {
-      /** @description Обновлённый бизнес */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['BusinessResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_uploadLogo: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'multipart/form-data': {
-          /** Format: binary */
-          file: string;
-        };
-      };
-    };
-    responses: {
-      /** @description URL загруженного логотипа */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_deleteLogo: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Логотип удалён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_uploadImage: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'multipart/form-data': {
-          /** Format: binary */
-          file: string;
-        };
-      };
-    };
-    responses: {
-      /** @description URL загруженного изображения */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminBusinessController_deleteImage: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Изображение удалено */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_list: {
-    parameters: {
-      query?: {
-        search?: string;
-        sort?: 'name' | '-name';
-      };
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Список сотрудников */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['EmployeeResponseDto'][];
-        };
-      };
-      /** @description Нет доступа */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_create: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateEmployeeDto'];
-      };
-    };
-    responses: {
-      /** @description Сотрудник создан */
-      201: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['EmployeeResponseDto'];
-        };
-      };
-      /** @description Нет доступа или услуга не найдена */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Данные сотрудника */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['EmployeeResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_delete: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Сотрудник удалён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_update: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateEmployeeDto'];
-      };
-    };
-    responses: {
-      /** @description Сотрудник обновлён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['EmployeeResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_uploadPhoto: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'multipart/form-data': {
-          /** Format: binary */
-          file: string;
-        };
-      };
-    };
-    responses: {
-      /** @description URL загруженного фото */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminEmployeeController_deletePhoto: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Фото удалено */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminScheduleTemplateController_list: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Список шаблонов */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ScheduleTemplateResponseDto'][];
-        };
-      };
-      /** @description Нет доступа */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminScheduleTemplateController_create: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateScheduleTemplateDto'];
-      };
-    };
-    responses: {
-      /** @description Шаблон создан */
-      201: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ScheduleTemplateResponseDto'];
-        };
-      };
-      /** @description Ошибка валидации */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Нет доступа */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminScheduleTemplateController_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Данные шаблона */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ScheduleTemplateResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminScheduleTemplateController_delete: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Шаблон удалён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminScheduleTemplateController_update: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateScheduleTemplateDto'];
-      };
-    };
-    responses: {
-      /** @description Шаблон обновлён */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ScheduleTemplateResponseDto'];
-        };
-      };
-      /** @description Ошибка валидации (в т.ч. days: []) */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceCategoryController_list: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Список категорий */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceCategoryResponseDto'][];
-        };
-      };
-      /** @description Нет доступа */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceCategoryController_create: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateServiceCategoryDto'];
-      };
-    };
-    responses: {
-      /** @description Категория создана */
-      201: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceCategoryResponseDto'];
-        };
-      };
-      /** @description Нет доступа */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Дубликат имени */
-      409: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceCategoryController_delete: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Категория удалена */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceCategoryController_update: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateServiceCategoryDto'];
-      };
-    };
-    responses: {
-      /** @description Категория обновлена */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceCategoryResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Дубликат имени */
-      409: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceController_list: {
-    parameters: {
-      query?: {
-        /** @description Cursor для следующей страницы */
-        cursor?: string;
-        limit?: number;
-        sort?: 'name' | '-name' | 'position' | '-position';
-        search?: string;
-        categoryId?: string;
-      };
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Список услуг */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': {
-            items?: components['schemas']['ServiceResponseDto'][];
-            nextCursor?: string | null;
-          };
-        };
-      };
-      /** @description INVALID_CURSOR, INVALID_CATEGORY */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Нет доступа */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceController_create: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateServiceDto'];
-      };
-    };
-    responses: {
-      /** @description Услуга создана */
-      201: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceResponseDto'];
-        };
-      };
-      /** @description Нет доступа или категория не найдена */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceController_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Данные услуги */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceController_delete: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Услуга удалена */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceController_update: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateServiceDto'];
-      };
-    };
-    responses: {
-      /** @description Услуга обновлена */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  AdminServiceController_reorder: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        businessId: string;
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ReorderServiceDto'];
-      };
-    };
-    responses: {
-      /** @description Позиция обновлена */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ServiceResponseDto'];
-        };
-      };
-      /** @description Не найден */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  HealthController_check: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
+    AdminAuthController_register: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RegisterDto"];
+            };
+        };
+        responses: {
+            /** @description Успешная регистрация */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["AuthResponseDto"];
+                    };
+                };
+            };
+            /** @description Ошибка валидации */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Email уже зарегистрирован */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Превышен лимит попыток для email */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminAuthController_login: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LoginDto"];
+            };
+        };
+        responses: {
+            /** @description Успешный вход */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["AuthResponseDto"];
+                    };
+                };
+            };
+            /** @description Ошибка валидации */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Неверный email или пароль */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Превышен лимит попыток для email */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminAuthController_refresh: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Токены обновлены */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["AuthResponseDto"];
+                    };
+                };
+            };
+            /** @description Refresh token отсутствует, истёк или отозван */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminAuthController_logout: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Успешный выход */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Refresh cookie отсутствует */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminAuthController_me: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Данные пользователя */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["AuthUserDto"];
+                    };
+                };
+            };
+            /** @description Не авторизован */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminAuthController_forgotPassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ForgotPasswordDto"];
+            };
+        };
+        responses: {
+            /** @description Запрос обработан */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["MessageResponseDto"];
+                    };
+                };
+            };
+            /** @description Превышен лимит попыток для email */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminAuthController_resetPassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResetPasswordDto"];
+            };
+        };
+        responses: {
+            /** @description Пароль успешно изменён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["MessageResponseDto"];
+                    };
+                };
+            };
+            /** @description Токен неверный, истёк или уже использован */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Список бизнесов */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Данные бизнеса */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["BusinessResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Бизнес удалён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateBusinessDto"];
+            };
+        };
+        responses: {
+            /** @description Обновлённый бизнес */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["BusinessResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_uploadLogo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description URL загруженного логотипа */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_deleteLogo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Логотип удалён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_uploadImage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description URL загруженного изображения */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminBusinessController_deleteImage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Изображение удалено */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_list: {
+        parameters: {
+            query?: {
+                search?: string;
+                sort?: "name" | "-name";
+            };
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Список сотрудников */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["EmployeeResponseDto"][];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateEmployeeDto"];
+            };
+        };
+        responses: {
+            /** @description Сотрудник создан */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["EmployeeResponseDto"];
+                    };
+                };
+            };
+            /** @description Нет доступа или услуга не найдена */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Данные сотрудника */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["EmployeeResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Сотрудник удалён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateEmployeeDto"];
+            };
+        };
+        responses: {
+            /** @description Сотрудник обновлён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["EmployeeResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_uploadPhoto: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description URL загруженного фото */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminEmployeeController_deletePhoto: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Фото удалено */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminScheduleTemplateController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Список шаблонов */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ScheduleTemplateResponseDto"][];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminScheduleTemplateController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateScheduleTemplateDto"];
+            };
+        };
+        responses: {
+            /** @description Шаблон создан */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ScheduleTemplateResponseDto"];
+                    };
+                };
+            };
+            /** @description Ошибка валидации */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminScheduleTemplateController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Данные шаблона */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ScheduleTemplateResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminScheduleTemplateController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Шаблон удалён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminScheduleTemplateController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateScheduleTemplateDto"];
+            };
+        };
+        responses: {
+            /** @description Шаблон обновлён */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ScheduleTemplateResponseDto"];
+                    };
+                };
+            };
+            /** @description Ошибка валидации (в т.ч. days: []) */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceCategoryController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Список категорий */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceCategoryResponseDto"][];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceCategoryController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateServiceCategoryDto"];
+            };
+        };
+        responses: {
+            /** @description Категория создана */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceCategoryResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Дубликат имени */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceCategoryController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Категория удалена */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceCategoryController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateServiceCategoryDto"];
+            };
+        };
+        responses: {
+            /** @description Категория обновлена */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceCategoryResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Дубликат имени */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceController_list: {
+        parameters: {
+            query?: {
+                /** @description Cursor для следующей страницы */
+                cursor?: string;
+                limit?: number;
+                sort?: "name" | "-name" | "position" | "-position";
+                search?: string;
+                categoryId?: string;
+            };
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Список услуг */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description INVALID_CURSOR, INVALID_CATEGORY */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateServiceDto"];
+            };
+        };
+        responses: {
+            /** @description Услуга создана */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceResponseDto"];
+                    };
+                };
+            };
+            /** @description Нет доступа или категория не найдена */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Данные услуги */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Услуга удалена */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: Record<string, never> | null;
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateServiceDto"];
+            };
+        };
+        responses: {
+            /** @description Услуга обновлена */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    AdminServiceController_reorder: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                businessId: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReorderServiceDto"];
+            };
+        };
+        responses: {
+            /** @description Позиция обновлена */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example success
+                         * @enum {string}
+                         */
+                        status: "success";
+                        data: components["schemas"]["ServiceResponseDto"];
+                    };
+                };
+            };
+            /** @description Ресурс не найден */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /**
+                         * @example error
+                         * @enum {string}
+                         */
+                        status: "error";
+                        error: {
+                            /** @example VALIDATION_FAILED */
+                            code: string;
+                            /** @example Validation failed */
+                            message: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    HealthController_check: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
 }

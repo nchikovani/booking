@@ -6,5 +6,75 @@
     "retry": "Повторить",
     "notFound": "Страница не найдена",
     "goHome": "На главную"
+  },
+  "auth": {
+    "layout": {
+      "brand": "potoki.io",
+      "footer": "© 2025 potoki.io"
+    },
+    "login": {
+      "title": "Вход",
+      "email": "Почта",
+      "emailPlaceholder": "example@mail.com",
+      "password": "Пароль",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "Не помню пароль",
+      "submit": "Войти",
+      "noAccount": "Нет аккаунта?",
+      "registerLink": "Зарегистрироваться"
+    },
+    "register": {
+      "title": "Регистрация",
+      "email": "Почта",
+      "emailPlaceholder": "example@mail.com",
+      "password": "Пароль",
+      "passwordPlaceholder": "••••••••",
+      "passwordConfirm": "Повторите пароль",
+      "passwordConfirmPlaceholder": "••••••••",
+      "consentText": "Я соглашаюсь с <offerLink>условиями оферты</offerLink> и <privacyLink>политикой конфиденциальности</privacyLink>",
+      "consentPrefix": "Я соглашаюсь с",
+      "consentOffer": "условиями оферты",
+      "consentAnd": "и",
+      "consentPrivacy": "политикой конфиденциальности",
+      "consentRequired": "Нужно согласие с офертой и политикой",
+      "submit": "Зарегистрироваться",
+      "hasAccount": "Уже есть аккаунт?",
+      "loginLink": "Войти"
+    },
+    "validation": {
+      "email": {
+        "required": "Укажите почту",
+        "maxLength": "Слишком длинный адрес",
+        "format": "Некорректный формат почты"
+      },
+      "password": {
+        "required": "Укажите пароль",
+        "minLength": "Минимум 8 символов",
+        "lettersAndDigits": "Нужны буквы и цифры"
+      },
+      "passwordConfirm": {
+        "required": "Подтвердите пароль",
+        "mismatch": "Пароли не совпадают"
+      }
+    },
+    "logout": "Выйти",
+    "errors": {
+      "logoutFailed": "Не удалось выйти. Проверьте сеть и попробуйте снова.",
+      "network": "Нет соединения с сервером. Проверьте сеть и попробуйте снова.",
+      "meFailed": "Не удалось загрузить профиль. Войдите снова.",
+      "codes": {
+        "generic": "Не удалось выполнить запрос. Попробуйте ещё раз.",
+        "INVALID_CREDENTIALS": "Неверная почта или пароль",
+        "ACCOUNT_LOCKED": "Аккаунт заблокирован. Обратитесь в поддержку.",
+        "EMAIL_ALREADY_EXISTS": "Этот email уже зарегистрирован",
+        "RATE_LIMIT_EXCEEDED": "Слишком много попыток. Подождите немного.",
+        "VALIDATION_FAILED": "Проверьте введённые данные",
+        "WEAK_PASSWORD": "Пароль слишком слабый",
+        "REFRESH_TOKEN_EXPIRED": "Сессия истекла. Войдите снова.",
+        "REFRESH_TOKEN_REVOKED": "Сессия недействительна. Войдите снова.",
+        "UNAUTHORIZED": "Требуется вход",
+        "FORBIDDEN": "Доступ запрещён"
+      }
+    }
   }
 }

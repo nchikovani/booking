@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import Typography from '@mui/material/Typography';
 import type { FallbackProps } from 'react-error-boundary';
 import { useRouteError } from 'react-router-dom';
+import { tokens, UiButton } from '@repo/ui';
 
 // Делаем пропсы необязательными, так как для роутера они не нужны
 export function ErrorFallback({
@@ -23,18 +25,21 @@ export function ErrorFallback({
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-8">
-      <h1 className="text-xl font-semibold">{t('common.error')}</h1>
-      <pre className="max-w-full overflow-auto rounded bg-gray-100 p-4 text-sm text-gray-800">
-        {error instanceof Error ? error.message : String(error)}
-      </pre>
-      <button
-        type="button"
-        onClick={handleReset}
-        className="rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface-bg p-8">
+      <Typography component="h1" variant="h2" color={tokens.color.textPrimary}>
+        {t('common.error')}
+      </Typography>
+      <Typography
+        component="pre"
+        variant="caption"
+        color={tokens.color.textSecondary}
+        className="max-w-full overflow-auto rounded-lg bg-surface-elevated p-4 whitespace-pre-wrap"
       >
+        {error instanceof Error ? error.message : String(error)}
+      </Typography>
+      <UiButton type="button" uiVariant="primary" onClick={handleReset}>
         {t('common.retry')}
-      </button>
+      </UiButton>
     </div>
   );
 }

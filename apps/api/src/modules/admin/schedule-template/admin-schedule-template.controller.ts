@@ -16,9 +16,13 @@ import {
   ApiBody,
   ApiOperation,
   ApiParam,
-  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import {
+  ApiWrappedOkResponse,
+  ApiWrappedCreatedResponse,
+  ApiWrappedErrorResponse,
+} from '../../../common/decorators/ApiWrappedResponse';
 import { AdminAuthGuard } from '../auth/guards/admin-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { BusinessService } from '../../business/business.service';
@@ -40,8 +44,8 @@ export class AdminScheduleTemplateController {
   @Get()
   @ApiOperation({ summary: 'Список шаблонов графика' })
   @ApiParam({ name: 'businessId' })
-  @ApiResponse({ status: 200, description: 'Список шаблонов', type: [ScheduleTemplateResponseDto] })
-  @ApiResponse({ status: 404, description: 'Нет доступа' })
+  @ApiWrappedOkResponse('Список шаблонов', ScheduleTemplateResponseDto, { isArray: true })
+  @ApiWrappedErrorResponse(404)
   async list(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @CurrentUser('adminUserId') adminUserId: string,
@@ -55,9 +59,9 @@ export class AdminScheduleTemplateController {
   @ApiOperation({ summary: 'Создание шаблона графика' })
   @ApiParam({ name: 'businessId' })
   @ApiBody({ type: CreateScheduleTemplateDto })
-  @ApiResponse({ status: 201, description: 'Шаблон создан', type: ScheduleTemplateResponseDto })
-  @ApiResponse({ status: 400, description: 'Ошибка валидации' })
-  @ApiResponse({ status: 404, description: 'Нет доступа' })
+  @ApiWrappedCreatedResponse('Шаблон создан', ScheduleTemplateResponseDto)
+  @ApiWrappedErrorResponse(400)
+  @ApiWrappedErrorResponse(404)
   async create(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Body() dto: CreateScheduleTemplateDto,
@@ -71,8 +75,8 @@ export class AdminScheduleTemplateController {
   @ApiOperation({ summary: 'Получение шаблона графика' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Данные шаблона', type: ScheduleTemplateResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Данные шаблона', ScheduleTemplateResponseDto)
+  @ApiWrappedErrorResponse(404)
   async get(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,
@@ -87,9 +91,9 @@ export class AdminScheduleTemplateController {
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
   @ApiBody({ type: UpdateScheduleTemplateDto })
-  @ApiResponse({ status: 200, description: 'Шаблон обновлён', type: ScheduleTemplateResponseDto })
-  @ApiResponse({ status: 400, description: 'Ошибка валидации (в т.ч. days: [])' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Шаблон обновлён', ScheduleTemplateResponseDto)
+  @ApiWrappedErrorResponse(400, 'Ошибка валидации (в т.ч. days: [])')
+  @ApiWrappedErrorResponse(404)
   async update(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,
@@ -104,8 +108,8 @@ export class AdminScheduleTemplateController {
   @ApiOperation({ summary: 'Удаление шаблона графика' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Шаблон удалён' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Шаблон удалён')
+  @ApiWrappedErrorResponse(404)
   async delete(
     @Param('businessId', ParseUUIDPipe) businessId: string,
     @Param('id', ParseUUIDPipe) id: string,

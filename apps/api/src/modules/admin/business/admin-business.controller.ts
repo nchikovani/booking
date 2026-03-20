@@ -19,9 +19,12 @@ import {
   ApiConsumes,
   ApiOperation,
   ApiParam,
-  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import {
+  ApiWrappedOkResponse,
+  ApiWrappedErrorResponse,
+} from '../../../common/decorators/ApiWrappedResponse';
 import { AppException } from '../../../common/errors/app.exception';
 import { ErrorCode } from '../../../common/errors/error-codes';
 import { AdminAuthGuard } from '../auth/guards/admin-auth.guard';
@@ -39,7 +42,7 @@ export class AdminBusinessController {
 
   @Get()
   @ApiOperation({ summary: 'Список бизнесов', description: 'Бизнесы текущего пользователя' })
-  @ApiResponse({ status: 200, description: 'Список бизнесов' })
+  @ApiWrappedOkResponse('Список бизнесов')
   async list(@CurrentUser('adminUserId') adminUserId: string) {
     return this.businessService.findByAdminUser(adminUserId);
   }
@@ -47,8 +50,8 @@ export class AdminBusinessController {
   @Get(':id')
   @ApiOperation({ summary: 'Получение бизнеса' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Данные бизнеса', type: BusinessResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Данные бизнеса', BusinessResponseDto)
+  @ApiWrappedErrorResponse(404)
   async get(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     const member = await this.businessService.requireBusinessMember(adminUserId, id);
     return this.businessService.toBusinessResponse(member.business);
@@ -58,8 +61,8 @@ export class AdminBusinessController {
   @ApiOperation({ summary: 'Обновление бизнеса' })
   @ApiParam({ name: 'id' })
   @ApiBody({ type: UpdateBusinessDto })
-  @ApiResponse({ status: 200, description: 'Обновлённый бизнес', type: BusinessResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Обновлённый бизнес', BusinessResponseDto)
+  @ApiWrappedErrorResponse(404)
   async update(
     @Param('id') id: string,
     @Body() dto: UpdateBusinessDto,
@@ -73,8 +76,8 @@ export class AdminBusinessController {
   @Delete(':id')
   @ApiOperation({ summary: 'Удаление бизнеса', description: 'Только для роли OWNER' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Бизнес удалён' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Бизнес удалён')
+  @ApiWrappedErrorResponse(404)
   async delete(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessOwner(adminUserId, id);
     await this.businessService.delete(id);
@@ -94,8 +97,8 @@ export class AdminBusinessController {
   })
   @ApiOperation({ summary: 'Загрузка логотипа' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'URL загруженного логотипа' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('URL загруженного логотипа')
+  @ApiWrappedErrorResponse(404)
   async uploadLogo(
     @Param('id') id: string,
     @CurrentUser('adminUserId') adminUserId: string,
@@ -119,8 +122,8 @@ export class AdminBusinessController {
   })
   @ApiOperation({ summary: 'Загрузка изображения' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'URL загруженного изображения' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('URL загруженного изображения')
+  @ApiWrappedErrorResponse(404)
   async uploadImage(
     @Param('id') id: string,
     @CurrentUser('adminUserId') adminUserId: string,
@@ -134,8 +137,8 @@ export class AdminBusinessController {
   @Delete(':id/logo')
   @ApiOperation({ summary: 'Удаление логотипа' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Логотип удалён' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Логотип удалён')
+  @ApiWrappedErrorResponse(404)
   async deleteLogo(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessMember(adminUserId, id);
     await this.businessService.deleteLogo(id);
@@ -145,8 +148,8 @@ export class AdminBusinessController {
   @Delete(':id/image')
   @ApiOperation({ summary: 'Удаление изображения' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Изображение удалено' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Изображение удалено')
+  @ApiWrappedErrorResponse(404)
   async deleteImage(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
     await this.businessService.requireBusinessMember(adminUserId, id);
     await this.businessService.deleteImage(id);

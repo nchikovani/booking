@@ -15,9 +15,13 @@ import {
   ApiBody,
   ApiOperation,
   ApiParam,
-  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import {
+  ApiWrappedOkResponse,
+  ApiWrappedCreatedResponse,
+  ApiWrappedErrorResponse,
+} from '../../../common/decorators/ApiWrappedResponse';
 import { AdminAuthGuard } from '../auth/guards/admin-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { BusinessService } from '../../business/business.service';
@@ -39,8 +43,8 @@ export class AdminServiceCategoryController {
   @Get()
   @ApiOperation({ summary: 'Список категорий услуг' })
   @ApiParam({ name: 'businessId' })
-  @ApiResponse({ status: 200, description: 'Список категорий', type: [ServiceCategoryResponseDto] })
-  @ApiResponse({ status: 404, description: 'Нет доступа' })
+  @ApiWrappedOkResponse('Список категорий', ServiceCategoryResponseDto, { isArray: true })
+  @ApiWrappedErrorResponse(404)
   async list(
     @Param('businessId') businessId: string,
     @CurrentUser('adminUserId') adminUserId: string,
@@ -54,9 +58,9 @@ export class AdminServiceCategoryController {
   @ApiOperation({ summary: 'Создание категории' })
   @ApiParam({ name: 'businessId' })
   @ApiBody({ type: CreateServiceCategoryDto })
-  @ApiResponse({ status: 201, description: 'Категория создана', type: ServiceCategoryResponseDto })
-  @ApiResponse({ status: 404, description: 'Нет доступа' })
-  @ApiResponse({ status: 409, description: 'Дубликат имени' })
+  @ApiWrappedCreatedResponse('Категория создана', ServiceCategoryResponseDto)
+  @ApiWrappedErrorResponse(404)
+  @ApiWrappedErrorResponse(409, 'Дубликат имени')
   async create(
     @Param('businessId') businessId: string,
     @Body() dto: CreateServiceCategoryDto,
@@ -71,13 +75,9 @@ export class AdminServiceCategoryController {
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
   @ApiBody({ type: UpdateServiceCategoryDto })
-  @ApiResponse({
-    status: 200,
-    description: 'Категория обновлена',
-    type: ServiceCategoryResponseDto,
-  })
-  @ApiResponse({ status: 404, description: 'Не найден' })
-  @ApiResponse({ status: 409, description: 'Дубликат имени' })
+  @ApiWrappedOkResponse('Категория обновлена', ServiceCategoryResponseDto)
+  @ApiWrappedErrorResponse(404)
+  @ApiWrappedErrorResponse(409, 'Дубликат имени')
   async update(
     @Param('businessId') businessId: string,
     @Param('id') id: string,
@@ -92,8 +92,8 @@ export class AdminServiceCategoryController {
   @ApiOperation({ summary: 'Удаление категории' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Категория удалена' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Категория удалена')
+  @ApiWrappedErrorResponse(404)
   async delete(
     @Param('businessId') businessId: string,
     @Param('id') id: string,

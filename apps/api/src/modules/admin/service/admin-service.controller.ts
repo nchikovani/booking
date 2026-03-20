@@ -17,9 +17,13 @@ import {
   ApiOperation,
   ApiParam,
   ApiQuery,
-  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import {
+  ApiWrappedOkResponse,
+  ApiWrappedCreatedResponse,
+  ApiWrappedErrorResponse,
+} from '../../../common/decorators/ApiWrappedResponse';
 import { AdminAuthGuard } from '../auth/guards/admin-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { BusinessService } from '../../business/business.service';
@@ -48,18 +52,9 @@ export class AdminServiceController {
   @ApiQuery({ name: 'sort', required: false, enum: ['name', '-name', 'position', '-position'] })
   @ApiQuery({ name: 'search', required: false })
   @ApiQuery({ name: 'categoryId', required: false })
-  @ApiResponse({
-    status: 200,
-    description: 'Список услуг',
-    schema: {
-      properties: {
-        items: { type: 'array', items: { $ref: '#/components/schemas/ServiceResponseDto' } },
-        nextCursor: { type: 'string', nullable: true },
-      },
-    },
-  })
-  @ApiResponse({ status: 400, description: 'INVALID_CURSOR, INVALID_CATEGORY' })
-  @ApiResponse({ status: 404, description: 'Нет доступа' })
+  @ApiWrappedOkResponse('Список услуг')
+  @ApiWrappedErrorResponse(400, 'INVALID_CURSOR, INVALID_CATEGORY')
+  @ApiWrappedErrorResponse(404)
   async list(
     @Param('businessId') businessId: string,
     @Query() query: ServiceListQueryDto,
@@ -74,8 +69,8 @@ export class AdminServiceController {
   @ApiOperation({ summary: 'Создание услуги' })
   @ApiParam({ name: 'businessId' })
   @ApiBody({ type: CreateServiceDto })
-  @ApiResponse({ status: 201, description: 'Услуга создана', type: ServiceResponseDto })
-  @ApiResponse({ status: 404, description: 'Нет доступа или категория не найдена' })
+  @ApiWrappedCreatedResponse('Услуга создана', ServiceResponseDto)
+  @ApiWrappedErrorResponse(404, 'Нет доступа или категория не найдена')
   async create(
     @Param('businessId') businessId: string,
     @Body() dto: CreateServiceDto,
@@ -89,8 +84,8 @@ export class AdminServiceController {
   @ApiOperation({ summary: 'Получение услуги' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Данные услуги', type: ServiceResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Данные услуги', ServiceResponseDto)
+  @ApiWrappedErrorResponse(404)
   async get(
     @Param('businessId') businessId: string,
     @Param('id') id: string,
@@ -105,8 +100,8 @@ export class AdminServiceController {
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
   @ApiBody({ type: ReorderServiceDto })
-  @ApiResponse({ status: 200, description: 'Позиция обновлена', type: ServiceResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Позиция обновлена', ServiceResponseDto)
+  @ApiWrappedErrorResponse(404)
   async reorder(
     @Param('businessId') businessId: string,
     @Param('id') id: string,
@@ -122,8 +117,8 @@ export class AdminServiceController {
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
   @ApiBody({ type: UpdateServiceDto })
-  @ApiResponse({ status: 200, description: 'Услуга обновлена', type: ServiceResponseDto })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Услуга обновлена', ServiceResponseDto)
+  @ApiWrappedErrorResponse(404)
   async update(
     @Param('businessId') businessId: string,
     @Param('id') id: string,
@@ -138,8 +133,8 @@ export class AdminServiceController {
   @ApiOperation({ summary: 'Удаление услуги' })
   @ApiParam({ name: 'businessId' })
   @ApiParam({ name: 'id' })
-  @ApiResponse({ status: 200, description: 'Услуга удалена' })
-  @ApiResponse({ status: 404, description: 'Не найден' })
+  @ApiWrappedOkResponse('Услуга удалена')
+  @ApiWrappedErrorResponse(404)
   async delete(
     @Param('businessId') businessId: string,
     @Param('id') id: string,
