@@ -10,11 +10,25 @@ export const queryClient = new QueryClient({
       retry: 1,
     },
     mutations: {
-      onError: (_err, _vars, _ctx, mutation) => {
+      onError: (err, _vars, _ctx, mutation) => {
         if (mutation.meta?.[MUTATION_META_SKIP_GLOBAL_ERROR]) {
           return;
         }
-        enqueueSnackbar(i18n.t('common.error'), { variant: 'error' });
+        let errorMessage = i18n.t('common.error');
+
+        if (err && typeof err === 'object' && 'error' in err) {
+          const apiError = err.error;
+
+          if (
+            apiError &&
+            typeof apiError === 'object' &&
+            'message' in apiError &&
+            typeof apiError.message === 'string'
+          ) {
+            errorMessage = apiError.message;
+          }
+        }
+        enqueueSnackbar(errorMessage, { variant: 'error' });
       },
     },
   },

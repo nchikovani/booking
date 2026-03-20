@@ -5,12 +5,17 @@ import Typography from '@mui/material/Typography';
 import { useId, type InputHTMLAttributes, type Ref, type ReactNode } from 'react';
 import { tokens } from '../theme/tokens';
 
+type UiInputHtmlInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  ref?: Ref<HTMLInputElement>;
+  [key: `data-${string}`]: string | undefined;
+};
+
 export type UiInputProps = Omit<OutlinedInputProps, 'notched'> & {
   label?: ReactNode;
   helperText?: ReactNode;
   slotProps?: {
     /** Пропсы нативного <input> элемента (аналог TextField.slotProps.htmlInput). */
-    htmlInput?: InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement> };
+    htmlInput?: UiInputHtmlInputProps;
   };
 };
 

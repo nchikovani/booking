@@ -47,7 +47,7 @@ beforeEach(() => {
 describe('runSessionBootstrap', () => {
   it('при наличии токена в store пропускает refresh и вызывает GET /me (TC-7)', async () => {
     storeAccessToken = MOCK_TOKEN;
-    mockGet.mockResolvedValueOnce({ data: MOCK_USER });
+    mockGet.mockResolvedValueOnce({ data: { data: MOCK_USER } });
 
     await runSessionBootstrap();
 
@@ -57,8 +57,8 @@ describe('runSessionBootstrap', () => {
   });
 
   it('без токена: refresh успешен → GET /me → пользователь в store (TC-7)', async () => {
-    mockPost.mockResolvedValueOnce({ data: { accessToken: MOCK_TOKEN } });
-    mockGet.mockResolvedValueOnce({ data: MOCK_USER });
+    mockPost.mockResolvedValueOnce({ data: { data: { accessToken: MOCK_TOKEN } } });
+    mockGet.mockResolvedValueOnce({ data: { data: MOCK_USER } });
 
     await runSessionBootstrap();
 
@@ -81,7 +81,7 @@ describe('runSessionBootstrap', () => {
   });
 
   it('без токена: refresh успешен, но GET /me упал → resetSession (TC-7)', async () => {
-    mockPost.mockResolvedValueOnce({ data: { accessToken: MOCK_TOKEN } });
+    mockPost.mockResolvedValueOnce({ data: { data: { accessToken: MOCK_TOKEN } } });
     mockGet.mockResolvedValueOnce({ data: undefined, error: { code: 'UNAUTHORIZED' } });
 
     await runSessionBootstrap();
@@ -96,7 +96,7 @@ describe('runSessionBootstrap', () => {
 describe('fetchMeIntoStore', () => {
   it('GET /me успешен → пользователь в store, возвращает true', async () => {
     storeAccessToken = MOCK_TOKEN;
-    mockGet.mockResolvedValueOnce({ data: MOCK_USER });
+    mockGet.mockResolvedValueOnce({ data: { data: MOCK_USER } });
 
     const result = await fetchMeIntoStore();
 

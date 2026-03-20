@@ -50,7 +50,11 @@ export function LoginForm() {
       return;
     }
 
-    await loginMutation.mutateAsync({ email: email.trim(), password });
+    try {
+      await loginMutation.mutateAsync({ email: email.trim(), password });
+    } catch {
+      // Ошибку уже обрабатывает onError внутри useLoginMutation.
+    }
   }
 
   return (
@@ -77,7 +81,7 @@ export function LoginForm() {
         helperText={emailHelper}
         disabled={loginMutation.isPending}
         slotProps={{
-          htmlInput: { ref: emailRef },
+          htmlInput: { ref: emailRef, 'data-testid': 'auth-login-email' },
         }}
       />
 
@@ -100,7 +104,7 @@ export function LoginForm() {
         helperText={passwordHelper}
         disabled={loginMutation.isPending}
         slotProps={{
-          htmlInput: { ref: passwordRef },
+          htmlInput: { ref: passwordRef, 'data-testid': 'auth-login-password' },
         }}
       />
 

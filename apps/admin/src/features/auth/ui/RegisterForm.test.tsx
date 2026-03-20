@@ -58,18 +58,14 @@ afterEach(() => {
 });
 
 function typeIn(user: ReturnType<typeof userEvent.setup>, selector: string, value: string) {
-  const el = document.querySelector<HTMLInputElement>(selector);
-  if (!el) {
-    throw new Error(`input ${selector} not found`);
-  }
-  return user.type(el, value);
+  return user.type(screen.getByTestId(selector), value);
 }
 
 describe('RegisterForm', () => {
   it('успешная регистрация ставит токен и ведёт на главную (TC-3)', async () => {
     const user = userEvent.setup();
     postMock.mockResolvedValueOnce({
-      data: { accessToken: 'reg-jwt' },
+      data: { data: { accessToken: 'reg-jwt' } },
       error: undefined,
       response: new Response(null, { status: 201 }),
     });
@@ -77,8 +73,8 @@ describe('RegisterForm', () => {
     renderRegisterForm();
 
     await user.type(screen.getByLabelText(/Почта/i), 'new@example.com');
-    await typeIn(user, '#auth-register-password', 'secret12');
-    await typeIn(user, '#auth-register-password-confirm', 'secret12');
+    await typeIn(user, 'auth-register-password', 'secret12');
+    await typeIn(user, 'auth-register-password-confirm', 'secret12');
     await user.click(screen.getByRole('checkbox'));
     await user.click(screen.getByRole('button', { name: /Зарегистрироваться/i }));
 
@@ -101,8 +97,8 @@ describe('RegisterForm', () => {
     renderRegisterForm();
 
     await user.type(screen.getByLabelText(/Почта/i), 'taken@example.com');
-    await typeIn(user, '#auth-register-password', 'secret12');
-    await typeIn(user, '#auth-register-password-confirm', 'secret12');
+    await typeIn(user, 'auth-register-password', 'secret12');
+    await typeIn(user, 'auth-register-password-confirm', 'secret12');
     await user.click(screen.getByRole('checkbox'));
     await user.click(screen.getByRole('button', { name: /Зарегистрироваться/i }));
 
@@ -116,8 +112,8 @@ describe('RegisterForm', () => {
     renderRegisterForm();
 
     await user.type(screen.getByLabelText(/Почта/i), 'a@b.c');
-    await typeIn(user, '#auth-register-password', 'secret12');
-    await typeIn(user, '#auth-register-password-confirm', 'secret12');
+    await typeIn(user, 'auth-register-password', 'secret12');
+    await typeIn(user, 'auth-register-password-confirm', 'secret12');
     await user.click(screen.getByRole('button', { name: /Зарегистрироваться/i }));
 
     await waitFor(() => {
@@ -131,8 +127,8 @@ describe('RegisterForm', () => {
     renderRegisterForm();
 
     await user.type(screen.getByLabelText(/Почта/i), 'a@b.c');
-    await typeIn(user, '#auth-register-password', 'secret12');
-    await typeIn(user, '#auth-register-password-confirm', 'other12');
+    await typeIn(user, 'auth-register-password', 'secret12');
+    await typeIn(user, 'auth-register-password-confirm', 'other12');
     await user.click(screen.getByRole('checkbox'));
     await user.click(screen.getByRole('button', { name: /Зарегистрироваться/i }));
 
@@ -153,8 +149,8 @@ describe('RegisterForm', () => {
     renderRegisterForm();
 
     await user.type(screen.getByLabelText(/Почта/i), 'u@example.com');
-    await typeIn(user, '#auth-register-password', 'secret12');
-    await typeIn(user, '#auth-register-password-confirm', 'secret12');
+    await typeIn(user, 'auth-register-password', 'secret12');
+    await typeIn(user, 'auth-register-password-confirm', 'secret12');
     await user.click(screen.getByRole('checkbox'));
     await user.click(screen.getByRole('button', { name: /Зарегистрироваться/i }));
 

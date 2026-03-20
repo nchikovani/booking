@@ -8,7 +8,8 @@ export async function runSessionBootstrap(): Promise<void> {
   const store = useSessionStore.getState();
   if (!store.accessToken) {
     const res = await client.POST('/api/v1/admin/auth/refresh', { body: undefined });
-    const token = res.data?.data && 'accessToken' in res.data.data ? res.data.data.accessToken : undefined;
+    const token =
+      res.data?.data && 'accessToken' in res.data.data ? res.data.data.accessToken : undefined;
 
     if (typeof token === 'string') {
       useSessionStore.getState().setAccessToken(token);

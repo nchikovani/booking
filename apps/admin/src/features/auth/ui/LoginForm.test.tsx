@@ -62,18 +62,14 @@ afterEach(() => {
 });
 
 function typePasswordLogin(user: ReturnType<typeof userEvent.setup>, value: string) {
-  const el = document.querySelector<HTMLInputElement>('#auth-login-password');
-  if (!el) {
-    throw new Error('password input #auth-login-password not found');
-  }
-  return user.type(el, value);
+  return user.type(screen.getByTestId('auth-login-password'), value);
 }
 
 describe('LoginForm', () => {
   it('после успешного входа редиректит на главную и кладёт токен (TC-1)', async () => {
     const user = userEvent.setup();
     postMock.mockResolvedValueOnce({
-      data: { accessToken: 'access-jwt' },
+      data: { data: { accessToken: 'access-jwt' } },
       error: undefined,
       response: new Response(null, { status: 200 }),
     });
@@ -98,7 +94,7 @@ describe('LoginForm', () => {
   it('после успешного входа с валидным returnUrl ведёт на целевой путь (TC-1, TC-13)', async () => {
     const user = userEvent.setup();
     postMock.mockResolvedValueOnce({
-      data: { accessToken: 'tok' },
+      data: { data: { accessToken: 'tok' } },
       error: undefined,
       response: new Response(null, { status: 200 }),
     });
@@ -165,7 +161,7 @@ describe('LoginForm', () => {
   it('игнорирует опасный returnUrl и ведёт на главную (TC-13)', async () => {
     const user = userEvent.setup();
     postMock.mockResolvedValueOnce({
-      data: { accessToken: 'tok' },
+      data: { data: { accessToken: 'tok' } },
       error: undefined,
       response: new Response(null, { status: 200 }),
     });

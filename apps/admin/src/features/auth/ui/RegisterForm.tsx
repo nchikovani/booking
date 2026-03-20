@@ -71,7 +71,11 @@ export function RegisterForm() {
       return;
     }
 
-    await registerMutation.mutateAsync({ email: email.trim(), password });
+    try {
+      await registerMutation.mutateAsync({ email: email.trim(), password });
+    } catch {
+      // Ошибку уже обрабатывает onError внутри useRegisterMutation.
+    }
   }
 
   return (
@@ -97,7 +101,7 @@ export function RegisterForm() {
         error={Boolean(emailErrKey)}
         helperText={emailErrKey ? t(`auth.validation.email.${emailErrKey}`) : ''}
         disabled={registerMutation.isPending}
-        slotProps={{ htmlInput: { ref: emailRef } }}
+        slotProps={{ htmlInput: { ref: emailRef, 'data-testid': 'auth-register-email' } }}
       />
 
       <UiInput
@@ -118,7 +122,7 @@ export function RegisterForm() {
         error={Boolean(passwordErrKey)}
         helperText={passwordErrKey ? t(`auth.validation.password.${passwordErrKey}`) : ''}
         disabled={registerMutation.isPending}
-        slotProps={{ htmlInput: { ref: passwordRef } }}
+        slotProps={{ htmlInput: { ref: passwordRef, 'data-testid': 'auth-register-password' } }}
       />
 
       <UiInput
@@ -139,7 +143,9 @@ export function RegisterForm() {
         error={Boolean(confirmErrKey)}
         helperText={confirmErrKey ? t(`auth.validation.passwordConfirm.${confirmErrKey}`) : ''}
         disabled={registerMutation.isPending}
-        slotProps={{ htmlInput: { ref: passwordConfirmRef } }}
+        slotProps={{
+          htmlInput: { ref: passwordConfirmRef, 'data-testid': 'auth-register-password-confirm' },
+        }}
       />
       <div className="flex flex-col gap-2">
         <FormControlLabel

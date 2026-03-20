@@ -50,7 +50,7 @@ export class AdminAuthController {
   @Post('register')
   @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Throttle({ default: { limit: 5, ttl: 900000 } })
+  @Throttle({ default: { limit: 5, ttl: 900_000 } }) // 15 minutes
   @ApiOperation({
     summary: 'Регистрация',
     description:
@@ -76,7 +76,7 @@ export class AdminAuthController {
   @Post('login')
   @UseGuards(AuthEmailThrottlerGuard)
   @HttpCode(HttpStatus.OK)
-  @Throttle({ default: { limit: 5, ttl: 900000 } })
+  @Throttle({ default: { limit: 5, ttl: 900_000 } }) // 15 minutes
   @ApiOperation({
     summary: 'Вход',
     description:
