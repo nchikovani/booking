@@ -116,7 +116,11 @@ export function LoginForm() {
               edge="end"
               tabIndex={-1}
             >
-              {showPassword ? <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} /> : <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />}
+              {showPassword ? (
+                <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} />
+              ) : (
+                <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />
+              )}
             </IconButton>
           </InputAdornment>
         }

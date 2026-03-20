@@ -5,7 +5,22 @@
     "error": "Произошла ошибка",
     "retry": "Повторить",
     "notFound": "Страница не найдена",
-    "goHome": "На главную"
+    "goHome": "На главную",
+    "home": "Главная",
+    "brand": "potoki.io"
+  },
+  "theme": {
+    "dark": "Тёмная тема"
+  },
+  "nav": {
+    "dashboard": "Дашборд",
+    "services": "Услуги",
+    "employees": "Сотрудники",
+    "calendar": "Календарь",
+    "clients": "Клиенты",
+    "settings": "Настройки",
+    "expand": "Развернуть меню",
+    "collapse": "Свернуть меню"
   },
   "auth": {
     "password": {
@@ -13,7 +28,6 @@
       "hide": "Скрыть пароль"
     },
     "layout": {
-      "brand": "potoki.io",
       "footer": "© 2025 potoki.io"
     },
     "login": {

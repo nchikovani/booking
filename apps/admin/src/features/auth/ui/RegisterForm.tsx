@@ -136,7 +136,11 @@ export function RegisterForm() {
               edge="end"
               tabIndex={-1}
             >
-              {showPassword ? <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} /> : <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />}
+              {showPassword ? (
+                <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} />
+              ) : (
+                <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />
+              )}
             </IconButton>
           </InputAdornment>
         }
@@ -164,14 +168,16 @@ export function RegisterForm() {
         endAdornment={
           <InputAdornment position="end">
             <IconButton
-              aria-label={
-                showPasswordConfirm ? t('auth.password.hide') : t('auth.password.show')
-              }
+              aria-label={showPasswordConfirm ? t('auth.password.hide') : t('auth.password.show')}
               onClick={() => setShowPasswordConfirm((prev) => !prev)}
               edge="end"
               tabIndex={-1}
             >
-              {showPasswordConfirm ? <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} /> : <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />}
+              {showPasswordConfirm ? (
+                <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} />
+              ) : (
+                <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />
+              )}
             </IconButton>
           </InputAdornment>
         }

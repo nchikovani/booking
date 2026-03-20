@@ -71,6 +71,10 @@ export const theme = createTheme({
           height: 20,
           fontSize: 14,
           fontWeight: 400,
+          '&:-webkit-autofill': {
+            WebkitBoxShadow: `0 0 0 100px ${tokens.color.surfaceCard} inset`,
+            WebkitTextFillColor: tokens.color.textPrimary,
+          },
         },
       },
     },

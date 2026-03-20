@@ -18,7 +18,7 @@ export function AuthScreenLayout({ children }: AuthScreenLayoutProps) {
           aria-hidden
         ></div>
         <Typography component="p" variant="h1" color={tokens.color.textPrimary}>
-          {t('auth.layout.brand')}
+          {t('common.brand')}
         </Typography>
       </header>
 

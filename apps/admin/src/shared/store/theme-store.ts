@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { THEME_STORAGE_KEY } from '@shared/constants/theme';
+import { STORAGE_KEY_THEME } from '@shared/constants/storage';
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -10,19 +10,20 @@ interface ThemeStore {
 }
 
 const getSystemTheme = (): ThemeMode =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
+  typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light';
 
 function getStoredTheme(): ThemeMode | null {
   if (typeof window === 'undefined') return null;
-  const saved = localStorage.getItem(THEME_STORAGE_KEY);
+  const saved = localStorage.getItem(STORAGE_KEY_THEME);
   return saved === 'light' || saved === 'dark' ? saved : null;
 }
 
 function applyTheme(mode: ThemeMode) {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(THEME_STORAGE_KEY, mode);
+  localStorage.setItem(STORAGE_KEY_THEME, mode);
+  document.documentElement.setAttribute('data-theme', mode);
 }
 
 export const useThemeStore = create<ThemeStore>()((set) => ({

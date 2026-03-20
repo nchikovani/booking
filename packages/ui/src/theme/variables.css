@@ -2,7 +2,6 @@
 :root {
   --color-primary: #6366f1;
   --color-primary-dark: #4338ca;
-  --color-primary-light: #eef2ff;
   --color-accent: #1671e9;
   --color-error: #dc2626;
   --color-border-default: #e2e8f0;
@@ -17,6 +16,8 @@
 }
 
 [data-theme='dark'] {
+  --color-border-default: #334155;
+  --color-border-strong: #475569;
   --color-surface-bg: #0f172a;
   --color-surface-card: #1e293b;
   --color-surface-elevated: #334155;
