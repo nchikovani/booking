@@ -12,6 +12,14 @@
   "theme": {
     "dark": "Тёмная тема"
   },
+  "shared": {
+    "unsaved": {
+      "title": "Есть несохранённые изменения",
+      "description": "Если уйти со страницы сейчас, изменения будут потеряны.",
+      "stay": "Остаться",
+      "leave": "Уйти без сохранения"
+    }
+  },
   "nav": {
     "dashboard": "Дашборд",
     "services": "Услуги",
@@ -93,6 +101,70 @@
         "UNAUTHORIZED": "Требуется вход",
         "FORBIDDEN": "Доступ запрещён"
       }
+    }
+  },
+  "settings": {
+    "actions": {
+      "save": "Сохранить",
+      "upload": "Загрузить",
+      "delete": "Удалить"
+    },
+    "sections": {
+      "contacts": "Контакты"
+    },
+    "photos": {
+      "title": "Фотографии",
+      "logo": "Логотип",
+      "cover": "Обложка",
+      "emptyLogo": "Логотип не загружен",
+      "emptyCover": "Обложка не загружена",
+      "logoPreviewAlt": "Логотип компании",
+      "coverPreviewAlt": "Обложка компании"
+    },
+    "fields": {
+      "name": "Название компании",
+      "description": "Описание",
+      "address": "Адрес",
+      "phone": "Телефон",
+      "email": "Email",
+      "website": "Сайт",
+      "telegram": "Telegram",
+      "vk": "ВКонтакте",
+      "youtube": "YouTube"
+    },
+    "placeholders": {
+      "name": "Название компании",
+      "description": "Коротко опишите вашу компанию",
+      "address": "Адрес компании",
+      "phone": "+7 999 123-45-67",
+      "email": "info@example.com",
+      "website": "https://example.com",
+      "telegram": "@example",
+      "vk": "https://vk.com/example",
+      "youtube": "https://youtube.com/@example"
+    },
+    "validation": {
+      "email": {
+        "maxLength": "Слишком длинный email",
+        "format": "Некорректный формат email"
+      },
+      "website": {
+        "maxLength": "Слишком длинный адрес сайта",
+        "format": "Некорректный URL сайта (пример: https://example.com)"
+      }
+    },
+    "messages": {
+      "saved": "Настройки сохранены",
+      "loadError": "Не удалось загрузить данные компании",
+      "businessIdMissing": "Не удалось определить компанию текущего пользователя",
+      "logoUploaded": "Логотип обновлён",
+      "imageUploaded": "Обложка обновлена",
+      "logoUploadError": "Не удалось загрузить логотип",
+      "imageUploadError": "Не удалось загрузить обложку",
+      "logoDeleted": "Логотип удалён",
+      "imageDeleted": "Обложка удалена",
+      "logoDeleteError": "Не удалось удалить логотип",
+      "imageDeleteError": "Не удалось удалить обложку"
     }
   }
 }

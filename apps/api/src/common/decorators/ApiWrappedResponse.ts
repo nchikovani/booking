@@ -101,9 +101,7 @@ export const ApiWrappedErrorResponse = (status: number, description?: string) =>
  * \@ApiCommonErrorResponses(400, 409)                // только указанные статусы
  */
 export const ApiCommonErrorResponses = (...statuses: number[]) => {
-  const codes = statuses.length
-    ? statuses
-    : [400, 401, 403, 404, 429, 500];
+  const codes = statuses.length ? statuses : [400, 401, 403, 404, 429, 500];
 
   return applyDecorators(...codes.map((s) => ApiWrappedErrorResponse(s)));
 };

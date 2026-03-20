@@ -9,7 +9,7 @@ describe('session-store', () => {
   it('должен хранить accessToken и сбрасывать при resetSession (TC-1, TC-8)', () => {
     const { setAccessToken, setUser, resetSession } = useSessionStore.getState();
     setAccessToken('jwt');
-    setUser({ id: '1', email: null, firstName: null, lastName: null });
+    setUser({ id: '1', email: null, firstName: null, lastName: null, businessId: 'business-1' });
     expect(useSessionStore.getState().accessToken).toBe('jwt');
     expect(useSessionStore.getState().user).not.toBeNull();
 

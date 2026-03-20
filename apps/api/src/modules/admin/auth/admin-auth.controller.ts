@@ -10,13 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import type * as express from 'express';
-import {
-  ApiTags,
-  ApiOperation,
-  ApiBody,
-  ApiBearerAuth,
-  ApiCookieAuth,
-} from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBody, ApiBearerAuth, ApiCookieAuth } from '@nestjs/swagger';
 import { AdminAuthService } from './admin-auth.service';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { AdminRefreshGuard } from './guards/admin-refresh.guard';
@@ -43,7 +37,7 @@ export class AdminAuthController {
   constructor(
     private readonly authService: AdminAuthService,
     private readonly config: AppConfigService,
-  ) { }
+  ) {}
 
   @Public()
   @Post('register')

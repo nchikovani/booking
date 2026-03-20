@@ -79,6 +79,7 @@ export class AdminBusinessController {
   @ApiWrappedOkResponse('Бизнес удалён')
   @ApiWrappedErrorResponse(404)
   async delete(@Param('id') id: string, @CurrentUser('adminUserId') adminUserId: string) {
+    return;
     await this.businessService.requireBusinessOwner(adminUserId, id);
     await this.businessService.delete(id);
     return null;

@@ -37,7 +37,7 @@ export class AdminAuthService {
     private readonly emailService: EmailService,
     private readonly businessService: BusinessService,
     private readonly logger: Logger,
-  ) { }
+  ) {}
 
   async register(dto: RegisterDto, deviceInfo?: string): Promise<AuthResponse> {
     const email = dto.email.trim().toLowerCase();

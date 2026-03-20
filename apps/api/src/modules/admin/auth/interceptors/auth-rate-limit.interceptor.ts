@@ -1,4 +1,10 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NestInterceptor,
+  ExecutionContext,
+  CallHandler,
+  BadRequestException,
+} from '@nestjs/common';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import type { Request } from 'express';
@@ -21,7 +27,7 @@ export class AuthRateLimitInterceptor implements NestInterceptor {
   constructor(
     private readonly redis: RedisService,
     private readonly config: AppConfigService,
-  ) { }
+  ) {}
 
   async intercept(context: ExecutionContext, next: CallHandler): Promise<Observable<unknown>> {
     const request = context.switchToHttp().getRequest<Request>();

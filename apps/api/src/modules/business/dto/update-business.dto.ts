@@ -28,61 +28,61 @@ export class UpdateBusinessDto {
   @IsString()
   @MaxLength(100)
   @Transform(emptyStringToNull)
-  name?: string | null;
+  name?: string;
 
   @ApiPropertyOptional({ maxLength: 2000 })
   @IsOptional()
   @IsString()
   @MaxLength(2000)
   @Transform(emptyStringToNull)
-  description?: string | null;
+  description?: string;
 
   @ApiPropertyOptional({ maxLength: 50 })
   @IsOptional()
   @IsString()
   @MaxLength(50)
   @Transform(emptyStringToNull)
-  phone?: string | null;
+  phone?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsEmail()
   @Transform(emptyStringToNull)
-  email?: string | null;
+  email?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsUrl()
   @Transform(emptyStringToNull)
-  website?: string | null;
+  website?: string;
 
   @ApiPropertyOptional({ maxLength: 200 })
   @IsOptional()
   @IsString()
   @MaxLength(200)
   @Transform(emptyStringToNull)
-  telegram?: string | null;
+  telegram?: string;
 
   @ApiPropertyOptional({ maxLength: 200 })
   @IsOptional()
   @IsString()
   @MaxLength(200)
   @Transform(emptyStringToNull)
-  vk?: string | null;
+  vk?: string;
 
   @ApiPropertyOptional({ maxLength: 200 })
   @IsOptional()
   @IsString()
   @MaxLength(200)
   @Transform(emptyStringToNull)
-  youtube?: string | null;
+  youtube?: string;
 
   @ApiPropertyOptional({ maxLength: 500 })
   @IsOptional()
   @IsString()
   @MaxLength(500)
   @Transform(emptyStringToNull)
-  address?: string | null;
+  address?: string;
 
   @ApiPropertyOptional({ minimum: -90, maximum: 90 })
   @IsOptional()
@@ -90,7 +90,7 @@ export class UpdateBusinessDto {
   @IsNumber()
   @Min(-90)
   @Max(90)
-  latitude?: number | null;
+  latitude?: number;
 
   @ApiPropertyOptional({ minimum: -180, maximum: 180 })
   @IsOptional()
@@ -98,5 +98,5 @@ export class UpdateBusinessDto {
   @IsNumber()
   @Min(-180)
   @Max(180)
-  longitude?: number | null;
+  longitude?: number;
 }

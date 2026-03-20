@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { client } from '@api';
 import type { components } from '@api';
 import { useSessionStore } from '@entities/session';
+import { getResponseDataOrThrow } from '@shared/api/getResponseDataOrThrow';
 import { fetchMeIntoStore } from '@entities/session/api/bootstrap-session';
 import { ROUTE_HOME } from '@shared/constants/routes';
 import { MUTATION_META_SKIP_GLOBAL_ERROR } from '@shared/constants/react-query-meta';
@@ -23,13 +24,10 @@ export function useRegisterMutation() {
     meta: { [MUTATION_META_SKIP_GLOBAL_ERROR]: true },
     mutationFn: async (body: Pick<RegisterDto, 'email' | 'password'>) => {
       const res = await client.POST('/api/v1/admin/auth/register', { body });
-      if (res.error || !res.data?.data.accessToken) {
-        throw res.error ?? new Error('network');
-      }
-      return res.data;
+      return getResponseDataOrThrow(res);
     },
     onSuccess: async (data) => {
-      useSessionStore.getState().setAccessToken(data.data.accessToken);
+      useSessionStore.getState().setAccessToken(data.accessToken);
       const ok = await fetchMeIntoStore();
       if (!ok) {
         enqueueSnackbar(t('auth.errors.meFailed'), { variant: 'error' });

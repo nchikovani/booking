@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { client } from '@api';
 import type { components } from '@api';
 import { useSessionStore } from '@entities/session';
+import { getResponseDataOrThrow } from '@shared/api/getResponseDataOrThrow';
 import { fetchMeIntoStore } from '@entities/session/api/bootstrap-session';
 import { ROUTE_HOME } from '@shared/constants/routes';
 import { MUTATION_META_SKIP_GLOBAL_ERROR } from '@shared/constants/react-query-meta';
@@ -23,10 +24,7 @@ export function useLoginMutation() {
     meta: { [MUTATION_META_SKIP_GLOBAL_ERROR]: true },
     mutationFn: async (body: LoginDto) => {
       const res = await client.POST('/api/v1/admin/auth/login', { body });
-      if (res.error || !res.data?.data.accessToken) {
-        throw res.error ?? new Error('network');
-      }
-      return res.data.data;
+      return getResponseDataOrThrow(res);
     },
     onSuccess: async (data) => {
       useSessionStore.getState().setAccessToken(data.accessToken);

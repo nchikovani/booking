@@ -16,7 +16,7 @@ export class BusinessService {
   constructor(
     private readonly repository: BusinessRepository,
     private readonly storageService: StorageService,
-  ) { }
+  ) {}
 
   private toPublicUrl(path: string | null): string | null {
     return path ? this.storageService.getPublicUrl(path) : null;

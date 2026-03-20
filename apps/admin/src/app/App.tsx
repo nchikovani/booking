@@ -14,7 +14,12 @@ export function App() {
       <ThemeProvider>
         <QueryClientProvider client={queryClient}>
           <SessionProvider>
-            <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+            <SnackbarProvider
+              maxSnack={3}
+              autoHideDuration={3500}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+              SnackbarProps={{ className: 'admin-snackbar-root' }}
+            >
               <RouterProvider router={router} />
             </SnackbarProvider>
           </SessionProvider>

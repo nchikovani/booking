@@ -581,17 +581,17 @@ export interface components {
             updatedAt: string;
         };
         UpdateBusinessDto: {
-            name?: Record<string, never>;
-            description?: Record<string, never>;
-            phone?: Record<string, never>;
-            email?: Record<string, never>;
-            website?: Record<string, never>;
-            telegram?: Record<string, never>;
-            vk?: Record<string, never>;
-            youtube?: Record<string, never>;
-            address?: Record<string, never>;
-            latitude?: Record<string, never>;
-            longitude?: Record<string, never>;
+            name?: string;
+            description?: string;
+            phone?: string;
+            email?: string;
+            website?: string;
+            telegram?: string;
+            vk?: string;
+            youtube?: string;
+            address?: string;
+            latitude?: number;
+            longitude?: number;
         };
         ServiceLinkResponseDto: {
             serviceId: string;

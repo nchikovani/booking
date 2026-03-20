@@ -77,7 +77,7 @@ export function PageLayout({ title, actions, breadcrumbs, children }: PageLayout
 
       {/* ─── Контентная карточка ───────────────────────────────── */}
       <div
-        className="flex-1 overflow-auto rounded-xl border border-border-default bg-surface-card p-6"
+        className="flex-1 overflow-auto rounded-xl border border-border-default bg-surface-card"
         // style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
       >
         {children}
