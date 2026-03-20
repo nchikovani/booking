@@ -14,6 +14,14 @@ export class AuthUserDto {
   lastName!: string | null;
 }
 
+export class MeUserDto extends AuthUserDto {
+  @ApiProperty({
+    example: '550e8400-e29b-41d4-a716-446655440000',
+    description: 'ID бизнеса текущего пользователя',
+  })
+  businessId!: string;
+}
+
 export class AuthResponseDto {
   @ApiProperty({ type: AuthUserDto, description: 'Данные пользователя' })
   user!: AuthUserDto;

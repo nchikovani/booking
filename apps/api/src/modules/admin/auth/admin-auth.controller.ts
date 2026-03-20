@@ -27,7 +27,7 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { AuthResponseDto, AuthUserDto, MessageResponseDto } from './dto/auth-response.dto';
+import { AuthResponseDto, MeUserDto, MessageResponseDto } from './dto/auth-response.dto';
 import { AppConfigService } from '../../../config/app-config.service';
 import { parseExpiresToSeconds } from './utils/parse-expires';
 import {
@@ -140,7 +140,7 @@ export class AdminAuthController {
     summary: 'Текущий пользователь',
     description: 'Получение данных текущего аутентифицированного пользователя.',
   })
-  @ApiWrappedOkResponse('Данные пользователя', AuthUserDto)
+  @ApiWrappedOkResponse('Данные пользователя', MeUserDto)
   @ApiWrappedErrorResponse(401)
   async me(@CurrentUser('adminUserId') adminUserId: string) {
     return this.authService.me(adminUserId);

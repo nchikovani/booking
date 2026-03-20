@@ -214,6 +214,7 @@ describe('AdminAuthService', () => {
         email: mockAdminUser.email,
         firstName: mockAdminUser.firstName,
         lastName: mockAdminUser.lastName,
+        businessId: 'b1',
       });
     });
   });

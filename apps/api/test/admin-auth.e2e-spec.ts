@@ -150,6 +150,7 @@ describe('Admin Auth (e2e)', () => {
         .expect((res) => {
           expect(res.body.status).toBe('success');
           expect(res.body.data.email).toBe(testUser.email);
+          expect(res.body.data.businessId).toEqual(expect.any(String));
         });
     });
 

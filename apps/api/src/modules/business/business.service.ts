@@ -16,7 +16,7 @@ export class BusinessService {
   constructor(
     private readonly repository: BusinessRepository,
     private readonly storageService: StorageService,
-  ) {}
+  ) { }
 
   private toPublicUrl(path: string | null): string | null {
     return path ? this.storageService.getPublicUrl(path) : null;
@@ -28,7 +28,7 @@ export class BusinessService {
   async ensureBusinessForUser(adminUserId: string) {
     const list = await this.repository.findByAdminUser(adminUserId);
     if (list.length > 0) {
-      return list[0];
+      return list[0]!;
     }
     const business = await this.repository.create({ adminUserId });
     return { ...business, role: 'OWNER' as const };

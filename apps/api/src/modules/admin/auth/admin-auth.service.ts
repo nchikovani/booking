@@ -23,6 +23,10 @@ export interface AuthResponse {
   expiresIn: number;
 }
 
+export type MeResponseUser = AuthResponse['user'] & {
+  businessId: string;
+};
+
 @Injectable()
 export class AdminAuthService {
   constructor(
@@ -33,7 +37,7 @@ export class AdminAuthService {
     private readonly emailService: EmailService,
     private readonly businessService: BusinessService,
     private readonly logger: Logger,
-  ) {}
+  ) { }
 
   async register(dto: RegisterDto, deviceInfo?: string): Promise<AuthResponse> {
     const email = dto.email.trim().toLowerCase();
@@ -165,14 +169,15 @@ export class AdminAuthService {
     };
   }
 
-  async me(adminUserId: string): Promise<AuthResponse['user']> {
-    await this.businessService.ensureBusinessForUser(adminUserId);
+  async me(adminUserId: string): Promise<MeResponseUser> {
+    const business = await this.businessService.ensureBusinessForUser(adminUserId);
     const adminUser = await this.repository.findAdminUserById(adminUserId);
     return {
       id: adminUser.id,
       email: adminUser.email,
       firstName: adminUser.firstName,
       lastName: adminUser.lastName,
+      businessId: business.id,
     };
   }
 
