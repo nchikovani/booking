@@ -20,7 +20,8 @@
       "leave": "Уйти без сохранения"
     },
     "photoUpload": {
-      "description": "Перетащите файл сюда или нажмите <uploadButton>загрузить</uploadButton>"
+      "description": "Перетащите файл сюда или нажмите <uploadButton>загрузить</uploadButton>",
+      "supportText": "Поддерживаются PNG, JPG и WEBP. Максимальный размер 8 MB."
     }
   },
   "nav": {

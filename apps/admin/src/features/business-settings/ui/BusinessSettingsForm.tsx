@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
-import Divider from '@mui/material/Divider';
 import { useBlocker } from 'react-router-dom';
 import type { Business } from '@entities/business';
 import { UnsavedChangesDialog } from '@shared/ui/UnsavedChangesDialog';

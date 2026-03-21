@@ -75,6 +75,9 @@ export const theme = createTheme({
             WebkitBoxShadow: `0 0 0 100px ${tokens.color.surfaceCard} inset`,
             WebkitTextFillColor: tokens.color.textPrimary,
           },
+          '&.MuiInputBase-inputMultiline': {
+            padding: 0,
+          },
         },
       },
     },

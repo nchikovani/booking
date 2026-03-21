@@ -1,5 +1,6 @@
 import { useRef, useState, type ChangeEvent, type DragEvent, type ReactNode } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -87,7 +88,7 @@ export function PhotoUploadCard({
   return (
     <article
       className={`flex h-full flex-col rounded-xl border border-dashed border-border-default bg-surface-bg p-4 transition-colors ${busy ? 'opacity-70' : ''}`}
-      style={isDragOver ? { borderColor: tokens.color.textPrimary } : undefined}
+      style={isDragOver ? { borderColor: tokens.color.primary } : undefined}
       onDragOver={onDragOver}
       onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}
@@ -121,9 +122,10 @@ export function PhotoUploadCard({
               />
             </Typography>
             <Typography variant="caption" color={tokens.color.textSecondary}>
-              {supportText}
+              {supportText || t('shared.photoUpload.supportText')}
             </Typography>
           </div>
+          {busy && <CircularProgress className="ml-6" size={22} />}
         </div>
       </div>
 
@@ -135,7 +137,7 @@ export function PhotoUploadCard({
               className="relative h-40 w-fit max-w-full shrink-0 overflow-hidden rounded-xl border border-border-default bg-surface-elevated"
             >
               {renderImage ? (
-                renderImage(imageUrl, index)
+                renderImage(getImageSrc(imageUrl), index)
               ) : (
                 <img
                   src={getImageSrc(imageUrl)}
@@ -145,7 +147,7 @@ export function PhotoUploadCard({
               )}
               <button
                 type="button"
-                className="absolute right-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-black/60 text-white transition-opacity hover:opacity-90"
+                className="cursor-pointer absolute right-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-black/60 text-white transition-opacity hover:opacity-90"
                 onClick={() => void onDelete(imageUrl)}
                 disabled={busy}
                 aria-label={t('settings.actions.delete')}

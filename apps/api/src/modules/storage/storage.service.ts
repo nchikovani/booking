@@ -12,6 +12,8 @@ const MAX_OUTPUT_SIZE = 5 * 1024 * 1024; // 5 MB
 const MAX_INPUT_SIZE = 8 * 1024 * 1024; // 8 MB
 const QUALITY_LEVELS = [85, 70, 50, 30] as const;
 
+const MAX_WIDTH = 1920;
+
 export interface UploadOptions {
   /** Max width for resizing (e.g. 1920 for cover image). Omit for logo (no resize). */
   maxWidth?: number;
@@ -22,7 +24,7 @@ export class StorageService {
   constructor(
     @InjectMinio() private readonly minio: Client,
     private readonly config: AppConfigService,
-  ) {}
+  ) { }
 
   /**
    * Converts image to WebP and uploads to MinIO.
@@ -51,7 +53,7 @@ export class StorageService {
       }
 
       if (options?.maxWidth) {
-        pipeline = pipeline.resize(options.maxWidth, undefined, { withoutEnlargement: true });
+        pipeline = pipeline.resize(options.maxWidth || MAX_WIDTH, undefined, { withoutEnlargement: true });
       }
 
       processed = await this.compressToFit(pipeline);

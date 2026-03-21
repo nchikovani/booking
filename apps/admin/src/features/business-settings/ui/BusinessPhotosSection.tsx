@@ -30,7 +30,6 @@ export function BusinessPhotosSection({
     <section className="flex flex-col gap-4">
       <PhotoUploadCard
         title={t('settings.photos.logo')}
-        supportText="Поддерживаются PNG, JPG и WEBP"
         images={logoUrl ? [{ imageUrl: logoUrl }] : []}
         busy={logoBusy}
         onUpload={onUploadLogo}
@@ -42,14 +41,13 @@ export function BusinessPhotosSection({
             <img
               src={imageSrc}
               alt={t('settings.photos.logoPreviewAlt')}
-              className="h-full rounded-full border border-border-default object-cover shadow-sm"
+              className="size-36 rounded-full border border-border-default object-cover"
             />
           </div>
         )}
       />
       <PhotoUploadCard
         title={t('settings.photos.cover')}
-        supportText="Поддерживаются PNG, JPG и WEBP"
         images={imageUrl ? [{ imageUrl }] : []}
         busy={imageBusy}
         onUpload={onUploadImage}

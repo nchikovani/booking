@@ -31,7 +31,7 @@ export default () => ({
     cookieName: 'refreshToken',
     rateLimit: {
       ttl: 600_000, // 10 min
-      limit: 5,
+      limit: 10,
     },
   },
   fileStorage: {

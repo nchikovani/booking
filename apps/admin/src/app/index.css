@@ -43,18 +43,3 @@
 *::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-text-tertiary);
 }
-
-/* notistack: уведомления сверху по центру в стиле design-system. */
-.admin-snackbar-root {
-  margin-top: 8px;
-}
-
-.admin-snackbar-root .notistack-MuiContent,
-.admin-snackbar-root .SnackbarItem-contentRoot {
-  border: 1px solid var(--color-border-default);
-  border-radius: 10px;
-  background-color: var(--color-surface-card);
-  color: var(--color-text-primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
-  min-width: 300px;
-}
