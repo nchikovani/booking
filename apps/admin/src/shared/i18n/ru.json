@@ -18,6 +18,9 @@
       "description": "Если уйти со страницы сейчас, изменения будут потеряны.",
       "stay": "Остаться",
       "leave": "Уйти без сохранения"
+    },
+    "photoUpload": {
+      "description": "Перетащите файл сюда или нажмите <uploadButton>загрузить</uploadButton>"
     }
   },
   "nav": {
@@ -106,14 +109,12 @@
   "settings": {
     "actions": {
       "save": "Сохранить",
-      "upload": "Загрузить",
       "delete": "Удалить"
     },
     "sections": {
       "contacts": "Контакты"
     },
     "photos": {
-      "title": "Фотографии",
       "logo": "Логотип",
       "cover": "Обложка",
       "emptyLogo": "Логотип не загружен",

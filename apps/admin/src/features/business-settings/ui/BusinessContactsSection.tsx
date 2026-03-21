@@ -53,7 +53,7 @@ export function BusinessContactsSection({
   const { t } = useTranslation();
 
   return (
-    <section className="flex flex-col gap-4 rounded-xl border border-border-default bg-surface-bg p-5">
+    <section className="flex flex-col gap-4 rounded-xl border border-border-default bg-surface-bg p-4">
       <Typography variant="h4" color={tokens.color.textPrimary}>
         {t('settings.sections.contacts')}
       </Typography>

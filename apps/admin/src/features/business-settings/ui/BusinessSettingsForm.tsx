@@ -95,13 +95,13 @@ export function BusinessSettingsForm({ businessId, business }: Props) {
 
   const onFieldChange =
     (field: keyof BusinessFormValues) =>
-    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const nextValue = event.target.value;
-      setValues((prev) => ({ ...prev, [field]: nextValue }));
-      if (submitAttempted && (field === 'email' || field === 'website')) {
-        setEditedAfterSubmit((prev) => ({ ...prev, [field]: true }));
-      }
-    };
+      (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const nextValue = event.target.value;
+        setValues((prev) => ({ ...prev, [field]: nextValue }));
+        if (submitAttempted && (field === 'email' || field === 'website')) {
+          setEditedAfterSubmit((prev) => ({ ...prev, [field]: true }));
+        }
+      };
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -129,7 +129,9 @@ export function BusinessSettingsForm({ businessId, business }: Props) {
   const imageUrl = readApiText(business.imageUrl);
 
   return (
-    <form id="business-settings-form" onSubmit={onSubmit} className="flex flex-col gap-6 p-6 md:p-8">
+    <form id="business-settings-form" onSubmit={onSubmit} className="flex flex-col gap-6 p-6">
+      <BusinessPrimaryFieldsSection values={values} onFieldChange={onFieldChange} />
+
       <BusinessPhotosSection
         logoUrl={logoUrl}
         imageUrl={imageUrl}
@@ -148,10 +150,6 @@ export function BusinessSettingsForm({ businessId, business }: Props) {
           await deleteImageMutation.mutateAsync();
         }}
       />
-
-      <Divider />
-
-      <BusinessPrimaryFieldsSection values={values} onFieldChange={onFieldChange} />
 
       <BusinessContactsSection
         values={values}

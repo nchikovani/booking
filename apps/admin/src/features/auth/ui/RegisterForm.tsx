@@ -137,9 +137,9 @@ export function RegisterForm() {
               tabIndex={-1}
             >
               {showPassword ? (
-                <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} />
+                <VisibilityOffIcon sx={{ color: tokens.color.textTertiary, fontSize: 20 }} />
               ) : (
-                <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />
+                <VisibilityIcon sx={{ color: tokens.color.textTertiary, fontSize: 20 }} />
               )}
             </IconButton>
           </InputAdornment>
@@ -174,9 +174,9 @@ export function RegisterForm() {
               tabIndex={-1}
             >
               {showPasswordConfirm ? (
-                <VisibilityOffIcon sx={{ color: tokens.color.textSecondary }} />
+                <VisibilityOffIcon sx={{ color: tokens.color.textTertiary, fontSize: 20 }} />
               ) : (
-                <VisibilityIcon sx={{ color: tokens.color.textTertiary }} />
+                <VisibilityIcon sx={{ color: tokens.color.textTertiary, fontSize: 20 }} />
               )}
             </IconButton>
           </InputAdornment>
