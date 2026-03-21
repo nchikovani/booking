@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { tokens } from '@repo/ui';
-import MuiLink from '@mui/material/Link';
 
 type PhotoUploadCardProps = {
   title: string;
@@ -23,7 +22,7 @@ export function PhotoUploadCard({
   onUpload,
   onDelete,
   renderImage,
-  supportText
+  supportText,
 }: PhotoUploadCardProps) {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -128,8 +127,8 @@ export function PhotoUploadCard({
         </div>
       </div>
 
-      {
-        images.length > 0 && (<div className="flex flex-wrap gap-3 pt-6">
+      {images.length > 0 && (
+        <div className="flex flex-wrap gap-3 pt-6">
           {images.map(({ imageUrl }, index) => (
             <div
               key={imageUrl}
@@ -155,9 +154,8 @@ export function PhotoUploadCard({
               </button>
             </div>
           ))}
-        </div>)
-      }
-
+        </div>
+      )}
 
       <input
         ref={inputRef}

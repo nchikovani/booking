@@ -12,11 +12,7 @@ type Props = {
   onLeave: () => void;
 };
 
-export function UnsavedChangesDialog({
-  open,
-  onStay,
-  onLeave,
-}: Props) {
+export function UnsavedChangesDialog({ open, onStay, onLeave }: Props) {
   const { t } = useTranslation();
 
   return (

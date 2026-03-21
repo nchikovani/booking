@@ -40,7 +40,11 @@ export function SettingsPage() {
             <Typography variant="body1" color={tokens.color.textSecondary}>
               {t('settings.messages.loadError')}
             </Typography>
-            <UiButton type="button" uiVariant="secondary" onClick={() => void businessQuery.refetch()}>
+            <UiButton
+              type="button"
+              uiVariant="secondary"
+              onClick={() => void businessQuery.refetch()}
+            >
               {t('common.retry')}
             </UiButton>
           </div>

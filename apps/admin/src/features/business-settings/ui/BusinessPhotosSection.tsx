@@ -30,7 +30,7 @@ export function BusinessPhotosSection({
     <section className="flex flex-col gap-4">
       <PhotoUploadCard
         title={t('settings.photos.logo')}
-        supportText='Поддерживаются PNG, JPG и WEBP'
+        supportText="Поддерживаются PNG, JPG и WEBP"
         images={logoUrl ? [{ imageUrl: logoUrl }] : []}
         busy={logoBusy}
         onUpload={onUploadLogo}
@@ -49,7 +49,7 @@ export function BusinessPhotosSection({
       />
       <PhotoUploadCard
         title={t('settings.photos.cover')}
-        supportText='Поддерживаются PNG, JPG и WEBP'
+        supportText="Поддерживаются PNG, JPG и WEBP"
         images={imageUrl ? [{ imageUrl }] : []}
         busy={imageBusy}
         onUpload={onUploadImage}
@@ -58,7 +58,11 @@ export function BusinessPhotosSection({
         }}
         renderImage={(imageSrc) => (
           <div className="h-full" style={{ aspectRatio: COVER_ASPECT_RATIO }}>
-            <img src={imageSrc} alt={t('settings.photos.coverPreviewAlt')} className="h-full w-full object-cover" />
+            <img
+              src={imageSrc}
+              alt={t('settings.photos.coverPreviewAlt')}
+              className="h-full w-full object-cover"
+            />
           </div>
         )}
       />

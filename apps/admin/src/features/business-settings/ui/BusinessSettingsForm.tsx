@@ -95,13 +95,13 @@ export function BusinessSettingsForm({ businessId, business }: Props) {
 
   const onFieldChange =
     (field: keyof BusinessFormValues) =>
-      (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const nextValue = event.target.value;
-        setValues((prev) => ({ ...prev, [field]: nextValue }));
-        if (submitAttempted && (field === 'email' || field === 'website')) {
-          setEditedAfterSubmit((prev) => ({ ...prev, [field]: true }));
-        }
-      };
+    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const nextValue = event.target.value;
+      setValues((prev) => ({ ...prev, [field]: nextValue }));
+      if (submitAttempted && (field === 'email' || field === 'website')) {
+        setEditedAfterSubmit((prev) => ({ ...prev, [field]: true }));
+      }
+    };
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
